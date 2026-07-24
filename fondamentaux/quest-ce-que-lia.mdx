@@ -33,6 +33,17 @@ Ce processus d'apprentissage repose sur un cycle simple :
 3. Il ajuste ses paramètres internes pour faire mieux la prochaine fois.
 4. On répète cette opération des millions de fois.
 
+Ce cycle d'apprentissage peut se représenter simplement par le schéma suivant :
+
+```mermaid
+flowchart LR
+    A["Exemple de données"] --> B["Prédiction du modèle"]
+    B --> C{"Correct ?"}
+    C -- "Non" --> D["Ajuste les paramètres"]
+    D --> B
+    C -- "Oui" --> E["Modèle amélioré"]
+```
+
 ## IA étroite vs IA générale
 
 Il est essentiel de distinguer deux catégories conceptuelles d'IA, souvent confondues dans les discussions grand public.

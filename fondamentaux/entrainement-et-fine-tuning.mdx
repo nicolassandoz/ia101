@@ -26,6 +26,18 @@ Un grand modèle de langage ne naît pas "intelligent", il le devient au terme d
   </Step>
 </Steps>
 
+Vu de haut, ce pipeline transforme un immense corpus brut en un assistant aligné :
+
+```mermaid
+flowchart LR
+    A["Corpus massif de tokens"] --> B["Pré-entraînement"]
+    B --> C["Modèle de base"]
+    C --> D["Fine-tuning supervisé (SFT)"]
+    D --> E["RLHF"]
+    E --> F["Modèle aligné"]
+    F --> G["Évaluation et déploiement"]
+```
+
 ## Le RLHF expliqué simplement
 
 Le **Reinforcement Learning from Human Feedback** (RLHF) est l'innovation clé qui a transformé les LLM en assistants réellement utiles. L'idée centrale : au lieu de définir mathématiquement ce qu'est une "bonne réponse" (tâche extrêmement difficile), on demande à des humains de comparer des réponses et d'exprimer leurs préférences.

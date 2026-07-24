@@ -36,6 +36,18 @@ Le contexte d'un modèle n'est pas uniquement votre dernière question : c'est u
   </Card>
 </CardGroup>
 
+Ces quatre couches s'empilent dans la fenêtre de contexte avant chaque appel au modèle :
+
+```mermaid
+flowchart TD
+    S["Instructions système"] --> CTX["Fenêtre de contexte"]
+    H["Historique des messages"] --> CTX
+    D["Données injectées"] --> CTX
+    U["Message utilisateur actuel"] --> CTX
+    CTX --> M["LLM"]
+    M --> R["Réponse"]
+```
+
 ## Le bureau de travail mental du modèle
 
 Imaginez que la fenêtre de contexte est le **bureau de travail** du modèle. Tout ce qui n'est pas posé sur ce bureau est, pour lui, inexistant. Chaque token que vous placez sur ce bureau occupe de l'espace, et cet espace est limité.

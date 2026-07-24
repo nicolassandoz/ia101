@@ -54,6 +54,25 @@ Le RAG répond à plusieurs limitations fondamentales des LLMs :
   </Step>
 </Steps>
 
+L'ensemble du pipeline, de l'indexation hors ligne à la génération en direct, se visualise ainsi :
+
+```mermaid
+flowchart LR
+    subgraph IDX["Indexation (offline)"]
+      D["Documents"] --> CH["Chunking"]
+      CH --> EM["Embeddings"]
+      EM --> VDB["Base vectorielle"]
+    end
+    Q["Question utilisateur"] --> QE["Embedding de la requête"]
+    QE --> SR["Recherche par similarité"]
+    VDB --> SR
+    SR --> TOP["k chunks pertinents"]
+    TOP --> PR["Prompt + contexte"]
+    Q --> PR
+    PR --> LLM["LLM"]
+    LLM --> ANS["Réponse sourcée"]
+```
+
 ## Le chunking : découper intelligemment
 
 Le chunking est l'étape la plus sous-estimée du pipeline RAG. Un mauvais découpage dégrade directement la qualité de récupération.

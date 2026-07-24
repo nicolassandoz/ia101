@@ -18,6 +18,15 @@ Ces trois termes décrivent le nombre d'exemples fournis au modèle dans votre p
 
 En **zero-shot**, vous faites confiance au modèle pour interpréter votre demande sans indication supplémentaire. En **few-shot**, vous guidez activement ses anticipations en lui montrant exactement ce que vous attendez.
 
+Plus vous fournissez d'exemples, plus vous contrôlez le format et la cohérence des réponses :
+
+```mermaid
+flowchart LR
+    Z["Zero-shot (0 exemple)"] --> O["One-shot (1 exemple)"]
+    O --> F["Few-shot (2 à 8 exemples)"]
+    F --> Q["Cohérence et contrôle du format croissants"]
+```
+
 ## Pourquoi les exemples améliorent drastiquement les résultats
 
 Un LLM est fondamentalement un système de prédiction de texte. Lorsque vous lui fournissez des exemples, vous lui donnez un contexte immédiat qui oriente sa prédiction bien plus précisément qu'une description abstraite. Les bénéfices sont multiples :
