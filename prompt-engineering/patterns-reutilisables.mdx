@@ -1,10 +1,10 @@
 ---
 title: "Patterns de prompts réutilisables : votre bibliothèque prête à l'emploi"
 sidebarTitle: "Patterns Réutilisables"
-description: "Copiez-collez ces templates de prompts éprouvés — génération, amélioration, comparaison et extraction — et adaptez-les en quelques secondes à votre besoin."
+description: "Copiez-collez ces templates de prompts éprouvés : génération, amélioration, comparaison et extraction, à adapter en quelques secondes à votre besoin."
 ---
 
-Vous connaissez maintenant l'anatomie d'un prompt, les bonnes pratiques et l'art de l'itération. Cette page va plus loin : elle vous donne des **templates prêts à l'emploi**, directement copiables, pour les tâches que vous rencontrerez le plus souvent. Plutôt que de reconstruire un prompt efficace à chaque fois, adaptez ces squelettes à votre contexte — les emplacements entre crochets `[...]` sont à remplacer.
+Vous connaissez maintenant l'anatomie d'un prompt, les bonnes pratiques et l'art de l'itération. Cette page va plus loin : elle vous donne des **templates prêts à l'emploi**, directement copiables, pour les tâches que vous rencontrerez le plus souvent. Plutôt que de reconstruire un prompt efficace à chaque fois, adaptez ces squelettes à votre contexte : les emplacements entre crochets `[...]` sont à remplacer.
 
 <Tip>
   Ces patterns appliquent les principes déjà vus (instruction claire, contexte, contraintes, format de sortie) sous une forme condensée et réutilisable. Gardez cette page en favori : c'est votre boîte à outils du quotidien.
@@ -59,7 +59,7 @@ en précisant dans quel contexte chaque option resterait pertinente.
 
 ## Générer puis auto-évaluer
 
-Ce pattern enchaîne une génération et une relecture critique dans le même prompt — utile quand vous ne pouvez pas itérer en plusieurs tours (traitement en batch, automatisation).
+Ce pattern enchaîne une génération et une relecture critique dans le même prompt, utile quand vous ne pouvez pas itérer en plusieurs tours (traitement en batch, automatisation).
 
 ```text
 Étape 1 : [tâche de génération précise].
@@ -74,7 +74,7 @@ n'est utile, indique "Aucune correction nécessaire" et explique pourquoi.
 ```
 
 <Note>
-  L'auto-évaluation ne remplace pas une vérification humaine sur les faits critiques (voir la leçon sur les [hallucinations](/fondamentaux/limites-et-hallucinations)) — elle réduit surtout les erreurs de forme et d'oubli d'instructions, pas les erreurs factuelles de fond.
+  L'auto-évaluation ne remplace pas une vérification humaine sur les faits critiques (voir la leçon sur les [hallucinations](/fondamentaux/limites-et-hallucinations)). Elle réduit surtout les erreurs de forme et d'oubli d'instructions, pas les erreurs factuelles de fond.
 </Note>
 
 ## Extraire des données structurées
@@ -103,4 +103,4 @@ aucun texte avant ou après le JSON.
 
 Ces cinq templates couvrent les besoins les plus fréquents, mais la vraie valeur vient de **vos propres patterns**, construits à partir de vos tâches récurrentes. Dès qu'une séquence de prompts fonctionne bien deux fois de suite, transformez-la en template : identifiez les parties fixes (la structure) et les parties variables (entre crochets), puis sauvegardez-la dans un fichier dédié.
 
-Vous construisez ainsi, leçon après leçon, une bibliothèque personnelle qui vous fait gagner un temps considérable — c'est l'aboutissement naturel de l'itération vue au chapitre précédent.
+Vous construisez ainsi, leçon après leçon, une bibliothèque personnelle qui vous fait gagner un temps considérable : c'est l'aboutissement naturel de l'itération vue au chapitre précédent.

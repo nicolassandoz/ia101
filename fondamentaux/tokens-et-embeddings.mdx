@@ -8,7 +8,7 @@ Quand vous envoyez un message à un LLM, le modèle ne lit pas votre texte comme
 
 ## Qu'est-ce qu'un token ?
 
-Un token n'est **pas** forcément un mot entier. C'est une unité de texte définie par le **tokenizer** du modèle — un algorithme qui découpe le texte de la façon la plus efficace possible en se basant sur les fréquences observées dans les données d'entraînement.
+Un token n'est **pas** forcément un mot entier. C'est une unité de texte définie par le **tokenizer** du modèle : un algorithme qui découpe le texte de la façon la plus efficace possible en se basant sur les fréquences observées dans les données d'entraînement.
 
 Voici quelques exemples concrets de tokenisation :
 
@@ -56,12 +56,12 @@ Les tokens sont l'unité de mesure fondamentale des LLM pour deux raisons majeur
 **2. La limite de contexte** : chaque modèle a une **fenêtre de contexte maximale**, exprimée en tokens. GPT-4o supporte jusqu'à 128 000 tokens ; Claude 3 peut aller jusqu'à 200 000 tokens. Au-delà, le modèle ne peut plus "voir" les informations les plus anciennes de la conversation.
 
 <Tip>
-Pour économiser des tokens sans perdre en qualité, préférez des instructions directes et précises à de longues formulations polies. Écrire *"Résume en 3 points"* consomme moins de tokens que *"Pourriez-vous s'il vous plaît me faire un résumé en trois points ?"* — et produit souvent un résultat équivalent ou meilleur.
+Pour économiser des tokens sans perdre en qualité, préférez des instructions directes et précises à de longues formulations polies. Écrire *"Résume en 3 points"* consomme moins de tokens que *"Pourriez-vous s'il vous plaît me faire un résumé en trois points ?"*, et produit souvent un résultat équivalent ou meilleur.
 </Tip>
 
 ## Tokens en français vs en anglais
 
-Une règle empirique utile : en anglais, **1 token ≈ 4 caractères**, soit environ ¾ d'un mot. En français — et dans la plupart des langues non-anglaises — le rapport est légèrement moins favorable, car les tokenizers sont généralement optimisés sur des corpus à dominante anglaise.
+Une règle empirique utile : en anglais, **1 token ≈ 4 caractères**, soit environ ¾ d'un mot. En français (et dans la plupart des langues non-anglaises), le rapport est légèrement moins favorable, car les tokenizers sont généralement optimisés sur des corpus à dominante anglaise.
 
 | Langue | Ratio approximatif | Exemple |
 |---|---|---|
@@ -73,7 +73,7 @@ Cette différence peut représenter jusqu'à 20-30 % de tokens supplémentaires 
 
 ## Qu'est-ce qu'un embedding ?
 
-Une fois le texte tokenisé, chaque token est converti en un **vecteur numérique** — c'est ce qu'on appelle un **embedding**. Concrètement, un embedding est une liste de nombres (souvent plusieurs centaines ou milliers de valeurs) qui représente la "position" d'un mot dans un espace mathématique à haute dimension.
+Une fois le texte tokenisé, chaque token est converti en un **vecteur numérique** : c'est ce qu'on appelle un **embedding**. Concrètement, un embedding est une liste de nombres (souvent plusieurs centaines ou milliers de valeurs) qui représente la "position" d'un mot dans un espace mathématique à haute dimension.
 
 Ce qui rend les embeddings puissants, c'est qu'ils **capturent la sémantique** : des mots au sens similaire ont des vecteurs proches les uns des autres dans cet espace. Des mots au sens opposé ou sans rapport sont éloignés.
 
@@ -83,7 +83,7 @@ L'exemple le plus célèbre de cette propriété :
 vecteur("roi") - vecteur("homme") + vecteur("femme") ≈ vecteur("reine")
 ```
 
-Cela signifie que le modèle a appris, à travers les données d'entraînement, que la relation entre "roi" et "homme" est analogue à celle entre "reine" et "femme" — et cette relation est encodée géométriquement dans l'espace vectoriel.
+Cela signifie que le modèle a appris, à travers les données d'entraînement, que la relation entre "roi" et "homme" est analogue à celle entre "reine" et "femme", et cette relation est encodée géométriquement dans l'espace vectoriel.
 
 D'autres exemples de relations capturées par les embeddings :
 
@@ -105,4 +105,4 @@ Les embeddings sont la technologie sous-jacente de nombreuses applications d'IA 
 
 ## Ce que vous retenez de cette leçon
 
-Les tokens sont les unités atomiques du texte pour un LLM — ni des mots, ni des caractères, mais quelque chose entre les deux. Ils déterminent vos coûts et vos limites de contexte. Les embeddings, eux, sont des représentations vectorielles qui permettent au modèle de "comprendre" le sens et les relations entre les concepts. Dans la prochaine leçon, nous allons explorer comment ces fondations sont construites : le processus d'**entraînement et de fine-tuning**.
+Les tokens sont les unités atomiques du texte pour un LLM : ni des mots, ni des caractères, mais quelque chose entre les deux. Ils déterminent vos coûts et vos limites de contexte. Les embeddings, eux, sont des représentations vectorielles qui permettent au modèle de "comprendre" le sens et les relations entre les concepts. Dans la prochaine leçon, nous allons explorer comment ces fondations sont construites : le processus d'**entraînement et de fine-tuning**.

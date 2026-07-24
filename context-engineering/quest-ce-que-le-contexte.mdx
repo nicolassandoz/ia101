@@ -4,7 +4,7 @@ sidebarTitle: "Le Contexte"
 description: "Découvrez ce qu'est le contexte dans les LLM, comment il diffère du prompt engineering et pourquoi il est votre ressource la plus précieuse."
 ---
 
-Le **context engineering** est l'art de composer, organiser et optimiser toutes les informations transmises à un modèle de langage afin d'obtenir les réponses les plus pertinentes, cohérentes et utiles possible. Là où le prompt engineering se concentre sur la formulation d'une instruction précise, le context engineering adopte une vision plus large : il s'intéresse à *l'ensemble* de ce que le modèle perçoit à chaque appel — et donc à tout ce qui influence sa réponse.
+Le **context engineering** est l'art de composer, organiser et optimiser toutes les informations transmises à un modèle de langage afin d'obtenir les réponses les plus pertinentes, cohérentes et utiles possible. Là où le prompt engineering se concentre sur la formulation d'une instruction précise, le context engineering adopte une vision plus large : il s'intéresse à *l'ensemble* de ce que le modèle perçoit à chaque appel, et donc à tout ce qui influence sa réponse.
 
 ## Prompt engineering vs context engineering
 
@@ -38,9 +38,9 @@ Le contexte d'un modèle n'est pas uniquement votre dernière question : c'est u
 
 ## Le bureau de travail mental du modèle
 
-Imaginez que la fenêtre de contexte est le **bureau de travail** du modèle. Tout ce qui n'est pas posé sur ce bureau est, pour lui, inexistant. Chaque token que vous placez sur ce bureau occupe de l'espace — et cet espace est limité.
+Imaginez que la fenêtre de contexte est le **bureau de travail** du modèle. Tout ce qui n'est pas posé sur ce bureau est, pour lui, inexistant. Chaque token que vous placez sur ce bureau occupe de l'espace, et cet espace est limité.
 
-Un bon context engineer choisit soigneusement ce qu'il pose sur ce bureau : les documents vraiment pertinents, les instructions claires, l'historique utile — et laisse de côté tout ce qui encombre sans apporter de valeur.
+Un bon context engineer choisit soigneusement ce qu'il pose sur ce bureau : les documents vraiment pertinents, les instructions claires, l'historique utile, et laisse de côté tout ce qui encombre sans apporter de valeur.
 
 <Note>
   Le contexte est une **ressource partagée** entre vous et le modèle. L'espace occupé par vos instructions et vos données est autant d'espace en moins pour la réponse générée. Concevoir un contexte efficace, c'est aussi préserver de la place pour que le modèle s'exprime pleinement.
@@ -48,7 +48,7 @@ Un bon context engineer choisit soigneusement ce qu'il pose sur ce bureau : les 
 
 ## Pourquoi le contexte est votre ressource la plus précieuse
 
-La qualité d'une réponse générée par un LLM dépend directement de la qualité du contexte fourni. Un modèle ne peut pas inventer ce qu'il ne sait pas — mais il peut synthétiser, raisonner et adapter ce que vous lui donnez avec une remarquable efficacité.
+La qualité d'une réponse générée par un LLM dépend directement de la qualité du contexte fourni. Un modèle ne peut pas inventer ce qu'il ne sait pas, mais il peut synthétiser, raisonner et adapter ce que vous lui donnez avec une remarquable efficacité.
 
 Voici pourquoi le contexte mérite toute votre attention :
 
@@ -63,4 +63,4 @@ Voici pourquoi le contexte mérite toute votre attention :
 
 ## En résumé
 
-Le context engineering est la discipline qui vous permet de tirer le meilleur parti des LLM en production. En maîtrisant ce qui entre dans la fenêtre de contexte — et en quelle proportion — vous passez de simples expériences en chat à de véritables systèmes d'IA fiables, cohérents et maintenables. Les sections suivantes vous guideront à travers les mécanismes concrets : la fenêtre de contexte, la gestion de la mémoire, et les stratégies d'injection de connaissances.
+Le context engineering est la discipline qui vous permet de tirer le meilleur parti des LLM en production. En maîtrisant ce qui entre dans la fenêtre de contexte (et en quelle proportion), vous passez de simples expériences en chat à de véritables systèmes d'IA fiables, cohérents et maintenables. Les sections suivantes vous guideront à travers les mécanismes concrets : la fenêtre de contexte, la gestion de la mémoire, et les stratégies d'injection de connaissances.

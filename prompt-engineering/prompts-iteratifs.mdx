@@ -4,7 +4,7 @@ sidebarTitle: "Prompts Itératifs"
 description: "Maîtrisez l'art du raffinement conversationnel : clarifier, contraindre et reformuler vos demandes pour obtenir exactement ce que vous visez."
 ---
 
-Obtenir le résultat parfait dès le premier prompt est rare — et ce n'est pas grave. Les LLM modernes sont conçus pour la conversation multi-tours, et cette capacité est une fonctionnalité puissante, pas un palliatif. Traiter l'échange avec un modèle comme un dialogue collaboratif plutôt que comme une requête unique transforme radicalement la qualité des résultats que vous pouvez atteindre. Cette approche s'appelle le **prompting itératif**.
+Obtenir le résultat parfait dès le premier prompt est rare, et ce n'est pas grave. Les LLM modernes sont conçus pour la conversation multi-tours, et cette capacité est une fonctionnalité puissante, pas un palliatif. Traiter l'échange avec un modèle comme un dialogue collaboratif plutôt que comme une requête unique transforme radicalement la qualité des résultats que vous pouvez atteindre. Cette approche s'appelle le **prompting itératif**.
 
 ## La conversation comme outil d'affinage
 
@@ -131,7 +131,7 @@ Signale chaque écart trouvé, puis propose une version corrigée.
 ```
 
 <Tip>
-  Cette technique se combine bien avec les [patterns réutilisables](/prompt-engineering/patterns-reutilisables) — le pattern "Générer puis auto-évaluer" applique la même logique en un seul prompt, sans dépendre d'un second tour de conversation.
+  Cette technique se combine bien avec les [patterns réutilisables](/prompt-engineering/patterns-reutilisables) : le pattern "Générer puis auto-évaluer" applique la même logique en un seul prompt, sans dépendre d'un second tour de conversation.
 </Tip>
 
 ## Exemple de dialogue multi-tours
@@ -140,7 +140,7 @@ Voici une conversation réelle illustrant le raffinement progressif en action.
 
 ---
 
-**Tour 1 — Demande initiale**
+**Tour 1 : demande initiale**
 
 > **Vous :** Écris un titre accrocheur pour un article sur la productivité.
 
@@ -148,7 +148,7 @@ Voici une conversation réelle illustrant le raffinement progressif en action.
 
 ---
 
-**Tour 2 — Premier affinage**
+**Tour 2 : premier affinage**
 
 > **Vous :** Trop générique. L'article cible spécifiquement les développeurs qui travaillent en remote. Et évite les listes "X astuces".
 
@@ -156,7 +156,7 @@ Voici une conversation réelle illustrant le raffinement progressif en action.
 
 ---
 
-**Tour 3 — Affinage du ton**
+**Tour 3 : affinage du ton**
 
 > **Vous :** Mieux ! Mais on vise un ton plus percutant, moins magazine. Quelque chose de plus direct, presque provoquant.
 
@@ -164,7 +164,7 @@ Voici une conversation réelle illustrant le raffinement progressif en action.
 
 ---
 
-**Tour 4 — Validation et variantes**
+**Tour 4 : validation et variantes**
 
 > **Vous :** Excellent. Donne-moi 2 variantes dans ce registre.
 
@@ -174,7 +174,7 @@ Voici une conversation réelle illustrant le raffinement progressif en action.
 
 ---
 
-En quatre tours, vous êtes passé d'un titre générique à trois options solides et différenciées — un résultat difficile à obtenir en un seul prompt.
+En quatre tours, vous êtes passé d'un titre générique à trois options solides et différenciées, un résultat difficile à obtenir en un seul prompt.
 
 ## Mémoriser les préférences dans la conversation
 
@@ -214,7 +214,7 @@ Continuer d'itérer n'est pas toujours la meilleure stratégie. Voici comment d�
 <Accordion title="FAQ : la mémoire dans les conversations multi-tours">
   **Le modèle se souvient-il de tout ce que j'ai dit ?**
 
-  Dans une même conversation, oui — jusqu'à la limite de sa **fenêtre de contexte** (quelques dizaines de milliers à plusieurs centaines de milliers de tokens selon le modèle). Au-delà, les messages les plus anciens sont tronqués ou résumés automatiquement.
+  Dans une même conversation, oui, jusqu'à la limite de sa **fenêtre de contexte** (quelques dizaines de milliers à plusieurs centaines de milliers de tokens selon le modèle). Au-delà, les messages les plus anciens sont tronqués ou résumés automatiquement.
 
   **Le modèle retient-il mes préférences entre deux sessions ?**
 
@@ -231,6 +231,6 @@ Continuer d'itérer n'est pas toujours la meilleure stratégie. Voici comment d�
 
 ## Intégrer le prompting itératif dans votre workflow
 
-Le prompting itératif n'est pas une technique isolée — c'est une **posture de travail** à adopter face aux LLM. Combiné avec le few-shot learning pour guider le format dès le départ, ou avec le Chain-of-Thought pour affiner un raisonnement complexe, il constitue le socle d'une utilisation experte des modèles de langage au quotidien.
+Le prompting itératif n'est pas une technique isolée, c'est une **posture de travail** à adopter face aux LLM. Combiné avec le few-shot learning pour guider le format dès le départ, ou avec le Chain-of-Thought pour affiner un raisonnement complexe, il constitue le socle d'une utilisation experte des modèles de langage au quotidien.
 
-Dans le prochain chapitre, vous allez transformer vos meilleures séquences d'itération en **patterns réutilisables** — des templates prêts à copier-coller pour ne plus jamais repartir de zéro.
+Dans le prochain chapitre, vous allez transformer vos meilleures séquences d'itération en **patterns réutilisables** : des templates prêts à copier-coller pour ne plus jamais repartir de zéro.

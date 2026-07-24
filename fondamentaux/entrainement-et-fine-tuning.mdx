@@ -4,7 +4,7 @@ sidebarTitle: "Entraînement"
 description: "Découvrez comment les LLM sont pré-entraînés, affinés par retour humain (RLHF) et adaptés à des tâches spécifiques via le fine-tuning."
 ---
 
-Un grand modèle de langage ne naît pas "intelligent" — il le devient au terme d'un processus d'entraînement long, coûteux et minutieusement orchestré. Comprendre les grandes étapes de ce pipeline vous permettra de mieux saisir ce que vous pouvez attendre d'un modèle, comment l'orienter efficacement, et quand le fine-tuning est une option pertinente pour votre cas d'usage.
+Un grand modèle de langage ne naît pas "intelligent", il le devient au terme d'un processus d'entraînement long, coûteux et minutieusement orchestré. Comprendre les grandes étapes de ce pipeline vous permettra de mieux saisir ce que vous pouvez attendre d'un modèle, comment l'orienter efficacement, et quand le fine-tuning est une option pertinente pour votre cas d'usage.
 
 ## Le pipeline d'entraînement d'un LLM
 
@@ -13,12 +13,12 @@ Un grand modèle de langage ne naît pas "intelligent" — il le devient au term
     Les développeurs agrègent d'immenses corpus de textes issus d'Internet, de livres numérisés, d'articles scientifiques, de bases de code et d'autres sources. Ce corpus peut représenter des **billions de tokens**. Les données sont ensuite filtrées (suppression de contenus dupliqués, toxiques ou de mauvaise qualité) et tokenisées.
   </Step>
   <Step title="Pré-entraînement (*pre-training*)">
-    Le modèle apprend une seule tâche : **prédire le token suivant** dans un texte. Répétée des milliards de fois sur l'ensemble du corpus, cette tâche apparemment simple force le modèle à développer une représentation interne du langage, des faits du monde et des relations logiques. Cette phase est la plus coûteuse — elle peut mobiliser des milliers de GPU pendant des semaines ou des mois.
+    Le modèle apprend une seule tâche : **prédire le token suivant** dans un texte. Répétée des milliards de fois sur l'ensemble du corpus, cette tâche apparemment simple force le modèle à développer une représentation interne du langage, des faits du monde et des relations logiques. Cette phase est la plus coûteuse : elle peut mobiliser des milliers de GPU pendant des semaines ou des mois.
   </Step>
   <Step title="Ajustement supervisé (*Supervised Fine-Tuning, SFT*)">
     Le modèle de base est ensuite affiné sur un dataset de conversations de haute qualité, rédigées ou validées par des humains. Des paires (instruction → réponse idéale) lui apprennent à **suivre des directives** et à adopter un format conversationnel utile.
   </Step>
-  <Step title="RLHF — Apprentissage par renforcement avec retour humain">
+  <Step title="RLHF : Apprentissage par renforcement avec retour humain">
     Des annotateurs humains comparent plusieurs réponses générées par le modèle et les classent de la meilleure à la moins bonne. Ces préférences servent à entraîner un **modèle de récompense**, qui évalue automatiquement la qualité d'une réponse. Le LLM est ensuite optimisé pour maximiser ce score de récompense via un algorithme d'apprentissage par renforcement (généralement PPO). C'est cette étape qui rend le modèle utile, inoffensif et honnête.
   </Step>
   <Step title="Évaluation, sécurité et déploiement">
@@ -30,10 +30,10 @@ Un grand modèle de langage ne naît pas "intelligent" — il le devient au term
 
 Le **Reinforcement Learning from Human Feedback** (RLHF) est l'innovation clé qui a transformé les LLM en assistants réellement utiles. L'idée centrale : au lieu de définir mathématiquement ce qu'est une "bonne réponse" (tâche extrêmement difficile), on demande à des humains de comparer des réponses et d'exprimer leurs préférences.
 
-Imaginez que le modèle génère deux réponses à la question *"Comment apprendre la guitare ?"*. Des annotateurs humains indiquent laquelle est plus utile, plus précise, plus adaptée. Ces signaux humains créent un **modèle de récompense** qui apprend à prédire les préférences humaines — et le LLM apprend ensuite à maximiser cette récompense.
+Imaginez que le modèle génère deux réponses à la question *"Comment apprendre la guitare ?"*. Des annotateurs humains indiquent laquelle est plus utile, plus précise, plus adaptée. Ces signaux humains créent un **modèle de récompense** qui apprend à prédire les préférences humaines, et le LLM apprend ensuite à maximiser cette récompense.
 
 <Warning>
-Le RLHF introduit aussi des biais : le modèle apprend à générer des réponses qui **plaisent** aux annotateurs humains, pas nécessairement des réponses vraies. C'est l'une des raisons pour lesquelles les LLM peuvent parfois sembler très confiants tout en étant factuellement erronés — un phénomène que nous approfondirons dans la leçon sur les hallucinations.
+Le RLHF introduit aussi des biais : le modèle apprend à générer des réponses qui **plaisent** aux annotateurs humains, pas nécessairement des réponses vraies. C'est l'une des raisons pour lesquelles les LLM peuvent parfois sembler très confiants tout en étant factuellement erronés, un phénomène que nous approfondirons dans la leçon sur les hallucinations.
 </Warning>
 
 ## Fine-tuning vs in-context learning
@@ -96,4 +96,4 @@ En tant qu'utilisateur ou développeur s'appuyant sur un LLM via une API, voici 
 
 ## Ce que vous retenez de cette leçon
 
-L'entraînement d'un LLM passe par le pré-entraînement sur de vastes corpus, le fine-tuning supervisé, puis le RLHF pour aligner le modèle sur les préférences humaines. En tant qu'utilisateur, vous avez le choix entre l'in-context learning — rapide et flexible — et le fine-tuning — plus performant pour les tâches spécialisées. Dans la dernière leçon de ce module, nous aborderons les **limites et les hallucinations** : ce que les LLM font mal, et comment vous en prémunir.
+L'entraînement d'un LLM passe par le pré-entraînement sur de vastes corpus, le fine-tuning supervisé, puis le RLHF pour aligner le modèle sur les préférences humaines. En tant qu'utilisateur, vous avez le choix entre l'in-context learning (rapide et flexible) et le fine-tuning, plus performant pour les tâches spécialisées. Dans la dernière leçon de ce module, nous aborderons les **limites et les hallucinations** : ce que les LLM font mal, et comment vous en prémunir.

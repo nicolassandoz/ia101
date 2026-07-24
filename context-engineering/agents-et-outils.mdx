@@ -4,7 +4,7 @@ sidebarTitle: "Agents"
 description: "Comprenez comment les agents IA perçoivent, raisonnent et agissent via des outils pour accomplir des tâches complexes de manière autonome."
 ---
 
-Jusqu'à présent, nous avons traité les modèles de langage comme des systèmes qui *répondent* : vous posez une question, ils génèrent du texte. Les agents IA franchissent une étape supplémentaire — ils **agissent**. Un agent peut effectuer des recherches sur le web, exécuter du code, interroger une base de données, envoyer des emails ou interagir avec des APIs externes, tout cela de manière autonome et en plusieurs étapes successives. Cette capacité à agir dans le monde réel ouvre des possibilités considérables, mais introduit également des risques nouveaux qui demandent une attention particulière.
+Jusqu'à présent, nous avons traité les modèles de langage comme des systèmes qui *répondent* : vous posez une question, ils génèrent du texte. Les agents IA franchissent une étape supplémentaire : ils **agissent**. Un agent peut effectuer des recherches sur le web, exécuter du code, interroger une base de données, envoyer des emails ou interagir avec des APIs externes, tout cela de manière autonome et en plusieurs étapes successives. Cette capacité à agir dans le monde réel ouvre des possibilités considérables, mais introduit également des risques nouveaux qui demandent une attention particulière.
 
 ## Qu'est-ce qu'un agent IA ?
 
@@ -27,10 +27,10 @@ L'agent dispose d'une **mémoire** (l'historique de ses actions et observations)
     Le modèle analyse la situation et détermine l'action suivante. Cette étape peut inclure un raisonnement explicite (*chain-of-thought*) : l'agent explique son plan avant d'agir, ce qui améliore la fiabilité.
   </Step>
   <Step title="Agir">
-    L'agent sélectionne un outil et formule un appel de fonction structuré (nom de l'outil + paramètres en JSON). Ce n'est pas encore une exécution — c'est une **intention d'action** que le système externe interprète et exécute.
+    L'agent sélectionne un outil et formule un appel de fonction structuré (nom de l'outil + paramètres en JSON). Ce n'est pas encore une exécution : c'est une **intention d'action** que le système externe interprète et exécute.
   </Step>
   <Step title="Observer">
-    Le résultat de l'exécution de l'outil est renvoyé au modèle sous forme de message. L'agent intègre cette nouvelle information dans son contexte et recommence la boucle jusqu'à ce que l'objectif soit atteint — ou jusqu'à ce qu'il décide de s'arrêter.
+    Le résultat de l'exécution de l'outil est renvoyé au modèle sous forme de message. L'agent intègre cette nouvelle information dans son contexte et recommence la boucle jusqu'à ce que l'objectif soit atteint, ou jusqu'à ce qu'il décide de s'arrêter.
   </Step>
 </Steps>
 
@@ -100,7 +100,7 @@ Le *function calling* (ou *tool use*) est le mécanisme technique qui permet à 
     **Recherche web** (Tavily, Brave Search), **requêtes SQL**, **lecture de fichiers**, **appels d'APIs REST**. Permettent à l'agent d'accéder à des informations en temps réel ou dans des systèmes externes.
   </Card>
   <Card title="Exécution de code" icon="code">
-    **Interpréteur Python**, **exécution de scripts**, **calculs complexes**, **manipulation de données**. L'agent peut écrire du code, l'exécuter et analyser les résultats — idéal pour l'analyse de données.
+    **Interpréteur Python**, **exécution de scripts**, **calculs complexes**, **manipulation de données**. L'agent peut écrire du code, l'exécuter et analyser les résultats, idéal pour l'analyse de données.
   </Card>
   <Card title="Actions système" icon="gear">
     **Gestion de fichiers** (lire, écrire, créer), **navigation web** (browser automation), **envoi d'emails ou messages**. Permettent à l'agent d'agir directement dans un environnement informatique.

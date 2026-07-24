@@ -4,7 +4,7 @@ sidebarTitle: "RAG"
 description: "Découvrez le Retrieval-Augmented Generation : comment connecter un modèle de langage à vos données pour des réponses actualisées et personnalisées."
 ---
 
-Les modèles de langage sont entraînés sur des données figées à une date précise — leur *date de coupure*. Ils ne connaissent pas vos documents internes, vos bases de données propriétaires, ni les actualités récentes. Le **RAG (Retrieval-Augmented Generation)** résout ce problème en connectant le modèle à une source de données externe au moment de la génération : plutôt que de demander au modèle de mémoriser toute la connaissance utile, on lui fournit dynamiquement les informations pertinentes dans le contexte. C'est l'une des architectures les plus puissantes et les plus répandues dans les applications IA en production.
+Les modèles de langage sont entraînés sur des données figées à une date précise : leur *date de coupure*. Ils ne connaissent pas vos documents internes, vos bases de données propriétaires, ni les actualités récentes. Le **RAG (Retrieval-Augmented Generation)** résout ce problème en connectant le modèle à une source de données externe au moment de la génération : plutôt que de demander au modèle de mémoriser toute la connaissance utile, on lui fournit dynamiquement les informations pertinentes dans le contexte. C'est l'une des architectures les plus puissantes et les plus répandues dans les applications IA en production.
 
 ## Qu'est-ce que le RAG ?
 
@@ -13,7 +13,7 @@ Le RAG est une architecture qui combine deux composants distincts :
 - **Un système de retrieval** (récupération) : une base vectorielle ou un moteur de recherche qui identifie les documents les plus pertinents pour une requête donnée
 - **Un modèle de génération** : le LLM qui produit la réponse finale en s'appuyant sur les documents récupérés
 
-Le modèle ne génère pas à partir de sa mémoire interne seule — il *lit* les documents fournis et synthétise une réponse ancrée dans vos données réelles.
+Le modèle ne génère pas à partir de sa mémoire interne seule : il *lit* les documents fournis et synthétise une réponse ancrée dans vos données réelles.
 
 ## Pourquoi utiliser le RAG ?
 
@@ -73,14 +73,14 @@ Les principales stratégies de chunking :
 
 ## Les embeddings pour la recherche sémantique
 
-Un embedding est une représentation numérique dense d'un texte dans un espace vectoriel à haute dimension. Des textes sémantiquement proches ont des vecteurs proches dans cet espace — c'est ce qui permet de retrouver des documents pertinents même si la question n'utilise pas exactement les mêmes mots que le document.
+Un embedding est une représentation numérique dense d'un texte dans un espace vectoriel à haute dimension. Des textes sémantiquement proches ont des vecteurs proches dans cet espace : c'est ce qui permet de retrouver des documents pertinents même si la question n'utilise pas exactement les mêmes mots que le document.
 
 Modèles d'embedding populaires :
 
-- **`text-embedding-3-large`** (OpenAI) — haute qualité, 3072 dimensions
-- **`embed-v3`** (Cohere) — excellent pour le multilinguisme
-- **`all-MiniLM-L6-v2`** (open source, via HuggingFace) — léger et rapide
-- **`multilingual-e5-large`** (open source) — fort sur le français et les langues européennes
+- **`text-embedding-3-large`** (OpenAI) : haute qualité, 3072 dimensions
+- **`embed-v3`** (Cohere) : excellent pour le multilinguisme
+- **`all-MiniLM-L6-v2`** (open source, via HuggingFace) : léger et rapide
+- **`multilingual-e5-large`** (open source) : fort sur le français et les langues européennes
 
 ## Outils et frameworks RAG
 

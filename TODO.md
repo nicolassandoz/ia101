@@ -1,4 +1,4 @@
-# TODO — IA 101
+# TODO : IA 101
 
 Backlog des améliorations identifiées lors de l'analyse du 2026-07-24. Coché = fait.
 
@@ -11,7 +11,7 @@ Le contenu a été généré en une fois et référence déjà des modèles dép
   - `context-engineering/fenetre-de-contexte.mdx` (tableau des tailles de contexte)
   - `prompt-engineering/chain-of-thought.mdx`
   - `ressources/outils-et-plateformes.mdx`, `ressources/glossaire.mdx`
-- [ ] Ajouter une leçon sur le **Model Context Protocol (MCP)** et les agents outillés dans `context-engineering/` — absent du cours alors que c'est central en 2026
+- [ ] Ajouter une leçon sur le **Model Context Protocol (MCP)** et les agents outillés dans `context-engineering/` (absent du cours alors que c'est central en 2026)
 - [ ] Ajouter une leçon sur les **modèles de raisonnement** (extended thinking / chain-of-thought natif) dans `fondamentaux/` ou `prompt-engineering/`
 - [ ] Ajouter un indicateur de dernière révision par page (champ frontmatter `lastUpdated` ou mention en bas de page)
 - [ ] Créer une page "Nouveautés" / changelog pédagogique listant les mises à jour majeures du cours
@@ -21,7 +21,7 @@ Le contenu a été généré en une fois et référence déjà des modèles dép
 Le site donne du contenu gratuit mais n'a aucun mécanisme pour transformer les lecteurs en audience durable.
 
 - [ ] Renseigner `footer.socials` dans `docs.json` (actuellement vide)
-- [ ] Ajouter une page "À propos" — `images/nicolas-sandoz.png` existe déjà mais n'est utilisée nulle part
+- [ ] Ajouter une page "À propos" (`images/nicolas-sandoz.png` existe déjà mais n'est utilisée nulle part)
 - [ ] Ajouter un moyen de capter les lecteurs (newsletter, lien LinkedIn/communauté) en fin de parcours (`introduction.mdx` ou `ressources/aller-plus-loin.mdx`)
 - [ ] Ajouter des CTA de partage/feedback en fin de leçon (Mintlify supporte le feedback de page)
 
@@ -35,7 +35,7 @@ Le site donne du contenu gratuit mais n'a aucun mécanisme pour transformer les 
 
 - [ ] Vérifier les liens externes cités (outils qui changent vite : Groq, PromptFlow, Helicone...)
 - [ ] Configurer une image `og:image` par défaut dans `docs.json` pour le partage social
-- [ ] Revoir `AGENTS.md` — c'est encore le template Mintlify par défaut, non personnalisé (terminologie et bornes de contenu à remplir)
+- [ ] Revoir `AGENTS.md`, encore le template Mintlify par défaut, non personnalisé (terminologie et bornes de contenu à remplir)
 
 ## 5. Process
 

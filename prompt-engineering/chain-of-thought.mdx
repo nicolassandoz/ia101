@@ -4,7 +4,7 @@ sidebarTitle: "Chain-of-Thought"
 description: "Apprenez à guider les LLM vers des raisonnements structurés, étape par étape, pour résoudre des problèmes complexes avec bien plus de fiabilité."
 ---
 
-Les grands modèles de langage peuvent sembler magiques lorsqu'ils répondent instantanément à des questions complexes — mais cette instantanéité est parfois leur faiblesse. En les forçant à « penser à voix haute », en déroulant leur raisonnement étape par étape, on obtient des réponses bien plus fiables sur les tâches logiques, mathématiques et analytiques. C'est l'essence du **Chain-of-Thought** (CoT), ou raisonnement en chaîne.
+Les grands modèles de langage peuvent sembler magiques lorsqu'ils répondent instantanément à des questions complexes, mais cette instantanéité est parfois leur faiblesse. En les forçant à « penser à voix haute », en déroulant leur raisonnement étape par étape, on obtient des réponses bien plus fiables sur les tâches logiques, mathématiques et analytiques. C'est l'essence du **Chain-of-Thought** (CoT), ou raisonnement en chaîne.
 
 ## Qu'est-ce que le raisonnement en chaîne ?
 
@@ -28,10 +28,10 @@ La simple invitation « Raisonnons étape par étape » suffit souvent à décle
 
 ## Pourquoi "réfléchis étape par étape" améliore les réponses
 
-Un LLM génère du texte token par token. Lorsqu'il produit directement une réponse chiffrée ou une conclusion, il n'a pas de « brouillon » — il s'engage sur une trajectoire dès le premier token. Le CoT change cela : en produisant un raisonnement intermédiaire visible, le modèle crée lui-même le contexte qui guide ses prochains tokens vers une conclusion plus juste.
+Un LLM génère du texte token par token. Lorsqu'il produit directement une réponse chiffrée ou une conclusion, il n'a pas de « brouillon » : il s'engage sur une trajectoire dès le premier token. Le CoT change cela : en produisant un raisonnement intermédiaire visible, le modèle crée lui-même le contexte qui guide ses prochains tokens vers une conclusion plus juste.
 
 <Note>
-  Le Chain-of-Thought est particulièrement efficace sur les **grands modèles** (GPT-4, Claude 3, Gemini Ultra…). Sur les modèles plus petits, il peut produire des raisonnements plausibles mais incorrects — ce qu'on appelle le « raisonnement confiant mais faux ». Vérifiez toujours les étapes intermédiaires sur les tâches critiques.
+  Le Chain-of-Thought est particulièrement efficace sur les **grands modèles** (GPT-4, Claude 3, Gemini Ultra…). Sur les modèles plus petits, il peut produire des raisonnements plausibles mais incorrects, ce qu'on appelle le « raisonnement confiant mais faux ». Vérifiez toujours les étapes intermédiaires sur les tâches critiques.
 </Note>
 
 Concrètement, le CoT aide le modèle à :

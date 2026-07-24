@@ -4,10 +4,10 @@ sidebarTitle: "Mémoire"
 description: "Apprenez comment pallier l'absence de mémoire native des LLM grâce aux stratégies de résumé, mémoire externe et extraction d'entités clés."
 ---
 
-Contrairement à un être humain qui retient naturellement le fil d'une conversation, un modèle de langage repart de zéro à chaque nouvelle session. Il ne se souvient pas de votre nom, de vos préférences ni des décisions prises lors d'échanges précédents — à moins que vous ne le lui rappeliez explicitement. Cette caractéristique fondamentale des LLM impose de concevoir des stratégies de mémoire délibérées dès que vos applications dépassent le cadre d'un simple échange ponctuel.
+Contrairement à un être humain qui retient naturellement le fil d'une conversation, un modèle de langage repart de zéro à chaque nouvelle session. Il ne se souvient pas de votre nom, de vos préférences ni des décisions prises lors d'échanges précédents, à moins que vous ne le lui rappeliez explicitement. Cette caractéristique fondamentale des LLM impose de concevoir des stratégies de mémoire délibérées dès que vos applications dépassent le cadre d'un simple échange ponctuel.
 
 <Info>
-  Les LLM sont **sans état** (*stateless*) par nature. Chaque appel à l'API est totalement indépendant des précédents. Ce que vous percevez comme une "conversation continue" dans une interface comme ChatGPT est en réalité une reconstruction : l'interface renvoie l'intégralité de l'historique à chaque appel. Il n'existe aucune mémoire magique côté modèle — seulement du contexte soigneusement géré côté application.
+  Les LLM sont **sans état** (*stateless*) par nature. Chaque appel à l'API est totalement indépendant des précédents. Ce que vous percevez comme une "conversation continue" dans une interface comme ChatGPT est en réalité une reconstruction : l'interface renvoie l'intégralité de l'historique à chaque appel. Il n'existe aucune mémoire magique côté modèle : seulement du contexte soigneusement géré côté application.
 </Info>
 
 ## Les trois types de mémoire
@@ -19,21 +19,21 @@ Contrairement à un être humain qui retient naturellement le fil d'une conversa
     C'est la forme la plus simple de mémoire : l'**historique complet de la conversation** est réinjecté dans le contexte à chaque tour. Le modèle "se souvient" parce qu'il relit tout depuis le début.
 
     **Avantages :**
-    - Simple à implémenter — aucune infrastructure externe requise
+    - Simple à implémenter : aucune infrastructure externe requise
     - Cohérence parfaite sur les échanges récents
     - Aucune perte d'information tant que la limite n'est pas atteinte
 
     **Limites :**
     - La fenêtre de contexte se remplit progressivement
     - Le coût en tokens augmente à chaque tour
-    - Mémoire perdue à la fin de la session — rien n'est persisté
+    - Mémoire perdue à la fin de la session : rien n'est persisté
 
     **Cas d'usage idéal :** Conversations courtes à moyennes, assistants de session, chatbots transactionnels sans besoin de persistance long terme.
   </Tab>
   <Tab title="Mémoire externe">
     ### Mémoire persistante via base de données
 
-    La mémoire externe consiste à **stocker des informations en dehors du modèle** — dans une base de données relationnelle, un système de fichiers, ou une base vectorielle — et à les réinjecter de façon sélective dans le contexte selon la pertinence.
+    La mémoire externe consiste à **stocker des informations en dehors du modèle** (dans une base de données relationnelle, un système de fichiers, ou une base vectorielle) et à les réinjecter de façon sélective dans le contexte selon la pertinence.
 
     **Types de stockage courants :**
 
@@ -69,7 +69,7 @@ Contrairement à un être humain qui retient naturellement le fil d'une conversa
     Les endpoints /tasks et /users ont été définis. L'authentification JWT
     est en cours d'implémentation.
 
-    [ÉCHANGES RÉCENTS — 5 derniers tours]
+    [ÉCHANGES RÉCENTS : 5 derniers tours]
     Utilisateur : Comment gérer le refresh token ?
     Assistant : ...
     ```
@@ -96,7 +96,7 @@ Le résumé récursif est une technique qui compresse l'historique de façon pro
 
 <Steps>
   <Step title="Définir un seuil de déclenchement">
-    Fixez un seuil — par exemple, lorsque l'historique dépasse 3 000 tokens ou 10 tours de conversation — au-delà duquel la compression est automatiquement déclenchée.
+    Fixez un seuil (par exemple, lorsque l'historique dépasse 3 000 tokens ou 10 tours de conversation) au-delà duquel la compression est automatiquement déclenchée.
   </Step>
   <Step title="Résumer les échanges les plus anciens">
     Demandez au modèle de produire un résumé structuré des N premiers tours : décisions prises, informations clés échangées, préférences exprimées. Conservez uniquement ce résumé, pas les échanges bruts.
@@ -180,9 +180,9 @@ Tous les éléments d'une conversation ne méritent pas d'être mémorisés. Voi
 - Les tentatives abandonnées ou les pistes invalidées
 
 <Tip>
-  Commencez toujours par la solution la plus simple : un historique de conversation complet dans le contexte. N'introduisez une stratégie de mémoire plus complexe que lorsque vous atteignez une limite concrète — saturation du contexte, coût prohibitif, ou besoin de persistance entre sessions. La complexité prématurée est l'ennemi de la maintenabilité.
+  Commencez toujours par la solution la plus simple : un historique de conversation complet dans le contexte. N'introduisez une stratégie de mémoire plus complexe que lorsque vous atteignez une limite concrète : saturation du contexte, coût prohibitif, ou besoin de persistance entre sessions. La complexité prématurée est l'ennemi de la maintenabilité.
 </Tip>
 
 ## En résumé
 
-La mémoire dans les systèmes LLM est une construction délibérée, pas une fonctionnalité native. En combinant mémoire de session, résumé récursif et stockage externe sélectif, vous pouvez offrir à vos utilisateurs l'impression d'un assistant qui "connaît" leur contexte — tout en maintenant une architecture maîtrisable et des coûts prévisibles.
+La mémoire dans les systèmes LLM est une construction délibérée, pas une fonctionnalité native. En combinant mémoire de session, résumé récursif et stockage externe sélectif, vous pouvez offrir à vos utilisateurs l'impression d'un assistant qui "connaît" leur contexte, tout en maintenant une architecture maîtrisable et des coûts prévisibles.

@@ -4,7 +4,7 @@ sidebarTitle: "Modèles LLM"
 description: "Découvrez ce que sont les grands modèles de langage, comment ils prédisent le texte et pourquoi l'architecture Transformer a tout changé."
 ---
 
-Les grands modèles de langage — ou **LLM** (*Large Language Models*) — sont au cœur de la révolution de l'intelligence artificielle générative. Avant de savoir les utiliser efficacement, il est essentiel de comprendre ce qu'ils sont réellement, comment ils fonctionnent, et quelles sont leurs différentes formes. Cette page vous offre une introduction claire, sans formules mathématiques complexes.
+Les grands modèles de langage, ou **LLM** (*Large Language Models*), sont au cœur de la révolution de l'intelligence artificielle générative. Avant de savoir les utiliser efficacement, il est essentiel de comprendre ce qu'ils sont réellement, comment ils fonctionnent, et quelles sont leurs différentes formes. Cette page vous offre une introduction claire, sans formules mathématiques complexes.
 
 ## Qu'est-ce qu'un modèle de langage ?
 
@@ -16,7 +16,7 @@ L'objectif fondamental d'un modèle de langage est simple : **prédire la suite 
 
 Imaginons que vous écriviez : *"La capitale de la France est…"*. Le modèle analyse tous les mots qui précèdent et calcule une **distribution de probabilités** sur les mots susceptibles de suivre. Dans ce cas, le mot *"Paris"* obtient une probabilité très élevée, tandis que *"banane"* en obtient une quasi nulle.
 
-Ce mécanisme de prédiction est répété token par token (nous verrons ce concept dans la prochaine leçon), jusqu'à former une réponse complète. En apparence, cela peut ressembler à de la compréhension — mais il s'agit fondamentalement d'un calcul statistique extrêmement sophistiqué.
+Ce mécanisme de prédiction est répété token par token (nous verrons ce concept dans la prochaine leçon), jusqu'à former une réponse complète. En apparence, cela peut ressembler à de la compréhension, mais il s'agit fondamentalement d'un calcul statistique extrêmement sophistiqué.
 
 <Note>
 Un LLM ne "sait" pas que Paris est la capitale de la France au sens où un humain le sait. Il a appris que, dans des millions de textes, le mot "Paris" suit très fréquemment l'expression "capitale de la France". Cette distinction est cruciale pour comprendre les limites des modèles.
@@ -28,7 +28,7 @@ La quasi-totalité des LLM modernes repose sur une architecture appelée **Trans
 
 **Le mécanisme d'attention** permet au modèle de "regarder" l'ensemble du texte en entrée simultanément, plutôt que de le lire mot par mot. Il peut ainsi établir des relations entre des mots éloignés dans une phrase : dans *"La banque sur laquelle il s'est assis se trouvait près de la rivière"*, le modèle comprend que "banque" désigne un banc, et non un établissement financier, grâce au contexte fourni par "rivière".
 
-**Les couches et les paramètres** sont les "neurones" du modèle. Un LLM comme GPT-4 possède des centaines de milliards de paramètres — des valeurs numériques ajustées lors de l'entraînement pour encoder les connaissances du modèle.
+**Les couches et les paramètres** sont les "neurones" du modèle. Un LLM comme GPT-4 possède des centaines de milliards de paramètres : des valeurs numériques ajustées lors de l'entraînement pour encoder les connaissances du modèle.
 
 **Le contexte** (ou fenêtre de contexte) est la quantité de texte que le modèle peut "voir" à la fois lors de la génération d'une réponse. Plus la fenêtre est grande, plus le modèle peut tenir compte d'informations passées dans la conversation.
 
@@ -68,4 +68,4 @@ Il existe deux grandes catégories de LLM que vous rencontrerez :
 
 ## Ce que vous retenez de cette leçon
 
-Vous savez désormais qu'un LLM est un modèle probabiliste basé sur l'architecture Transformer, entraîné à prédire le texte suivant sur d'immenses corpus. Les modèles que vous utilisez au quotidien sont des versions *instruction-tuned*, affinées pour répondre à vos demandes. Dans la prochaine leçon, nous allons descendre d'un niveau et découvrir la notion de **token** — la vraie unité de base du langage pour un LLM.
+Vous savez désormais qu'un LLM est un modèle probabiliste basé sur l'architecture Transformer, entraîné à prédire le texte suivant sur d'immenses corpus. Les modèles que vous utilisez au quotidien sont des versions *instruction-tuned*, affinées pour répondre à vos demandes. Dans la prochaine leçon, nous allons descendre d'un niveau et découvrir la notion de **token** : la vraie unité de base du langage pour un LLM.

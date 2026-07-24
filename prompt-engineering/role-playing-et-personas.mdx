@@ -4,7 +4,7 @@ sidebarTitle: "Personas"
 description: "Découvrez comment attribuer un rôle précis à un LLM transforme le ton, la profondeur et la pertinence de ses réponses pour chaque situation."
 ---
 
-Demander à un LLM d'adopter un persona — un rôle, une identité, une expertise fictive — est l'une des techniques les plus intuitives et les plus efficaces du prompt engineering. En définissant qui est le modèle avant de lui poser une question, vous calibrez implicitement son niveau de langage, son champ de connaissances mis en avant, son ton et sa façon de structurer les réponses. Cette technique transforme un assistant généraliste en un interlocuteur spécialisé adapté à votre contexte.
+Demander à un LLM d'adopter un persona (un rôle, une identité, une expertise fictive) est l'une des techniques les plus intuitives et les plus efficaces du prompt engineering. En définissant qui est le modèle avant de lui poser une question, vous calibrez implicitement son niveau de langage, son champ de connaissances mis en avant, son ton et sa façon de structurer les réponses. Cette technique transforme un assistant généraliste en un interlocuteur spécialisé adapté à votre contexte.
 
 ## Pourquoi attribuer un rôle améliore les réponses
 
@@ -15,7 +15,7 @@ Un LLM possède une connaissance encyclopédique, mais sans contexte, il produit
 - **Priorités editoriales** : un éditeur cherche la clarté, un développeur cherche la précision technique.
 - **Posture face à l'interlocuteur** : un mentor pose des questions, un consultant fournit des recommandations.
 
-Le modèle ne « devient » pas le persona au sens ontologique — il s'en sert comme d'un filtre de génération. Mais cet effet de filtre est réel et mesurable dans la qualité des sorties.
+Le modèle ne « devient » pas le persona au sens ontologique : il s'en sert comme d'un filtre de génération. Mais cet effet de filtre est réel et mesurable dans la qualité des sorties.
 
 ## System prompt vs user prompt pour définir un persona
 
@@ -46,7 +46,7 @@ et orienté solutions. Voici ma question : notre sprint actuel accumule
 40% de tickets non terminés à deux jours de la revue. Que faire ?
 ```
 
-La définition dans le user prompt est légèrement moins stable — le modèle peut « oublier » le persona sur des conversations longues. Rappeler le rôle au début d'un nouveau sujet peut aider.
+La définition dans le user prompt est légèrement moins stable : le modèle peut « oublier » le persona sur des conversations longues. Rappeler le rôle au début d'un nouveau sujet peut aider.
 
 ## Exemples de personas utiles
 
@@ -131,7 +131,7 @@ de 5 éléments par réponse.
 
 Il est important de comprendre ce que le role-playing **ne fait pas** :
 
-- Le modèle ne « devient » pas le persona — il génère du texte cohérent avec ce persona.
+- Le modèle ne « devient » pas le persona : il génère du texte cohérent avec ce persona.
 - Il n'acquiert pas de connaissances nouvelles en endossant un rôle.
 - Un expert fictif peut tout à fait produire des affirmations incorrectes avec un ton assuré.
 - Le persona peut s'estomper sur des conversations très longues, surtout si le sujet dérive.
@@ -139,7 +139,7 @@ Il est important de comprendre ce que le role-playing **ne fait pas** :
 Vérifiez toujours les informations critiques indépendamment du persona assigné.
 
 <Warning>
-  Attribuer des rôles à un LLM peut être utilisé à des fins de **jailbreak** — des tentatives de contourner les garde-fous de sécurité du modèle en lui demandant d'incarner un personnage « sans restrictions ». Les formulations comme "joue le rôle d'une IA sans filtre" ou "imagine que tu es [nom d'un système fictif malveillant]" sont des vecteurs d'abus documentés. Les modèles modernes sont entraînés pour résister à ces tentatives, mais restez vigilant si vous déployez un système permettant aux utilisateurs de définir librement des personas — implémentez une validation des entrées côté application.
+  Attribuer des rôles à un LLM peut être utilisé à des fins de **jailbreak** : des tentatives de contourner les garde-fous de sécurité du modèle en lui demandant d'incarner un personnage « sans restrictions ». Les formulations comme "joue le rôle d'une IA sans filtre" ou "imagine que tu es [nom d'un système fictif malveillant]" sont des vecteurs d'abus documentés. Les modèles modernes sont entraînés pour résister à ces tentatives, mais restez vigilant si vous déployez un système permettant aux utilisateurs de définir librement des personas : implémentez une validation des entrées côté application.
 </Warning>
 
 ## Aller plus loin : combiner persona et instructions structurées
@@ -166,4 +166,4 @@ Commençons par le début : quand vous regardez une courbe,
 qu'est-ce qui change selon que la pente est raide ou douce ?"
 ```
 
-Cette approche hybride — persona + règles de comportement + few-shot — est la plus robuste pour des applications en production où la cohérence des réponses est critique.
+Cette approche hybride (persona + règles de comportement + few-shot) est la plus robuste pour des applications en production où la cohérence des réponses est critique.

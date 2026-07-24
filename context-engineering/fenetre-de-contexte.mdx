@@ -4,17 +4,17 @@ sidebarTitle: "Fenêtre"
 description: "Comprenez ce qu'est la fenêtre de contexte, comment les tokens sont comptés, et quelles stratégies adopter lorsque vous approchez de la limite."
 ---
 
-Chaque modèle de langage possède une capacité maximale d'attention : la **fenêtre de contexte**. Elle représente la quantité totale de texte — vos instructions, l'historique de conversation, les documents injectés et la réponse générée — que le modèle peut traiter en une seule fois. Comprendre cette limite est indispensable pour concevoir des systèmes d'IA robustes qui ne se dégradent pas silencieusement lorsque les échanges s'allongent.
+Chaque modèle de langage possède une capacité maximale d'attention : la **fenêtre de contexte**. Elle représente la quantité totale de texte (vos instructions, l'historique de conversation, les documents injectés et la réponse générée) que le modèle peut traiter en une seule fois. Comprendre cette limite est indispensable pour concevoir des systèmes d'IA robustes qui ne se dégradent pas silencieusement lorsque les échanges s'allongent.
 
 ## Qu'est-ce que la fenêtre de contexte ?
 
-La fenêtre de contexte se mesure en **tokens** — des fragments de texte correspondant approximativement à des syllabes ou des mots courts en français. Tout ce que vous envoyez au modèle *et* tout ce qu'il génère en réponse consomme des tokens issus de ce budget commun.
+La fenêtre de contexte se mesure en **tokens** : des fragments de texte correspondant approximativement à des syllabes ou des mots courts en français. Tout ce que vous envoyez au modèle *et* tout ce qu'il génère en réponse consomme des tokens issus de ce budget commun.
 
 ```text
 Fenêtre de contexte = tokens d'entrée (input) + tokens de sortie (output)
 ```
 
-Lorsque la somme dépasse la limite, le modèle ne peut tout simplement plus traiter votre requête — ou, selon l'implémentation, les messages les plus anciens sont silencieusement tronqués, ce qui dégrade la cohérence de la conversation.
+Lorsque la somme dépasse la limite, le modèle ne peut tout simplement plus traiter votre requête, ou, selon l'implémentation, les messages les plus anciens sont silencieusement tronqués, ce qui dégrade la cohérence de la conversation.
 
 ## Comparaison des fenêtres de contexte par modèle
 
@@ -36,16 +36,16 @@ Les tailles varient considérablement d'un modèle à l'autre et évoluent rapid
 
 Il est important de comprendre que *tout* ce qui transite par l'API consomme des tokens, pas uniquement le message visible de l'utilisateur :
 
-- **Le message système** (system prompt) — souvent entre 200 et 2 000 tokens
-- **L'historique de conversation** — chaque tour accumulé alourdit la facture
-- **Les documents et données injectés** (RAG, fichiers) — potentiellement très volumineux
-- **Les définitions d'outils** (function calling) — chaque outil déclaré occupe de l'espace
-- **La réponse générée** — déduite du budget total disponible
+- **Le message système** (system prompt) : souvent entre 200 et 2 000 tokens
+- **L'historique de conversation** : chaque tour accumulé alourdit la facture
+- **Les documents et données injectés** (RAG, fichiers) : potentiellement très volumineux
+- **Les définitions d'outils** (function calling) : chaque outil déclaré occupe de l'espace
+- **La réponse générée** : déduite du budget total disponible
 
 <Warning>
   ## L'effet "Lost in the Middle"
 
-  Des recherches ont démontré que les LLM accordent une **attention disproportionnée aux informations placées en début et en fin de contexte**, et tendent à négliger les éléments situés au milieu d'un contexte très long. Ce phénomène, appelé *lost in the middle*, peut conduire le modèle à ignorer des instructions critiques ou des faits importants que vous avez pourtant fournis — simplement parce qu'ils étaient enfouis au centre d'un long document. Ne supposez jamais qu'un modèle a "lu" tout votre contexte avec une attention uniforme.
+  Des recherches ont démontré que les LLM accordent une **attention disproportionnée aux informations placées en début et en fin de contexte**, et tendent à négliger les éléments situés au milieu d'un contexte très long. Ce phénomène, appelé *lost in the middle*, peut conduire le modèle à ignorer des instructions critiques ou des faits importants que vous avez pourtant fournis, simplement parce qu'ils étaient enfouis au centre d'un long document. Ne supposez jamais qu'un modèle a "lu" tout votre contexte avec une attention uniforme.
 </Warning>
 
 ## Calcul rapide : tokens vers pages et mots
@@ -63,7 +63,7 @@ Voici un tableau de conversion pratique pour estimer la taille de vos contextes 
 
 ## Stratégies quand vous approchez de la limite
 
-Atteindre la limite de contexte n'est pas une fatalité — c'est un problème d'ingénierie qui se gère avec les bonnes stratégies.
+Atteindre la limite de contexte n'est pas une fatalité : c'est un problème d'ingénierie qui se gère avec les bonnes stratégies.
 
 **1. Résumé de conversation**
 Compressez périodiquement l'historique des échanges en un résumé condensé que vous réinjectez en début de contexte. Vous conservez l'essentiel de la continuité sans stocker chaque tour.
@@ -81,7 +81,7 @@ Supprimez les répétitions, résumez les sections prolixes, et retirez les info
 Identifiez ce qui est indispensable (instructions système, faits clés) versus ce qui est accessoire, et élaguez en conséquence.
 
 <Tip>
-  Placez toujours vos informations les plus importantes — instructions critiques, contraintes absolues, données de référence — **au début ou à la fin** de votre contexte. C'est là que le modèle porte le plus d'attention, indépendamment de la longueur totale du contexte. Ne laissez jamais une instruction vitale se perdre au milieu d'un long document.
+  Placez toujours vos informations les plus importantes (instructions critiques, contraintes absolues, données de référence) **au début ou à la fin** de votre contexte. C'est là que le modèle porte le plus d'attention, indépendamment de la longueur totale du contexte. Ne laissez jamais une instruction vitale se perdre au milieu d'un long document.
 </Tip>
 
 ## En résumé

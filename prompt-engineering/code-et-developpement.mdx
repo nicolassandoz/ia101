@@ -25,11 +25,11 @@ L'assistance au code est l'un des cas d'usage les plus transformateurs de l'IA g
     - [Description claire de ce que doit faire le code]
 
     Entrées :
-    - [paramètre1] : [type] — [description]
-    - [paramètre2] : [type] — [description]
+    - [paramètre1] : [type], [description]
+    - [paramètre2] : [type], [description]
 
     Sorties :
-    - [type de retour] — [description]
+    - [type de retour], [description]
 
     Contraintes techniques :
     - Version du langage : [ex. Python 3.11 / Node.js 20 / Java 17]
@@ -208,10 +208,10 @@ L'assistance au code est l'un des cas d'usage les plus transformateurs de l'IA g
     et leur justification, (3) les points d'attention éventuels.
     ```
 
-    **Exemple — Refactorisation Python (avant/après) :**
+    **Exemple : Refactorisation Python (avant/après) :**
 
     ```python
-    # AVANT — code soumis à la refactorisation
+    # AVANT : code soumis à la refactorisation
     def f(l):
         r = []
         for i in range(len(l)):
@@ -219,13 +219,13 @@ L'assistance au code est l'un des cas d'usage les plus transformateurs de l'IA g
                 r.append(l[i] * 2)
         return r
 
-    # APRÈS — code refactorisé par l'IA
+    # APRÈS : code refactorisé par l'IA
     def doubler_valeurs_positives(valeurs: list[float]) -> list[float]:
         """Retourne le double des valeurs strictement positives de la liste."""
         return [valeur * 2 for valeur in valeurs if valeur > 0]
     ```
 
-    **Exemple — Refactorisation JavaScript (ES5 → ES2022) :**
+    **Exemple : Refactorisation JavaScript (ES5 → ES2022) :**
 
     ```javascript
     // AVANT
@@ -272,7 +272,7 @@ L'assistance au code est l'un des cas d'usage les plus transformateurs de l'IA g
     - Structurer avec : [ex. Arrange-Act-Assert / Given-When-Then]
     ```
 
-    **Exemple — Tests pytest pour Python :**
+    **Exemple : Tests pytest pour Python :**
 
     ```python
     # Code testé : lire_utilisateurs_actifs(chemin_fichier)
@@ -304,7 +304,7 @@ L'assistance au code est l'un des cas d'usage les plus transformateurs de l'IA g
                 lire_utilisateurs_actifs("/chemin/inexistant.csv")
     ```
 
-    **Exemple — Tests Jest pour JavaScript :**
+    **Exemple : Tests Jest pour JavaScript :**
 
     ```javascript
     // Code testé : fetchAvecTimeout(url, options, timeoutMs)
