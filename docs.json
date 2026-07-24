@@ -102,5 +102,10 @@
       "label": "Commencer",
       "href": "/introduction"
     }
+  },
+  "background": {
+    "color": {
+      "dark": "#001E32"
+    }
   }
 }
