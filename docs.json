@@ -50,7 +50,8 @@
               "prompt-engineering/few-shot-learning",
               "prompt-engineering/chain-of-thought",
               "prompt-engineering/role-playing-et-personas",
-              "prompt-engineering/prompts-iteratifs"
+              "prompt-engineering/prompts-iteratifs",
+              "prompt-engineering/patterns-reutilisables"
             ]
           },
           {

@@ -1,0 +1,106 @@
+---
+title: "Patterns de prompts réutilisables : votre bibliothèque prête à l'emploi"
+sidebarTitle: "Patterns Réutilisables"
+description: "Copiez-collez ces templates de prompts éprouvés — génération, amélioration, comparaison et extraction — et adaptez-les en quelques secondes à votre besoin."
+---
+
+Vous connaissez maintenant l'anatomie d'un prompt, les bonnes pratiques et l'art de l'itération. Cette page va plus loin : elle vous donne des **templates prêts à l'emploi**, directement copiables, pour les tâches que vous rencontrerez le plus souvent. Plutôt que de reconstruire un prompt efficace à chaque fois, adaptez ces squelettes à votre contexte — les emplacements entre crochets `[...]` sont à remplacer.
+
+<Tip>
+  Ces patterns appliquent les principes déjà vus (instruction claire, contexte, contraintes, format de sortie) sous une forme condensée et réutilisable. Gardez cette page en favori : c'est votre boîte à outils du quotidien.
+</Tip>
+
+## Générer avec critères de qualité
+
+Utile quand vous voulez un premier jet qui respecte déjà des exigences précises, sans multiplier les itérations.
+
+```text
+Rôle : [expert du domaine, ex. "rédacteur technique senior"]
+Objectif : [tâche précise à accomplir]
+Public : [audience cible]
+Contraintes : [ton, longueur, format]
+
+Avant de répondre, vérifie que ta réponse respecte ces critères :
+- [critère 1]
+- [critère 2]
+- [critère 3]
+
+Format de sortie : [structure attendue]
+```
+
+## Améliorer un contenu existant
+
+Idéal pour retravailler un brouillon sans en perdre l'intention initiale.
+
+```text
+Voici un contenu existant :
+"""
+[votre texte]
+"""
+
+Améliore-le selon ces critères précis : [clarté, concision, impact, ton...].
+Garde le sens et l'intention d'origine. N'ajoute aucune information nouvelle.
+Explique en une ligne les changements majeurs que tu as apportés.
+```
+
+## Comparer plusieurs options
+
+Pratique pour une décision (outil, stratégie, formulation) où vous voulez un arbitrage structuré plutôt qu'une réponse binaire.
+
+```text
+Compare les options suivantes : [option A], [option B], [option C].
+
+Évalue chacune selon ces critères : [critère 1], [critère 2], [critère 3].
+
+Présente le résultat sous forme de tableau (lignes = critères,
+colonnes = options), puis donne une recommandation finale en 2 phrases
+en précisant dans quel contexte chaque option resterait pertinente.
+```
+
+## Générer puis auto-évaluer
+
+Ce pattern enchaîne une génération et une relecture critique dans le même prompt — utile quand vous ne pouvez pas itérer en plusieurs tours (traitement en batch, automatisation).
+
+```text
+Étape 1 : [tâche de génération précise].
+
+Étape 2 : relis ta propre réponse et vérifie point par point :
+- Respecte-t-elle la contrainte de longueur/format ?
+- Contient-elle une affirmation factuelle non vérifiable ? Si oui, signale-la.
+- Manque-t-il un élément demandé dans l'instruction initiale ?
+
+Étape 3 : donne la version corrigée si nécessaire. Si aucune correction
+n'est utile, indique "Aucune correction nécessaire" et explique pourquoi.
+```
+
+<Note>
+  L'auto-évaluation ne remplace pas une vérification humaine sur les faits critiques (voir la leçon sur les [hallucinations](/fondamentaux/limites-et-hallucinations)) — elle réduit surtout les erreurs de forme et d'oubli d'instructions, pas les erreurs factuelles de fond.
+</Note>
+
+## Extraire des données structurées
+
+Pour transformer un texte libre en données exploitables par un script ou un tableur.
+
+```text
+Extrais les informations suivantes du texte ci-dessous : [liste des champs].
+
+Texte :
+"""
+[votre texte]
+"""
+
+Réponds uniquement avec un objet JSON respectant exactement cette forme :
+{
+  "[champ_1]": "...",
+  "[champ_2]": "...",
+  "[champ_3]": "..."
+}
+Si une information est absente du texte, utilise la valeur null. N'ajoute
+aucun texte avant ou après le JSON.
+```
+
+## Construire vos propres patterns
+
+Ces cinq templates couvrent les besoins les plus fréquents, mais la vraie valeur vient de **vos propres patterns**, construits à partir de vos tâches récurrentes. Dès qu'une séquence de prompts fonctionne bien deux fois de suite, transformez-la en template : identifiez les parties fixes (la structure) et les parties variables (entre crochets), puis sauvegardez-la dans un fichier dédié.
+
+Vous construisez ainsi, leçon après leçon, une bibliothèque personnelle qui vous fait gagner un temps considérable — c'est l'aboutissement naturel de l'itération vue au chapitre précédent.

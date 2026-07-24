@@ -116,6 +116,24 @@ Donne-moi 3 façons différentes d'ouvrir cet email :
 une formelle, une chaleureuse, une directe.
 ```
 
+### Auto-évaluer
+
+Vous demandez au modèle de relire sa propre réponse et de la critiquer selon des critères précis, avant de vous la soumettre à nouveau. Cette technique est particulièrement utile quand vous n'êtes pas certain vous-même de ce qui cloche dans le résultat obtenu.
+
+```text
+# Itération : auto-évaluation
+Relis ta réponse précédente et vérifie-la selon ces critères :
+- Respecte-t-elle la limite de 200 mots demandée ?
+- Le ton est-il bien celui d'un collègue, pas d'un communiqué officiel ?
+- Y a-t-il une affirmation que tu ne peux pas justifier ?
+
+Signale chaque écart trouvé, puis propose une version corrigée.
+```
+
+<Tip>
+  Cette technique se combine bien avec les [patterns réutilisables](/prompt-engineering/patterns-reutilisables) — le pattern "Générer puis auto-évaluer" applique la même logique en un seul prompt, sans dépendre d'un second tour de conversation.
+</Tip>
+
 ## Exemple de dialogue multi-tours
 
 Voici une conversation réelle illustrant le raffinement progressif en action.
@@ -214,3 +232,5 @@ Continuer d'itérer n'est pas toujours la meilleure stratégie. Voici comment d�
 ## Intégrer le prompting itératif dans votre workflow
 
 Le prompting itératif n'est pas une technique isolée — c'est une **posture de travail** à adopter face aux LLM. Combiné avec le few-shot learning pour guider le format dès le départ, ou avec le Chain-of-Thought pour affiner un raisonnement complexe, il constitue le socle d'une utilisation experte des modèles de langage au quotidien.
+
+Dans le prochain chapitre, vous allez transformer vos meilleures séquences d'itération en **patterns réutilisables** — des templates prêts à copier-coller pour ne plus jamais repartir de zéro.
