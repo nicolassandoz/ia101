@@ -1,5 +1,5 @@
 ---
-title: "Fenêtre de contexte : capacité et limites des LLM"
+title: "Fenêtre de contexte des LLM : capacité et stratégies"
 sidebarTitle: "Fenêtre"
 description: "Comprenez ce qu'est la fenêtre de contexte, comment les tokens sont comptés, et quelles stratégies adopter lorsque vous approchez de la limite."
 ---
@@ -10,7 +10,7 @@ Chaque modèle de langage possède une capacité maximale d'attention : la **fen
 
 La fenêtre de contexte se mesure en **tokens** — des fragments de texte correspondant approximativement à des syllabes ou des mots courts en français. Tout ce que vous envoyez au modèle *et* tout ce qu'il génère en réponse consomme des tokens issus de ce budget commun.
 
-```
+```text
 Fenêtre de contexte = tokens d'entrée (input) + tokens de sortie (output)
 ```
 
