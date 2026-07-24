@@ -7,7 +7,10 @@
     "light": "#BCE784",
     "dark": "#001E32"
   },
-  "favicon": "/favicon.svg",
+  "favicon": {
+    "light": "/images/LogoMinimalistIQ.png",
+    "dark": "/images/LogoMinimalistIQ.png"
+  },
   "navigation": {
     "tabs": [
       {
@@ -107,5 +110,9 @@
     "color": {
       "dark": "#001E32"
     }
+  },
+  "logo": {
+    "light": "/images/LogoMinimalistIQ.png",
+    "dark": "/images/LogoMinimalistIQ.png"
   }
 }
