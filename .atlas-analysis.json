@@ -1,13 +1,11 @@
 {
-  "$schema": "https://mintlify.com/docs.json",
+  "projectType": "general",
+  "projectName": "IA 101",
+  "projectDescription": "Un guide pédagogique complet sur les fondamentaux de l'intelligence artificielle, le prompt engineering et le context engineering.",
   "theme": "almond",
-  "name": "IA 101",
-  "colors": {
-    "primary": "#ef7025",
-    "light": "#eec9bc",
-    "dark": "#4fa1ab"
-  },
-  "favicon": "/favicon.svg",
+  "primaryColor": "#ef7025",
+  "lightColor": "#eec9bc",
+  "darkColor": "#4fa1ab",
   "navigation": {
     "tabs": [
       {
@@ -95,14 +93,13 @@
       }
     ]
   },
-  "navbar": {
-    "primary": {
-      "type": "button",
-      "label": "Commencer",
-      "href": "/introduction"
-    }
-  },
-  "footer": {
-    "socials": {}
-  }
+  "keyFeatures": [
+    "Introduction accessible aux concepts fondamentaux de l'IA",
+    "Guide complet du prompt engineering avec exemples pratiques",
+    "Maîtrise du context engineering pour de meilleures interactions",
+    "Techniques avancées : Few-shot, Chain-of-Thought, RAG",
+    "Cas d'usage concrets : rédaction, code, analyse",
+    "Glossaire et ressources pour aller plus loin"
+  ],
+  "publicApiSurface": []
 }

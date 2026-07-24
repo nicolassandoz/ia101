@@ -1,0 +1,103 @@
+---
+title: "Limites des LLM : hallucinations et biais à connaître"
+sidebarTitle: "Limites & Biais"
+description: "Apprenez pourquoi les LLM inventent des faits, quels biais ils véhiculent et quelles bonnes pratiques adopter pour fiabiliser vos interactions."
+---
+
+Les grands modèles de langage sont des outils remarquablement puissants — mais ils ne sont pas infaillibles. Bien au contraire : ils peuvent affirmer des faussetés avec une confiance absolue, refléter les biais de leurs données d'entraînement, ou ignorer des événements récents. Comprendre ces limites n'est pas une raison de rejeter les LLM ; c'est la condition pour les utiliser de manière responsable et efficace.
+
+## Les hallucinations : quand l'IA invente
+
+<Warning>
+**Les LLM hallucinent régulièrement.** Une hallucination, dans le contexte de l'IA, désigne la génération de contenu **faux mais présenté comme vrai** : citations inventées, chiffres erronés, biographies de personnes fictives, références bibliographiques inexistantes, noms de médicaments fabriqués, etc. Ne faites jamais confiance à un LLM sur des faits critiques sans vérification indépendante.
+</Warning>
+
+Voici des exemples concrets d'hallucinations fréquemment observées :
+
+- **Fausses citations** : *"Comme l'a dit Victor Hugo dans Les Misérables : '…'"* — la citation est inventée de toutes pièces, même si le livre existe.
+- **Références académiques fantômes** : un LLM peut générer une bibliographie avec des titres d'articles, des noms d'auteurs et des DOI qui semblent plausibles mais n'ont jamais été publiés.
+- **Faits géographiques ou historiques déformés** : dates, noms, lieux légèrement erronés, surtout pour des événements peu représentés dans les données d'entraînement.
+- **Code qui ne fonctionne pas** : des fonctions ou APIs inventées dans un langage de programmation, qui semblent correctes syntaxiquement mais n'existent pas.
+
+## Pourquoi les LLM hallucinent-ils ?
+
+La raison fondamentale est architecturale : **un LLM ne consulte pas une base de faits**. Il ne "cherche" pas la réponse correcte dans un dictionnaire ou une encyclopédie. Il prédit la suite de tokens la plus probable étant donné le contexte — et cette prédiction peut être statistiquement cohérente sans être factuellement exacte.
+
+Plusieurs facteurs amplifient ce phénomène :
+
+1. **Données d'entraînement incomplètes ou erronées** : si le corpus contient des erreurs, le modèle peut les reproduire.
+2. **Pression à répondre** : le modèle a appris, via le RLHF, que les humains préfèrent une réponse confiante à un aveu d'ignorance. Il peut donc "remplir les blancs" plutôt que dire *"je ne sais pas"*.
+3. **Généralisation excessive** : le modèle extrapole des patterns appris, ce qui peut mener à des inférences incorrectes dans des domaines peu représentés.
+
+## Les biais dans les données d'entraînement
+
+Les LLM apprennent à partir de textes produits par des humains — et les humains ont des biais. Ces biais se retrouvent inévitablement dans les modèles :
+
+- **Biais de représentation** : les cultures, langues et perspectives dominantes dans les données d'entraînement (majoritairement en anglais, produites en Occident) sont sur-représentées.
+- **Biais de genre et de stéréotypes** : associations statistiques entre certains métiers et un genre, certaines caractéristiques et une ethnie, etc.
+- **Biais de confirmation** : le modèle peut tendre à valider des prémisses erronées contenues dans le prompt plutôt que de les corriger.
+- **Biais temporel** : les événements récents sont sous-représentés par rapport aux événements plus anciens, mieux documentés sur le web.
+
+## La fenêtre de contexte : une mémoire limitée
+
+Chaque LLM dispose d'une **fenêtre de contexte** maximale — la quantité de texte (en tokens) qu'il peut traiter en une seule requête. Au-delà de cette limite, le modèle "oublie" les informations les plus anciennes.
+
+En pratique, même sans atteindre la limite maximale, la qualité de l'attention du modèle se dégrade sur les informations situées au milieu d'un très long contexte — un phénomène connu sous le nom de *"lost in the middle"*.
+
+## La date de coupure des connaissances
+
+Les LLM ont une **knowledge cutoff** — une date au-delà de laquelle ils n'ont plus d'informations sur le monde. Un modèle dont les données s'arrêtent à début 2024 ignorera tout des événements survenus après cette date : élections, découvertes scientifiques, nouvelles lois, sorties de produits, etc.
+
+Certains modèles compensent ce manque grâce à des outils de recherche web intégrés (comme la navigation dans ChatGPT ou Claude), mais ce n'est pas le cas de tous, et la précision de ces recherches reste variable.
+
+## Bonnes pratiques pour minimiser les risques
+
+<CardGroup cols={2}>
+  <Card title="Vérifiez toujours les faits critiques" icon="magnifying-glass">
+    Pour toute information factuelle importante (chiffres, citations, références, données médicales ou juridiques), recoupez systématiquement avec des sources primaires fiables. Ne publiez jamais un contenu généré par IA sans relecture critique.
+  </Card>
+  <Card title="Demandez des sources explicites" icon="link">
+    Invitez le modèle à citer ses sources ou à indiquer son niveau de certitude. Une réponse du type *"Je ne suis pas certain de ce point, veuillez vérifier"* est plus utile qu'une affirmation fausse mais confiante.
+  </Card>
+  <Card title="Utilisez le RAG pour les connaissances récentes" icon="database">
+    Le **Retrieval-Augmented Generation** (RAG) consiste à fournir au modèle des documents de référence à jour dans le prompt. C'est la meilleure façon de contourner la knowledge cutoff et de réduire les hallucinations sur un domaine précis.
+  </Card>
+  <Card title="Formulez des prompts précis et bornés" icon="bullseye-arrow">
+    Un prompt vague invite le modèle à combler les lacunes par des inventions. Un prompt précis, avec un contexte clair et des contraintes explicites (*"réponds uniquement si tu es certain"*, *"cite tes sources"*), réduit significativement le risque d'hallucination.
+  </Card>
+  <Card title="Méfiez-vous de la confiance apparente" icon="triangle-exclamation">
+    Un LLM peut exprimer une certitude absolue sur un fait entièrement inventé. Le ton affirmatif d'une réponse n'est **pas** un indicateur de sa véracité. Cultivez un regard critique indépendamment de la formulation.
+  </Card>
+  <Card title="Testez les cas limites de votre application" icon="flask">
+    Si vous intégrez un LLM dans une application, testez systématiquement les cas limites, les questions hors domaine et les tentatives de manipulation du prompt. Définissez clairement le périmètre du modèle dans votre system prompt.
+  </Card>
+</CardGroup>
+
+## FAQ
+
+<AccordionGroup>
+  <Accordion title="Comment vérifier une réponse d'IA ?">
+    La méthode la plus fiable est le **recoupement avec des sources primaires** :
+
+    1. **Identifiez les affirmations factuelles clés** dans la réponse du modèle (chiffres, noms, dates, citations).
+    2. **Cherchez ces éléments dans des sources indépendantes** : encyclopédies, sites institutionnels, articles scientifiques avec DOI vérifiable, presse de référence.
+    3. **Soyez particulièrement vigilant** avec les citations entre guillemets, les références bibliographiques et les statistiques précises — ce sont les catégories les plus souvent hallucинées.
+    4. **Testez la cohérence interne** : une réponse peut contenir des contradictions internes (un événement daté de 1990 attribué à une personne née en 1995, par exemple).
+    5. **Utilisez des outils de détection** comme des vérificateurs de faits automatisés, ou demandez au modèle de reciter sa réponse sous une forme différente — les contradictions révèlent parfois des inventions.
+
+    En cas de doute, la règle d'or est simple : **si vous ne pouvez pas vérifier, ne publiez pas**.
+  </Accordion>
+  <Accordion title="Les hallucinations peuvent-elles être éliminées complètement ?">
+    Non, pas avec les architectures LLM actuelles. Les chercheurs travaillent activement à les réduire via de meilleures techniques d'alignement, le grounding sur des sources vérifiables et de nouveaux paradigmes d'entraînement. Des approches comme le RAG permettent de les limiter significativement dans des domaines précis, mais elles ne disparaissent pas entièrement. C'est pourquoi la supervision humaine reste indispensable pour tout contenu à enjeu élevé.
+  </Accordion>
+  <Accordion title="Comment savoir si un LLM connaît un événement récent ?">
+    La plupart des fournisseurs publient la date de coupure de leur modèle dans leur documentation officielle. Si un événement est postérieur à cette date, le modèle n'en aura pas connaissance (sauf s'il dispose d'un outil de recherche web activé). Vous pouvez aussi tester directement en posant une question sur un événement dont vous connaissez la date — si la réponse est incorrecte ou manquante, cela indique que l'événement dépasse la knowledge cutoff.
+  </Accordion>
+  <Accordion title="Les biais d'un LLM peuvent-ils affecter mon application ?">
+    Oui, potentiellement. Si votre application utilise un LLM pour classer des candidatures, rédiger des descriptions de poste, ou prendre des décisions influencées par des données démographiques, les biais du modèle peuvent introduire des discriminations involontaires. Il est recommandé de tester votre application sur des cas diversifiés, de documenter ces risques et de prévoir une supervision humaine pour les décisions à fort impact.
+  </Accordion>
+</AccordionGroup>
+
+## Ce que vous retenez de cette leçon
+
+Les LLM hallucinent parce qu'ils prédisent plutôt qu'ils ne savent. Ils véhiculent les biais de leurs données d'entraînement, ignorent les événements récents et ont une mémoire bornée par leur fenêtre de contexte. Ces limites ne les rendent pas inutiles — elles définissent le cadre dans lequel les utiliser intelligemment. Avec les bonnes pratiques (vérification des sources, prompts précis, RAG pour les connaissances récentes), vous pouvez tirer le meilleur de ces outils tout en maîtrisant leurs risques. Vous êtes maintenant prêt à passer au module suivant : le **prompt engineering**.

@@ -1,0 +1,195 @@
+---
+title: "Prompts pour analyser et synthétiser l'information"
+sidebarTitle: "Analyse"
+description: "Exploitez l'IA pour résumer des documents, extraire des données, analyser des sentiments et comparer des options grâce à des prompts d'analyse structurés."
+---
+
+Face à des volumes croissants d'information, savoir formuler des prompts d'analyse efficaces est devenu une compétence clé. L'IA peut vous aider à résumer un rapport de cinquante pages en quelques minutes, à extraire automatiquement des données structurées d'un texte brut, à comparer plusieurs solutions ou encore à répondre à des questions précises sur un corpus documentaire. Cette section vous propose des templates prêts à l'emploi et une méthodologie claire pour tirer le meilleur parti de ces capacités analytiques.
+
+## Vue d'ensemble des cas d'usage
+
+<CardGroup cols={2}>
+  <Card title="Résumé de documents" icon="file-lines">
+    Condensez des textes longs — rapports, comptes rendus, articles académiques — en synthèses claires et structurées, adaptées à votre objectif de lecture.
+  </Card>
+  <Card title="Extraction d'informations" icon="table">
+    Identifiez et structurez automatiquement des données clés : dates, noms, chiffres, décisions, actions à mener — à partir de textes non structurés.
+  </Card>
+  <Card title="Analyse de sentiment" icon="face-smile">
+    Évaluez la tonalité d'un texte, d'un avis client ou d'un ensemble de verbatims pour comprendre les perceptions et émotions exprimées.
+  </Card>
+  <Card title="Comparaison d'options" icon="scale-balanced">
+    Comparez des solutions, des offres ou des approches selon des critères définis pour faciliter la prise de décision.
+  </Card>
+  <Card title="Questions sur un corpus" icon="magnifying-glass">
+    Posez des questions précises à l'IA en lui fournissant un document source, pour obtenir des réponses ancrées dans le contenu fourni.
+  </Card>
+  <Card title="Analyse de tonalité" icon="pen-nib">
+    Étudiez le registre, le style et l'intention d'un texte pour comprendre son impact rhétorique et communicationnel.
+  </Card>
+</CardGroup>
+
+## Résumé de documents longs
+
+### Workflow de synthèse en étapes
+
+<Steps>
+  <Step title="Préparez et segmentez votre document">
+    Pour les documents très longs, découpez-les en sections logiques (chapitres, parties) avant de les soumettre. Identifiez l'objectif de votre résumé : information rapide, présentation à un tiers, archivage, prise de décision.
+  </Step>
+  <Step title="Fournissez le contexte et vos contraintes">
+    Précisez la nature du document, à qui est destiné le résumé, le niveau de détail souhaité et la longueur cible. Plus le contexte est riche, plus le résumé sera pertinent.
+
+    ```text
+    Résumez le document suivant en respectant ces contraintes :
+
+    - Nature du document : [ex. compte rendu de réunion / rapport annuel / article scientifique]
+    - Destinataire du résumé : [ex. direction générale / client / équipe technique]
+    - Longueur souhaitée : [ex. 200 mots / 5 bullet points / 1 page A4]
+    - Points à absolument conserver : [listez les éléments prioritaires]
+    - Format de sortie : [texte continu / liste à puces / tableau / paragraphes titrés]
+
+    Document :
+    [Collez votre texte ici]
+    ```
+  </Step>
+  <Step title="Demandez une structure adaptée">
+    Pour les résumés complexes, demandez une organisation en sections distinctes afin de faciliter la lecture et la navigation.
+
+    ```text
+    Structurez votre résumé selon ce plan :
+    1. Contexte et enjeux (2-3 phrases)
+    2. Points clés / décisions prises (liste à puces)
+    3. Actions à mener et responsables (tableau si applicable)
+    4. Points de vigilance ou risques identifiés
+    5. Prochaines étapes
+
+    Document : [votre texte]
+    ```
+  </Step>
+  <Step title="Affinez et itérez">
+    Après un premier résumé, utilisez des prompts de suivi pour ajuster le résultat : "Développez davantage le point 3", "Reformulez la section risques de façon plus concise", "Ajoutez les chiffres clés mentionnés dans le document."
+  </Step>
+</Steps>
+
+## Extraction d'informations structurées
+
+L'extraction transforme un texte non structuré en données exploitables. Précisez toujours le format de sortie attendu.
+
+```text
+Analysez le texte suivant et extrayez les informations structurées ci-dessous.
+Présentez les résultats sous forme de tableau Markdown.
+
+Informations à extraire :
+- Noms des personnes mentionnées et leur rôle
+- Dates et échéances
+- Décisions prises
+- Actions à mener (avec responsable et date si précisé)
+- Chiffres et métriques clés
+
+Texte :
+[Collez votre texte ici]
+
+Si une information est absente du texte, indiquez "Non mentionné" dans la cellule correspondante.
+```
+
+**Pour une extraction au format JSON :**
+
+```text
+Extrayez les entités suivantes du texte ci-dessous et retournez le résultat
+en JSON valide uniquement, sans commentaire ni explication.
+
+Format attendu :
+{
+  "personnes": [{"nom": "", "role": ""}],
+  "organisations": [{"nom": "", "contexte": ""}],
+  "dates": [{"date": "", "evenement": ""}],
+  "montants": [{"valeur": "", "devise": "", "contexte": ""}]
+}
+
+Texte : [votre texte]
+```
+
+## Analyse de sentiment et de tonalité
+
+```text
+Analysez la tonalité et le sentiment du texte suivant selon ces dimensions :
+
+1. Sentiment général : [positif / négatif / neutre / mitigé] — justifiez en une phrase
+2. Intensité émotionnelle : [faible / modérée / forte]
+3. Émotions dominantes détectées : [ex. satisfaction, frustration, enthousiasme, inquiétude]
+4. Registre stylistique : [formel / informel / technique / commercial / journalistique]
+5. Intention communicationnelle : [informer / convaincre / se plaindre / féliciter / alerter]
+6. Citations représentatives : extrayez 2-3 extraits illustrant votre analyse
+
+Texte :
+[Collez votre texte ici]
+```
+
+**Pour analyser plusieurs verbatims (ex. avis clients) :**
+
+```text
+Analysez les [nombre] avis clients suivants et produisez :
+1. Un tableau récapitulatif avec : ID, sentiment (positif/négatif/neutre), thème principal
+2. Une synthèse globale des points positifs récurrents (top 3)
+3. Une synthèse des points négatifs récurrents (top 3)
+4. Un score de satisfaction estimé sur 10 avec justification
+
+Avis :
+[1] [texte de l'avis 1]
+[2] [texte de l'avis 2]
+...
+```
+
+## Comparaison d'options ou de solutions
+
+```text
+Comparez les options suivantes selon les critères que je vais vous indiquer.
+Présentez votre analyse sous forme de tableau comparatif, puis fournissez
+une recommandation argumentée.
+
+Options à comparer :
+- Option A : [description]
+- Option B : [description]
+- Option C : [description]
+
+Critères d'évaluation (pondération si pertinent) :
+- [Critère 1] — poids : [ex. fort / moyen / faible]
+- [Critère 2] — poids : [...]
+- [Critère 3] — poids : [...]
+
+Contexte de décision : [décrivez votre situation, contraintes, objectifs]
+
+Concluez par une recommandation claire avec les 3 principales raisons de votre choix.
+```
+
+## Questions-réponses sur un corpus de texte
+
+```text
+Vous allez jouer le rôle d'un assistant expert sur le document que je vais
+vous fournir. Répondez uniquement à partir des informations contenues dans
+ce document. Si la réponse n'est pas dans le document, dites-le explicitement
+plutôt que d'inventer une réponse.
+
+Document de référence :
+[Collez votre document ici]
+
+---
+Question : [votre question précise]
+```
+
+**Pour une session de questions multiples :**
+
+```text
+Sur la base du document fourni ci-dessus, répondez aux questions suivantes.
+Pour chaque réponse, citez le passage du document qui vous a permis
+de répondre (entre guillemets).
+
+Q1 : [question]
+Q2 : [question]
+Q3 : [question]
+```
+
+<Note>
+  Les modèles de langage ont une limite sur la quantité de texte qu'ils peuvent traiter en une seule fois (appelée "fenêtre de contexte"). Pour les documents très longs (plus de 10-15 pages selon le modèle), vous devrez les découper en sections et les traiter séparément, puis demander une synthèse finale à partir des résumés partiels. Vérifiez toujours la limite de votre outil avant de soumettre un document volumineux.
+</Note>

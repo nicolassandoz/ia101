@@ -1,0 +1,216 @@
+---
+title: "Prompts itératifs : affiner vos résultats en plusieurs tours"
+sidebarTitle: "Prompts Itératifs"
+description: "Maîtrisez l'art du raffinement conversationnel : clarifier, contraindre et reformuler vos demandes pour obtenir exactement ce que vous visez."
+---
+
+Obtenir le résultat parfait dès le premier prompt est rare — et ce n'est pas grave. Les LLM modernes sont conçus pour la conversation multi-tours, et cette capacité est une fonctionnalité puissante, pas un palliatif. Traiter l'échange avec un modèle comme un dialogue collaboratif plutôt que comme une requête unique transforme radicalement la qualité des résultats que vous pouvez atteindre. Cette approche s'appelle le **prompting itératif**.
+
+## La conversation comme outil d'affinage
+
+Chaque message dans une conversation avec un LLM enrichit son contexte. Le modèle « se souvient » (dans la limite de sa fenêtre de contexte) de tout ce qui a été échangé et peut affiner ses réponses en tenant compte de vos corrections et précisions successives.
+
+Cette dynamique vous permet de :
+
+- **Commencer vague** et préciser progressivement plutôt que de passer du temps à formuler une instruction parfaite.
+- **Corriger en langage naturel** ("c'est trop formel", "développe le deuxième point") sans réécrire tout votre prompt.
+- **Explorer des directions** en demandant des alternatives avant de choisir.
+- **Construire des livrables complexes** étape par étape plutôt que tout d'un coup.
+
+## Le processus de raffinement progressif
+
+<Steps>
+  <Step title="Formuler une demande initiale large">
+    Commencez par une demande générale qui capture l'essentiel de votre besoin. Inutile d'être exhaustif : le but est d'obtenir une première réponse à réagir.
+
+    ```text
+    Rédige un email pour informer mon équipe 
+    du nouveau processus de validation des congés.
+    ```
+
+    Vous obtenez un premier jet. Il sera sans doute trop générique, mais il vous donne une base concrète à travailler.
+  </Step>
+  <Step title="Identifier ce qui ne correspond pas">
+    Analysez la réponse en vous posant trois questions :
+    - **Quoi** : le contenu est-il juste ? Manque-t-il des informations ?
+    - **Comment** : le ton et le format sont-ils adaptés ?
+    - **Pour qui** : le niveau de langage correspond-il à votre audience ?
+
+    Dans notre exemple : l'email est trop formel, ne mentionne pas la date d'entrée en vigueur et manque d'un appel à l'action.
+  </Step>
+  <Step title="Affiner avec des contraintes précises">
+    Envoyez vos corrections de manière ciblée. Soyez spécifique sur ce que vous voulez changer.
+
+    ```text
+    Bien. Maintenant adapte-le :
+    - Ton plus décontracté, nous nous tutoyons dans l'équipe
+    - Ajoute que le nouveau processus entre en vigueur le 1er février
+    - Termine par une invitation à poser des questions en réunion jeudi
+    - Raccourcis d'un tiers environ
+    ```
+  </Step>
+  <Step title="Itérer sur les détails restants">
+    Une fois la structure et le ton satisfaisants, affinez les détails fins : formulations spécifiques, mots à éviter, mise en forme.
+
+    ```text
+    Presque parfait. Remplace "processus de validation" 
+    par "procédure de demande" partout, et ajoute 
+    un lien fictif vers le formulaire en ligne.
+    ```
+  </Step>
+  <Step title="Valider et extraire le livrable final">
+    Demandez la version finale propre, sans le contexte de la conversation.
+
+    ```text
+    Parfait. Donne-moi la version finale de l'email 
+    uniquement, prêt à copier-coller, sans commentaires.
+    ```
+  </Step>
+</Steps>
+
+## Techniques d'itération
+
+Il existe plusieurs modes d'affinage selon ce qui doit être amélioré dans la réponse précédente.
+
+### Clarifier
+
+Vous précisez des éléments que votre prompt initial n'avait pas spécifiés.
+
+```text
+# Premier prompt
+Explique ce qu'est un transformer en machine learning.
+
+# Itération : clarification de l'audience
+C'est bien, mais explique-le pour quelqu'un qui n'a 
+aucune connaissance en mathématiques ou en code.
+```
+
+### Contraindre
+
+Vous imposez des restrictions sur la forme ou le contenu.
+
+```text
+# Itération : contraintes de format
+Reformule en 5 points maximum, 
+chaque point en une seule phrase.
+```
+
+### Reformuler
+
+Vous demandez une approche différente sans changer l'objectif.
+
+```text
+# Itération : reformulation
+L'analogie avec les réseaux de neurones biologiques 
+est trop abstraite. Essaie plutôt une analogie 
+avec un système de traduction ou de recherche documentaire.
+```
+
+### Explorer des alternatives
+
+Vous demandez plusieurs variantes pour choisir la meilleure.
+
+```text
+# Itération : exploration
+Donne-moi 3 façons différentes d'ouvrir cet email : 
+une formelle, une chaleureuse, une directe.
+```
+
+## Exemple de dialogue multi-tours
+
+Voici une conversation réelle illustrant le raffinement progressif en action.
+
+---
+
+**Tour 1 — Demande initiale**
+
+> **Vous :** Écris un titre accrocheur pour un article sur la productivité.
+
+> **Modèle :** "10 astuces pour être plus productif au quotidien"
+
+---
+
+**Tour 2 — Premier affinage**
+
+> **Vous :** Trop générique. L'article cible spécifiquement les développeurs qui travaillent en remote. Et évite les listes "X astuces".
+
+> **Modèle :** "Remote et concentré : comment les développeurs reprennent le contrôle de leur temps"
+
+---
+
+**Tour 3 — Affinage du ton**
+
+> **Vous :** Mieux ! Mais on vise un ton plus percutant, moins magazine. Quelque chose de plus direct, presque provoquant.
+
+> **Modèle :** "Vous ne manquez pas de temps. Vous manquez de structure."
+
+---
+
+**Tour 4 — Validation et variantes**
+
+> **Vous :** Excellent. Donne-moi 2 variantes dans ce registre.
+
+> **Modèle :**
+> 1. "Le remote ne détruit pas votre productivité. Votre organisation, si."
+> 2. "Arrêtez d'optimiser vos outils. Optimisez vos décisions."
+
+---
+
+En quatre tours, vous êtes passé d'un titre générique à trois options solides et différenciées — un résultat difficile à obtenir en un seul prompt.
+
+## Mémoriser les préférences dans la conversation
+
+Dans une session multi-tours, vous pouvez « enseigner » vos préférences au modèle pour qu'il les applique systématiquement dans la suite de la conversation.
+
+```text
+Pour toute la suite de notre échange, applique ces règles :
+- Réponds toujours en français, même si je t'écris en anglais
+- Structure tes réponses avec des titres H2 en gras
+- Limite chaque réponse à 200 mots maximum sauf si je demande plus
+- Utilise toujours le vouvoiement
+
+Confirme que tu as bien pris note de ces préférences.
+```
+
+Cette technique est particulièrement utile pour les sessions de travail longues sur un document ou un projet.
+
+<Tip>
+  Quand vous trouvez une formulation ou une séquence de prompts qui fonctionne très bien, **sauvegardez-la immédiatement** dans un fichier texte ou un outil de gestion de prompts. Les bonnes séquences d'itération sont réutilisables : elles constituent votre bibliothèque personnelle de prompts et vous font gagner un temps considérable sur des tâches similaires futures.
+</Tip>
+
+## Savoir quand recommencer vs continuer
+
+Continuer d'itérer n'est pas toujours la meilleure stratégie. Voici comment décider.
+
+**Continuez la conversation si :**
+- La réponse initiale était bonne dans l'ensemble, avec des ajustements mineurs à faire.
+- Vous avez établi des préférences et un contexte utiles dans la session.
+- Vous travaillez sur un document long avec des modifications ponctuelles.
+
+**Recommencez une nouvelle conversation si :**
+- Les premières réponses étaient fondamentalement hors sujet.
+- La conversation a dérivé et le contexte accumulé nuit à la cohérence.
+- Vous souhaitez tester une approche radicalement différente sans biais.
+- La fenêtre de contexte est proche de sa limite (les modèles "oublient" les débuts).
+
+<Accordion title="FAQ : la mémoire dans les conversations multi-tours">
+  **Le modèle se souvient-il de tout ce que j'ai dit ?**
+
+  Dans une même conversation, oui — jusqu'à la limite de sa **fenêtre de contexte** (quelques dizaines de milliers à plusieurs centaines de milliers de tokens selon le modèle). Au-delà, les messages les plus anciens sont tronqués ou résumés automatiquement.
+
+  **Le modèle retient-il mes préférences entre deux sessions ?**
+
+  Par défaut, non. Chaque nouvelle conversation repart de zéro. Certains outils (ChatGPT avec mémoire activée, des systèmes RAG personnalisés) permettent de persister des informations entre sessions, mais ce n'est pas le comportement standard.
+
+  **Comment maintenir la cohérence sur une très longue conversation ?**
+
+  Deux techniques : (1) résumez périodiquement le contexte important ("pour rappel, nous travaillons sur X, avec les contraintes Y et Z") et (2) réaffirmez les préférences essentielles quand la conversation change de phase.
+
+  **Est-ce que les itérations "polluent" le contexte ?**
+
+  Les allers-retours très nombreux peuvent parfois diluer les instructions initiales. Si vous constatez une dérive, un rappel explicite ("reviens aux contraintes initiales : [liste]") remet le modèle sur la bonne trajectoire.
+</Accordion>
+
+## Intégrer le prompting itératif dans votre workflow
+
+Le prompting itératif n'est pas une technique isolée — c'est une **posture de travail** à adopter face aux LLM. Combiné avec le few-shot learning pour guider le format dès le départ, ou avec le Chain-of-Thought pour affiner un raisonnement complexe, il constitue le socle d'une utilisation experte des modèles de langage au quotidien.

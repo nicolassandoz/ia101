@@ -1,0 +1,176 @@
+---
+title: "Structurer le contexte pour des réponses plus précises"
+sidebarTitle: "Structuration"
+description: "Apprenez à organiser vos informations contextuelles pour guider l'IA vers des réponses plus fiables, pertinentes et cohérentes à chaque requête."
+---
+
+La qualité d'une réponse générée par un modèle de langage dépend autant de la structure du contexte que de son contenu. Un contexte bien organisé permet au modèle de comprendre immédiatement ce qui est attendu, de hiérarchiser les informations et d'éviter les confusions. À l'inverse, un contexte désordonné — même riche en données utiles — produit souvent des réponses imprécises ou hors sujet. Maîtriser la structuration du contexte est donc l'une des compétences fondamentales de l'ingénierie de contexte.
+
+## L'ordre optimal des informations
+
+Les modèles de langage ne lisent pas le contexte comme un humain : ils accordent une attention particulière aux éléments placés **en début et en fin de contexte**. Ce phénomène, parfois appelé *primacy/recency bias*, signifie que les informations critiques doivent encadrer votre contexte.
+
+Un ordre efficace suit généralement ce schéma :
+
+1. **L'instruction système** — le rôle, les contraintes, le ton attendu
+2. **Les données de référence** — documents, base de connaissances, exemples
+3. **L'historique de conversation** — les échanges précédents si pertinents
+4. **La question ou tâche** — ce que vous demandez précisément
+
+<Tip>
+Répétez l'instruction principale en fin de contexte si votre requête est longue. Les modèles ont tendance à pondérer plus fortement les derniers éléments, ce qui renforce la cohérence de la réponse.
+</Tip>
+
+## Séparer clairement les sections du contexte
+
+Mélanger les types d'informations sans séparation visuelle est l'une des erreurs les plus fréquentes. Le modèle doit pouvoir distinguer sans ambiguïté ce qui est une instruction, ce qui est une donnée, et ce qui est la question posée.
+
+Les trois grandes approches de délimitation sont :
+
+- **Les balises XML** : lisibles, hiérarchisables, reconnues par la plupart des modèles récents
+- **Les en-têtes Markdown** (`##`, `###`) : naturels pour les contextes longs ou documentaires
+- **Les triples backticks** (` ``` `) : idéaux pour isoler du code ou des données structurées
+
+<Tip>
+Choisissez un système de délimiteurs et restez cohérent. Les balises XML sont recommandées pour les contextes complexes multi-sections car elles permettent une imbrication claire et sont explicitement reconnues par des modèles comme Claude. Les en-têtes Markdown conviennent mieux aux contextes narratifs ou documentaires.
+</Tip>
+
+Voici un exemple de contexte bien structuré avec des balises XML :
+
+```xml
+<system>
+Vous êtes un assistant spécialisé en droit du travail français.
+Répondez de manière concise, en citant les articles de loi pertinents.
+Ne donnez pas de conseils juridiques personnalisés.
+</system>
+
+<context>
+  <document id="1" source="Code du travail, Art. L1237-19">
+    La rupture conventionnelle homologuée permet à l'employeur et au salarié
+    de convenir d'un commun accord des conditions de la rupture du contrat
+    de travail à durée indéterminée.
+  </document>
+  <document id="2" source="Code du travail, Art. L1237-13">
+    La convention de rupture définit les conditions de celle-ci, notamment
+    le montant de l'indemnité spécifique de rupture conventionnelle.
+  </document>
+</context>
+
+<question>
+Quelles sont les conditions pour qu'une rupture conventionnelle soit valide ?
+</question>
+```
+
+## Hiérarchiser l'information : le plus important en premier et en dernier
+
+Lorsque vous disposez de plusieurs documents ou blocs d'information, triez-les par pertinence décroissante. Placez le document le plus directement lié à la question en premier, et éventuellement en dernier s'il est court. Les informations secondaires ou de fond se placent au milieu.
+
+```xml
+<context>
+  <!-- Document le plus pertinent : en premier -->
+  <document id="1" relevance="high">
+    [Contenu directement lié à la question]
+  </document>
+
+  <!-- Documents de support : au milieu -->
+  <document id="2" relevance="medium">
+    [Contexte général ou informations complémentaires]
+  </document>
+  <document id="3" relevance="medium">
+    [Exemples ou cas similaires]
+  </document>
+
+  <!-- Rappel du point clé : en dernier -->
+  <document id="4" relevance="high">
+    [Résumé ou définition essentielle]
+  </document>
+</context>
+```
+
+## Éliminer le bruit contextuel
+
+Chaque token inutile dans votre contexte a un coût double : il consomme de la fenêtre de contexte et peut diluer les informations importantes. Avant d'envoyer un contexte au modèle, appliquez ces filtres :
+
+- **Supprimez les métadonnées inutiles** : numéros de page, headers de fichiers, horodatages non pertinents
+- **Résumez les sections longues peu importantes** plutôt que de les inclure intégralement
+- **Retirez les répétitions** : si la même information apparaît plusieurs fois, consolidez-la
+- **Omettez l'historique distant** : dans une longue conversation, résumez les échanges anciens au lieu de les inclure mot pour mot
+
+## Workflow d'assemblage contextuel
+
+<Steps>
+  <Step title="Définir l'objectif">
+    Identifiez précisément ce que le modèle doit accomplir. Cette clarté guide toutes les décisions suivantes sur ce qu'il faut inclure ou exclure.
+  </Step>
+  <Step title="Rédiger l'instruction système">
+    Formulez le rôle, le ton, les contraintes et le format de sortie attendu. Soyez explicite sur ce que le modèle **ne doit pas** faire.
+  </Step>
+  <Step title="Sélectionner et trier les données">
+    Choisissez uniquement les documents ou informations directement utiles. Triez-les par pertinence et éliminez le bruit.
+  </Step>
+  <Step title="Appliquer les délimiteurs">
+    Encadrez chaque section avec le système de délimiteurs choisi (balises XML, en-têtes Markdown). Soyez cohérent dans tout le contexte.
+  </Step>
+  <Step title="Formuler la question">
+    Rédigez une instruction finale claire et précise. Si le format de sortie est important, spécifiez-le ici (JSON, liste à puces, paragraphe, etc.).
+  </Step>
+  <Step title="Relire et élaguer">
+    Relisez le contexte assemblé. Supprimez tout ce qui n'est pas nécessaire à la compréhension de la tâche. Vérifiez que les sections sont bien séparées.
+  </Step>
+</Steps>
+
+## Templates de structure réutilisables
+
+Créer des templates pour vos cas d'usage récurrents vous fait gagner du temps et garantit la cohérence. Voici trois templates courants :
+
+**Template Q&R documentaire :**
+
+```xml
+<system>
+[Rôle et contraintes]
+</system>
+
+<documents>
+  <document id="1">[Contenu]</document>
+</documents>
+
+<question>[Question précise]</question>
+```
+
+**Template d'analyse comparative :**
+
+```xml
+<system>
+[Rôle et format de sortie attendu]
+</system>
+
+<elements_a_comparer>
+  <element id="A">[Premier élément]</element>
+  <element id="B">[Second élément]</element>
+</elements_a_comparer>
+
+<criteres>[Axes de comparaison]</criteres>
+
+<tache>Comparez les deux éléments selon les critères fournis.</tache>
+```
+
+**Template de génération avec contraintes :**
+
+```xml
+<system>
+[Rôle]
+</system>
+
+<contraintes>
+- [Contrainte 1]
+- [Contrainte 2]
+</contraintes>
+
+<exemples>
+  <exemple>[Exemple de sortie attendue]</exemple>
+</exemples>
+
+<tache>[Ce que vous demandez de générer]</tache>
+```
+
+En adoptant une structure rigoureuse et reproductible, vous transformez vos interactions avec l'IA d'un exercice d'improvisation en un processus fiable et optimisable.

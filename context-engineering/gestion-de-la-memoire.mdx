@@ -1,0 +1,188 @@
+---
+title: "Gestion de la mémoire dans les conversations avec l'IA"
+sidebarTitle: "Mémoire"
+description: "Apprenez comment pallier l'absence de mémoire native des LLM grâce aux stratégies de résumé, mémoire externe et extraction d'entités clés."
+---
+
+Contrairement à un être humain qui retient naturellement le fil d'une conversation, un modèle de langage repart de zéro à chaque nouvelle session. Il ne se souvient pas de votre nom, de vos préférences ni des décisions prises lors d'échanges précédents — à moins que vous ne le lui rappeliez explicitement. Cette caractéristique fondamentale des LLM impose de concevoir des stratégies de mémoire délibérées dès que vos applications dépassent le cadre d'un simple échange ponctuel.
+
+<Info>
+  Les LLM sont **sans état** (*stateless*) par nature. Chaque appel à l'API est totalement indépendant des précédents. Ce que vous percevez comme une "conversation continue" dans une interface comme ChatGPT est en réalité une reconstruction : l'interface renvoie l'intégralité de l'historique à chaque appel. Il n'existe aucune mémoire magique côté modèle — seulement du contexte soigneusement géré côté application.
+</Info>
+
+## Les trois types de mémoire
+
+<Tabs>
+  <Tab title="Mémoire de conversation">
+    ### Mémoire in-context (session courante)
+
+    C'est la forme la plus simple de mémoire : l'**historique complet de la conversation** est réinjecté dans le contexte à chaque tour. Le modèle "se souvient" parce qu'il relit tout depuis le début.
+
+    **Avantages :**
+    - Simple à implémenter — aucune infrastructure externe requise
+    - Cohérence parfaite sur les échanges récents
+    - Aucune perte d'information tant que la limite n'est pas atteinte
+
+    **Limites :**
+    - La fenêtre de contexte se remplit progressivement
+    - Le coût en tokens augmente à chaque tour
+    - Mémoire perdue à la fin de la session — rien n'est persisté
+
+    **Cas d'usage idéal :** Conversations courtes à moyennes, assistants de session, chatbots transactionnels sans besoin de persistance long terme.
+  </Tab>
+  <Tab title="Mémoire externe">
+    ### Mémoire persistante via base de données
+
+    La mémoire externe consiste à **stocker des informations en dehors du modèle** — dans une base de données relationnelle, un système de fichiers, ou une base vectorielle — et à les réinjecter de façon sélective dans le contexte selon la pertinence.
+
+    **Types de stockage courants :**
+
+    | Type | Technologie | Usage typique |
+    |---|---|---|
+    | Base vectorielle | Pinecone, Weaviate, pgvector | Recherche sémantique de souvenirs |
+    | Base clé-valeur | Redis, DynamoDB | Profils utilisateur, préférences |
+    | Base relationnelle | PostgreSQL, SQLite | Historique structuré, entités |
+    | Fichiers / notes | Markdown, JSON | Résumés de session, journaux |
+
+    **Avantages :**
+    - Persistance illimitée entre les sessions
+    - Recherche sémantique pour retrouver les souvenirs pertinents
+    - Aucune contrainte de fenêtre de contexte sur le volume total stocké
+
+    **Limites :**
+    - Infrastructure à mettre en place et à maintenir
+    - Nécessite une logique de récupération (retrieval) pertinente
+    - Risque d'injecter des souvenirs non pertinents ou obsolètes
+
+    **Cas d'usage idéal :** Assistants personnels long terme, CRM augmenté par l'IA, applications où l'utilisateur revient régulièrement.
+  </Tab>
+  <Tab title="Résumé de conversation">
+    ### Compression de l'historique
+
+    Le résumé de conversation est une technique hybride : on **condense périodiquement les échanges anciens** en un résumé compact, que l'on substitue à l'historique détaillé dans le contexte.
+
+    **Exemple de structure :**
+    ```
+    [RÉSUMÉ DES ÉCHANGES PRÉCÉDENTS]
+    L'utilisateur développe une application de gestion de tâches en Python.
+    Il a choisi FastAPI comme framework et PostgreSQL comme base de données.
+    Les endpoints /tasks et /users ont été définis. L'authentification JWT
+    est en cours d'implémentation.
+
+    [ÉCHANGES RÉCENTS — 5 derniers tours]
+    Utilisateur : Comment gérer le refresh token ?
+    Assistant : ...
+    ```
+
+    **Avantages :**
+    - Préserve la continuité sans saturer le contexte
+    - Équilibre entre mémoire et coût en tokens
+    - Ne nécessite pas d'infrastructure externe
+
+    **Limites :**
+    - Perte inévitable de détails lors de la compression
+    - Qualité du résumé dépendante du modèle utilisé
+    - Risque d'accumulation d'erreurs si les résumés sont résumés à nouveau
+
+    **Cas d'usage idéal :** Conversations longues et continues, agents travaillant sur des tâches multi-étapes, support technique étendu.
+  </Tab>
+</Tabs>
+
+## Stratégies pour simuler la mémoire
+
+### Résumé récursif
+
+Le résumé récursif est une technique qui compresse l'historique de façon progressive. Voici comment le mettre en œuvre :
+
+<Steps>
+  <Step title="Définir un seuil de déclenchement">
+    Fixez un seuil — par exemple, lorsque l'historique dépasse 3 000 tokens ou 10 tours de conversation — au-delà duquel la compression est automatiquement déclenchée.
+  </Step>
+  <Step title="Résumer les échanges les plus anciens">
+    Demandez au modèle de produire un résumé structuré des N premiers tours : décisions prises, informations clés échangées, préférences exprimées. Conservez uniquement ce résumé, pas les échanges bruts.
+  </Step>
+  <Step title="Conserver les échanges récents intacts">
+    Maintenez toujours les derniers tours en version complète dans le contexte. La précision du dialogue récent est plus critique que celle des échanges anciens.
+  </Step>
+  <Step title="Injecter le résumé en début de contexte">
+    Placez le résumé condensé au début du contexte, avant l'historique récent. Le modèle dispose ainsi d'une vue d'ensemble de la session tout en ayant accès aux détails des échanges immédiats.
+  </Step>
+  <Step title="Itérer à chaque nouveau seuil">
+    Répétez l'opération chaque fois que le seuil est à nouveau atteint. Avec le temps, votre historique complet se réduit à quelques paragraphes denses d'informations essentielles.
+  </Step>
+</Steps>
+
+### Extraction d'entités clés
+
+Plutôt que de résumer narrativement, vous pouvez extraire et maintenir une **fiche structurée** des informations importantes au fil de la conversation :
+
+```json
+{
+  "utilisateur": {
+    "nom": "Marie",
+    "rôle": "Développeuse backend",
+    "stack_technique": ["Python", "FastAPI", "PostgreSQL"]
+  },
+  "projet_en_cours": {
+    "nom": "TaskManager API",
+    "statut": "En développement",
+    "décisions_prises": [
+      "Architecture REST choisie",
+      "Authentification JWT avec refresh tokens"
+    ]
+  },
+  "préférences": {
+    "style_de_réponse": "Exemples de code systématiques",
+    "niveau_de_détail": "Intermédiaire"
+  }
+}
+```
+
+Cette fiche est mise à jour à chaque tour et réinjectée dans le système prompt, offrant une mémoire précise sans la verbosité d'un historique complet.
+
+## Outils qui implémentent la mémoire
+
+Plusieurs bibliothèques et services ont été conçus spécifiquement pour résoudre le problème de la mémoire dans les systèmes LLM :
+
+<CardGroup cols={2}>
+  <Card title="Mem0" icon="brain">
+    Une couche de mémoire intelligente pour les agents IA. Mem0 extrait automatiquement les informations importantes des conversations et les stocke dans un graphe de mémoire personnel, récupérable par recherche sémantique.
+  </Card>
+  <Card title="MemGPT" icon="microchip">
+    Inspiré des systèmes d'exploitation avec gestion de mémoire hiérarchique, MemGPT permet aux LLM de gérer eux-mêmes leur propre contexte, en décidant quoi archiver et quoi garder en mémoire active.
+  </Card>
+  <Card title="LangChain Memory" icon="link">
+    LangChain propose plusieurs classes de mémoire prêtes à l'emploi : `ConversationBufferMemory`, `ConversationSummaryMemory`, `ConversationKGMemory` (graphe de connaissances) et d'autres encore.
+  </Card>
+  <Card title="Zep" icon="bolt">
+    Une infrastructure de mémoire long terme pour les assistants IA, avec enrichissement automatique (résumé, extraction d'entités, horodatage) et API de recherche sémantique sur l'historique.
+  </Card>
+</CardGroup>
+
+## Que retenir explicitement vs laisser le modèle gérer ?
+
+Tous les éléments d'une conversation ne méritent pas d'être mémorisés. Voici un guide pratique pour décider :
+
+**À retenir explicitement (dans la mémoire structurée) :**
+- Préférences durables de l'utilisateur (style, niveau, langue)
+- Décisions techniques ou stratégiques déjà validées
+- Informations d'identité et de contexte professionnel
+- Contraintes non négociables (budget, délais, technologies imposées)
+
+**À laisser dans l'historique de conversation (mémoire de session) :**
+- Le fil détaillé du raisonnement en cours
+- Les formulations exactes de questions et réponses récentes
+- Les exemples de code générés dans la session
+
+**À ne pas mémoriser du tout :**
+- Les questions de clarification sans valeur durable
+- Les apartés et politesses conversationnelles
+- Les tentatives abandonnées ou les pistes invalidées
+
+<Tip>
+  Commencez toujours par la solution la plus simple : un historique de conversation complet dans le contexte. N'introduisez une stratégie de mémoire plus complexe que lorsque vous atteignez une limite concrète — saturation du contexte, coût prohibitif, ou besoin de persistance entre sessions. La complexité prématurée est l'ennemi de la maintenabilité.
+</Tip>
+
+## En résumé
+
+La mémoire dans les systèmes LLM est une construction délibérée, pas une fonctionnalité native. En combinant mémoire de session, résumé récursif et stockage externe sélectif, vous pouvez offrir à vos utilisateurs l'impression d'un assistant qui "connaît" leur contexte — tout en maintenant une architecture maîtrisable et des coûts prévisibles.

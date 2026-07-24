@@ -1,0 +1,173 @@
+---
+title: "Few-shot learning : guider l'IA avec des exemples"
+sidebarTitle: "Few-Shot"
+description: "Découvrez comment fournir des exemples concrets à un LLM transforme la qualité de ses réponses, et comment choisir les bons exemples."
+---
+
+Le few-shot learning est l'une des techniques les plus puissantes et les plus accessibles du prompt engineering. En montrant au modèle quelques exemples du résultat attendu, vous lui communiquez non seulement le contenu souhaité, mais aussi le format, le ton et le niveau de détail. Cette approche exploite la capacité des LLM à reconnaître des patterns et à les généraliser, sans aucun réentraînement.
+
+## Zero-shot, one-shot, few-shot : quelles différences ?
+
+Ces trois termes décrivent le nombre d'exemples fournis au modèle dans votre prompt.
+
+| Approche | Nombre d'exemples | Cas d'usage typique |
+|---|---|---|
+| **Zero-shot** | 0 | Tâches simples, instructions claires |
+| **One-shot** | 1 | Quand un seul exemple suffit à illustrer le format |
+| **Few-shot** | 2 à 8 | Tâches complexes, formats personnalisés, nuances |
+
+En **zero-shot**, vous faites confiance au modèle pour interpréter votre demande sans indication supplémentaire. En **few-shot**, vous guidez activement ses anticipations en lui montrant exactement ce que vous attendez.
+
+## Pourquoi les exemples améliorent drastiquement les résultats
+
+Un LLM est fondamentalement un système de prédiction de texte. Lorsque vous lui fournissez des exemples, vous lui donnez un contexte immédiat qui oriente sa prédiction bien plus précisément qu'une description abstraite. Les bénéfices sont multiples :
+
+- **Format garanti** : le modèle reproduit la structure exacte de vos exemples.
+- **Ton cohérent** : registre formel, informel, technique — il s'aligne sur vos exemples.
+- **Réduction des ambiguïtés** : un exemple vaut mille mots d'instruction.
+- **Comportement prévisible** : les variations entre deux exécutions sont réduites.
+
+## Structure d'un prompt few-shot
+
+Un prompt few-shot suit une structure répétitive de paires `Entrée` / `Sortie`, suivie de l'entrée réelle pour laquelle vous souhaitez une réponse.
+
+```text
+Tâche : Classifie le sentiment de l'avis client (Positif / Négatif / Neutre).
+
+Entrée : "La livraison était rapide et le produit conforme à la description."
+Sortie : Positif
+
+Entrée : "Je suis déçu, la qualité ne correspond pas aux photos."
+Sortie : Négatif
+
+Entrée : "Le colis est arrivé en trois jours."
+Sortie : Neutre
+
+Entrée : "Service client réactif, mais l'emballage était abîmé."
+Sortie :
+```
+
+La dernière ligne laisse intentionnellement la sortie vide — c'est là que le modèle complète la séquence.
+
+## Comparaison : zero-shot, one-shot et few-shot
+
+Voici le même problème traité avec les trois approches pour illustrer concrètement leurs différences.
+
+<Tabs>
+  <Tab title="Zero-Shot">
+    Aucun exemple n'est fourni. Le modèle doit interpréter la consigne seul.
+
+    ```text
+    Transforme cette phrase en langage formel :
+    "T'inquiète, on gère ça rapidement."
+    ```
+
+    **Résultat typique :**
+    > "Soyez assuré(e) que nous traiterons cette question dans les meilleurs délais."
+
+    ✅ Fonctionne bien pour des tâches courantes.
+    ⚠️ Le niveau de formalité et la longueur peuvent varier d'une exécution à l'autre.
+  </Tab>
+  <Tab title="One-Shot">
+    Un seul exemple ancre le modèle sur le format et le registre attendus.
+
+    ```text
+    Transforme cette phrase en langage formel.
+
+    Informel : "On t'appelle dès qu'on a du nouveau."
+    Formel : "Nous vous contacterons dès que nous disposerons d'informations complémentaires."
+
+    Informel : "T'inquiète, on gère ça rapidement."
+    Formel :
+    ```
+
+    **Résultat typique :**
+    > "Soyez assuré(e) que nous prendrons en charge cette demande dans les meilleurs délais."
+
+    ✅ Plus cohérent qu'en zero-shot.
+    ⚠️ Un seul exemple peut ne pas couvrir toute la diversité des cas.
+  </Tab>
+  <Tab title="Few-Shot">
+    Plusieurs exemples permettent de couvrir différentes nuances et structures.
+
+    ```text
+    Transforme ces phrases en langage formel professionnel, 
+    en conservant le sens original.
+
+    Informel : "On t'appelle dès qu'on a du nouveau."
+    Formel : "Nous vous contacterons dès que nous disposerons d'informations complémentaires."
+
+    Informel : "Désolé pour le retard, c'est réglé maintenant."
+    Formel : "Nous vous prions de nous excuser pour ce délai. La situation a désormais été résolue."
+
+    Informel : "Ton dossier est en cours, pas d'inquiétude."
+    Formel : "Votre dossier est actuellement en cours de traitement. Nous vous remercions de votre patience."
+
+    Informel : "T'inquiète, on gère ça rapidement."
+    Formel :
+    ```
+
+    **Résultat typique :**
+    > "Soyez assuré(e) que cette situation est prise en charge et sera traitée dans les meilleurs délais."
+
+    ✅ Résultats très cohérents et bien calibrés.
+    ✅ Le modèle gère mieux les variations syntaxiques.
+  </Tab>
+</Tabs>
+
+## Combien d'exemples utiliser ?
+
+La question du nombre optimal d'exemples est pratique avant tout.
+
+- **1 à 2 exemples** suffisent pour des tâches de format simple (JSON, reformulation courte).
+- **3 à 5 exemples** couvrent la majorité des cas complexes sans alourdir le prompt.
+- **6 à 8 exemples** sont utiles pour des tâches très nuancées ou des taxonomies détaillées.
+- **Au-delà de 8**, le gain marginal est faible et le coût en tokens augmente significativement.
+
+<Tip>
+  Privilégiez la **qualité** des exemples sur leur **quantité**. Trois exemples bien choisis, représentatifs et variés surpassent systématiquement huit exemples redondants ou mal formulés. Si vos résultats ne s'améliorent pas en ajoutant des exemples, revoyez leur qualité plutôt que d'en ajouter davantage.
+</Tip>
+
+## Choisir les bons exemples : diversité et représentativité
+
+La sélection des exemples est l'étape la plus critique du few-shot learning. Voici les principes à respecter :
+
+**Représentativité** : vos exemples doivent couvrir les cas les plus fréquents que le modèle rencontrera. Si votre tâche implique des avis positifs, négatifs et neutres, incluez des exemples des trois catégories.
+
+**Diversité syntaxique** : évitez les exemples qui se ressemblent trop. Un modèle exposé à cinq phrases courtes du même type aura du mal avec les phrases longues et complexes.
+
+**Absence d'ambiguïté** : chaque exemple doit avoir une sortie incontestablement correcte. Un exemple douteux introduit du bruit dans l'apprentissage contextuel.
+
+**Cohérence du format** : respectez rigoureusement la même structure dans tous vos exemples. Un délimiteur manquant ou une capitalisation irrégulière peut perturber le modèle.
+
+```text
+# ✅ Bons exemples : diversité des structures et des cas
+Entrée : "Produit excellent, je recommande !"
+Sortie : Positif
+
+Entrée : "Délai non respecté, aucune réponse du support."
+Sortie : Négatif
+
+Entrée : "Reçu le 12 mars, emballage standard."
+Sortie : Neutre
+
+# ❌ Mauvais exemples : trop similaires, tous courts et positifs
+Entrée : "Super produit !"
+Sortie : Positif
+
+Entrée : "Excellent article !"
+Sortie : Positif
+
+Entrée : "Très bon achat !"
+Sortie : Positif
+```
+
+## Aller plus loin
+
+Le few-shot learning se combine naturellement avec d'autres techniques :
+
+- **Chain-of-Thought** : incluez le raisonnement intermédiaire dans vos exemples pour guider le modèle sur des tâches complexes.
+- **Personas** : combinez un role-playing avec des exemples few-shot pour contrôler à la fois le style et le contenu.
+- **Prompts itératifs** : démarrez avec des exemples généraux et affinez-les progressivement au fil de la conversation.
+
+Le few-shot learning est votre premier réflexe dès que les instructions seules ne suffisent pas à obtenir le format ou la qualité attendus.

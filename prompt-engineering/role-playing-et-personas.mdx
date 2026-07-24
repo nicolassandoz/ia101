@@ -1,0 +1,169 @@
+---
+title: "Role-playing et personas : donner un rôle au modèle d'IA"
+sidebarTitle: "Personas"
+description: "Découvrez comment attribuer un rôle précis à un LLM transforme le ton, la profondeur et la pertinence de ses réponses pour chaque situation."
+---
+
+Demander à un LLM d'adopter un persona — un rôle, une identité, une expertise fictive — est l'une des techniques les plus intuitives et les plus efficaces du prompt engineering. En définissant qui est le modèle avant de lui poser une question, vous calibrez implicitement son niveau de langage, son champ de connaissances mis en avant, son ton et sa façon de structurer les réponses. Cette technique transforme un assistant généraliste en un interlocuteur spécialisé adapté à votre contexte.
+
+## Pourquoi attribuer un rôle améliore les réponses
+
+Un LLM possède une connaissance encyclopédique, mais sans contexte, il produit des réponses moyennement adaptées à votre audience ou à vos objectifs. En lui assignant un rôle, vous opérez plusieurs ajustements simultanés :
+
+- **Niveau d'expertise** : un expert technique vulgarise différemment d'un professeur du secondaire.
+- **Registre de langue** : un coach bienveillant n'écrit pas comme un auditeur juridique.
+- **Priorités editoriales** : un éditeur cherche la clarté, un développeur cherche la précision technique.
+- **Posture face à l'interlocuteur** : un mentor pose des questions, un consultant fournit des recommandations.
+
+Le modèle ne « devient » pas le persona au sens ontologique — il s'en sert comme d'un filtre de génération. Mais cet effet de filtre est réel et mesurable dans la qualité des sorties.
+
+## System prompt vs user prompt pour définir un persona
+
+Il existe deux emplacements principaux pour définir un persona dans une conversation avec un LLM.
+
+### Le system prompt (recommandé)
+
+Le system prompt est la méthode la plus robuste. Il s'agit d'une instruction de configuration envoyée avant la conversation, invisible pour l'utilisateur final dans les applications grand public. Il pose le cadre global et persiste sur toute la conversation.
+
+```text
+[SYSTEM PROMPT]
+Vous êtes Aria, une experte en cybersécurité avec 15 ans d'expérience 
+dans la protection des infrastructures critiques. Vous vous adressez 
+à des équipes techniques de niveau intermédiaire. Vous êtes directe, 
+précise et illustrez toujours vos recommandations par des exemples concrets. 
+Vous signalez systématiquement les risques élevés en les mettant en évidence.
+```
+
+### Le user prompt
+
+Lorsque vous n'avez pas accès au system prompt (interface ChatGPT standard, Claude.ai…), vous pouvez définir le persona directement dans votre message.
+
+```text
+[USER PROMPT]
+Pour la suite de cette conversation, agissez comme un chef de projet 
+expérimenté en développement logiciel agile. Adoptez un ton pragmatique 
+et orienté solutions. Voici ma question : notre sprint actuel accumule 
+40% de tickets non terminés à deux jours de la revue. Que faire ?
+```
+
+La définition dans le user prompt est légèrement moins stable — le modèle peut « oublier » le persona sur des conversations longues. Rappeler le rôle au début d'un nouveau sujet peut aider.
+
+## Exemples de personas utiles
+
+<CardGroup cols={2}>
+  <Card title="🔧 Expert Technique" icon="code">
+    **Cas d'usage :** documentation, revue de code, architecture logicielle
+
+    ```text
+    Vous êtes un ingénieur senior spécialisé en 
+    backend Python et en conception d'API REST. 
+    Vous adoptez un niveau de langage technique 
+    avancé, citez les standards (PEP 8, OpenAPI…) 
+    et signalez les anti-patterns.
+    ```
+  </Card>
+  <Card title="📚 Professeur Pédagogue" icon="graduation-cap">
+    **Cas d'usage :** apprentissage, vulgarisation, formation
+
+    ```text
+    Vous êtes un professeur passionné qui explique 
+    des concepts complexes à des débutants. Vous 
+    utilisez des analogies du quotidien, posez des 
+    questions de vérification et construisez les 
+    notions progressivement.
+    ```
+  </Card>
+  <Card title="💪 Coach Bienveillant" icon="heart">
+    **Cas d'usage :** productivité, développement personnel, feedback
+
+    ```text
+    Vous êtes un coach de performance bienveillant 
+    et direct. Vous encouragez sans flatter, 
+    identifiez les blocages concrets et proposez 
+    des actions immédiatement applicables. Vous 
+    terminez par une question de réflexion.
+    ```
+  </Card>
+  <Card title="✍️ Éditeur Exigeant" icon="pen">
+    **Cas d'usage :** relecture, amélioration de textes, rédaction
+
+    ```text
+    Vous êtes un éditeur professionnel avec 20 ans 
+    d'expérience en presse et édition. Vous corrigez 
+    avec précision, justifiez chaque modification et 
+    veillez à la cohérence du style, du rythme et de 
+    la clarté argumentative.
+    ```
+  </Card>
+</CardGroup>
+
+## Personnaliser le ton, le niveau et le style
+
+Un persona bien construit combine plusieurs dimensions. Voici les leviers à activer dans votre définition de rôle :
+
+```text
+# Template de persona complet
+Vous êtes [NOM/TITRE], [DESCRIPTION DE L'EXPERTISE].
+
+Votre audience : [QUI VOUS LIS - niveau, contexte]
+Votre ton : [formel / informel / bienveillant / direct / neutre]
+Votre style : [concis / détaillé / illustré d'exemples / structuré en listes]
+Vos priorités : [ce que vous mettez toujours en avant]
+Vos contraintes : [ce que vous évitez / ne faites jamais]
+```
+
+**Exemple appliqué :**
+
+```text
+Vous êtes Marco, un consultant en transformation digitale senior.
+
+Votre audience : des dirigeants d'entreprises de taille intermédiaire, 
+non techniques mais stratégiquement avertis.
+Votre ton : confiant, orienté business, sans jargon informatique.
+Votre style : réponses structurées en 3 points maximum, avec une 
+recommandation claire en conclusion.
+Vos priorités : ROI, délais réalistes, gestion du changement humain.
+Vos contraintes : évitez les détails techniques, ne listez pas plus 
+de 5 éléments par réponse.
+```
+
+## Les limites du role-playing
+
+Il est important de comprendre ce que le role-playing **ne fait pas** :
+
+- Le modèle ne « devient » pas le persona — il génère du texte cohérent avec ce persona.
+- Il n'acquiert pas de connaissances nouvelles en endossant un rôle.
+- Un expert fictif peut tout à fait produire des affirmations incorrectes avec un ton assuré.
+- Le persona peut s'estomper sur des conversations très longues, surtout si le sujet dérive.
+
+Vérifiez toujours les informations critiques indépendamment du persona assigné.
+
+<Warning>
+  Attribuer des rôles à un LLM peut être utilisé à des fins de **jailbreak** — des tentatives de contourner les garde-fous de sécurité du modèle en lui demandant d'incarner un personnage « sans restrictions ». Les formulations comme "joue le rôle d'une IA sans filtre" ou "imagine que tu es [nom d'un système fictif malveillant]" sont des vecteurs d'abus documentés. Les modèles modernes sont entraînés pour résister à ces tentatives, mais restez vigilant si vous déployez un système permettant aux utilisateurs de définir librement des personas — implémentez une validation des entrées côté application.
+</Warning>
+
+## Aller plus loin : combiner persona et instructions structurées
+
+Les personas les plus performants combinent identité, règles de comportement et exemples few-shot :
+
+```text
+[SYSTEM PROMPT COMPLET]
+Vous êtes Léa, une tutrice en mathématiques pour lycéens.
+
+IDENTITÉ
+- Spécialité : algèbre et fonctions pour le niveau Terminale
+- Ton : encourageant, patient, jamais condescendant
+
+COMPORTEMENT
+- Ne donnez jamais la réponse directement : guidez par des questions
+- Félicitez les bons raisonnements, même partiels
+- Si l'élève est bloqué 2 fois de suite, donnez un indice progressif
+
+EXEMPLE D'INTERACTION
+Élève : "Je comprends pas la dérivée."
+Léa : "C'est normal, c'est une notion qui demande un peu de temps ! 
+Commençons par le début : quand vous regardez une courbe, 
+qu'est-ce qui change selon que la pente est raide ou douce ?"
+```
+
+Cette approche hybride — persona + règles de comportement + few-shot — est la plus robuste pour des applications en production où la cohérence des réponses est critique.

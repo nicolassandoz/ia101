@@ -1,0 +1,162 @@
+---
+title: "Optimiser le contexte pour économiser tokens et coût"
+sidebarTitle: "Optimisation"
+description: "Réduisez vos coûts et améliorez la latence sans sacrifier la qualité : techniques de compression, prompt caching et sélection dynamique du contexte."
+---
+
+Envoyer un contexte volumineux à un modèle de langage a un coût direct et mesurable : chaque token consommé se traduit en euros sur votre facture, en millisecondes sur votre latence, et parfois en dégradation de qualité lorsque le modèle se noie dans des informations non pertinentes. L'optimisation du contexte n'est pas un détail d'implémentation — c'est une discipline à part entière qui devient critique dès que vous passez du prototype à la production. Un contexte bien optimisé peut réduire vos coûts de 50 à 80 % sans aucune perte de qualité perceptible.
+
+## Pourquoi optimiser : coût, latence, performance
+
+Trois raisons majeures motivent l'optimisation du contexte :
+
+- **Coût** : les APIs LLM facturent au token. Un contexte deux fois plus court coûte deux fois moins cher — à volume d'usage constant, cela peut représenter des milliers d'euros par mois
+- **Latence** : moins de tokens à traiter signifie une réponse plus rapide. La latence de génération est en partie proportionnelle à la longueur du contexte d'entrée
+- **Performance** : les modèles ont une attention limitée. Un contexte surchargé de bruit dilue les informations utiles et dégrade la qualité des réponses — phénomène parfois appelé *lost in the middle*
+
+<Note>
+Il existe un arbitrage fondamental entre qualité et coût. Supprimer trop agressivement le contexte peut priver le modèle d'informations nécessaires et dégrader les réponses. L'objectif n'est pas d'avoir le contexte le plus court possible, mais le contexte **minimalement suffisant** pour la tâche. Mesurez toujours l'impact sur la qualité avant de déployer une optimisation en production.
+</Note>
+
+## Stratégies d'optimisation
+
+<CardGroup cols={2}>
+  <Card title="Compression par résumé" icon="compress">
+    Remplacez les longs documents ou l'historique de conversation par des résumés concis. Un résumé bien rédigé peut conserver 90 % de la valeur informationnelle en utilisant 20 % des tokens originaux.
+  </Card>
+  <Card title="Extraction ciblée" icon="scissors">
+    Plutôt que d'injecter un document entier, extrayez uniquement les passages directement pertinents à la question. Combinez avec le RAG pour une sélection automatique et précise.
+  </Card>
+  <Card title="Prompt caching" icon="database">
+    Réutilisez les préfixes de contexte coûteux (instructions système, documents de référence) grâce aux mécanismes de caching natifs des APIs. Réduction de coût pouvant atteindre 90 % sur les tokens mis en cache.
+  </Card>
+  <Card title="Sélection dynamique" icon="filter">
+    Ne construisez pas un contexte statique universel. Sélectionnez dynamiquement les chunks, exemples ou outils pertinents en fonction de chaque requête spécifique.
+  </Card>
+</CardGroup>
+
+## Compression de contexte : techniques concrètes
+
+**Résumé de l'historique de conversation :**
+
+Au lieu de conserver tous les échanges passés, résumez régulièrement les tours de conversation anciens. Une approche courante consiste à résumer les échanges au-delà d'un certain seuil (ex. : au-delà de 10 tours) :
+
+```python
+# Exemple de stratégie de résumé d'historique
+if len(conversation_history) > 10:
+    # Résumer les 8 premiers tours
+    to_summarize = conversation_history[:8]
+    summary = llm.summarize(to_summarize)
+    
+    # Reconstruire l'historique : résumé + tours récents
+    conversation_history = [
+        {"role": "system", "content": f"Résumé des échanges précédents : {summary}"}
+    ] + conversation_history[8:]
+```
+
+**Extraction de passages pertinents :**
+
+```python
+# Plutôt que d'injecter un PDF de 50 pages entier...
+full_document = load_pdf("rapport_annuel.pdf")  # ~40 000 tokens
+
+# Extrayez uniquement les sections pertinentes
+relevant_chunks = vector_store.similarity_search(
+    query=user_question,
+    k=5  # Top 5 chunks les plus pertinents
+)
+context = "\n\n".join([chunk.text for chunk in relevant_chunks])
+# Résultat : ~1 500 tokens au lieu de 40 000
+```
+
+## Prompt caching : réutiliser les préfixes coûteux
+
+Le prompt caching est l'une des optimisations les plus efficaces disponibles aujourd'hui. Les principaux fournisseurs (Anthropic, OpenAI, Google) proposent des mécanismes permettant de mettre en cache la portion répétitive de vos prompts.
+
+<Tip>
+Structurez vos prompts de sorte que les éléments **stables et coûteux** (instructions système détaillées, documents de référence, exemples few-shot) apparaissent en **début de prompt**, avant les éléments dynamiques (la question de l'utilisateur). Le cache est invalidé dès qu'un token change — placer les éléments variables à la fin maximise le taux de cache hit.
+
+Avec Anthropic Claude, le prompt caching réduit le coût des tokens en entrée mis en cache de **90 %** et la latence de **jusqu'à 85 %**. Sur un assistant documentaire qui répète les mêmes 10 000 tokens de contexte à chaque appel, les économies sont massives.
+</Tip>
+
+Structure optimale pour le caching :
+
+```
+┌─────────────────────────────────────────────┐
+│  PARTIE STATIQUE (mise en cache)            │
+│  - Instructions système (500 tokens)        │
+│  - Documentation de référence (8000 tokens) │
+│  - Exemples few-shot (1000 tokens)          │
+├─────────────────────────────────────────────┤
+│  PARTIE DYNAMIQUE (non mise en cache)       │
+│  - Historique de conversation récent        │
+│  - Question de l'utilisateur                │
+└─────────────────────────────────────────────┘
+```
+
+## Sélection dynamique du contexte
+
+L'idée est simple : ne fournir au modèle que ce dont il a besoin pour *cette* requête précise, pas un contexte universel couvrant tous les cas.
+
+**Sélection d'outils dynamique** (pour les agents) :
+
+```python
+# Au lieu de passer tous les 20 outils disponibles à chaque appel...
+all_tools = load_all_tools()  # 20 outils = ~2000 tokens de description
+
+# Identifiez les outils pertinents pour la requête
+relevant_tools = tool_selector.select(
+    query=user_request,
+    max_tools=5  # 5 outils = ~500 tokens de description
+)
+# Économie : 75 % des tokens de description d'outils
+```
+
+**Sélection d'exemples few-shot dynamique :**
+
+```python
+# Récupérez des exemples sémantiquement proches de la requête
+examples = example_store.get_similar_examples(
+    query=user_input,
+    k=3  # 3 exemples ciblés au lieu de 10 exemples génériques
+)
+```
+
+## Mesurer l'efficacité : qualité vs tokens
+
+Toute optimisation doit être mesurée. Construisez un tableau de bord minimal avec ces métriques :
+
+| Métrique | Comment la mesurer |
+|---|---|
+| **Tokens moyens / requête** | Logs d'API (`usage.prompt_tokens`) |
+| **Coût par requête** | Tokens × tarif du modèle |
+| **Latence p50 / p95** | Timing des appels API |
+| **Score de qualité** | Évaluation humaine ou LLM-as-judge sur un set de test |
+| **Taux de cache hit** | Fourni par l'API (Anthropic, OpenAI) |
+
+Ne déployez une optimisation que si la qualité reste stable ou s'améliore sur votre set de test.
+
+## Checklist d'optimisation du contexte
+
+<Steps>
+  <Step title="Auditer le contexte actuel">
+    Loggez vos prompts en production et analysez leur composition. Quelle part est l'instruction système ? Les documents ? L'historique ? La question ? Identifiez le poste le plus coûteux.
+  </Step>
+  <Step title="Éliminer le bruit">
+    Supprimez les informations non pertinentes à la tâche courante : métadonnées inutiles, répétitions, instructions redondantes. Vérifiez que chaque token a une raison d'être présent.
+  </Step>
+  <Step title="Activer le prompt caching">
+    Réorganisez votre prompt pour placer les éléments stables en tête. Activez le caching via les paramètres d'API de votre fournisseur. Mesurez le taux de cache hit après déploiement.
+  </Step>
+  <Step title="Implémenter la sélection dynamique">
+    Remplacez les contextes statiques par une sélection basée sur la requête (RAG pour les documents, sélection sémantique pour les exemples et les outils).
+  </Step>
+  <Step title="Compresser l'historique">
+    Mettez en place une stratégie de résumé de l'historique de conversation pour les sessions longues. Définissez un seuil de tours au-delà duquel les échanges sont résumés.
+  </Step>
+  <Step title="Mesurer et itérer">
+    Comparez les métriques avant/après chaque optimisation : coût, latence, et surtout qualité. Utilisez un set de test représentatif. N'optimisez pas à l'aveugle — chaque décision doit être validée par les données.
+  </Step>
+</Steps>
+
+L'optimisation du contexte est un processus continu, pas un réglage unique. À mesure que vos données et vos cas d'usage évoluent, vos stratégies d'optimisation doivent évoluer avec eux. Un contexte bien optimisé est l'un des leviers les plus puissants pour rendre vos applications IA scalables et économiquement viables.

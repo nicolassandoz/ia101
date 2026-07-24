@@ -1,0 +1,102 @@
+---
+title: "Introduction au prompt engineering : premiers pas"
+sidebarTitle: "Introduction"
+description: "Découvrez ce qu'est le prompt engineering, pourquoi la formulation de vos questions change tout, et comment améliorer vos prompts pas à pas."
+---
+
+Le prompt engineering est l'art de communiquer efficacement avec un modèle de langage. Tout comme vous choisissez soigneusement vos mots lorsque vous rédigez un e-mail professionnel, la façon dont vous formulez vos demandes à une IA détermine directement la qualité, la pertinence et l'utilité des réponses que vous obtenez. Cette compétence est désormais fondamentale pour quiconque souhaite tirer pleinement parti des outils d'intelligence artificielle.
+
+## Qu'est-ce que le prompt engineering ?
+
+Un **prompt** est toute instruction, question ou texte que vous soumettez à un modèle de langage. Le *prompt engineering* désigne l'ensemble des techniques permettant de concevoir, structurer et affiner ces instructions afin d'obtenir des réponses optimales.
+
+Il ne s'agit pas de « tricher » ou de « contourner » le modèle, mais bien de parler son langage : lui fournir les informations dont il a besoin pour vous aider au mieux. Un bon prompt engineering, c'est avant tout une bonne communication.
+
+<Tip>
+  Commencez toujours par un prompt simple et direct. Inutile de vouloir tout préciser dès la première tentative — l'itération est au cœur de la démarche. Vous affinerez au fur et à mesure.
+</Tip>
+
+## Pourquoi la formulation change tout
+
+Les modèles de langage sont des systèmes de prédiction statistique entraînés sur d'immenses corpus de texte. Ils cherchent à produire la continuation la plus vraisemblable de votre entrée. Une formulation vague génère une réponse générique ; une formulation précise guide le modèle vers une réponse ciblée.
+
+Trois facteurs influencent directement la qualité d'une réponse :
+
+- **La clarté** : le modèle comprend-il sans ambiguïté ce que vous demandez ?
+- **Le contexte** : dispose-t-il des informations nécessaires pour répondre pertinemment ?
+- **Les contraintes** : sait-il sous quelle forme vous attendez la réponse ?
+
+## Votre premier prompt : faible vs fort
+
+Observez la différence entre un prompt mal formulé et un prompt bien construit sur le même sujet :
+
+<Tabs>
+  <Tab title="Prompt faible">
+    ```text
+    Parle-moi du marketing.
+    ```
+
+    **Problèmes :**
+    - Sujet beaucoup trop large — le modèle ne sait pas par où commencer
+    - Aucun contexte sur votre niveau ou vos besoins
+    - Aucune indication de format ou de longueur attendue
+    - La réponse sera forcément générique et peu actionnable
+
+    **Réponse typique :** Un long texte encyclopédique sur le marketing en général, sans lien avec votre situation réelle.
+  </Tab>
+  <Tab title="Prompt fort">
+    ```text
+    Je lance une boutique en ligne de vêtements éco-responsables ciblant
+    les 25-35 ans en France. Explique-moi en 5 points concrets comment
+    utiliser Instagram pour attirer mes premiers clients, avec un exemple
+    de type de contenu pour chaque point.
+    ```
+
+    **Points forts :**
+    - Contexte précis (type de boutique, cible, pays)
+    - Demande délimitée (Instagram uniquement)
+    - Format explicite (5 points + exemple par point)
+    - Objectif clair (attirer les premiers clients)
+
+    **Réponse typique :** Cinq recommandations concrètes et directement applicables à votre situation spécifique.
+  </Tab>
+</Tabs>
+
+La différence de qualité entre ces deux réponses n'est pas due au modèle — c'est la même IA. Elle est entièrement due à la qualité du prompt.
+
+## La boucle d'amélioration : tester, observer, affiner
+
+Le prompt engineering est un processus itératif. Personne n'obtient le prompt parfait du premier coup, et c'est tout à fait normal. Voici la boucle d'amélioration à adopter :
+
+<Steps>
+  <Step title="Rédigez un premier prompt">
+    Commencez par formuler votre demande de façon naturelle, comme vous l'expliqueriez à un collègue. Ne cherchez pas la perfection — l'objectif est d'avoir une base de départ à analyser.
+
+    ```text
+    Résume cet article pour moi.
+    ```
+  </Step>
+  <Step title="Observez la réponse">
+    Lisez attentivement la réponse obtenue. Posez-vous ces questions : la réponse répond-elle vraiment à mon besoin ? Manque-t-il des informations ? Le format est-il adapté ? Le ton est-il approprié ?
+
+    *Exemple d'observation :* « Le résumé est trop long et trop technique pour mon public cible. »
+  </Step>
+  <Step title="Identifiez les lacunes">
+    Déterminez précisément ce qui manque ou ce qui est inadapté dans la réponse. Est-ce un problème de contexte manquant ? De format non spécifié ? D'ambiguïté dans l'instruction ?
+
+    *Exemple :* « Je n'ai pas précisé la longueur souhaitée ni le niveau de technicité du public. »
+  </Step>
+  <Step title="Affinez votre prompt">
+    Modifiez votre prompt en ajoutant les précisions identifiées à l'étape précédente. Changez **une seule variable à la fois** pour comprendre l'impact de chaque modification.
+
+    ```text
+    Résume cet article en 3 phrases maximum, dans un langage accessible
+    à des lycéens sans connaissances préalables en informatique.
+    ```
+  </Step>
+  <Step title="Répétez jusqu'à satisfaction">
+    Relancez le prompt affiné et observez à nouveau. En général, deux ou trois itérations suffisent pour obtenir une réponse de très bonne qualité. Conservez vos meilleurs prompts dans une bibliothèque personnelle pour les réutiliser.
+  </Step>
+</Steps>
+
+Cette boucle s'applique à tous vos usages de l'IA, qu'il s'agisse de rédaction, d'analyse, de code ou de brainstorming. Au fil du temps, vous développerez une intuition pour construire de bons prompts dès la première tentative.

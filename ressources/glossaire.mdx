@@ -1,0 +1,129 @@
+---
+title: "Glossaire IA : les termes essentiels à connaître"
+sidebarTitle: "Glossaire"
+description: "Retrouvez ici les définitions claires et concises des termes clés utilisés tout au long du cours IA 101, classés par ordre alphabétique."
+---
+
+Ce glossaire rassemble les notions fondamentales de l'intelligence artificielle, du prompt engineering et du context engineering rencontrées dans ce cours. Prenez le temps de le consulter chaque fois qu'un terme vous semble flou : comprendre le vocabulaire est la première étape pour maîtriser les concepts.
+
+<Tip>
+  Utilisez ce glossaire comme référence rapide pendant et après le cours. Si vous débutez, parcourez-le une première fois de haut en bas pour vous familiariser avec le vocabulaire avant d'aborder les modules techniques.
+</Tip>
+
+## A – C
+
+<Accordion title="Agent">
+  Un **agent IA** est un système autonome capable de percevoir son environnement, de planifier des actions et d'exécuter des tâches pour atteindre un objectif donné. Contrairement à un simple modèle de langage, un agent peut appeler des outils externes (recherche web, code, API) et enchaîner plusieurs étapes de raisonnement. Les agents sont au cœur des architectures LLM avancées comme ReAct ou AutoGPT.
+</Accordion>
+
+<Accordion title="Attention (mécanisme d')">
+  Le **mécanisme d'attention** est une technique d'apprentissage automatique qui permet à un modèle de pondérer dynamiquement l'importance de chaque partie d'une séquence d'entrée lors de la génération d'une sortie. Il est au cœur de l'architecture Transformer et permet aux LLM de capturer des dépendances à longue distance dans le texte. La variante la plus utilisée est l'*attention multi-têtes* (*multi-head attention*).
+</Accordion>
+
+<Accordion title="Benchmark">
+  Un **benchmark** est un jeu de données standardisé ou un ensemble de tâches permettant d'évaluer et de comparer les performances des modèles IA de manière objective. Des exemples courants incluent MMLU, HellaSwag ou HumanEval pour les LLM. Les benchmarks permettent de mesurer des capacités spécifiques comme le raisonnement, la compréhension de texte ou la génération de code.
+</Accordion>
+
+<Accordion title="Chain-of-Thought (CoT)">
+  Le **Chain-of-Thought** est une technique de prompting qui consiste à demander au modèle de décomposer son raisonnement en étapes intermédiaires explicites avant de donner une réponse finale. Cette approche améliore significativement les performances sur des tâches complexes comme les problèmes mathématiques ou le raisonnement logique. Elle peut être déclenchée par une simple instruction comme « Réfléchissez étape par étape. »
+</Accordion>
+
+<Accordion title="Context window">
+  La **context window** (ou fenêtre de contexte) désigne la quantité maximale de texte — mesurée en tokens — qu'un modèle peut traiter en une seule fois, incluant à la fois le prompt et la réponse générée. Les modèles modernes disposent de fenêtres allant de 4 000 à plus de 1 million de tokens. Dépasser cette limite entraîne la troncature des informations les plus anciennes, ce qui peut impacter la qualité des réponses.
+</Accordion>
+
+## D – F
+
+<Accordion title="Embedding">
+  Un **embedding** est une représentation vectorielle dense d'un texte (mot, phrase, document) dans un espace mathématique de haute dimension. Des textes sémantiquement proches se retrouvent géographiquement proches dans cet espace vectoriel. Les embeddings sont la brique fondamentale des systèmes de recherche sémantique et des architectures RAG.
+</Accordion>
+
+<Accordion title="Few-shot">
+  L'apprentissage **few-shot** désigne la capacité d'un modèle à s'adapter à une tâche grâce à un très petit nombre d'exemples fournis directement dans le prompt (généralement 2 à 10). Contrairement au fine-tuning, aucun réentraînement n'est nécessaire : le modèle extrait le schéma des exemples et l'applique aux nouvelles entrées. C'est une technique puissante pour guider le format ou le style de la réponse.
+</Accordion>
+
+<Accordion title="Fine-tuning">
+  Le **fine-tuning** est le processus consistant à réentraîner un modèle pré-entraîné sur un jeu de données spécifique afin de l'adapter à une tâche ou un domaine particulier. Il modifie les poids du modèle, contrairement au prompting qui n'intervient qu'au moment de l'inférence. Des techniques comme LoRA ou QLoRA permettent de réaliser un fine-tuning efficace avec des ressources limitées.
+</Accordion>
+
+<Accordion title="Foundation model">
+  Un **foundation model** (modèle de fondation) est un grand modèle entraîné sur des quantités massives de données générales, conçu pour être adapté à une multitude de tâches en aval. GPT-4, Claude, Gemini ou Llama sont des exemples de foundation models. Leur polyvalence les distingue des modèles spécialisés entraînés pour une unique tâche précise.
+</Accordion>
+
+## G – L
+
+<Accordion title="Hallucination">
+  Une **hallucination** désigne le phénomène par lequel un LLM génère des informations factuellement incorrectes, inventées ou non fondées, tout en les présentant avec assurance. Ce problème découle de la nature probabiliste des modèles de langage, qui génèrent du texte plausible sans vérifier la véracité des faits. Réduire les hallucinations est l'un des défis centraux du déploiement responsable des LLM.
+</Accordion>
+
+<Accordion title="In-context learning">
+  L'**in-context learning** (apprentissage en contexte) est la capacité d'un LLM à apprendre une nouvelle tâche uniquement à partir des exemples et instructions fournis dans le prompt, sans modifier ses poids. Il englobe les paradigmes zero-shot, one-shot et few-shot. Cette propriété émergente des grands modèles est l'une des caractéristiques les plus remarquables des LLM modernes.
+</Accordion>
+
+<Accordion title="Inference">
+  L'**inférence** désigne le processus d'utilisation d'un modèle entraîné pour générer des prédictions ou des sorties à partir de nouvelles entrées. En pratique, c'est la phase où vous envoyez un prompt au modèle et recevez une réponse. L'inférence est distincte de l'entraînement : elle mobilise bien moins de ressources de calcul, mais doit rester rapide et efficace pour un usage en production.
+</Accordion>
+
+<Accordion title="Instruction tuning">
+  L'**instruction tuning** est une forme de fine-tuning dans laquelle le modèle est entraîné à suivre des instructions en langage naturel. Il transforme un modèle de complétion brut en un assistant capable de répondre à des requêtes formulées comme des commandes. Les modèles FLAN-T5 et InstructGPT sont des exemples pionniers de cette approche.
+</Accordion>
+
+## K – M
+
+<Accordion title="Knowledge cutoff">
+  Le **knowledge cutoff** (ou date de coupure) est la date limite à partir de laquelle un modèle n'a plus été exposé à de nouvelles données d'entraînement. Toute information publiée après cette date est inconnue du modèle, qui ne peut donc pas y faire référence de manière fiable. Il est important de garder cette limite à l'esprit pour éviter de poser des questions sur des événements récents à un modèle obsolète.
+</Accordion>
+
+<Accordion title="LLM (Large Language Model)">
+  Un **LLM** (grand modèle de langage) est un modèle de réseau de neurones entraîné sur des corpus de texte massifs pour comprendre et générer du langage naturel. Ils sont basés sur l'architecture Transformer et comptent des milliards voire des billions de paramètres. GPT-4, Claude 3, Gemini Ultra et Llama 3 sont parmi les LLM les plus connus.
+</Accordion>
+
+<Accordion title="Modèle de base">
+  Un **modèle de base** est l'équivalent francophone de *foundation model* : un grand modèle pré-entraîné sur des données générales, servant de point de départ pour diverses applications. Il peut être utilisé directement via le prompting ou adapté par fine-tuning pour des usages spécifiques. Ce terme est de plus en plus utilisé dans les discussions institutionnelles et réglementaires francophones.
+</Accordion>
+
+<Accordion title="Multi-modal">
+  Un modèle **multi-modal** est capable de traiter et de générer plusieurs types de données simultanément, comme le texte, les images, l'audio ou la vidéo. GPT-4o, Gemini et Claude 3 sont des exemples de LLM multi-modaux. Cette capacité ouvre des cas d'usage comme l'analyse d'images, la transcription audio ou la génération de contenu visuel à partir de descriptions textuelles.
+</Accordion>
+
+## N – P
+
+<Accordion title="Paramètre">
+  Les **paramètres** d'un modèle sont les valeurs numériques internes (poids et biais) appris pendant la phase d'entraînement et qui définissent son comportement. Un modèle comme GPT-4 en contient des centaines de milliards. Le nombre de paramètres est souvent utilisé comme indicateur approximatif de la capacité d'un modèle, même si ce n'est pas le seul facteur déterminant de ses performances.
+</Accordion>
+
+<Accordion title="Perplexity">
+  La **perplexité** est une métrique statistique mesurant à quel point un modèle de langage prédit bien une séquence de texte donnée : une perplexité faible indique que le modèle trouve le texte probable et cohérent. Elle est couramment utilisée pour évaluer la qualité d'un modèle de langage pendant l'entraînement. À ne pas confondre avec Perplexity.ai, un moteur de recherche basé sur les LLM qui porte ce nom.
+</Accordion>
+
+<Accordion title="Prompt">
+  Un **prompt** est l'entrée textuelle fournie à un modèle de langage pour déclencher une génération de réponse. Il peut s'agir d'une question, d'une instruction, d'un exemple ou d'une combinaison de plusieurs éléments. La qualité du prompt a un impact direct sur la pertinence, la précision et le format de la réponse obtenue — c'est le cœur du *prompt engineering*.
+</Accordion>
+
+## Q – S
+
+<Accordion title="RAG (Retrieval-Augmented Generation)">
+  Le **RAG** (génération augmentée par récupération) est une architecture qui enrichit le prompt d'un LLM avec des informations pertinentes extraites dynamiquement d'une base de connaissances externe. Elle combine un moteur de recherche (souvent vectoriel) et un modèle génératif pour produire des réponses factuellement ancrées. Le RAG permet de contourner les limites du knowledge cutoff et de réduire les hallucinations.
+</Accordion>
+
+<Accordion title="RLHF (Reinforcement Learning from Human Feedback)">
+  Le **RLHF** est une technique d'entraînement qui utilise les préférences humaines pour affiner le comportement d'un modèle. Des annotateurs humains classent des réponses générées, et ces préférences sont utilisées pour entraîner un modèle de récompense qui guide ensuite l'optimisation du LLM par apprentissage par renforcement. Le RLHF est central dans la création d'assistants comme ChatGPT ou Claude.
+</Accordion>
+
+## T – Z
+
+<Accordion title="Température">
+  La **température** est un hyperparamètre contrôlant le degré d'aléatoire dans la génération de texte par un LLM. Une valeur basse (proche de 0) rend les réponses déterministes et conservatrices ; une valeur élevée (proche de 1 ou plus) favorise la créativité et la diversité. Pour des tâches factuelles, une température basse est recommandée ; pour des tâches créatives, une valeur plus élevée est préférable.
+</Accordion>
+
+<Accordion title="Token">
+  Un **token** est l'unité de base du traitement textuel dans les LLM : il peut correspondre à un mot, une partie de mot, un signe de ponctuation ou un espace. En anglais, un token représente environ 0,75 mot en moyenne ; en français, ce ratio peut varier légèrement. Les coûts d'utilisation des API et les limites de context window sont tous deux mesurés en tokens.
+</Accordion>
+
+<Accordion title="Transformer">
+  Le **Transformer** est l'architecture de réseau de neurones introduite en 2017 dans l'article *Attention Is All You Need*, qui a révolutionné le traitement du langage naturel. Il repose sur le mécanisme d'attention multi-têtes et remplace les architectures récurrentes (RNN, LSTM) en permettant un traitement parallèle des séquences. Tous les LLM modernes sont basés sur cette architecture ou l'une de ses variantes.
+</Accordion>
+
+<Accordion title="Zero-shot">
+  L'apprentissage **zero-shot** désigne la capacité d'un LLM à effectuer une tâche sans qu'aucun exemple de démonstration ne lui soit fourni dans le prompt. Le modèle se fie uniquement à la compréhension générale acquise lors de son entraînement. Bien que moins précis que le few-shot pour certaines tâches spécialisées, le zero-shot offre une grande flexibilité et simplicité d'utilisation.
+</Accordion>

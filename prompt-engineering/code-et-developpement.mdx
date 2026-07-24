@@ -1,0 +1,378 @@
+---
+title: "Prompts pour le développement et l'assistance au code"
+sidebarTitle: "Code"
+description: "Générez, expliquez, déboguez et refactorisez du code efficacement grâce à des prompts structurés adaptés à chaque étape du développement logiciel."
+---
+
+L'assistance au code est l'un des cas d'usage les plus transformateurs de l'IA générative pour les développeurs et les équipes techniques. Que vous souhaitiez générer un prototype rapidement, comprendre une base de code héritée, corriger un bug difficile à localiser ou améliorer la qualité de votre code existant, des prompts bien construits peuvent réduire considérablement votre charge de travail. Cette section vous propose des templates opérationnels pour chaque étape du cycle de développement.
+
+<Tip>
+  Fournissez toujours un maximum de contexte technique dans vos prompts de code : le langage de programmation, la version utilisée, le framework ou les bibliothèques en jeu, les contraintes de performance ou d'architecture, et les conventions de votre projet. Un prompt comme "écris une fonction de tri" donnera un résultat générique, là où "écris une fonction de tri en Python 3.11 utilisant uniquement la bibliothèque standard, optimisée pour des listes de moins de 10 000 éléments" produira quelque chose d'immédiatement utilisable.
+</Tip>
+
+## Templates par type de tâche
+
+<Tabs>
+  <Tab title="Générer">
+    ### Générer du code à partir d'une description
+
+    La génération de code est plus efficace lorsque vous décrivez le comportement attendu, les entrées/sorties et les contraintes techniques plutôt que l'implémentation elle-même.
+
+    ```text
+    Génère [une fonction / une classe / un module / un script] en [langage] qui :
+
+    Comportement attendu :
+    - [Description claire de ce que doit faire le code]
+
+    Entrées :
+    - [paramètre1] : [type] — [description]
+    - [paramètre2] : [type] — [description]
+
+    Sorties :
+    - [type de retour] — [description]
+
+    Contraintes techniques :
+    - Version du langage : [ex. Python 3.11 / Node.js 20 / Java 17]
+    - Framework / bibliothèques : [ex. FastAPI / React 18 / Spring Boot]
+    - Ne pas utiliser : [bibliothèques ou patterns à éviter]
+    - Gestion des erreurs : [ex. lever une ValueError / retourner null / logger]
+    - Style de code : [ex. fonctionnel / orienté objet / async/await]
+
+    Fournis également un exemple d'utilisation commenté.
+    ```
+
+    **Exemple Python :**
+
+    ```python
+    # Prompt soumis :
+    # Génère une fonction Python 3.11 qui lit un fichier CSV, filtre les lignes
+    # où la colonne "statut" vaut "actif", et retourne une liste de dictionnaires.
+    # Utilise uniquement csv et pathlib. Gère le cas fichier introuvable.
+
+    from pathlib import Path
+    import csv
+
+    def lire_utilisateurs_actifs(chemin_fichier: str) -> list[dict]:
+        """
+        Lit un fichier CSV et retourne les lignes dont le statut est 'actif'.
+
+        Args:
+            chemin_fichier: Chemin vers le fichier CSV.
+
+        Returns:
+            Liste de dictionnaires représentant les lignes actives.
+
+        Raises:
+            FileNotFoundError: Si le fichier n'existe pas.
+        """
+        fichier = Path(chemin_fichier)
+        if not fichier.exists():
+            raise FileNotFoundError(f"Fichier introuvable : {chemin_fichier}")
+
+        with fichier.open(newline="", encoding="utf-8") as f:
+            lecteur = csv.DictReader(f)
+            return [ligne for ligne in lecteur if ligne.get("statut") == "actif"]
+    ```
+
+    **Exemple JavaScript :**
+
+    ```javascript
+    // Prompt soumis :
+    // Génère une fonction JavaScript (ES2022) qui fetch une API REST,
+    // gère les erreurs HTTP et les timeouts (5s), et retourne les données JSON.
+    // Utilise fetch natif, async/await, AbortController.
+
+    async function fetchAvecTimeout(url, options = {}, timeoutMs = 5000) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), timeoutMs);
+
+      try {
+        const response = await fetch(url, {
+          ...options,
+          signal: controller.signal,
+        });
+
+        if (!response.ok) {
+          throw new Error(`Erreur HTTP ${response.status} : ${response.statusText}`);
+        }
+
+        return await response.json();
+      } catch (error) {
+        if (error.name === "AbortError") {
+          throw new Error(`Timeout dépassé (${timeoutMs}ms) pour : ${url}`);
+        }
+        throw error;
+      } finally {
+        clearTimeout(timeoutId);
+      }
+    }
+    ```
+  </Tab>
+  <Tab title="Déboguer">
+    ### Déboguer et corriger des erreurs
+
+    Pour le débogage, fournissez toujours le code problématique, le message d'erreur complet et le comportement attendu vs observé.
+
+    ```text
+    J'ai un bug dans le code suivant. Aide-moi à l'identifier et à le corriger.
+
+    Langage / environnement : [ex. Python 3.10 / Node.js 18 / Java 11]
+    Framework : [si applicable]
+
+    Comportement observé :
+    [Décrivez précisément ce qui se passe, incluant le message d'erreur complet]
+
+    Comportement attendu :
+    [Décrivez ce qui devrait se passer]
+
+    Message d'erreur (stacktrace complète) :
+    ```
+    [Collez le message d'erreur ici]
+    ```
+
+    Code problématique :
+    ```[langage]
+    [Collez votre code ici]
+    ```
+
+    Données d'entrée utilisées lors du bug :
+    [Exemple d'entrée qui reproduit le problème]
+
+    Explique la cause du bug, puis propose le code corrigé avec commentaires.
+    ```
+
+    **Exemple de prompt de débogage Python :**
+
+    ```text
+    J'ai un bug dans le code suivant. Comportement observé : KeyError au moment
+    du traitement du 3ème élément. Comportement attendu : traitement de tous
+    les éléments sans erreur.
+
+    Message d'erreur :
+    KeyError: 'email'
+      File "traitement.py", line 12, in traiter_utilisateurs
+        emails.append(utilisateur['email'])
+
+    Code :
+    def traiter_utilisateurs(utilisateurs):
+        emails = []
+        for utilisateur in utilisateurs:
+            emails.append(utilisateur['email'])
+        return emails
+
+    Données d'entrée :
+    [{"nom": "Alice", "email": "alice@ex.com"},
+     {"nom": "Bob", "email": "bob@ex.com"},
+     {"nom": "Charlie"}]  # pas de clé 'email'
+    ```
+
+    **Pour analyser une erreur sans code source complet :**
+
+    ```text
+    Voici un message d'erreur que je ne comprends pas. Explique :
+    1. Ce que signifie cette erreur
+    2. Les causes les plus fréquentes
+    3. Les solutions à essayer dans l'ordre
+
+    Contexte : [langage, framework, ce que vous essayiez de faire]
+
+    Erreur : [message d'erreur complet]
+    ```
+  </Tab>
+  <Tab title="Refactorer">
+    ### Refactoriser et améliorer la qualité du code
+
+    La refactorisation avec l'IA est particulièrement utile pour identifier les code smells, appliquer des design patterns et moderniser du code legacy.
+
+    ```text
+    Refactorise le code suivant en améliorant sa qualité selon ces axes :
+
+    Objectifs de refactorisation :
+    ☐ Lisibilité : nommage, structure, commentaires
+    ☐ Performance : optimiser les parties lentes identifiées
+    ☐ Maintenabilité : réduire la duplication, découper les fonctions longues
+    ☐ Robustesse : améliorer la gestion d'erreurs et les cas limites
+    ☐ Modernisation : utiliser les fonctionnalités de [langage vX.X]
+    ☐ Respect des conventions : [PEP 8 / Airbnb style guide / Google style]
+
+    Contraintes :
+    - Ne pas modifier le comportement externe (mêmes entrées → mêmes sorties)
+    - [Autres contraintes spécifiques à votre projet]
+
+    Code original :
+    ```[langage]
+    [Votre code ici]
+    ```
+
+    Fournis : (1) le code refactorisé, (2) la liste des changements effectués
+    et leur justification, (3) les points d'attention éventuels.
+    ```
+
+    **Exemple — Refactorisation Python (avant/après) :**
+
+    ```python
+    # AVANT — code soumis à la refactorisation
+    def f(l):
+        r = []
+        for i in range(len(l)):
+            if l[i] > 0:
+                r.append(l[i] * 2)
+        return r
+
+    # APRÈS — code refactorisé par l'IA
+    def doubler_valeurs_positives(valeurs: list[float]) -> list[float]:
+        """Retourne le double des valeurs strictement positives de la liste."""
+        return [valeur * 2 for valeur in valeurs if valeur > 0]
+    ```
+
+    **Exemple — Refactorisation JavaScript (ES5 → ES2022) :**
+
+    ```javascript
+    // AVANT
+    function getUser(id, callback) {
+      fetch('/api/users/' + id)
+        .then(function(res) { return res.json(); })
+        .then(function(data) { callback(null, data); })
+        .catch(function(err) { callback(err); });
+    }
+
+    // APRÈS
+    async function getUser(id) {
+      const response = await fetch(`/api/users/${id}`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.json();
+    }
+    ```
+  </Tab>
+  <Tab title="Tester">
+    ### Écrire des tests unitaires
+
+    La génération de tests est l'une des tâches où l'IA apporte le plus de valeur, en couvrant automatiquement les cas nominaux, les cas limites et les cas d'erreur.
+
+    ```text
+    Écris des tests unitaires complets pour le code suivant.
+
+    Framework de test : [ex. pytest / unittest / Jest / JUnit / RSpec]
+    Langage et version : [ex. Python 3.11 / JavaScript ES2022]
+
+    Code à tester :
+    ```[langage]
+    [Votre code ici]
+    ```
+
+    Couverture attendue :
+    - Cas nominaux : comportement normal avec entrées valides
+    - Cas limites : valeurs extrêmes, listes vides, chaînes vides, zéro
+    - Cas d'erreur : entrées invalides, exceptions attendues
+    - [Cas spécifiques à votre logique métier]
+
+    Conventions :
+    - Nommage des tests : [ex. test_should_X_when_Y / describe/it]
+    - Utiliser des mocks pour : [ex. appels HTTP / base de données / filesystem]
+    - Structurer avec : [ex. Arrange-Act-Assert / Given-When-Then]
+    ```
+
+    **Exemple — Tests pytest pour Python :**
+
+    ```python
+    # Code testé : lire_utilisateurs_actifs(chemin_fichier)
+    import pytest
+    from pathlib import Path
+    from mon_module import lire_utilisateurs_actifs
+
+    class TestLireUtilisateursActifs:
+
+        def test_retourne_utilisateurs_actifs_uniquement(self, tmp_path):
+            # Arrange
+            csv_file = tmp_path / "users.csv"
+            csv_file.write_text("nom,statut\nAlice,actif\nBob,inactif\nCarol,actif")
+
+            # Act
+            result = lire_utilisateurs_actifs(str(csv_file))
+
+            # Assert
+            assert len(result) == 2
+            assert all(u["statut"] == "actif" for u in result)
+
+        def test_retourne_liste_vide_si_aucun_actif(self, tmp_path):
+            csv_file = tmp_path / "users.csv"
+            csv_file.write_text("nom,statut\nBob,inactif")
+            assert lire_utilisateurs_actifs(str(csv_file)) == []
+
+        def test_leve_erreur_si_fichier_inexistant(self):
+            with pytest.raises(FileNotFoundError):
+                lire_utilisateurs_actifs("/chemin/inexistant.csv")
+    ```
+
+    **Exemple — Tests Jest pour JavaScript :**
+
+    ```javascript
+    // Code testé : fetchAvecTimeout(url, options, timeoutMs)
+    import { fetchAvecTimeout } from './api';
+
+    global.fetch = jest.fn();
+
+    describe('fetchAvecTimeout', () => {
+      afterEach(() => jest.clearAllMocks());
+
+      it('retourne les données JSON pour une réponse 200', async () => {
+        fetch.mockResolvedValue({
+          ok: true,
+          json: async () => ({ id: 1, nom: 'Alice' }),
+        });
+        const data = await fetchAvecTimeout('https://api.example.com/users/1');
+        expect(data).toEqual({ id: 1, nom: 'Alice' });
+      });
+
+      it('lève une erreur pour une réponse 404', async () => {
+        fetch.mockResolvedValue({ ok: false, status: 404, statusText: 'Not Found' });
+        await expect(fetchAvecTimeout('https://api.example.com/users/99'))
+          .rejects.toThrow('Erreur HTTP 404');
+      });
+    });
+    ```
+  </Tab>
+</Tabs>
+
+## Documenter le code
+
+Une bonne documentation est essentielle pour la maintenabilité. L'IA peut générer des docstrings, des commentaires et de la documentation technique en quelques secondes.
+
+```text
+Génère la documentation complète pour le code suivant :
+
+Format souhaité : [Google style / NumPy style / JSDoc / JavaDoc / XML doc]
+Langue de la documentation : [français / anglais]
+Éléments à documenter :
+- Docstring de la fonction/classe avec description générale
+- Description de chaque paramètre (nom, type, description, valeur par défaut)
+- Description de la valeur de retour
+- Exceptions pouvant être levées
+- Exemple d'utilisation
+
+Code :
+[Votre code ici]
+```
+
+**Générer un README pour un projet :**
+
+```text
+Génère un fichier README.md complet pour le projet suivant.
+
+Description du projet : [expliquez ce que fait votre projet en 2-3 phrases]
+Technos utilisées : [langage, frameworks, base de données, etc.]
+Public cible : [développeurs internes / contributeurs open source / utilisateurs finaux]
+
+Sections à inclure :
+- Titre et badge de statut
+- Description courte et fonctionnalités principales
+- Prérequis et installation
+- Configuration (variables d'environnement)
+- Utilisation avec exemples de code
+- Structure du projet
+- Contribution et licence
+```
+
+<Warning>
+  Ne déployez jamais du code généré par l'IA sans l'avoir soigneusement relu, testé et validé. Les modèles de langage peuvent produire du code syntaxiquement correct mais logiquement défaillant, utiliser des API dépréciées, introduire des vulnérabilités de sécurité (injections, exposition de secrets, mauvaise gestion des permissions) ou générer des résultats différents selon les données d'entrée. Traitez toujours le code généré comme un point de départ à valider, pas comme une solution finale prête pour la production.
+</Warning>

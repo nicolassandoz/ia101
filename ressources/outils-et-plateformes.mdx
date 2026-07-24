@@ -1,0 +1,131 @@
+---
+title: "Outils et plateformes IA : guide pratique de sélection"
+sidebarTitle: "Outils"
+description: "Découvrez les principaux outils, APIs, frameworks et plateformes IA pour expérimenter, développer et déployer des applications basées sur les LLM."
+---
+
+L'écosystème des outils d'intelligence artificielle évolue à une vitesse remarquable. Ce guide recense les plateformes et bibliothèques les plus pertinentes pour chaque étape de votre parcours, que vous souhaitiez simplement discuter avec un LLM, intégrer une API dans vos applications ou construire des pipelines RAG complexes.
+
+<Note>
+  La plupart des outils présentés ci-dessous proposent un **niveau gratuit** (*free tier*) suffisant pour expérimenter et apprendre. Vérifiez les conditions d'utilisation de chaque plateforme, car les offres gratuites évoluent régulièrement. Pour un usage intensif ou en production, des abonnements payants sont généralement nécessaires.
+</Note>
+
+## Interfaces conversationnelles
+
+Ces interfaces vous permettent d'interagir directement avec les grands modèles de langage sans écrire une seule ligne de code. Elles sont idéales pour explorer les capacités des LLM, tester des prompts et comprendre les comportements des modèles.
+
+<CardGroup cols={2}>
+  <Card title="ChatGPT" icon="comment-dots" href="https://chat.openai.com">
+    L'interface conversationnelle d'OpenAI, donnant accès aux modèles GPT-4o et GPT-4, avec un niveau gratuit et des abonnements Plus/Team pour les fonctionnalités avancées.
+  </Card>
+  <Card title="Claude" icon="robot" href="https://claude.ai">
+    L'assistant d'Anthropic basé sur les modèles Claude 3 (Haiku, Sonnet, Opus), reconnu pour ses longues fenêtres de contexte et sa sécurité renforcée.
+  </Card>
+  <Card title="Gemini" icon="gem" href="https://gemini.google.com">
+    L'interface conversationnelle de Google donnant accès aux modèles Gemini, avec des capacités multi-modales natives et une intégration à l'écosystème Google.
+  </Card>
+  <Card title="Mistral Le Chat" icon="comments" href="https://chat.mistral.ai">
+    Le chatbot de Mistral AI, startup française proposant des modèles ouverts et fermés compétitifs, particulièrement performants en français.
+  </Card>
+</CardGroup>
+
+## APIs et modèles
+
+Pour intégrer les capacités des LLM directement dans vos applications, scripts ou expérimentations techniques, ces APIs offrent un accès programmatique aux modèles les plus puissants.
+
+<CardGroup cols={2}>
+  <Card title="OpenAI API" icon="code" href="https://platform.openai.com">
+    L'API d'OpenAI donne accès à GPT-4o, GPT-4, GPT-3.5 Turbo, Whisper et DALL·E, avec une documentation complète et une large communauté de développeurs.
+  </Card>
+  <Card title="Anthropic API" icon="code" href="https://www.anthropic.com/api">
+    L'API d'Anthropic expose les modèles Claude 3 avec des capacités de contexte étendu (jusqu'à 200 000 tokens) et un focus sur la sécurité et l'alignement.
+  </Card>
+  <Card title="Google AI Studio" icon="google" href="https://aistudio.google.com">
+    Plateforme de prototypage gratuite de Google permettant d'accéder aux modèles Gemini, de tester des prompts et d'obtenir des clés API pour intégration.
+  </Card>
+  <Card title="Mistral API" icon="code" href="https://console.mistral.ai">
+    L'API de Mistral AI propose des modèles ouverts et optimisés (Mistral 7B, Mixtral, Mistral Large), avec une tarification compétitive et une conformité RGPD.
+  </Card>
+  <Card title="Groq" icon="bolt" href="https://console.groq.com">
+    Groq propose une inférence ultra-rapide de modèles open-source (Llama, Mixtral, Gemma) grâce à ses puces LPU dédiées, idéale pour des prototypes nécessitant de la réactivité.
+  </Card>
+  <Card title="Hugging Face Inference API" icon="face-smile" href="https://huggingface.co/inference-api">
+    La plateforme Hugging Face permet d'accéder à des milliers de modèles open-source via une API unifiée, avec hébergement, fine-tuning et déploiement intégrés.
+  </Card>
+</CardGroup>
+
+## Frameworks de développement IA
+
+Ces bibliothèques et frameworks facilitent la construction d'applications complexes basées sur les LLM, en fournissant des abstractions pour les chaînes de prompts, la mémoire, les outils et les agents.
+
+<CardGroup cols={2}>
+  <Card title="LangChain" icon="link" href="https://www.langchain.com">
+    Le framework le plus populaire pour construire des applications LLM : chaînes de prompts, agents, mémoire, intégration d'outils et connecteurs pour des dizaines de providers.
+  </Card>
+  <Card title="LlamaIndex" icon="database" href="https://www.llamaindex.ai">
+    Spécialisé dans l'ingestion, la structuration et l'interrogation de données pour les LLM, LlamaIndex est la référence pour construire des pipelines RAG robustes.
+  </Card>
+  <Card title="Haystack" icon="magnifying-glass" href="https://haystack.deepset.ai">
+    Framework open-source de deepset pour construire des pipelines NLP et RAG modulaires, avec un fort accent sur la recherche d'information et les applications en production.
+  </Card>
+  <Card title="Semantic Kernel" icon="microsoft" href="https://learn.microsoft.com/en-us/semantic-kernel/overview/">
+    Le SDK de Microsoft pour intégrer les LLM dans des applications .NET, Python ou Java, avec un système de plugins et une orchestration d'agents native.
+  </Card>
+</CardGroup>
+
+## Outils RAG et bases vectorielles
+
+Les bases de données vectorielles stockent les embeddings et permettent des recherches de similarité sémantique à grande échelle, composante indispensable des architectures RAG.
+
+<CardGroup cols={2}>
+  <Card title="Pinecone" icon="database" href="https://www.pinecone.io">
+    Base de données vectorielle cloud managée, reconnue pour sa scalabilité et sa facilité d'intégration, avec un niveau gratuit pour les projets exploratoires.
+  </Card>
+  <Card title="Weaviate" icon="vector-square" href="https://weaviate.io">
+    Base vectorielle open-source avec capacités de recherche hybride (vectorielle + BM25), proposant des versions cloud managée et auto-hébergée.
+  </Card>
+  <Card title="Chroma" icon="palette" href="https://www.trychroma.com">
+    Base vectorielle open-source légère et simple à utiliser, idéale pour le prototypage local de systèmes RAG avec Python sans infrastructure complexe.
+  </Card>
+  <Card title="Qdrant" icon="database" href="https://qdrant.tech">
+    Moteur de recherche vectorielle open-source haute performance écrit en Rust, offrant des filtres avancés, une API REST/gRPC et un déploiement cloud ou on-premise.
+  </Card>
+</CardGroup>
+
+## Plateformes d'évaluation et de testing
+
+Tester, surveiller et évaluer les performances de vos pipelines LLM en production est essentiel. Ces outils vous aident à observer, déboguer et améliorer vos applications.
+
+<CardGroup cols={2}>
+  <Card title="PromptFlow" icon="microsoft" href="https://microsoft.github.io/promptflow/">
+    Suite d'outils open-source de Microsoft pour développer, tester, évaluer et déployer des flux LLM avec traçabilité complète des exécutions.
+  </Card>
+  <Card title="LangSmith" icon="flask" href="https://smith.langchain.com">
+    Plateforme de débogage et d'observabilité de LangChain permettant de tracer, évaluer et monitorer les chaînes et agents LLM en développement comme en production.
+  </Card>
+  <Card title="Helicone" icon="chart-line" href="https://www.helicone.ai">
+    Proxy d'observabilité open-source pour les APIs LLM offrant logging, monitoring des coûts, analyse des performances et gestion du cache en quelques lignes de code.
+  </Card>
+  <Card title="Braintrust" icon="brain" href="https://www.braintrust.dev">
+    Plateforme d'évaluation continue pour les applications LLM, permettant de comparer des prompts, modèles et pipelines sur des jeux de données métier réels.
+  </Card>
+</CardGroup>
+
+## Environnements de développement
+
+Ces environnements facilitent l'expérimentation avec les LLM, que vous préfériez les notebooks interactifs ou les éditeurs de code augmentés par l'IA.
+
+<CardGroup cols={2}>
+  <Card title="Google Colab" icon="google" href="https://colab.research.google.com">
+    Environnement de notebooks Jupyter hébergé dans le cloud par Google, offrant un accès gratuit à des GPU et pré-installant la plupart des bibliothèques Python IA.
+  </Card>
+  <Card title="Jupyter" icon="book" href="https://jupyter.org">
+    L'environnement de notebooks interactifs de référence pour la data science et l'expérimentation IA, disponible localement ou via JupyterHub en entreprise.
+  </Card>
+  <Card title="Cursor" icon="cursor" href="https://www.cursor.com">
+    Éditeur de code basé sur VS Code intégrant nativement des LLM pour la complétion, l'explication et la modification du code, idéal pour développer des applications IA.
+  </Card>
+  <Card title="VS Code + GitHub Copilot" icon="microsoft" href="https://github.com/features/copilot">
+    L'extension GitHub Copilot transforme VS Code en environnement de développement assisté par IA, avec complétion de code, génération de tests et chat contextuel.
+  </Card>
+</CardGroup>

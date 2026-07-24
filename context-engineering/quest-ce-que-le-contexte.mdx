@@ -1,0 +1,66 @@
+---
+title: "Qu'est-ce que le context engineering pour l'IA ?"
+sidebarTitle: "Le Contexte"
+description: "Découvrez ce qu'est le contexte dans les LLM, comment il diffère du prompt engineering et pourquoi il est votre ressource la plus précieuse."
+---
+
+Le **context engineering** est l'art de composer, organiser et optimiser toutes les informations transmises à un modèle de langage afin d'obtenir les réponses les plus pertinentes, cohérentes et utiles possible. Là où le prompt engineering se concentre sur la formulation d'une instruction précise, le context engineering adopte une vision plus large : il s'intéresse à *l'ensemble* de ce que le modèle perçoit à chaque appel — et donc à tout ce qui influence sa réponse.
+
+## Prompt engineering vs context engineering
+
+Ces deux disciplines sont complémentaires mais distinctes. Le prompt engineering vous apprend à formuler une bonne question ; le context engineering vous apprend à préparer le bon *environnement* dans lequel cette question sera posée.
+
+| Dimension | Prompt engineering | Context engineering |
+|---|---|---|
+| **Portée** | Une instruction ou requête | L'ensemble de l'entrée du modèle |
+| **Objectif** | Obtenir une réponse précise | Maintenir cohérence et qualité sur la durée |
+| **Principaux leviers** | Formulation, exemples few-shot | Mémoire, instructions système, données injectées |
+| **Complexité** | Faible à moyenne | Moyenne à élevée |
+
+## Ce qui compose le contexte
+
+Le contexte d'un modèle n'est pas uniquement votre dernière question : c'est un assemblage structuré de plusieurs couches d'information, chacune jouant un rôle précis dans la compréhension du modèle.
+
+<CardGroup cols={2}>
+  <Card title="Instructions système" icon="sliders">
+    Le message système (ou *system prompt*) définit le rôle, le ton, les contraintes et les objectifs permanents du modèle. C'est la fondation de tout contexte bien conçu.
+  </Card>
+  <Card title="Historique des messages" icon="clock-rotate-left">
+    L'ensemble des échanges précédents dans la conversation en cours. Le modèle s'y réfère pour assurer la cohérence et éviter les répétitions.
+  </Card>
+  <Card title="Données injectées" icon="database">
+    Documents, extraits de bases de données, résultats de recherche ou sorties d'outils introduits dynamiquement dans le contexte pour enrichir la réponse.
+  </Card>
+  <Card title="Message utilisateur actuel" icon="message">
+    La requête immédiate de l'utilisateur. Elle prend tout son sens lorsqu'elle s'appuie sur les trois autres couches ci-dessus.
+  </Card>
+</CardGroup>
+
+## Le bureau de travail mental du modèle
+
+Imaginez que la fenêtre de contexte est le **bureau de travail** du modèle. Tout ce qui n'est pas posé sur ce bureau est, pour lui, inexistant. Chaque token que vous placez sur ce bureau occupe de l'espace — et cet espace est limité.
+
+Un bon context engineer choisit soigneusement ce qu'il pose sur ce bureau : les documents vraiment pertinents, les instructions claires, l'historique utile — et laisse de côté tout ce qui encombre sans apporter de valeur.
+
+<Note>
+  Le contexte est une **ressource partagée** entre vous et le modèle. L'espace occupé par vos instructions et vos données est autant d'espace en moins pour la réponse générée. Concevoir un contexte efficace, c'est aussi préserver de la place pour que le modèle s'exprime pleinement.
+</Note>
+
+## Pourquoi le contexte est votre ressource la plus précieuse
+
+La qualité d'une réponse générée par un LLM dépend directement de la qualité du contexte fourni. Un modèle ne peut pas inventer ce qu'il ne sait pas — mais il peut synthétiser, raisonner et adapter ce que vous lui donnez avec une remarquable efficacité.
+
+Voici pourquoi le contexte mérite toute votre attention :
+
+- **Il détermine ce que le modèle "sait"** pour la durée de l'échange
+- **Il conditionne le ton et le style** de la réponse via les instructions système
+- **Il permet la continuité** en maintenant l'historique des décisions et des échanges
+- **Il injecte la connaissance métier** que le modèle ne possède pas par défaut
+
+<Tip>
+  Privilégiez toujours la **qualité à la quantité**. Un contexte de 500 tokens précis et bien structuré surpasse presque systématiquement un contexte de 5 000 tokens mal organisé. Supprimez ce qui est redondant, reformulez ce qui est ambigu, et structurez ce qui est complexe.
+</Tip>
+
+## En résumé
+
+Le context engineering est la discipline qui vous permet de tirer le meilleur parti des LLM en production. En maîtrisant ce qui entre dans la fenêtre de contexte — et en quelle proportion — vous passez de simples expériences en chat à de véritables systèmes d'IA fiables, cohérents et maintenables. Les sections suivantes vous guideront à travers les mécanismes concrets : la fenêtre de contexte, la gestion de la mémoire, et les stratégies d'injection de connaissances.

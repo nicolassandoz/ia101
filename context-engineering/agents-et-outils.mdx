@@ -1,0 +1,140 @@
+---
+title: "Agents IA et outils : l'IA qui agit dans le monde"
+sidebarTitle: "Agents"
+description: "Comprenez comment les agents IA perçoivent, raisonnent et agissent via des outils pour accomplir des tâches complexes en plusieurs étapes de manière autonome."
+---
+
+Jusqu'à présent, nous avons traité les modèles de langage comme des systèmes qui *répondent* : vous posez une question, ils génèrent du texte. Les agents IA franchissent une étape supplémentaire — ils **agissent**. Un agent peut effectuer des recherches sur le web, exécuter du code, interroger une base de données, envoyer des emails ou interagir avec des APIs externes, tout cela de manière autonome et en plusieurs étapes successives. Cette capacité à agir dans le monde réel ouvre des possibilités considérables, mais introduce également des risques nouveaux qui demandent une attention particulière.
+
+## Qu'est-ce qu'un agent IA ?
+
+Un agent IA est un système dans lequel un modèle de langage **orchestre une séquence d'actions** pour accomplir un objectif. Contrairement à une simple inférence, l'agent :
+
+- **Perçoit** son environnement (texte, données, résultats d'outils)
+- **Raisonne** sur l'état actuel et les prochaines étapes à effectuer
+- **Agit** en appelant des outils ou en prenant des décisions
+- **Observe** les résultats et ajuste son plan en conséquence
+
+L'agent dispose d'une **mémoire** (l'historique de ses actions et observations), d'un **ensemble d'outils** (fonctions qu'il peut appeler), et d'un **objectif** défini dans son instruction système.
+
+## La boucle agent : percevoir → raisonner → agir → observer
+
+<Steps>
+  <Step title="Percevoir">
+    L'agent reçoit son entrée initiale : l'objectif défini par l'utilisateur, l'état actuel de l'environnement, les résultats des actions précédentes, et les outils disponibles avec leur description.
+  </Step>
+  <Step title="Raisonner">
+    Le modèle analyse la situation et détermine l'action suivante. Cette étape peut inclure un raisonnement explicite (*chain-of-thought*) : l'agent explique son plan avant d'agir, ce qui améliore la fiabilité.
+  </Step>
+  <Step title="Agir">
+    L'agent sélectionne un outil et formule un appel de fonction structuré (nom de l'outil + paramètres en JSON). Ce n'est pas encore une exécution — c'est une **intention d'action** que le système externe interprète et exécute.
+  </Step>
+  <Step title="Observer">
+    Le résultat de l'exécution de l'outil est renvoyé au modèle sous forme de message. L'agent intègre cette nouvelle information dans son contexte et recommence la boucle jusqu'à ce que l'objectif soit atteint — ou jusqu'à ce qu'il décide de s'arrêter.
+  </Step>
+</Steps>
+
+## Function calling : comment le modèle appelle des fonctions
+
+Le *function calling* (ou *tool use*) est le mécanisme technique qui permet à un modèle de signaler qu'il souhaite appeler une fonction externe. Voici comment cela fonctionne en pratique :
+
+**1. Définition des outils** (envoyée au modèle avec le prompt) :
+
+```json
+{
+  "tools": [
+    {
+      "name": "recherche_web",
+      "description": "Effectue une recherche sur le web et retourne les résultats.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "requete": {
+            "type": "string",
+            "description": "La requête de recherche"
+          },
+          "nb_resultats": {
+            "type": "integer",
+            "description": "Nombre de résultats à retourner (max 10)"
+          }
+        },
+        "required": ["requete"]
+      }
+    }
+  ]
+}
+```
+
+**2. Appel de l'outil par le modèle** :
+
+```json
+{
+  "role": "assistant",
+  "tool_calls": [
+    {
+      "id": "call_abc123",
+      "type": "function",
+      "function": {
+        "name": "recherche_web",
+        "arguments": "{\"requete\": \"taux directeur BCE juin 2025\", \"nb_resultats\": 5}"
+      }
+    }
+  ]
+}
+```
+
+**3. Résultat renvoyé au modèle** :
+
+```json
+{
+  "role": "tool",
+  "tool_call_id": "call_abc123",
+  "content": "La BCE a maintenu son taux directeur à 2,5 % lors de sa réunion du 5 juin 2025..."
+}
+```
+
+## Types d'outils disponibles
+
+<CardGroup cols={2}>
+  <Card title="Recherche et information" icon="magnifying-glass">
+    **Recherche web** (Tavily, Brave Search), **requêtes SQL**, **lecture de fichiers**, **appels d'APIs REST**. Permettent à l'agent d'accéder à des informations en temps réel ou dans des systèmes externes.
+  </Card>
+  <Card title="Exécution de code" icon="code">
+    **Interpréteur Python**, **exécution de scripts**, **calculs complexes**, **manipulation de données**. L'agent peut écrire du code, l'exécuter et analyser les résultats — idéal pour l'analyse de données.
+  </Card>
+  <Card title="Actions système" icon="gear">
+    **Gestion de fichiers** (lire, écrire, créer), **navigation web** (browser automation), **envoi d'emails ou messages**. Permettent à l'agent d'agir directement dans un environnement informatique.
+  </Card>
+  <Card title="Mémoire et contexte" icon="brain">
+    **Bases de données vectorielles** (RAG), **mémoire persistante** entre sessions, **gestion de l'état**. Permettent à l'agent de mémoriser des informations sur le long terme et d'accéder à une base de connaissances.
+  </Card>
+</CardGroup>
+
+## Exemples d'agents en production
+
+**Assistant de recherche** : reçoit une question complexe, décompose en sous-questions, effectue plusieurs recherches web, synthétise les résultats et rédige un rapport structuré avec sources.
+
+**Agent de codage** : lit un repository GitHub, comprend une issue, écrit le code de correction, exécute les tests unitaires, corrige les erreurs détectées et propose une pull request.
+
+**Agent d'automatisation** : reçoit un email client, classifie la demande, consulte le CRM, génère une réponse personnalisée, l'envoie et met à jour le ticket de support.
+
+## Frameworks d'agents
+
+- **LangGraph** (LangChain) : modélise les agents comme des graphes d'état, excellent pour les workflows complexes avec conditions et boucles
+- **AutoGen** (Microsoft) : framework multi-agents où plusieurs agents IA collaborent et se délèguent des tâches
+- **CrewAI** : orchestration d'équipes d'agents spécialisés avec rôles définis, particulièrement lisible et intuitif
+
+## Risques et précautions avec les agents autonomes
+
+<Warning>
+Les agents autonomes peuvent avoir des **effets irréversibles dans le monde réel** : supprimer des fichiers, envoyer des emails, effectuer des achats, modifier des bases de données. Avant de déployer un agent en production, appliquez systématiquement ces précautions :
+
+- **Principe du moindre privilège** : ne donnez à l'agent que les outils strictement nécessaires à sa tâche
+- **Mode lecture seule d'abord** : testez avec des outils en lecture seule avant d'activer les actions destructives
+- **Human-in-the-loop** : pour les actions à fort impact, imposez une validation humaine avant l'exécution
+- **Limite d'itérations** : définissez un nombre maximum de steps pour éviter les boucles infinies
+- **Journalisation complète** : enregistrez chaque action et chaque observation pour l'audit et le débogage
+- **Sandbox d'abord** : testez toujours dans un environnement isolé avant le déploiement en production
+</Warning>
+
+La puissance des agents est proportionnelle à leurs risques. Une architecture d'agent bien conçue commence toujours par définir explicitement ce que l'agent **ne peut pas faire**, avant de définir ce qu'il peut faire.

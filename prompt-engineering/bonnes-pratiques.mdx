@@ -1,0 +1,250 @@
+---
+title: "Bonnes pratiques du prompt engineering en 10 règles"
+sidebarTitle: "Bonnes Pratiques"
+description: "Maîtrisez les 10 règles fondamentales du prompt engineering : de la précision à l'itération, avec des exemples concrets de prompts à éviter et à adopter."
+---
+
+Connaître les composantes d'un prompt, c'est bien. Savoir les assembler de façon efficace dans n'importe quelle situation, c'est mieux. Ces dix règles constituent le guide de référence du prompt engineering pratique : chacune est illustrée par un exemple de ce qu'il ne faut pas faire et de ce qu'il faut faire à la place. Gardez cette page sous la main — vous y reviendrez souvent.
+
+<Warning>
+  Les erreurs les plus fréquentes en prompt engineering ne sont pas techniques : elles sont communicationnelles. Formuler une demande vague, omettre le contexte, ou ne jamais tester de variantes sont les trois pièges dans lesquels tombent la majorité des utilisateurs débutants. Les règles ci-dessous vous en préservent.
+</Warning>
+
+## Les 10 règles fondamentales
+
+<AccordionGroup>
+  <Accordion title="Règle 1 — Soyez spécifique et précis">
+    La vagueur est l'ennemie de la qualité. Plus votre demande est précise, moins le modèle doit « deviner » vos intentions, et plus la réponse sera pertinente. Précisez le sujet, l'angle, la profondeur et l'objectif attendu.
+
+    ```text
+    # ❌ À éviter — trop vague
+    "Écris quelque chose sur le climat."
+    ```
+
+    ```text
+    # ✅ À adopter — précis et ciblé
+    "Rédige une introduction de 150 mots pour un article de blog
+    destiné à des dirigeants de PME, expliquant pourquoi le bilan
+    carbone est devenu un avantage concurrentiel en 2024."
+    ```
+
+    **Pourquoi ça marche :** chaque détail ajouté (audience, longueur, angle, contexte temporel) réduit l'espace d'interprétation du modèle et concentre sa réponse sur votre besoin réel.
+  </Accordion>
+
+  <Accordion title="Règle 2 — Donnez du contexte pertinent">
+    Le modèle ne connaît pas votre situation, votre secteur ni vos contraintes. Chaque information de contexte que vous fournissez est une contrainte utile qui personnalise la réponse. Pensez à préciser : qui vous êtes, pour qui vous rédigez, et quel est l'enjeu.
+
+    ```text
+    # ❌ À éviter — zéro contexte
+    "Comment améliorer la rétention des utilisateurs ?"
+    ```
+
+    ```text
+    # ✅ À adopter — contexte riche et actionnable
+    "Je gère une application mobile de méditation avec 10 000 utilisateurs
+    actifs. Notre taux de rétention à J+30 est de 18 %, bien en dessous
+    de la moyenne du secteur (35 %). Nos utilisateurs sont principalement
+    des femmes de 30 à 45 ans stressées par leur vie professionnelle.
+    Propose 5 stratégies concrètes pour améliorer ce taux."
+    ```
+  </Accordion>
+
+  <Accordion title="Règle 3 — Spécifiez le format de sortie souhaité">
+    Sans instruction de format, le modèle choisit lui-même la structure de sa réponse — et ce choix n'est pas toujours adapté à votre usage. Indiquez explicitement : longueur, structure, ton, et style de présentation.
+
+    ```text
+    # ❌ À éviter — format non spécifié
+    "Donne-moi les avantages du télétravail."
+    ```
+
+    ```text
+    # ✅ À adopter — format explicite
+    "Liste les 5 principaux avantages du télétravail pour les employés.
+    Présente chaque avantage sous cette forme :
+    - **Titre de l'avantage** (5 mots max)
+    - Une phrase d'explication (20 mots max)
+    - Un exemple concret du quotidien
+    Ton : professionnel mais accessible."
+    ```
+  </Accordion>
+
+  <Accordion title="Règle 4 — Décomposez les tâches complexes">
+    Face à une tâche complexe et multi-étapes, le modèle peut se perdre ou bâcler certaines parties. Divisez vos demandes complexes en plusieurs prompts séquentiels, ou guidez explicitement le modèle étape par étape.
+
+    ```text
+    # ❌ À éviter — trop de tâches à la fois
+    "Analyse ce business plan, identifie les risques, propose des
+    solutions, rédige un résumé exécutif et crée un plan d'action
+    sur 90 jours."
+    ```
+
+    ```text
+    # ✅ À adopter — une tâche à la fois (prompt 1/4)
+    "Lis le business plan ci-dessous et identifie uniquement les
+    5 risques les plus critiques. Pour chaque risque, indique :
+    sa nature (financier, opérationnel, marché…) et son niveau
+    de gravité estimé (faible / moyen / élevé).
+
+    Business plan :
+    \"\"\"
+    [votre texte ici]
+    \"\"\""
+    ```
+
+    **Conseil :** enchaînez ensuite les prompts en utilisant les résultats du précédent comme entrée du suivant. C'est plus lent, mais la qualité globale est bien supérieure.
+  </Accordion>
+
+  <Accordion title="Règle 5 — Utilisez des délimiteurs pour structurer">
+    Lorsque votre prompt contient plusieurs blocs distincts (instruction, contexte, données à traiter), utilisez des délimiteurs visuels pour les séparer. Cela évite que le modèle confonde le texte à traiter avec vos instructions.
+
+    ```text
+    # ❌ À éviter — tout mélangé
+    "Résume ce texte en 3 phrases : Le marché du vélo électrique a
+    connu une croissance de 40 % en 2023 en France. Les ventes ont
+    dépassé 1 million d'unités pour la première fois."
+    ```
+
+    ```text
+    # ✅ À adopter — délimiteurs explicites
+    "Résume le texte suivant en exactement 3 phrases.
+
+    ---
+    Le marché du vélo électrique a connu une croissance de 40 % en 2023
+    en France. Les ventes ont dépassé 1 million d'unités pour la
+    première fois, portées par les aides gouvernementales et la hausse
+    du coût des transports en commun.
+    ---"
+    ```
+
+    **Délimiteurs recommandés :** `"""..."""`, `---...---`, `<texte>...</texte>`, `###...###`. Choisissez-en un et soyez cohérent.
+  </Accordion>
+
+  <Accordion title="Règle 6 — Demandez une réflexion avant une réponse">
+    Pour les questions complexes ou les problèmes nécessitant un raisonnement, demandez explicitement au modèle de réfléchir étape par étape avant de donner sa conclusion. Cette technique, appelée *chain-of-thought*, améliore significativement la qualité du raisonnement.
+
+    ```text
+    # ❌ À éviter — réponse directe sans raisonnement
+    "Quelle stratégie de prix devrais-je adopter pour mon SaaS ?"
+    ```
+
+    ```text
+    # ✅ À adopter — raisonnement explicite demandé
+    "Je lance un outil SaaS de facturation pour les freelances.
+    Avant de me donner une recommandation, réfléchis étape par étape :
+    1. Analyse les modèles de prix courants pour ce type d'outil
+    2. Identifie les critères clés qui influencent le choix du modèle
+    3. Évalue chaque option par rapport à mon contexte (lancement,
+       cible freelance, marché francophone)
+    Puis donne ta recommandation finale avec justification."
+    ```
+  </Accordion>
+
+  <Accordion title="Règle 7 — Évitez les formulations négatives">
+    Le cerveau humain ignore instinctivement le « ne pas » — les modèles de langage aussi. Dire « ne sois pas trop technique » est moins efficace que dire « utilise un langage accessible à un débutant ». Reformulez toujours en positif.
+
+    ```text
+    # ❌ À éviter — formulation négative
+    "Ne sois pas trop long, n'utilise pas de jargon technique,
+    et ne fais pas de listes."
+    ```
+
+    ```text
+    # ✅ À adopter — formulation positive et directe
+    "Sois concis (150 mots maximum). Utilise un vocabulaire simple,
+    compréhensible par quelqu'un sans formation technique. Rédige
+    en prose continue, sans listes ni puces."
+    ```
+
+    **Règle simple :** chaque contrainte doit décrire ce que vous voulez obtenir, pas ce que vous voulez éviter.
+  </Accordion>
+
+  <Accordion title="Règle 8 — Donnez des exemples de ce que vous voulez">
+    Un exemple vaut mille mots d'explication. En fournissant un exemple du résultat attendu (technique appelée *few-shot prompting*), vous ancrez le modèle dans votre format, votre style et votre niveau de détail sans avoir à tout décrire.
+
+    ```text
+    # ❌ À éviter — sans exemple de référence
+    "Rédige une bio professionnelle courte pour LinkedIn."
+    ```
+
+    ```text
+    # ✅ À adopter — avec exemple de style
+    "Rédige une bio professionnelle courte pour LinkedIn (3 phrases max).
+
+    Voici le style et le ton que je veux — inspire-toi de cet exemple :
+    \"Ingénieure logiciel passionnée par l'impact à grande échelle.
+    J'aide les équipes produit à construire des architectures robustes
+    qui tiennent la charge. Actuellement chez Scaleway, ouverte aux
+    discussions sur la tech et l'entrepreneuriat.\"
+
+    Voici mes informations :
+    - Poste : Responsable Marketing Digital
+    - Entreprise : agence de communication B2B
+    - Spécialité : stratégie de contenu et SEO
+    - Ouvert(e) à : missions freelance"
+    ```
+  </Accordion>
+
+  <Accordion title="Règle 9 — Itérez et affinez">
+    Le premier prompt est rarement le meilleur. L'itération n'est pas un signe d'échec — c'est le processus normal et attendu. Chaque version vous rapproche du résultat idéal. Notez ce qui fonctionne et construisez une bibliothèque de vos meilleurs prompts.
+
+    ```text
+    # ❌ À éviter — abandonner après le premier essai
+    [Prompt initial → résultat moyen → abandon]
+
+    "La réponse n'est pas bonne, l'IA ne comprend rien."
+    ```
+
+    ```text
+    # ✅ À adopter — itération ciblée et progressive
+    # Itération 1 — prompt de base
+    "Rédige un objet d'e-mail pour une campagne de réengagement."
+
+    # Itération 2 — ajout du contexte après analyse du résultat
+    "Rédige 5 objets d'e-mail pour une campagne de réengagement
+    ciblant des abonnés inactifs depuis 3 mois. Ton : chaleureux,
+    sans agressivité commerciale."
+
+    # Itération 3 — affinage du format après nouveau test
+    "Rédige 5 objets d'e-mail de réengagement (max 50 caractères
+    chacun) pour des abonnés inactifs depuis 3 mois. Pour chaque
+    objet, indique le levier psychologique utilisé (curiosité,
+    nostalgie, urgence…)."
+    ```
+  </Accordion>
+
+  <Accordion title="Règle 10 — Adaptez le ton et le niveau">
+    Un même sujet peut être expliqué à un lycéen, à un expert, ou à un décideur — et ces trois explications seront radicalement différentes. Précisez toujours à qui s'adresse la réponse et quel niveau de technicité est approprié.
+
+    ```text
+    # ❌ À éviter — audience et niveau non précisés
+    "Explique comment fonctionne un réseau de neurones."
+    ```
+
+    ```text
+    # ✅ À adopter — audience et niveau explicites
+    "Explique comment fonctionne un réseau de neurones artificiels
+    à un directeur commercial de 45 ans, sans formation technique,
+    qui doit présenter l'IA à son conseil d'administration la semaine
+    prochaine. Utilise une analogie du monde des affaires, évite tout
+    terme mathématique, et reste en dessous de 200 mots."
+    ```
+
+    **Niveaux utiles à spécifier :** débutant complet / lycéen / étudiant en licence / professionnel du secteur / expert technique / décideur non-technique.
+  </Accordion>
+</AccordionGroup>
+
+## Synthèse : la checklist du prompt efficace
+
+Avant d'envoyer votre prochain prompt, parcourez rapidement cette liste :
+
+| # | Question de vérification | Composante |
+|---|---|---|
+| 1 | Mon instruction est-elle exprimée avec un verbe d'action clair ? | Précision |
+| 2 | Ai-je fourni le contexte nécessaire (qui, pourquoi, pour qui) ? | Contexte |
+| 3 | Ai-je spécifié le format, la longueur et le ton attendus ? | Format |
+| 4 | Ma demande est-elle suffisamment limitée (une tâche principale) ? | Complexité |
+| 5 | Ai-je utilisé des délimiteurs si j'inclus du texte à traiter ? | Structure |
+| 6 | Mes contraintes sont-elles formulées en positif ? | Formulation |
+| 7 | Ai-je donné un exemple si le style est important ? | Référence |
+
+Si vous cochez les sept cases, votre prompt est prêt. Sinon, affinez les points manquants — cela ne prend que quelques secondes et fait toute la différence.

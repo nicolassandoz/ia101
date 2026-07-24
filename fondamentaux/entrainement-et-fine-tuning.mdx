@@ -1,0 +1,99 @@
+---
+title: "Entraînement et fine-tuning des modèles de langage"
+sidebarTitle: "Entraînement"
+description: "Découvrez comment les LLM sont pré-entraînés, affinés par retour humain (RLHF) et adaptés à des tâches spécifiques via le fine-tuning."
+---
+
+Un grand modèle de langage ne naît pas "intelligent" — il le devient au terme d'un processus d'entraînement long, coûteux et minutieusement orchestré. Comprendre les grandes étapes de ce pipeline vous permettra de mieux saisir ce que vous pouvez attendre d'un modèle, comment l'orienter efficacement, et quand le fine-tuning est une option pertinente pour votre cas d'usage.
+
+## Le pipeline d'entraînement d'un LLM
+
+<Steps>
+  <Step title="Collecte et préparation des données">
+    Les développeurs agrègent d'immenses corpus de textes issus d'Internet, de livres numérisés, d'articles scientifiques, de bases de code et d'autres sources. Ce corpus peut représenter des **billions de tokens**. Les données sont ensuite filtrées (suppression de contenus dupliqués, toxiques ou de mauvaise qualité) et tokenisées.
+  </Step>
+  <Step title="Pré-entraînement (*pre-training*)">
+    Le modèle apprend une seule tâche : **prédire le token suivant** dans un texte. Répétée des milliards de fois sur l'ensemble du corpus, cette tâche apparemment simple force le modèle à développer une représentation interne du langage, des faits du monde et des relations logiques. Cette phase est la plus coûteuse — elle peut mobiliser des milliers de GPU pendant des semaines ou des mois.
+  </Step>
+  <Step title="Ajustement supervisé (*Supervised Fine-Tuning, SFT*)">
+    Le modèle de base est ensuite affiné sur un dataset de conversations de haute qualité, rédigées ou validées par des humains. Des paires (instruction → réponse idéale) lui apprennent à **suivre des directives** et à adopter un format conversationnel utile.
+  </Step>
+  <Step title="RLHF — Apprentissage par renforcement avec retour humain">
+    Des annotateurs humains comparent plusieurs réponses générées par le modèle et les classent de la meilleure à la moins bonne. Ces préférences servent à entraîner un **modèle de récompense**, qui évalue automatiquement la qualité d'une réponse. Le LLM est ensuite optimisé pour maximiser ce score de récompense via un algorithme d'apprentissage par renforcement (généralement PPO). C'est cette étape qui rend le modèle utile, inoffensif et honnête.
+  </Step>
+  <Step title="Évaluation, sécurité et déploiement">
+    Le modèle est soumis à des benchmarks standardisés, à des tests de sécurité (*red teaming*) et à des évaluations humaines avant d'être mis à disposition via une API ou une interface utilisateur.
+  </Step>
+</Steps>
+
+## Le RLHF expliqué simplement
+
+Le **Reinforcement Learning from Human Feedback** (RLHF) est l'innovation clé qui a transformé les LLM en assistants réellement utiles. L'idée centrale : au lieu de définir mathématiquement ce qu'est une "bonne réponse" (tâche extrêmement difficile), on demande à des humains de comparer des réponses et d'exprimer leurs préférences.
+
+Imaginez que le modèle génère deux réponses à la question *"Comment apprendre la guitare ?"*. Des annotateurs humains indiquent laquelle est plus utile, plus précise, plus adaptée. Ces signaux humains créent un **modèle de récompense** qui apprend à prédire les préférences humaines — et le LLM apprend ensuite à maximiser cette récompense.
+
+<Warning>
+Le RLHF introduit aussi des biais : le modèle apprend à générer des réponses qui **plaisent** aux annotateurs humains, pas nécessairement des réponses vraies. C'est l'une des raisons pour lesquelles les LLM peuvent parfois sembler très confiants tout en étant factuellement erronés — un phénomène que nous approfondirons dans la leçon sur les hallucinations.
+</Warning>
+
+## Fine-tuning vs in-context learning
+
+Lorsque vous souhaitez adapter un LLM à une tâche spécifique (répondre uniquement dans un certain style, maîtriser le jargon de votre secteur, suivre un format de sortie précis), deux grandes approches s'offrent à vous.
+
+<Tabs>
+  <Tab title="Fine-tuning">
+    Le **fine-tuning** consiste à reprendre les poids d'un modèle pré-entraîné et à continuer son entraînement sur votre propre dataset, spécifique à votre tâche.
+
+    **Avantages :**
+    - Performances optimales sur la tâche ciblée
+    - Pas besoin de répéter les instructions dans chaque prompt
+    - Réduction des coûts à long terme (prompts plus courts)
+    - Possibilité d'apprendre des connaissances propriétaires
+
+    **Inconvénients :**
+    - Nécessite un dataset de qualité (souvent plusieurs centaines à milliers d'exemples)
+    - Coût d'entraînement et de maintenance
+    - Risque de surapprentissage (*overfitting*) si les données sont insuffisantes
+    - Moins flexible : le modèle peut perdre des capacités générales
+
+    **Quand l'utiliser :** format de sortie très contraint, style de communication spécifique, domaine hautement spécialisé (médical, juridique, code propriétaire), volume de requêtes élevé.
+  </Tab>
+  <Tab title="In-context learning">
+    L'**in-context learning** (apprentissage en contexte) consiste à fournir au modèle des instructions, des exemples ou des données directement dans le prompt, sans modifier les poids du modèle.
+
+    **Avantages :**
+    - Aucune infrastructure d'entraînement requise
+    - Flexibilité maximale : changez le comportement en modifiant le prompt
+    - Fonctionne immédiatement, sans données d'entraînement
+    - Idéal pour les prototypes et les cas d'usage variés
+
+    **Inconvénients :**
+    - Coût plus élevé par requête (prompts volumineux)
+    - Limité par la fenêtre de contexte
+    - Performances potentiellement inférieures au fine-tuning pour des tâches très spécialisées
+    - Les instructions doivent être répétées à chaque appel
+
+    **Quand l'utiliser :** prototypage rapide, tâches variées, base d'utilisateurs restreinte, ou lorsque vous n'avez pas encore assez de données pour un fine-tuning.
+  </Tab>
+</Tabs>
+
+## Ce que vous pouvez (et ne pouvez pas) contrôler
+
+En tant qu'utilisateur ou développeur s'appuyant sur un LLM via une API, voici ce que vous pouvez influencer :
+
+**Vous pouvez contrôler :**
+- Le **prompt système** (*system prompt*) : les instructions de base qui définissent le comportement du modèle
+- La **température** : un paramètre qui règle la créativité vs la précision des réponses (0 = déterministe, 1+ = créatif)
+- Le **nombre maximum de tokens** générés en sortie
+- Les **exemples fournis en contexte** (*few-shot learning*)
+- Le **fine-tuning** si vous avez accès à l'API d'entraînement
+
+**Vous ne pouvez pas contrôler :**
+- Les **poids du modèle de base** (sauf si vous entraînez votre propre modèle)
+- Les **données d'entraînement** utilisées par le fournisseur
+- Les **garde-fous de sécurité** intégrés par le fournisseur
+- La **date de coupure des connaissances** (*knowledge cutoff*)
+
+## Ce que vous retenez de cette leçon
+
+L'entraînement d'un LLM passe par le pré-entraînement sur de vastes corpus, le fine-tuning supervisé, puis le RLHF pour aligner le modèle sur les préférences humaines. En tant qu'utilisateur, vous avez le choix entre l'in-context learning — rapide et flexible — et le fine-tuning — plus performant pour les tâches spécialisées. Dans la dernière leçon de ce module, nous aborderons les **limites et les hallucinations** : ce que les LLM font mal, et comment vous en prémunir.
