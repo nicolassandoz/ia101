@@ -3,8 +3,8 @@
   "theme": "sequoia",
   "name": "IA 101",
   "colors": {
-    "primary": "#BCE784",
-    "light": "#7EB2D4",
+    "primary": "#7EB2D4",
+    "light": "#BCE784",
     "dark": "#001E32"
   },
   "favicon": "/favicon.svg",
