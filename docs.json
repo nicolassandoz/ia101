@@ -110,9 +110,5 @@
     "color": {
       "dark": "#001E32"
     }
-  },
-  "logo": {
-    "light": "/images/LogoMinimalistIQ.png",
-    "dark": "/images/LogoMinimalistIQ.png"
   }
 }
