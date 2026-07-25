@@ -34,6 +34,18 @@ L'agent dispose d'une **mémoire** (l'historique de ses actions et observations)
   </Step>
 </Steps>
 
+Cette boucle se répète jusqu'à ce que l'objectif soit atteint :
+
+```mermaid
+flowchart TD
+    P["Percevoir"] --> R["Raisonner"]
+    R --> A["Agir : appel d'outil"]
+    A --> O["Observer le résultat"]
+    O --> G{"Objectif atteint ?"}
+    G -- "Non" --> R
+    G -- "Oui" --> F["Réponse finale"]
+```
+
 ## Function calling : comment le modèle appelle des fonctions
 
 Le *function calling* (ou *tool use*) est le mécanisme technique qui permet à un modèle de signaler qu'il souhaite appeler une fonction externe. Voici comment cela fonctionne en pratique :

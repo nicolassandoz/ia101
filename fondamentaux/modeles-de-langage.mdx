@@ -22,6 +22,20 @@ Ce mécanisme de prédiction est répété token par token (nous verrons ce conc
 Un LLM ne "sait" pas que Paris est la capitale de la France au sens où un humain le sait. Il a appris que, dans des millions de textes, le mot "Paris" suit très fréquemment l'expression "capitale de la France". Cette distinction est cruciale pour comprendre les limites des modèles.
 </Note>
 
+Voici comment se déroule cette prédiction, répétée token après token :
+
+```mermaid
+flowchart LR
+    P["Prompt : 'La capitale de la France est'"] --> M["LLM (Transformer)"]
+    M --> D["Distribution de probabilités"]
+    D --> T1["Paris (92%)"]
+    D --> T2["une (3%)"]
+    D --> T3["située (2%)"]
+    D --> T4["banane (~0%)"]
+    T1 --> R["Token choisi : 'Paris'"]
+    R -. "on recommence" .-> M
+```
+
 ## L'architecture Transformer
 
 La quasi-totalité des LLM modernes repose sur une architecture appelée **Transformer**, introduite par Google en 2017 dans l'article *"Attention Is All You Need"*. Voici ses concepts clés, expliqués simplement :

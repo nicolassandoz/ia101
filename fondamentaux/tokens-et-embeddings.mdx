@@ -47,6 +47,17 @@ for token_id in tokens:
 #   ...
 ```
 
+Du texte brut jusqu'aux vecteurs manipulés par le modèle, le parcours se résume ainsi :
+
+```mermaid
+flowchart LR
+    A["Texte : 'La tokenisation'"] --> B["Tokenizer"]
+    B --> C["Tokens : La / token / isation"]
+    C --> D["Modèle d'embedding"]
+    D --> E["Vecteurs numériques"]
+    E --> F["Espace sémantique"]
+```
+
 ## Pourquoi les tokens sont importants
 
 Les tokens sont l'unité de mesure fondamentale des LLM pour deux raisons majeures :

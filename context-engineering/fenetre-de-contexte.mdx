@@ -42,6 +42,18 @@ Il est important de comprendre que *tout* ce qui transite par l'API consomme des
 - **Les définitions d'outils** (function calling) : chaque outil déclaré occupe de l'espace
 - **La réponse générée** : déduite du budget total disponible
 
+Tous ces éléments se partagent le même budget. Voici une répartition typique de la fenêtre de contexte dans une application RAG :
+
+```mermaid
+pie showData
+    title Répartition typique de la fenêtre de contexte
+    "Documents injectés (RAG)" : 50
+    "Historique" : 20
+    "Réponse générée" : 20
+    "Message système" : 5
+    "Définitions d'outils" : 5
+```
+
 <Warning>
   ## L'effet "Lost in the Middle"
 

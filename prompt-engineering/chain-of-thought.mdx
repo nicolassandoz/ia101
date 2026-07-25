@@ -40,6 +40,20 @@ Concrètement, le CoT aide le modèle à :
 - **Repérer ses propres erreurs** en relisant son raisonnement au fil de la génération.
 - **Justifier ses conclusions**, rendant les erreurs plus faciles à identifier et corriger.
 
+Le schéma ci-dessous oppose la réponse directe au raisonnement en chaîne :
+
+```mermaid
+flowchart TD
+    Q["Question complexe"]
+    Q --> A["Réponse directe immédiate"]
+    A --> AR["Risque d'erreur élevé"]
+    Q --> B["Raisonnons étape par étape"]
+    B --> S1["Étape 1"]
+    S1 --> S2["Étape 2"]
+    S2 --> S3["Étape 3"]
+    S3 --> BR["Réponse fiable"]
+```
+
 ## CoT standard vs Zero-shot CoT
 
 Il existe deux manières principales d'activer le raisonnement en chaîne.

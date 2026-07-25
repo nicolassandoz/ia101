@@ -153,6 +153,23 @@ Intelligence Artificielle (IA)
             └── Diffusion (génération d'images)
 ```
 
+Le même arbre, sous forme de schéma :
+
+```mermaid
+flowchart TD
+    IA["Intelligence Artificielle"] --> SYM["IA symbolique"]
+    IA --> CON["IA connexionniste"]
+    CON --> ML["Machine Learning"]
+    ML --> SUP["Apprentissage supervisé"]
+    ML --> NSUP["Apprentissage non supervisé"]
+    ML --> RL["Apprentissage par renforcement"]
+    ML --> DL["Deep Learning"]
+    DL --> CNN["CNN (vision)"]
+    DL --> TR["Transformer"]
+    DL --> DIFF["Diffusion (images)"]
+    TR --> LLM["LLM (GPT, Claude, Gemini...)"]
+```
+
 **Le deep learning est une sous-famille du machine learning, lui-même une sous-famille de l'IA.** Les LLM sont un type particulier de deep learning basé sur l'architecture Transformer. Quand vous utilisez ChatGPT, vous utilisez donc simultanément de l'IA, du machine learning, du deep learning et un LLM, les quatre niveaux en même temps.
 
 ---

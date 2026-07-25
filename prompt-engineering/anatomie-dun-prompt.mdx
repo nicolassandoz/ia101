@@ -94,6 +94,18 @@ Tout prompt peut être analysé et construit à partir de quatre composantes fon
   </Step>
 </Steps>
 
+Ces quatre composantes s'assemblent pour former un prompt qui guide précisément le modèle :
+
+```mermaid
+flowchart TD
+    I["1. Instruction"] --> P["Prompt structuré"]
+    C["2. Contexte"] --> P
+    E["3. Entrée"] --> P
+    F["4. Format de sortie"] --> P
+    P --> M["LLM"]
+    M --> R["Réponse ciblée"]
+```
+
 ## Prompt complet : les quatre composantes assemblées
 
 Voici un exemple concret qui assemble les quatre composantes en un seul prompt cohérent et efficace :
