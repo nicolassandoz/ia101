@@ -20,6 +20,7 @@
             "group": "Introduction",
             "pages": [
               "introduction",
+              "ressources/le-projet",
               "fondamentaux/quest-ce-que-lia",
               "fondamentaux/histoire-et-evolution",
               "fondamentaux/types-dia"
@@ -116,5 +117,22 @@
     "color": {
       "dark": "#001E32"
     }
+  },
+  "footer": {
+    "socials": {
+      "website": "https://nicolassandoz.fr",
+      "linkedin": "https://www.linkedin.com/in/nicolas-sandoz"
+    },
+    "links": [
+      {
+        "header": "À propos",
+        "items": [
+          {
+            "label": "Conçu avec l'aide de l'IA",
+            "href": "/ressources/le-projet"
+          }
+        ]
+      }
+    ]
   }
 }
