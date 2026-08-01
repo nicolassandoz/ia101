@@ -20,9 +20,9 @@ Le contenu a été généré en une fois et référence déjà des modèles dép
 
 Le site donne du contenu gratuit mais n'a aucun mécanisme pour transformer les lecteurs en audience durable.
 
-- [ ] Renseigner `footer.socials` dans `docs.json` (actuellement vide)
-- [ ] Ajouter une page "À propos" (`images/nicolas-sandoz.png` existe déjà mais n'est utilisée nulle part)
-- [ ] Ajouter un moyen de capter les lecteurs (newsletter, lien LinkedIn/communauté) en fin de parcours (`introduction.mdx` ou `ressources/aller-plus-loin.mdx`)
+- [x] Renseigner `footer.socials` dans `docs.json` → site + LinkedIn ajoutés (2026-08-01)
+- [x] Ajouter une page "À propos" → page `ressources/le-projet.mdx` créée (genèse, mention IA, stack), placée en haut de la sidebar (2026-08-01). NB : `images/nicolas-sandoz.png` reste disponible mais non utilisée sur cette page
+- [x] Ajouter un moyen de capter les lecteurs → lien LinkedIn ajouté au footer et à la page "Le Projet" (2026-08-01). Newsletter non mise en place
 - [ ] Ajouter des CTA de partage/feedback en fin de leçon (Mintlify supporte le feedback de page)
 
 ## 3. Pédagogie
@@ -39,5 +39,5 @@ Le site donne du contenu gratuit mais n'a aucun mécanisme pour transformer les 
 
 ## 5. Process
 
-- [ ] Mettre en place une cadence de révision régulière (mensuelle ou trimestrielle) avec l'agent `pedagogue-ia101` (voir `.claude/agents/pedagogue-ia101.md`)
+- [x] Mettre en place une cadence de révision régulière → veille hebdomadaire automatisée (2026-08-01) : agent `veilleur-ia101` (veille, lecture seule) + routine Claude Code cloud du lundi matin qui orchestre `veilleur-ia101` puis `pedagogue-ia101` et ouvre une PR à revoir. Voir `.claude/agents/veilleur-ia101.md`
 - [ ] Décider d'un rythme de publication de nouvelles leçons pour donner une raison de revenir sur le site
