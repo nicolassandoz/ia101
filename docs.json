@@ -20,6 +20,7 @@
             "group": "Introduction",
             "pages": [
               "introduction",
+              "ressources/le-projet",
               "fondamentaux/quest-ce-que-lia",
               "fondamentaux/histoire-et-evolution",
               "fondamentaux/types-dia"
@@ -92,8 +93,7 @@
             "pages": [
               "ressources/glossaire",
               "ressources/outils-et-plateformes",
-              "ressources/aller-plus-loin",
-              "ressources/le-projet"
+              "ressources/aller-plus-loin"
             ]
           }
         ]
@@ -117,5 +117,21 @@
     "color": {
       "dark": "#001E32"
     }
+  },
+  "footer": {
+    "socials": {
+      "website": "https://nicolassandoz.fr"
+    },
+    "links": [
+      {
+        "header": "À propos",
+        "items": [
+          {
+            "label": "Conçu avec l'aide de l'IA",
+            "href": "/ressources/le-projet"
+          }
+        ]
+      }
+    ]
   }
 }
