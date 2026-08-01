@@ -105,6 +105,24 @@ Le *function calling* (ou *tool use*) est le mécanisme technique qui permet à 
 }
 ```
 
+## MCP : le standard qui connecte les agents à leurs outils
+
+Le function calling que vous venez de voir fonctionne, mais il a une limite pratique : chaque fournisseur de modèle définit son propre format de JSON pour décrire ses outils, et chaque connexion à une source de données externe (fichiers, base de données, dépôt Git, CRM) doit être recodée à la main pour chaque combinaison modèle/outil.
+
+Le **Model Context Protocol** (MCP) répond à ce problème. Lancé par Anthropic en novembre 2024, il s'est imposé en un peu plus d'un an comme le standard de facto pour connecter les modèles de langage à des outils et des sources de données externes : OpenAI, Google DeepMind, Microsoft et AWS l'ont tous adopté dans leurs propres produits. En décembre 2025, Anthropic en a transféré la gouvernance à l'**Agentic AI Foundation**, une fondation neutre hébergée par la Linux Foundation et co-fondée avec Block et OpenAI, pour que le protocole reste ouvert plutôt que contrôlé par une seule entreprise.
+
+Vous pouvez voir le MCP comme un connecteur universel : plutôt que de développer une intégration sur mesure entre chaque modèle et chaque outil, un serveur MCP expose une seule fois ses fonctions, et n'importe quel client compatible (Claude, ChatGPT, un agent que vous construisez vous-même) peut s'y brancher sans code spécifique.
+
+<Tip>
+  Ne confondez pas les deux niveaux. Le **function calling**, vu plus haut, est le mécanisme bas niveau qui permet à un modèle de formuler un appel d'outil structuré au sein d'une conversation. Le **MCP** est la couche de standardisation posée par-dessus : il définit comment un serveur d'outils expose ses fonctions, ses données et ses modèles de requêtes de façon uniforme, pour qu'un modèle n'ait plus besoin d'une intégration différente pour chaque source. Un client MCP utilise le function calling en coulisses pour dialoguer avec les outils qu'il découvre via le protocole.
+</Tip>
+
+Un serveur MCP peut exposer trois types de ressources à un agent :
+
+- des **outils**, des fonctions appelables comme celles vues dans le function calling (rechercher, écrire un fichier, interroger une API)
+- des **ressources**, des données consultables (le contenu d'un fichier, les lignes d'une base de données, une page de documentation)
+- des **prompts prédéfinis**, des modèles de requêtes réutilisables fournis par le serveur pour guider certaines tâches
+
 ## Types d'outils disponibles
 
 <CardGroup cols={2}>

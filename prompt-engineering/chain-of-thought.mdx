@@ -31,7 +31,7 @@ La simple invitation « Raisonnons étape par étape » suffit souvent à décle
 Un LLM génère du texte token par token. Lorsqu'il produit directement une réponse chiffrée ou une conclusion, il n'a pas de « brouillon » : il s'engage sur une trajectoire dès le premier token. Le CoT change cela : en produisant un raisonnement intermédiaire visible, le modèle crée lui-même le contexte qui guide ses prochains tokens vers une conclusion plus juste.
 
 <Note>
-  Le Chain-of-Thought est particulièrement efficace sur les **grands modèles** (GPT-4, Claude 3, Gemini Ultra…). Sur les modèles plus petits, il peut produire des raisonnements plausibles mais incorrects, ce qu'on appelle le « raisonnement confiant mais faux ». Vérifiez toujours les étapes intermédiaires sur les tâches critiques.
+  Le Chain-of-Thought est particulièrement efficace sur les **grands modèles** (GPT-5.6, Claude Sonnet 5, Gemini 3.1 Pro…). Sur les modèles plus petits, il peut produire des raisonnements plausibles mais incorrects, ce qu'on appelle le « raisonnement confiant mais faux ». Vérifiez toujours les étapes intermédiaires sur les tâches critiques.
 </Note>
 
 Concrètement, le CoT aide le modèle à :
@@ -173,3 +173,9 @@ Le CoT n'est pas toujours nécessaire. Voici un guide pratique :
 | Classification simple | ⚠️ Utile si les cas limites sont fréquents |
 
 Le Chain-of-Thought est votre allié dès que la tâche requiert plusieurs étapes de déduction, de calcul ou d'analyse. Pour les tâches simples, la verbosité qu'il génère est souvent contre-productive.
+
+<Note>
+  Tout ce que vous venez de lire décrit le **CoT prompté** : c'est vous qui demandez explicitement au modèle de raisonner étape par étape. Depuis les modèles o1/o3 d'OpenAI (aujourd'hui fondus dans la gamme GPT-5.x, où un niveau d'effort de raisonnement réglable remplace des modèles séparés) et les derniers modèles Claude d'Anthropic, une partie des modèles génère aussi un **raisonnement natif** : ils réfléchissent en interne avant de répondre, sans qu'il soit nécessaire de le demander dans le prompt. Chez Anthropic, ce raisonnement adaptatif est même activé par défaut sur Claude Sonnet 5 et Claude Opus 5.
+
+  Ce raisonnement natif ne rend pas les techniques de cette leçon inutiles : sur les modèles qui ne raisonnent pas nativement, ou quand vous voulez orienter le raisonnement dans une direction précise, le CoT prompté reste pertinent. Gardez aussi en tête que ce raisonnement interne consomme des tokens comme le reste de la réponse : il pèse donc sur le budget de la fenêtre de contexte du modèle.
+</Note>

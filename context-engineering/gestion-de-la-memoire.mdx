@@ -152,7 +152,7 @@ Plusieurs bibliothèques et services ont été conçus spécifiquement pour rés
     Inspiré des systèmes d'exploitation avec gestion de mémoire hiérarchique, MemGPT permet aux LLM de gérer eux-mêmes leur propre contexte, en décidant quoi archiver et quoi garder en mémoire active.
   </Card>
   <Card title="LangChain Memory" icon="link">
-    LangChain propose plusieurs classes de mémoire prêtes à l'emploi : `ConversationBufferMemory`, `ConversationSummaryMemory`, `ConversationKGMemory` (graphe de connaissances) et d'autres encore.
+    Les anciennes classes `ConversationBufferMemory` et `ConversationSummaryMemory` sont dépréciées depuis LangChain v0.3.1 et seront retirées en v1.0.0. LangChain recommande désormais la persistance native de LangGraph (checkpointing par session) pour la mémoire de conversation, et LangMem pour la mémoire sémantique long terme.
   </Card>
   <Card title="Zep" icon="bolt">
     Une infrastructure de mémoire long terme pour les assistants IA, avec enrichissement automatique (résumé, extraction d'entités, horodatage) et API de recherche sémantique sur l'historique.
