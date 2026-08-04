@@ -4,6 +4,10 @@ sidebarTitle: "Fenêtre"
 description: "Comprenez ce qu'est la fenêtre de contexte, comment les tokens sont comptés, et quelles stratégies adopter lorsque vous approchez de la limite."
 ---
 
+<Info>
+  **Prérequis** : Il est recommandé d'avoir lu la leçon sur les [Tokens et Embeddings](/fondamentaux/tokens-et-embeddings) avant d'aborder la fenêtre de contexte.
+</Info>
+
 Chaque modèle de langage possède une capacité maximale d'attention : la **fenêtre de contexte**. Elle représente la quantité totale de texte (vos instructions, l'historique de conversation, les documents injectés et la réponse générée) que le modèle peut traiter en une seule fois. Comprendre cette limite est indispensable pour concevoir des systèmes d'IA robustes qui ne se dégradent pas silencieusement lorsque les échanges s'allongent.
 
 ## Qu'est-ce que la fenêtre de contexte ?
@@ -101,3 +105,10 @@ Identifiez ce qui est indispensable (instructions système, faits clés) versus 
 ## En résumé
 
 La fenêtre de contexte est à la fois votre espace de travail et votre principal goulot d'étranglement. Connaître sa taille, savoir ce qui la consomme et anticiper ses limites vous permet de concevoir des architectures d'IA plus résilientes. Dans la section suivante, nous verrons comment simuler une mémoire persistante pour dépasser cette contrainte structurelle.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : Que se passe-t-il si j'envoie 100 000 tokens à un modèle ayant une fenêtre de 100 000 tokens ?">
+  **Réponse :** Le modèle n'aura plus d'espace pour générer sa réponse (0 token de sortie disponible) et la requête échouera ou sera tronquée. N'oubliez jamais que la fenêtre de contexte inclut à la fois l'entrée (input) ET la sortie (output) !
+</Accordion>
+

@@ -118,6 +118,14 @@
       "dark": "#001E32"
     }
   },
+  "seo": {
+    "index": true,
+    "image": "/images/LogoMinimalistIQ.png"
+  },
+  "feedback": {
+    "suggestedEdits": false,
+    "thumbsRating": true
+  },
   "footer": {
     "socials": {
       "website": "https://nicolassandoz.fr",

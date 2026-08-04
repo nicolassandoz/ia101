@@ -1,34 +1,30 @@
-> **First-time setup**: Customize this file for your project. Prompt the user to customize this file for their project.
-> For Mintlify product knowledge (components, configuration, writing standards),
-> install the Mintlify skill: `npx skills add https://mintlify.com/docs`
+# Instructions du projet : IA 101
 
-# Documentation project instructions
+## À propos du projet
 
-## About this project
+- Ce projet est un site de documentation éducatif (IA 101) construit sur [Mintlify](https://mintlify.com).
+- L'objectif est d'expliquer les fondamentaux de l'IA (LLM, Prompt Engineering, Context Engineering) de manière accessible et pédagogique.
+- Les pages sont écrites en `.mdx` (Markdown enrichi de composants React) avec un frontmatter YAML.
+- La configuration globale est dans `docs.json`.
 
-- This is a documentation site built on [Mintlify](https://mintlify.com)
-- Pages are MDX files with YAML frontmatter
-- Configuration lives in `docs.json`
-- Use the Mintlify MCP server, `https://mcp.mintlify.com`, to edit content and settings via MCP
-- Use the Mintlify docs MCP server, `https://www.mintlify.com/docs/mcp`, to query information about using Mintlify via MCP
+## Rôles des Agents (Veilleur & Pédagogue)
 
-## Terminology
+- Ce projet utilise des agents (voir `.claude/agents/`) pour s'auto-actualiser.
+- Lors de la création ou la modification de contenu, il est impératif de respecter le style existant.
+- Ne modifie pas la structure de navigation (`docs.json` -> navigation) sans la validation explicite de l'utilisateur.
 
-{/* Add product-specific terms and preferred usage */}
-{/* Example: Use "workspace" not "project", "member" not "user" */}
+## Préférences de style et ton
 
-## Style preferences
+- **Ton** : Adopte un ton pédagogique, encourageant et clair.
+- **Voie** : Utilise la voix active et tutoie le lecteur ("tu").
+- **Clarté** : Garde des phrases courtes. Une idée par phrase.
+- **Titres** : Utilise une casse de phrase (majuscule uniquement au début).
+- **Mise en valeur** : Mets en gras les éléments d'interface utilisateur ou les concepts très importants.
+- **Typographie** : Formate le code (noms de fichiers, commandes, chemins, références de code) avec des backticks (`code`).
 
-{/* Add any project-specific style rules below */}
+## Délimitation du contenu
 
-- Use active voice and second person ("you")
-- Keep sentences concise: one idea per sentence
-- Use sentence case for headings
-- Bold for UI elements: Click **Settings**
-- Code formatting for file names, commands, paths, and code references
-- Never use em dashes ("—"). Use a comma, colon, period, or parentheses instead, whichever reads most naturally
-
-## Content boundaries
-
-{/* Define what should and shouldn't be documented */}
-{/* Example: Don't document internal admin features */}
+- Le site s'adresse à des apprenants cherchant à comprendre l'IA de manière pratique. 
+- Évite le jargon trop mathématique sauf s'il est strictement nécessaire (et dans ce cas, explique-le).
+- Conserve un équilibre entre théorie (fonctionnement) et pratique (exercices, prompts à tester).
+- Les modèles cités doivent toujours être les plus récents possibles (ex: GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro).
