@@ -29,10 +29,9 @@ Le site donne du contenu gratuit mais n'a aucun mécanisme pour transformer les 
 
 Quatrième onglet ajouté après Context Engineering : 9 pages dans `ia-responsable/`, réparties en 3 groupes (impact environnemental, impacts humains et sociétaux, passer à l'action). Sources primaires vérifiées à la date du 2026-08-04.
 
-- [ ] Revoir `ia-responsable/cadre-reglementaire.mdx` à chaque évolution du droit — page la plus périssable du site (calendrier AI Act post-Digital Omnibus, seuils CSRD). Cible de veille prioritaire pour `veilleur-ia101`
-- [ ] Vérifier périodiquement les chiffres de `ia-responsable/ordres-de-grandeur.mdx` (mesures Google/Mistral, projections IEA) ; ajouter les nouvelles publications d'ACV constructeur quand elles sortent
-- [ ] Envisager de déplacer le groupe « Ressources » hors de l'onglet Context Engineering (il y est désormais coincé avant un onglet suivant) — nécessite validation utilisateur, cf. `AGENTS.md`
-- [ ] Trancher la question du tutoiement/vouvoiement : `AGENTS.md` prescrit « tu », le contenu réel emploie « vous » partout (y compris la nouvelle partie, alignée sur l'existant)
+- [x] Faire de `ia-responsable/cadre-reglementaire.mdx` et `ia-responsable/ordres-de-grandeur.mdx` des cibles de veille prioritaires → périmètre n°3 ajouté à `veilleur-ia101`, avec exigence de sources primaires sur le réglementaire (2026-08-04)
+- [x] Sortir le groupe « Ressources » de l'onglet Context Engineering → onglet « Ressources » autonome en fin de navigation (2026-08-04). La page de sources du chapitre IA Responsable a été renommée « Sources & références » pour éviter la confusion
+- [x] Trancher tutoiement/vouvoiement → **vouvoiement**, `AGENTS.md` corrigé (il prescrivait « tu » à tort). Le contenu était déjà conforme ; le tutoiement reste admis à l'intérieur des exemples de prompts, où il s'adresse au modèle (2026-08-04)
 
 ## 3. Pédagogie
 

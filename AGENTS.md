@@ -16,7 +16,8 @@
 ## Préférences de style et ton
 
 - **Ton** : Adopte un ton pédagogique, encourageant et clair.
-- **Voie** : Utilise la voix active et tutoie le lecteur ("tu").
+- **Voix** : Utilise la voix active et **vouvoie le lecteur** ("vous", "votre"). C'est la convention de tout le site : ne l'inverse jamais, même partiellement.
+- **Exception** : à l'intérieur d'un exemple de prompt adressé au modèle, le tutoiement reste admis ("Explique-moi comment tu arrives à ce résultat"). Il s'adresse alors à l'IA, pas au lecteur.
 - **Clarté** : Garde des phrases courtes. Une idée par phrase.
 - **Titres** : Utilise une casse de phrase (majuscule uniquement au début).
 - **Mise en valeur** : Mets en gras les éléments d'interface utilisateur ou les concepts très importants.
