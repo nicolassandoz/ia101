@@ -13,8 +13,16 @@ Ce glossaire rassemble les notions fondamentales de l'intelligence artificielle,
 ## A – C
 
 <AccordionGroup>
+  <Accordion title="ACV (Analyse de cycle de vie)">
+    L'**analyse de cycle de vie** est une méthode normalisée d'évaluation des impacts environnementaux d'un produit ou d'un service sur toute son existence : extraction des matières premières, fabrication, usage, fin de vie. Appliquée à l'IA, elle couvre la fabrication du matériel, la construction des centres de données, l'entraînement du modèle et l'inférence. C'est la seule approche qui évite de déplacer un impact d'une étape à une autre sans le voir.
+  </Accordion>
+
   <Accordion title="Agent">
     Un **agent IA** est un système autonome capable de percevoir son environnement, de planifier des actions et d'exécuter des tâches pour atteindre un objectif donné. Contrairement à un simple modèle de langage, un agent peut appeler des outils externes (recherche web, code, API) et enchaîner plusieurs étapes de raisonnement. Les agents sont au cœur des architectures LLM avancées comme ReAct ou AutoGPT.
+  </Accordion>
+
+  <Accordion title="AI Act">
+    L'**AI Act** (règlement (UE) 2024/1689) est le règlement européen sur l'intelligence artificielle, entré en vigueur le 1<sup>er</sup> août 2024 et modifié en juillet 2026 par le *Digital Omnibus on AI*. Il classe les systèmes en quatre niveaux de risque — inacceptable, haut, limité, minimal — et impose des obligations proportionnées. Les règles de transparence et le régime de sanctions s'appliquent depuis le 2 août 2026 ; celles des systèmes à haut risque à partir de décembre 2027.
   </Accordion>
 
   <Accordion title="Attention (mécanisme d')">
@@ -23,6 +31,10 @@ Ce glossaire rassemble les notions fondamentales de l'intelligence artificielle,
 
   <Accordion title="Benchmark">
     Un **benchmark** est un jeu de données standardisé ou un ensemble de tâches permettant d'évaluer et de comparer les performances des modèles IA de manière objective. Des exemples courants incluent MMLU, HellaSwag ou HumanEval pour les LLM. Les benchmarks permettent de mesurer des capacités spécifiques comme le raisonnement, la compréhension de texte ou la génération de code.
+  </Accordion>
+
+  <Accordion title="Biais d'automatisation">
+    Le **biais d'automatisation** est la tendance à accepter sans contrôle la recommandation d'un système automatisé, et à ignorer des informations contradictoires pourtant disponibles. Documenté bien avant l'IA générative dans l'aviation et la médecine, il s'accentue avec la fatigue, la charge de travail et — paradoxalement — avec la fiabilité habituelle du système. C'est le principal risque cognitif de l'usage quotidien des assistants IA.
   </Accordion>
 
   <Accordion title="Chain-of-Thought (CoT)">
@@ -37,6 +49,14 @@ Ce glossaire rassemble les notions fondamentales de l'intelligence artificielle,
 ## D – F
 
 <AccordionGroup>
+  <Accordion title="Dette cognitive">
+    La **dette cognitive** désigne le déficit d'apprentissage et de mémorisation qui accompagne la délégation d'une tâche intellectuelle à un outil : on gagne du temps immédiatement, au prix d'un encodage plus superficiel. Le terme provient d'une étude du MIT Media Lab (2025) sur la rédaction assistée par IA. À manier avec ses limites : échantillon réduit, prépublication, une seule tâche étudiée.
+  </Accordion>
+
+  <Accordion title="Effet rebond">
+    L'**effet rebond** (ou paradoxe de Jevons) décrit le phénomène par lequel les gains d'efficacité d'une technologie sont absorbés, puis dépassés, par l'augmentation des usages qu'ils rendent possible. Appliqué à l'IA : le coût énergétique par requête chute rapidement, mais le nombre de requêtes croît plus vite encore. C'est pourquoi l'efficacité technique seule ne suffit pas à réduire l'impact global.
+  </Accordion>
+
   <Accordion title="Embedding">
     Un **embedding** est une représentation vectorielle dense d'un texte (mot, phrase, document) dans un espace mathématique de haute dimension. Des textes sémantiquement proches se retrouvent géographiquement proches dans cet espace vectoriel. Les embeddings sont la brique fondamentale des systèmes de recherche sémantique et des architectures RAG.
   </Accordion>
@@ -59,6 +79,10 @@ Ce glossaire rassemble les notions fondamentales de l'intelligence artificielle,
 <AccordionGroup>
   <Accordion title="Hallucination">
     Une **hallucination** désigne le phénomène par lequel un LLM génère des informations factuellement incorrectes, inventées ou non fondées, tout en les présentant avec assurance. Ce problème découle de la nature probabiliste des modèles de langage, qui génèrent du texte plausible sans vérifier la véracité des faits. Réduire les hallucinations est l'un des défis centraux du déploiement responsable des LLM.
+  </Accordion>
+
+  <Accordion title="IA frugale">
+    L'**IA frugale** désigne une approche visant à obtenir le résultat attendu avec le minimum de ressources : modèle le plus petit possible, contexte minimalement suffisant, recours justifié à l'IA générative. L'AFNOR SPEC 2314 (2024) en fournit un référentiel français : méthodologie de mesure par analyse de cycle de vie, 31 fiches de bonnes pratiques et règles encadrant les allégations de frugalité.
   </Accordion>
 
   <Accordion title="In-context learning">
@@ -112,6 +136,10 @@ Ce glossaire rassemble les notions fondamentales de l'intelligence artificielle,
   <Accordion title="Prompt">
     Un **prompt** est l'entrée textuelle fournie à un modèle de langage pour déclencher une génération de réponse. Il peut s'agir d'une question, d'une instruction, d'un exemple ou d'une combinaison de plusieurs éléments. La qualité du prompt a un impact direct sur la pertinence, la précision et le format de la réponse obtenue : c'est le cœur du *prompt engineering*.
   </Accordion>
+
+  <Accordion title="PUE / WUE">
+    Le **PUE** (*Power Usage Effectiveness*) mesure l'efficacité énergétique d'un centre de données : le rapport entre l'énergie totale consommée et celle réellement utilisée par les équipements informatiques. Un PUE de 1,1 est excellent, 2,0 médiocre. Le **WUE** (*Water Usage Effectiveness*) mesure la consommation d'eau par unité d'énergie informatique. Les deux s'arbitrent : un refroidissement évaporatif améliore le PUE en dégradant le WUE. Juger un centre de données sur le seul PUE est donc trompeur.
+  </Accordion>
 </AccordionGroup>
 
 ## Q – S
@@ -123,6 +151,10 @@ Ce glossaire rassemble les notions fondamentales de l'intelligence artificielle,
 
   <Accordion title="RLHF (Reinforcement Learning from Human Feedback)">
     Le **RLHF** est une technique d'entraînement qui utilise les préférences humaines pour affiner le comportement d'un modèle. Des annotateurs humains classent des réponses générées, et ces préférences sont utilisées pour entraîner un modèle de récompense qui guide ensuite l'optimisation du LLM par apprentissage par renforcement. Le RLHF est central dans la création d'assistants comme ChatGPT ou Claude.
+  </Accordion>
+
+  <Accordion title="Scope 1, 2, 3">
+    Les **scopes** classent les émissions de gaz à effet de serre d'une organisation : le **scope 1** couvre les émissions directes, le **scope 2** l'électricité achetée, et le **scope 3** l'ensemble de la chaîne de valeur — achats, matériel, services cloud, déplacements. L'usage de l'IA relève principalement du scope 2 (électricité si vous hébergez) et du scope 3 (services d'IA achetés, matériel). C'est là qu'il s'intègre au bilan carbone, plutôt que dans une démarche séparée.
   </Accordion>
 </AccordionGroup>
 

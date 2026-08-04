@@ -25,6 +25,15 @@ Le site donne du contenu gratuit mais n'a aucun mécanisme pour transformer les 
 - [x] Ajouter un moyen de capter les lecteurs → lien LinkedIn ajouté au footer et à la page "Le Projet" (2026-08-01). Newsletter non mise en place
 - [ ] Ajouter des CTA de partage/feedback en fin de leçon (Mintlify supporte le feedback de page)
 
+## 2 bis. Nouvelle partie « IA Responsable » (2026-08-04)
+
+Quatrième onglet ajouté après Context Engineering : 9 pages dans `ia-responsable/`, réparties en 3 groupes (impact environnemental, impacts humains et sociétaux, passer à l'action). Sources primaires vérifiées à la date du 2026-08-04.
+
+- [ ] Revoir `ia-responsable/cadre-reglementaire.mdx` à chaque évolution du droit — page la plus périssable du site (calendrier AI Act post-Digital Omnibus, seuils CSRD). Cible de veille prioritaire pour `veilleur-ia101`
+- [ ] Vérifier périodiquement les chiffres de `ia-responsable/ordres-de-grandeur.mdx` (mesures Google/Mistral, projections IEA) ; ajouter les nouvelles publications d'ACV constructeur quand elles sortent
+- [ ] Envisager de déplacer le groupe « Ressources » hors de l'onglet Context Engineering (il y est désormais coincé avant un onglet suivant) — nécessite validation utilisateur, cf. `AGENTS.md`
+- [ ] Trancher la question du tutoiement/vouvoiement : `AGENTS.md` prescrit « tu », le contenu réel emploie « vous » partout (y compris la nouvelle partie, alignée sur l'existant)
+
 ## 3. Pédagogie
 
 - [ ] Ajouter un quiz ou 2-3 questions de vérification en fin de chapitre pour ancrer l'apprentissage

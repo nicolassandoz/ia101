@@ -1,0 +1,109 @@
+---
+title: "L'empreinte environnementale de l'IA : d'où vient réellement l'impact ?"
+sidebarTitle: "Empreinte environnementale"
+description: "Comprenez les postes d'impact d'un système d'IA : électricité, eau, matériaux, entraînement et inférence, sur l'ensemble du cycle de vie."
+---
+
+Utiliser un modèle de langage donne l'impression d'une opération immatérielle : vous tapez une question, une réponse apparaît. Derrière cette apparente légèreté se cache une chaîne physique bien réelle : des mines, des usines de semi-conducteurs, des bâtiments, des serveurs, de l'électricité et de l'eau. Comprendre où se situe l'impact est la condition pour agir dessus intelligemment, plutôt que de culpabiliser au hasard ou de balayer le sujet d'un revers de main.
+
+<Note>
+Ce chapitre adopte une posture simple : ni technosolutionnisme, ni catastrophisme. L'IA a un coût environnemental mesurable, souvent surestimé sur certains postes et largement sous-estimé sur d'autres. L'objectif n'est pas de vous dissuader d'utiliser l'IA, mais de vous donner les moyens de décider en connaissance de cause.
+</Note>
+
+## Les quatre postes d'impact
+
+<CardGroup cols={2}>
+  <Card title="Électricité" icon="bolt">
+    L'énergie consommée par les puces (GPU, TPU), les serveurs, le réseau et le refroidissement du centre de données. C'est le poste le plus visible et le plus documenté.
+  </Card>
+  <Card title="Eau" icon="droplet">
+    L'eau utilisée pour refroidir les centres de données, à laquelle s'ajoute l'eau consommée en amont pour produire l'électricité. Un enjeu majeur dans les régions en stress hydrique.
+  </Card>
+  <Card title="Matériaux et minerais" icon="gem">
+    L'extraction et le raffinage des métaux nécessaires aux puces et aux serveurs : cuivre, or, terres rares, antimoine. Impact concentré sur la fabrication, invisible à l'usage.
+  </Card>
+  <Card title="Bâtiments et infrastructures" icon="building">
+    La construction des centres de données eux-mêmes : béton, artificialisation des sols, raccordement au réseau électrique, groupes électrogènes de secours.
+  </Card>
+</CardGroup>
+
+## Entraînement ou inférence : où se joue l'essentiel ?
+
+Pendant longtemps, le débat s'est focalisé sur l'**entraînement** des modèles, avec des chiffres spectaculaires sur le coût carbone d'un GPT ou d'un Llama. C'était une vision incomplète.
+
+L'entraînement est un coût **ponctuel et amorti** : il se produit une fois, puis se répartit sur des milliards de requêtes. L'**inférence** — chaque fois que vous envoyez un prompt — est un coût **récurrent** qui, à l'échelle du déploiement mondial, finit par dominer.
+
+<Tip>
+Une règle utile : plus un modèle est populaire et durablement utilisé, plus la part de l'inférence dans son empreinte totale devient importante. Pour un modèle grand public, l'entraînement peut se diluer jusqu'à devenir minoritaire face au cumul des usages quotidiens.
+</Tip>
+
+L'analyse de cycle de vie publiée par Mistral AI en juillet 2025 sur son modèle Large 2, réalisée avec l'ADEME et le cabinet Carbone 4, donne un ordre d'idée rare car rarement rendu public : sur 18 mois d'existence du modèle, les phases d'**entraînement et d'inférence réunies** représentaient environ **85 % des émissions de gaz à effet de serre** et **91 % de la consommation d'eau**. Le reste — fabrication du matériel, construction des centres de données, réseau — constitue le socle incompressible.
+
+## Pourquoi l'eau ?
+
+C'est le poste le moins intuitif. Un centre de données produit énormément de chaleur ; il faut l'évacuer. Deux grandes familles de solutions coexistent :
+
+| Mode de refroidissement | Eau consommée | Électricité consommée |
+|---|---|---|
+| Refroidissement par air (*free cooling*, climatisation) | Faible | Élevée |
+| Refroidissement évaporatif (tours de refroidissement) | Élevée | Plus faible |
+| Refroidissement liquide en circuit fermé | Faible à l'usage | Modérée |
+
+Il existe donc un **arbitrage direct entre eau et électricité**. Un exploitant qui réduit sa facture énergétique en passant à l'évaporatif augmente mécaniquement sa consommation d'eau. C'est pourquoi juger un centre de données sur son seul PUE (*Power Usage Effectiveness*, l'efficacité énergétique) est trompeur : il faut regarder aussi le **WUE** (*Water Usage Effectiveness*).
+
+<Warning>
+La consommation d'eau ne se mesure pas seulement sur site. L'électricité elle-même a un coût en eau : refroidissement des centrales thermiques et nucléaires, évaporation des barrages hydroélectriques. Un centre de données « sans eau » alimenté par une centrale à gaz déplace le problème plutôt qu'il ne le résout.
+</Warning>
+
+## L'échelle globale : ce que disent les données du secteur
+
+Le rapport spécial *Energy and AI* de l'Agence internationale de l'énergie (avril 2025) fournit le cadrage macro le plus solide disponible aujourd'hui :
+
+<CardGroup cols={2}>
+  <Card title="415 TWh en 2024" icon="chart-column">
+    Consommation électrique mondiale des centres de données, soit environ **1,5 %** de l'électricité mondiale. À comparer aux ~2 % du transport aérien pour les émissions de CO₂.
+  </Card>
+  <Card title="~945 TWh projetés en 2030" icon="arrow-trend-up">
+    Un doublement en six ans dans le scénario central, soit un peu moins de **3 %** de l'électricité mondiale — l'équivalent de la consommation actuelle du Japon.
+  </Card>
+</CardGroup>
+
+Deux lectures cohabitent, et les deux sont justes :
+
+- **Relativiser** : 1,5 % de l'électricité mondiale reste modeste face au chauffage des bâtiments, à l'industrie lourde ou aux transports. L'IA n'est pas le principal poste climatique de nos sociétés.
+- **S'inquiéter de la dynamique** : la croissance est d'environ 15 % par an, soit plus de quatre fois le rythme de croissance de la demande électrique des autres secteurs. Ce sont des centrales, des lignes haute tension et des raccordements réels qu'il faut construire, souvent plus vite que le mix électrique ne se décarbone.
+
+<Note>
+L'impact local compte autant que le global. Un centre de données concentre une demande considérable sur un point du réseau. Dans certaines régions, il entre en concurrence directe avec les besoins des habitants pour l'électricité, l'eau ou le foncier. Une moyenne mondiale rassurante peut masquer une tension locale aiguë.
+</Note>
+
+## L'effet rebond : le piège classique
+
+Chaque génération de modèles est plus efficace que la précédente. Google a par exemple mesuré une division par 33 de l'énergie consommée par requête médiane sur son assistant Gemini en douze mois. Excellente nouvelle — sauf que les gains d'efficacité s'accompagnent presque toujours d'une explosion des usages.
+
+<Steps>
+  <Step title="L'efficacité progresse">
+    Optimisations logicielles, puces plus performantes, modèles distillés : le coût unitaire d'une requête chute rapidement.
+  </Step>
+  <Step title="Le prix baisse">
+    Ce qui coûtait cher devient abordable. Les fournisseurs répercutent la baisse sur leurs tarifs d'API.
+  </Step>
+  <Step title="Les usages se multiplient">
+    L'IA s'intègre partout : moteurs de recherche, suites bureautiques, messageries, applications métier. Le nombre de requêtes explose.
+  </Step>
+  <Step title="L'impact total augmente malgré tout">
+    Le gain unitaire est absorbé, puis dépassé, par le volume. C'est l'**effet rebond**, ou paradoxe de Jevons.
+  </Step>
+</Steps>
+
+C'est la raison pour laquelle l'efficacité technique ne suffira pas seule. La question « comment rendre chaque requête moins coûteuse ? » doit être doublée d'une question de sobriété : « cette requête est-elle utile ? ».
+
+## Ce qu'il faut retenir
+
+- L'impact d'un système d'IA se répartit sur **quatre postes** : électricité, eau, matériaux, infrastructures. Aucun ne s'annule.
+- L'**inférence finit par dominer l'entraînement** pour tout modèle largement utilisé : votre usage quotidien compte.
+- Eau et électricité s'**arbitrent** l'une contre l'autre selon le mode de refroidissement.
+- À l'échelle mondiale, l'IA reste un poste **modeste mais à croissance très rapide**, avec des tensions locales fortes.
+- Les gains d'efficacité sont réels, mais l'**effet rebond** peut les annuler entièrement.
+
+Dans la page suivante, nous passons des principes aux chiffres : que consomme concrètement une requête, et pourquoi les estimations publiées varient-elles d'un facteur 100 ?

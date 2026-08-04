@@ -1,0 +1,162 @@
+---
+title: "Sobriété et écoconception : réduire l'impact de vos usages IA"
+sidebarTitle: "Sobriété & écoconception"
+description: "Choisir le bon modèle, éviter les régénérations inutiles, exploiter le cache : les leviers concrets qui réduisent l'empreinte et la facture en même temps."
+---
+
+Bonne nouvelle : la quasi-totalité des leviers de sobriété environnementale sont exactement les mêmes que ceux de la performance et du coût. Un prompt bien construit, un modèle correctement dimensionné, un cache bien utilisé réduisent simultanément votre facture, votre latence et votre empreinte. Cette page est donc autant un chapitre RSE qu'un chapitre d'ingénierie — et c'est précisément ce qui rend la démarche tenable dans la durée.
+
+<Note>
+Vous retrouverez ici des techniques déjà vues dans [Optimiser le contexte](/context-engineering/optimisation-du-contexte). C'est volontaire : ce chapitre les relit sous l'angle de l'impact plutôt que sous celui du coût. Les mêmes gestes, une autre motivation.
+</Note>
+
+## La question préalable : faut-il de l'IA ici ?
+
+Le premier levier de sobriété n'est pas technique. C'est une question de conception : **le recours à un modèle génératif est-il le bon outil pour ce problème ?**
+
+<AccordionGroup>
+  <Accordion title="Une expression régulière suffirait-elle ?">
+    Extraire des dates, valider un format d'email, détecter un numéro de téléphone : un LLM y arrive, mais une regex le fait pour un coût énergétique nul et un résultat déterministe. Utiliser un modèle de 100 milliards de paramètres pour un `if` est le gaspillage le plus courant en production.
+  </Accordion>
+
+  <Accordion title="Un modèle classique ferait-il l'affaire ?">
+    Classification de tickets, détection de spam, prédiction de valeurs numériques : un modèle de machine learning classique, entraîné une fois sur vos données, consomme des ordres de grandeur de moins qu'un appel à un grand modèle génératif — et il est souvent plus précis sur son domaine étroit.
+  </Accordion>
+
+  <Accordion title="Le résultat sera-t-il réellement utilisé ?">
+    Beaucoup d'automatisations produisent des synthèses que personne ne lit, des rapports générés « au cas où », des résumés quotidiens ignorés. Générer un contenu que personne ne consulte est un impact pur, sans contrepartie. Mesurez le taux d'ouverture avant de généraliser.
+  </Accordion>
+
+  <Accordion title="La fréquence est-elle justifiée ?">
+    Un traitement déclenché à chaque événement peut souvent devenir un traitement horaire ou quotidien groupé, sans perte d'usage. Passer d'un déclenchement continu à un traitement par lots divise fréquemment la consommation par dix.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+Formulez la question à l'envers : plutôt que « où pourrait-on mettre de l'IA ? », demandez « quel problème réel avons-nous, et quel est l'outil le plus simple qui le résout ? ». C'est la meilleure protection contre les projets à impact certain et bénéfice hypothétique.
+</Tip>
+
+## Dimensionner le modèle à la tâche
+
+C'est le levier le plus puissant et le plus sous-exploité. L'écart de consommation entre un petit modèle et un grand modèle de raisonnement se compte en dizaines, parfois en centaines.
+
+| Type de tâche | Modèle adapté | Réflexe à éviter |
+|---|---|---|
+| Reformulation, correction, traduction | Petit modèle rapide | Passer par un modèle de raisonnement |
+| Classification, extraction structurée | Petit modèle + few-shot | Un grand modèle « pour être sûr » |
+| Résumé de document | Modèle intermédiaire | Un modèle de raisonnement avec réflexion étendue |
+| Raisonnement complexe, code difficile, analyse multi-étapes | Grand modèle ou modèle de raisonnement | Sur-dimensionner *aussi* le reste du pipeline |
+
+<Warning>
+Le mode de **raisonnement étendu** (*extended thinking*, *reasoning*) mérite une vigilance particulière. Il génère des centaines, parfois des milliers de tokens de réflexion interne avant de répondre. C'est un gain de qualité réel sur les problèmes difficiles, et un gaspillage franc sur une reformulation de paragraphe. Activez-le par exception, pas par défaut.
+</Warning>
+
+Une architecture en cascade donne d'excellents résultats : un petit modèle traite les cas simples, et n'escalade vers un grand modèle que lorsqu'il détecte une difficulté ou une faible confiance.
+
+```python
+# Routage : le petit modèle traite, le grand n'intervient qu'en secours
+def traiter(requete):
+    reponse = petit_modele.completer(requete)
+
+    if reponse.confiance >= SEUIL:
+        return reponse  # ~90 % des cas en pratique
+
+    # Escalade uniquement sur les cas difficiles
+    return grand_modele.completer(requete)
+```
+
+## Les leviers techniques
+
+<Steps>
+  <Step title="Activer le prompt caching">
+    Les préfixes stables (instructions système, documentation de référence, exemples) peuvent être mis en cache par les principaux fournisseurs. Le gain atteint 90 % sur les tokens concernés, en coût comme en calcul. Placez le stable en tête, le variable en fin de prompt.
+  </Step>
+  <Step title="Éviter les régénérations en cascade">
+    Chaque « refais-le mais autrement » relance un calcul complet. Un prompt précis dès le premier essai — contexte, format attendu, contraintes — coûte moins cher que trois itérations approximatives. Un prompt qui échoue trois fois consomme quatre fois plus qu'un prompt bien posé.
+  </Step>
+  <Step title="Limiter la longueur de sortie">
+    La génération est séquentielle : chaque token de réponse a un coût. Demander explicitement « en 5 puces maximum » ou fixer `max_tokens` évite les réponses fleuves que personne ne lit intégralement.
+  </Step>
+  <Step title="Préférer le RAG au fine-tuning">
+    Adapter un modèle à vos données par fine-tuning implique un entraînement, donc un coût fixe important à réamortir. Le RAG obtient souvent un résultat équivalent ou meilleur, sans réentraînement, et reste à jour sans repasser par la case calcul.
+  </Step>
+  <Step title="Traiter par lots quand c'est possible">
+    Les API proposent des modes *batch* asynchrones, moins chers et exécutés lorsque les infrastructures sont moins sollicitées. Pour tout traitement non interactif — analyses nocturnes, enrichissement de base — c'est le mode par défaut à adopter.
+  </Step>
+  <Step title="Mettre en cache les réponses elles-mêmes">
+    Beaucoup d'applications reposent votre question à chaque affichage. Un cache applicatif sur les requêtes fréquentes et stables supprime purement et simplement l'appel.
+  </Step>
+</Steps>
+
+## Le choix du fournisseur et de la région
+
+À usage identique, l'empreinte carbone peut varier d'un facteur 10 selon le lieu d'exécution. Quelques critères pour arbitrer :
+
+<CardGroup cols={2}>
+  <Card title="Localisation des serveurs" icon="location-dot">
+    Une région à électricité décarbonée (France, Suède, Norvège, Québec) réduit drastiquement l'empreinte carbone. C'est souvent un paramètre de configuration, parfois un choix d'offre.
+  </Card>
+  <Card title="Transparence du fournisseur" icon="eye">
+    Publie-t-il ses consommations, sa méthodologie, son PUE et son WUE ? Un fournisseur qui ne publie rien ne peut pas être audité — et ce silence est en soi une information.
+  </Card>
+  <Card title="Stress hydrique local" icon="droplet">
+    Un centre de données dans une région en tension hydrique pose un problème que le carbone ne capture pas. Cette information est rarement mise en avant : il faut la demander.
+  </Card>
+  <Card title="Modèles ouverts et petits" icon="box-open">
+    Les modèles ouverts de petite taille peuvent tourner sur des infrastructures modestes, voire localement. Utiles pour la souveraineté comme pour la sobriété, à condition de ne pas sous-utiliser du matériel dédié.
+  </Card>
+</CardGroup>
+
+<Note>
+Attention à un contresens fréquent : faire tourner un modèle **en local** n'est pas automatiquement plus sobre. Un GPU personnel sollicité quelques minutes par jour amortit très mal sa fabrication, alors qu'un serveur mutualisé tourne à taux d'utilisation élevé. Le local se justifie par la confidentialité et la souveraineté, plus rarement par l'écologie seule.
+</Note>
+
+## Le référentiel de l'IA frugale
+
+Pour ceux qui veulent structurer la démarche, l'AFNOR a publié en 2024 l'**AFNOR SPEC 2314**, *Référentiel général pour l'IA frugale*. C'est à ce jour le document normatif le plus opérationnel en français sur le sujet.
+
+Il apporte deux choses :
+
+- Une **méthodologie de mesure** fondée sur l'analyse de cycle de vie, applicable à un système d'IA de bout en bout ;
+- **31 fiches de bonnes pratiques** couvrant la conception, l'entraînement, le déploiement et l'usage, ainsi que des règles pour communiquer honnêtement sur le caractère frugal d'un service.
+
+<Tip>
+Ce dernier point est précieux : le référentiel encadre explicitement les **allégations** de frugalité, ce qui en fait un garde-fou utile contre l'écoblanchiment appliqué à l'IA. Si un prestataire vous vend une « IA verte », demandez sur quel référentiel il s'appuie et quelles mesures il produit.
+</Tip>
+
+## Une checklist d'écoconception
+
+<Steps>
+  <Step title="Justifier l'usage">
+    Le recours à l'IA générative est-il nécessaire, ou un outil plus simple suffirait-il ? Le résultat produit est-il réellement consulté et utilisé ?
+  </Step>
+  <Step title="Dimensionner le modèle">
+    Le modèle le plus petit qui atteint la qualité cible est le bon modèle. Testez systématiquement le cran en dessous avant de valider.
+  </Step>
+  <Step title="Optimiser le contexte">
+    Supprimez le bruit, activez le prompt caching, préférez une sélection dynamique à un contexte statique universel.
+  </Step>
+  <Step title="Maîtriser les sorties">
+    Fixez des longueurs cibles, désactivez le raisonnement étendu par défaut, évitez les régénérations en travaillant le prompt initial.
+  </Step>
+  <Step title="Choisir l'hébergement">
+    Privilégiez une région à électricité décarbonée et un fournisseur qui publie ses indicateurs.
+  </Step>
+  <Step title="Mesurer et suivre">
+    Instrumentez avec EcoLogits ou CodeCarbon. Un indicateur suivi dans le temps vaut mieux qu'une estimation ponctuelle parfaite.
+  </Step>
+  <Step title="Surveiller l'effet rebond">
+    Suivez le volume total, pas seulement le coût unitaire. Une efficacité en hausse et un impact global en hausse peuvent parfaitement coexister.
+  </Step>
+</Steps>
+
+## Ce qu'il faut retenir
+
+- Sobriété et performance vont dans le **même sens** : c'est ce qui rend la démarche durable.
+- Le premier levier est de **ne pas utiliser l'IA** là où un outil plus simple suffit.
+- **Dimensionner le modèle à la tâche** est le gain le plus important et le plus facile à obtenir.
+- La **région d'hébergement** peut faire varier l'empreinte carbone d'un facteur 10.
+- L'**AFNOR SPEC 2314** fournit un cadre méthodologique et 31 bonnes pratiques en français.
+- Suivez le **volume total**, pas seulement l'efficacité unitaire.
+
+L'impact de l'IA ne s'arrête pas aux kilowattheures. Les pages suivantes explorent une dimension moins mesurable mais tout aussi structurante : ce que ces outils font à notre façon de penser, de travailler et de vivre ensemble.

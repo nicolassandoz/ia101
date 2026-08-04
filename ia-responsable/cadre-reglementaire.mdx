@@ -1,0 +1,185 @@
+---
+title: "Cadre réglementaire : AI Act, RGPD, CSRD et normes volontaires"
+sidebarTitle: "Cadre réglementaire"
+description: "Le calendrier réel de l'AI Act après le Digital Omnibus, l'articulation avec le RGPD et la CSRD, et les normes utiles pour structurer sa démarche."
+---
+
+Le cadre juridique de l'IA en Europe a beaucoup bougé, y compris très récemment. Cette page fait le point sur ce qui s'applique **aujourd'hui**, ce qui arrive, et ce que vous devez faire dans chaque cas. Elle vise l'utilité pratique plutôt que l'exhaustivité juridique — et ne remplace évidemment pas l'avis d'un juriste sur votre situation particulière.
+
+<Warning>
+**Ce chapitre est daté.** Les informations ci-dessous reflètent l'état du droit au **4 août 2026**, après l'entrée en vigueur du Digital Omnibus sur l'IA. Sur un sujet aussi mouvant, vérifiez toujours la date de la source que vous consultez : une grande partie du contenu disponible en ligne décrit encore le calendrier d'avant juillet 2026.
+</Warning>
+
+## L'AI Act : où en est-on vraiment ?
+
+Le règlement européen sur l'intelligence artificielle (règlement (UE) 2024/1689) est entré en vigueur le 1<sup>er</sup> août 2024, avec une application progressive. Il a été **modifié pour la première fois** par le *Digital Omnibus on AI* — le règlement (UE) 2026/1744 du 8 juillet 2026, publié au Journal officiel le 24 juillet 2026 et entré en vigueur le 27 juillet 2026.
+
+Cet omnibus a essentiellement **reporté les obligations relatives aux systèmes à haut risque**, sans toucher au reste. Voici le calendrier consolidé :
+
+| Date | Ce qui s'applique | Statut |
+|---|---|---|
+| 2 février 2025 | Pratiques interdites (art. 5) et obligation de **littératie en IA** (art. 4) | En vigueur |
+| 2 août 2025 | Obligations des modèles à usage général (GPAI), gouvernance | En vigueur |
+| **2 août 2026** | **Transparence (art. 50)**, applicabilité générale du règlement, régime de sanctions | **En vigueur** |
+| 2 décembre 2026 | Fin du délai de grâce pour le marquage lisible par machine des systèmes déjà sur le marché | À venir |
+| 2 décembre 2027 | Systèmes à **haut risque autonomes** (annexe III) — *reporté de 16 mois* | À venir |
+| 2 août 2028 | Systèmes à **haut risque intégrés à des produits réglementés** (annexe I) — *reporté* | À venir |
+
+<Note>
+Le report ne concerne **que** le haut risque. Les interdictions, la littératie en IA, les obligations GPAI, la transparence et les sanctions restent pleinement applicables. L'idée répandue selon laquelle « l'AI Act a été repoussé » est donc largement fausse : l'essentiel de ce qui touche un utilisateur professionnel ordinaire est déjà en vigueur.
+</Note>
+
+### Ce que l'article 50 vous impose depuis le 2 août 2026
+
+C'est l'échéance la plus directement opérationnelle pour la majorité des organisations. Elle concerne toute entité qui **déploie** un système d'IA, pas seulement ceux qui en développent.
+
+<AccordionGroup>
+  <Accordion title="Informer que l'on interagit avec une IA">
+    Tout système conçu pour interagir directement avec des personnes physiques — agent conversationnel, assistant, standard vocal — doit le faire savoir, sauf si c'est manifeste pour une personne raisonnablement avertie. Concrètement : une mention claire à l'ouverture d'un chatbot, pas une ligne enfouie dans les mentions légales.
+  </Accordion>
+
+  <Accordion title="Marquer les contenus synthétiques">
+    Les fournisseurs de systèmes générant du texte, de l'image, du son ou de la vidéo doivent marquer ces sorties dans un **format lisible par machine**, détectable comme généré ou manipulé artificiellement. Un délai transitoire court jusqu'au **2 décembre 2026** pour les systèmes déjà présents sur le marché européen avant le 2 août 2026 ; ceux mis sur le marché après cette date s'appliquent immédiatement.
+  </Accordion>
+
+  <Accordion title="Signaler les hypertrucages">
+    Quiconque diffuse une image, un son ou une vidéo constituant un *deepfake* doit indiquer que le contenu a été généré ou manipulé artificiellement. Des aménagements existent pour les usages artistiques, satiriques ou fictionnels, où la mention doit être faite sans nuire à l'œuvre.
+  </Accordion>
+
+  <Accordion title="Signaler les textes d'information publique">
+    Les textes générés par IA et publiés dans le but d'informer le public sur des questions d'intérêt général doivent être signalés, sauf lorsqu'ils ont fait l'objet d'une **relecture humaine** et qu'une personne physique ou morale assume la responsabilité éditoriale de leur publication.
+  </Accordion>
+
+  <Accordion title="Reconnaissance des émotions et biométrie">
+    Les déployeurs d'un système de reconnaissance des émotions ou de catégorisation biométrique doivent en informer les personnes exposées et traiter les données conformément au RGPD.
+  </Accordion>
+</AccordionGroup>
+
+<Tip>
+La Commission européenne a publié des **lignes directrices sur l'article 50** ainsi qu'un code de bonnes pratiques sur le marquage des contenus. C'est la source de référence à consulter avant d'engager une mise en conformité : elle précise les cas limites bien mieux que le texte du règlement seul.
+</Tip>
+
+### L'obligation de littératie en IA (article 4)
+
+Souvent oubliée, elle s'applique pourtant **depuis février 2025** et concerne toutes les organisations qui fournissent ou déploient des systèmes d'IA. Elle impose de prendre des mesures pour garantir un niveau suffisant de compétence en IA chez les personnes qui utilisent ces systèmes en leur nom, compte tenu de leurs connaissances, du contexte et des personnes affectées.
+
+<Note>
+En clair : **former vos équipes n'est pas une bonne pratique, c'est une obligation légale**. Elle est peu spectaculaire, mais elle est en vigueur, et le régime de sanctions est applicable depuis le 2 août 2026. Si vous suivez ce cours dans un cadre professionnel, vous participez déjà à cette conformité.
+</Note>
+
+### Les niveaux de risque
+
+<CardGroup cols={2}>
+  <Card title="Risque inacceptable" icon="ban">
+    Interdit depuis février 2025 : notation sociale, exploitation de vulnérabilités, reconnaissance des émotions au travail et à l'école, police prédictive individuelle, moissonnage non ciblé d'images faciales.
+  </Card>
+  <Card title="Haut risque" icon="triangle-exclamation">
+    Recrutement, éducation, crédit, services essentiels, biométrie, infrastructures critiques, justice. Gestion des risques, qualité des données, documentation, journalisation, supervision humaine. **Applicable en décembre 2027**.
+  </Card>
+  <Card title="Risque limité" icon="circle-info">
+    Chatbots, générateurs de contenu, hypertrucages. Obligations de transparence de l'article 50, **applicables maintenant**.
+  </Card>
+  <Card title="Risque minimal" icon="check">
+    La grande majorité des usages : correction de texte, filtres anti-spam, recommandations. Aucune obligation spécifique, mais l'article 4 et le RGPD continuent de s'appliquer.
+  </Card>
+</CardGroup>
+
+<Warning>
+Les sanctions sont significatives : jusqu'à **35 millions d'euros ou 7 % du chiffre d'affaires mondial** pour les pratiques interdites, et jusqu'à 15 millions d'euros ou 3 % pour la plupart des autres manquements. Ce régime est pleinement applicable depuis le 2 août 2026.
+</Warning>
+
+## Le RGPD : le socle qui n'a jamais disparu
+
+L'AI Act ne remplace pas le RGPD ; il s'y ajoute. Dès qu'un traitement porte sur des données personnelles — et c'est le cas plus souvent qu'on ne le croit — les obligations habituelles s'appliquent intégralement.
+
+<Steps>
+  <Step title="Base légale et finalité">
+    Chaque traitement a besoin d'une base légale et d'une finalité déterminée. « On teste l'IA sur nos données clients pour voir » n'en est pas une.
+  </Step>
+  <Step title="Minimisation">
+    Ne transmettez au modèle que les données nécessaires. Pseudonymisez ou supprimez les identifiants directs quand la tâche ne les exige pas — c'est aussi le meilleur remède aux biais discriminatoires.
+  </Step>
+  <Step title="Sous-traitance et transferts">
+    Votre fournisseur d'IA est un sous-traitant : contrat, garanties, localisation des traitements, encadrement des transferts hors UE. Vérifiez si vos entrées servent à entraîner ses modèles — la réponse diffère souvent entre offre grand public et offre professionnelle.
+  </Step>
+  <Step title="Analyse d'impact (AIPD)">
+    Un traitement innovant à grande échelle ou portant sur des données sensibles impose généralement une analyse d'impact préalable. L'usage de l'IA sur des données RH, de santé ou de clients en fait fréquemment partie.
+  </Step>
+  <Step title="Décision automatisée">
+    L'article 22 encadre les décisions produisant des effets juridiques ou significatifs prises sur le seul fondement d'un traitement automatisé. Une supervision humaine réelle — et pas seulement un bouton de validation — est la réponse habituelle.
+  </Step>
+</Steps>
+
+<Tip>
+La CNIL publie des recommandations spécifiques sur l'IA, régulièrement mises à jour et rédigées de façon accessible. C'est la ressource la plus directement utilisable en français pour articuler RGPD et IA.
+</Tip>
+
+## La CSRD : quand l'IA entre dans le reporting extra-financier
+
+Pour les entreprises soumises au reporting de durabilité, l'empreinte de l'IA n'est pas un sujet à part : elle s'inscrit dans les postes existants — consommation d'énergie, émissions du Scope 2 pour l'électricité, Scope 3 pour les services cloud et le matériel acheté.
+
+Le périmètre a été fortement resserré par la directive « Omnibus I », adoptée par le Conseil le 24 février 2026 et publiée au Journal officiel le 26 février 2026 :
+
+| Élément | Après l'omnibus |
+|---|---|
+| Seuils d'assujettissement | Plus de **1 000 salariés** **et** plus de **450 M€** de chiffre d'affaires net |
+| Critère de bilan | Supprimé |
+| Vagues 2 et 3 | Reportées de deux ans (premiers rapports en 2028 et 2029) |
+| Champ d'application | Réduit d'environ **80 %** des entreprises initialement concernées |
+| Transposition | Au plus tard le 19 mars 2027 pour la CSRD |
+
+<Note>
+Même hors obligation, la logique reste utile : un fournisseur soumis à la CSRD vous interrogera sur vos propres impacts au titre de sa chaîne de valeur. Beaucoup d'organisations non assujetties se retrouvent ainsi à devoir produire des données — mieux vaut les avoir anticipées.
+</Note>
+
+## Les normes volontaires : structurer sans attendre
+
+Le droit fixe un plancher. Les référentiels normatifs, eux, donnent des méthodes.
+
+<CardGroup cols={2}>
+  <Card title="ISO/IEC 42001" icon="certificate">
+    Publiée en décembre 2023, c'est la norme de **système de management de l'IA**. Certifiable, elle structure gouvernance, analyse des risques, rôles et amélioration continue. Utile comme colonne vertébrale d'une démarche, et de plus en plus demandée en appel d'offres.
+  </Card>
+  <Card title="AFNOR SPEC 2314" icon="leaf">
+    Publiée en 2024, le *Référentiel général pour l'IA frugale* : méthodologie de mesure par analyse de cycle de vie, **31 fiches de bonnes pratiques**, et règles d'encadrement des allégations de frugalité. En français, gratuit, directement opérationnel.
+  </Card>
+  <Card title="ISO/IEC 23894" icon="shield-halved">
+    Lignes directrices sur le **management du risque** appliqué à l'IA. Complète utilement ISO 42001 pour qui doit formaliser une analyse de risques défendable.
+  </Card>
+  <Card title="Normes harmonisées européennes" icon="flag">
+    En cours d'élaboration par le CEN-CENELEC, elles donneront présomption de conformité à l'AI Act. Leur calendrier conditionne largement la mise en œuvre concrète des obligations haut risque.
+  </Card>
+</CardGroup>
+
+## Une grille de première évaluation
+
+Avant de déployer un système d'IA, cinq questions permettent de situer rapidement votre niveau d'obligation :
+
+<Steps>
+  <Step title="Le système relève-t-il d'une pratique interdite ?">
+    Notation sociale, reconnaissance des émotions au travail ou à l'école, exploitation de vulnérabilités : si oui, le projet s'arrête là. Ces interdictions sont en vigueur.
+  </Step>
+  <Step title="Touche-t-il à un domaine à haut risque ?">
+    Recrutement, éducation, crédit, santé, services essentiels, biométrie, justice. Si oui, préparez dès maintenant la documentation, la gestion des risques et la supervision humaine : décembre 2027 arrive vite pour un système déjà déployé.
+  </Step>
+  <Step title="Interagit-il avec des personnes ou produit-il du contenu diffusé ?">
+    Si oui, l'article 50 s'applique **immédiatement** : information sur la nature IA, marquage des contenus synthétiques, signalement des hypertrucages.
+  </Step>
+  <Step title="Traite-t-il des données personnelles ?">
+    Si oui : base légale, minimisation, contrat de sous-traitance, éventuellement analyse d'impact. Vérifiez l'usage de vos données par le fournisseur.
+  </Step>
+  <Step title="Les utilisateurs sont-ils formés ?">
+    L'article 4 l'exige, sans seuil ni exception. Une sensibilisation documentée est le minimum défendable.
+  </Step>
+</Steps>
+
+## Ce qu'il faut retenir
+
+- L'AI Act a été **amendé** en juillet 2026 : seul le **haut risque** est reporté (décembre 2027 et août 2028).
+- La **transparence (art. 50)** et le **régime de sanctions** sont applicables **depuis le 2 août 2026**, avec un délai de grâce au 2 décembre 2026 pour le marquage machine des systèmes préexistants.
+- L'obligation de **littératie en IA** est en vigueur depuis février 2025 et concerne toutes les organisations.
+- Le **RGPD** continue de s'appliquer intégralement et reste, en pratique, la contrainte la plus fréquente.
+- La **CSRD** a vu son champ réduit d'environ 80 %, mais l'effet de chaîne de valeur touche aussi les non-assujettis.
+- **ISO/IEC 42001** et **AFNOR SPEC 2314** offrent des cadres méthodologiques à mobiliser sans attendre.
+
+Reste à traduire tout cela dans votre organisation. C'est l'objet de la page suivante.

@@ -1,0 +1,159 @@
+---
+title: "Ordres de grandeur : ce que consomme vraiment une requête IA"
+sidebarTitle: "Ordres de grandeur"
+description: "Les chiffres publiés par Google et Mistral, les comparaisons utiles, et surtout pourquoi les estimations varient d'un facteur 100 d'une source à l'autre."
+---
+
+« Une requête ChatGPT consomme dix fois plus qu'une recherche Google. » « Une requête IA, c'est une bouteille d'eau. » Ces phrases circulent partout, sont reprises sans vérification, et reposent le plus souvent sur des estimations anciennes ou sur des méthodologies incomparables. Cette page vous donne les chiffres réellement publiés par les acteurs, et surtout la clé de lecture pour ne plus vous faire piéger.
+
+<Warning>
+La plupart des chiffres viraux sur la consommation de l'IA proviennent d'extrapolations faites par des tiers, à partir d'hypothèses de matériel et de trafic qui n'ont jamais été confirmées. Avant de citer un chiffre, posez trois questions : **qui l'a mesuré, sur quel modèle, et avec quel périmètre ?**
+</Warning>
+
+## Les deux mesures de référence
+
+Depuis 2025, deux acteurs ont publié des mesures détaillées de leur propre empreinte. Ce sont aujourd'hui les données les plus fiables dont nous disposons.
+
+<Tabs>
+  <Tab title="Google — Gemini (août 2025)">
+    Google a publié la première mesure détaillée d'un assistant grand public à grande échelle. Pour la **requête texte médiane** sur Gemini :
+
+    | Indicateur | Périmètre complet | Périmètre restreint |
+    |---|---|---|
+    | Énergie | **0,24 Wh** | 0,10 Wh |
+    | Émissions | **0,03 gCO₂e** | 0,02 gCO₂e |
+    | Eau | **0,26 mL** | 0,12 mL |
+
+    Le **périmètre complet** inclut les puces actives, les puces au repos, le processeur hôte, la mémoire, le refroidissement et les pertes de l'infrastructure. Le **périmètre restreint** ne compte que la consommation des puces en calcul actif — c'est cette méthode, plus flatteuse, qui est souvent employée par défaut dans le secteur.
+
+    Google indique par ailleurs une division par **33 de l'énergie** et par **44 de l'empreinte carbone** par requête sur douze mois, à qualité de réponse supérieure.
+  </Tab>
+  <Tab title="Mistral — Large 2 (juillet 2025)">
+    Mistral AI a publié une **analyse de cycle de vie** complète, menée avec l'ADEME et le cabinet Carbone 4, portant sur son modèle Large 2.
+
+    **Impact total sur 18 mois** (entraînement + usage) :
+
+    | Indicateur | Valeur |
+    |---|---|
+    | Émissions | **20 400 tCO₂e** |
+    | Eau | **281 000 m³** |
+
+    **Impact marginal d'une réponse de 400 tokens** (environ 300 mots) :
+
+    | Indicateur | Valeur |
+    |---|---|
+    | Émissions | **1,14 gCO₂e** |
+    | Eau | **45 mL** |
+
+    Mistral compare cette réponse à environ **10 secondes de streaming vidéo**, ou à l'eau nécessaire pour faire pousser un petit radis.
+  </Tab>
+</Tabs>
+
+## Pourquoi un écart de facteur 40 entre les deux ?
+
+0,03 gCO₂e chez Google contre 1,14 gCO₂e chez Mistral : le rapport est de près de 40. Les deux chiffres sont pourtant honnêtes. Comprendre cet écart est le vrai enseignement de cette page.
+
+<AccordionGroup>
+  <Accordion title="La taille du modèle interrogé">
+    Google mesure une **médiane sur tout le trafic** de son assistant. Or l'immense majorité des requêtes réelles sont courtes et routées vers des modèles petits et optimisés. Mistral mesure un **modèle large spécifique**, sollicité intégralement. Comparer les deux revient à comparer la consommation moyenne d'un parc automobile à celle d'un modèle haut de gamme précis.
+  </Accordion>
+
+  <Accordion title="La longueur de la réponse générée">
+    La génération est séquentielle : chaque token de sortie coûte un passage complet dans le modèle. Une réponse de 400 tokens coûte à peu près quatre fois plus qu'une réponse de 100 tokens. Google mesure une requête médiane, souvent brève ; Mistral fixe volontairement un format long et standardisé.
+  </Accordion>
+
+  <Accordion title="Le mix électrique du centre de données">
+    Un kilowattheure n'a pas le même contenu carbone partout. En France, l'électricité tourne autour de 50 à 60 gCO₂e/kWh ; en Allemagne ou aux États-Unis, on dépasse fréquemment 300 à 400 gCO₂e/kWh ; en Pologne ou dans certaines régions asiatiques, on approche 700. **À consommation d'énergie identique, l'empreinte carbone peut varier d'un facteur 10 selon le pays d'hébergement.**
+  </Accordion>
+
+  <Accordion title="Le périmètre de l'analyse">
+    Google mesure l'**inférence** avec les surcoûts d'infrastructure. Mistral réalise une **analyse de cycle de vie** qui amortit aussi la fabrication du matériel, la construction du centre de données et l'entraînement du modèle sur chaque requête. Le second périmètre est plus large, donc mécaniquement plus élevé.
+  </Accordion>
+
+  <Accordion title="Le taux d'utilisation des machines">
+    Un GPU réservé mais peu sollicité consomme quand même. Plus le service est fréquenté, plus le coût fixe se dilue sur un grand nombre de requêtes. Un modèle très utilisé est, paradoxalement, plus efficace *par requête* qu'un modèle confidentiel.
+  </Accordion>
+</AccordionGroup>
+
+<Note>
+Conclusion pratique : **il n'existe pas de « coût d'une requête IA » universel**. Tout chiffre unique cité sans son périmètre, son modèle et sa localisation est au mieux une approximation grossière, au pire une manipulation. Utilisez ces valeurs comme des ordres de grandeur, jamais comme des constantes.
+</Note>
+
+## Se repérer : quelques comparaisons
+
+Pour situer une réponse d'IA de longueur moyenne dans votre quotidien numérique :
+
+| Activité | Ordre de grandeur énergétique |
+|---|---|
+| Une requête texte courte sur un assistant optimisé | quelques dixièmes de Wh |
+| Une réponse longue d'un grand modèle | quelques Wh |
+| Une minute de streaming vidéo en HD | quelques Wh |
+| Une heure d'ordinateur portable en usage bureautique | 30 à 60 Wh |
+| Un cycle de lave-linge | 500 à 1 000 Wh |
+| 1 km en voiture thermique | environ 1 500 Wh d'énergie primaire |
+
+<Tip>
+La conclusion honnête à en tirer : **votre usage individuel d'un assistant textuel est un poste marginal de votre empreinte numérique personnelle**, très loin derrière la vidéo, l'achat de terminaux neufs ou vos déplacements. Le sujet devient sérieux à trois conditions : la génération d'images et de vidéos, l'automatisation à grande échelle, et l'échelle industrielle du déploiement mondial.
+</Tip>
+
+## Le cas particulier de l'image et de la vidéo
+
+Toutes les modalités ne se valent pas, et l'écart est considérable.
+
+<CardGroup cols={3}>
+  <Card title="Texte" icon="font">
+    Le moins coûteux. Quelques dixièmes à quelques watt-heures par réponse.
+  </Card>
+  <Card title="Image" icon="image">
+    Un à deux ordres de grandeur au-dessus du texte. Une génération d'image implique des dizaines d'étapes de débruitage successives.
+  </Card>
+  <Card title="Vidéo" icon="video">
+    De loin le plus lourd. Une vidéo de quelques secondes peut coûter l'équivalent de milliers de requêtes texte.
+  </Card>
+</CardGroup>
+
+<Warning>
+Si vous devez arbitrer sur un seul levier, c'est celui-ci. Générer dix variantes d'une vidéo pour en garder une pèse infiniment plus lourd que toutes vos conversations textuelles de l'année. La sobriété a un sens très concret sur les modalités visuelles.
+</Warning>
+
+## Mesurer vos propres usages
+
+Deux outils libres, portés par des équipes françaises, permettent d'estimer concrètement vos impacts :
+
+<CardGroup cols={2}>
+  <Card title="EcoLogits" icon="calculator" href="https://ecologits.ai">
+    Estime l'empreinte des appels aux **API d'IA générative** (OpenAI, Anthropic, Mistral, Google...) selon les principes de l'analyse de cycle de vie. Disponible en bibliothèque Python et en calculateur web.
+  </Card>
+  <Card title="CodeCarbon" icon="code" href="https://codecarbon.io">
+    Mesure les émissions de vos **calculs locaux** : entraînements, fine-tuning, traitements de données. S'intègre en quelques lignes dans un script Python.
+  </Card>
+</CardGroup>
+
+Les deux projets ont rejoint la même structure associative en 2026 et se complètent : CodeCarbon pour ce qui tourne sur vos machines, EcoLogits pour ce que vous appelez à distance.
+
+```python
+# Estimation de l'impact d'un appel API avec EcoLogits
+from ecologits import EcoLogits
+from openai import OpenAI
+
+EcoLogits.init()
+client = OpenAI()
+
+response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": "Résume ce texte en 3 points."}],
+)
+
+# EcoLogits enrichit la réponse d'un objet `impacts`
+print(response.impacts.energy.value)  # kWh
+print(response.impacts.gwp.value)     # kgCO2e
+```
+
+## Ce qu'il faut retenir
+
+- Les seules données solides viennent de **Google (0,24 Wh / 0,03 gCO₂e / 0,26 mL** par requête médiane) et de **Mistral (1,14 gCO₂e / 45 mL** pour 400 tokens).
+- L'écart entre les deux s'explique par le **modèle**, la **longueur de réponse**, le **mix électrique**, le **périmètre** et le **taux d'utilisation** — pas par la malhonnêteté de l'un ou de l'autre.
+- Un usage textuel individuel est **marginal** ; l'image et surtout la vidéo changent complètement l'équation.
+- **Mesurez plutôt que d'estimer** : EcoLogits et CodeCarbon rendent le sujet concret en quelques lignes de code.
+
+Maintenant que vous savez lire les chiffres, passons à l'action : comment réduire concrètement l'impact de vos usages sans sacrifier leur utilité ?

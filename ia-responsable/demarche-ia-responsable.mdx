@@ -1,0 +1,207 @@
+---
+title: "Construire une démarche IA responsable dans votre organisation"
+sidebarTitle: "Démarche & charte"
+description: "Gouvernance, cartographie des usages, charte d'utilisation, critères de choix des outils et indicateurs de suivi : une méthode en six étapes et des modèles réutilisables."
+---
+
+Vous avez maintenant les éléments de compréhension : impact environnemental, effets cognitifs, enjeux sociétaux, obligations légales. Reste le plus difficile — les traduire en pratiques dans une organisation réelle, avec ses contraintes, son budget et ses habitudes. Cette page propose une méthode progressive et des modèles directement réutilisables. Elle s'adresse autant à une équipe de trois personnes qu'à une direction RSE.
+
+<Note>
+Le piège classique est de commencer par la charte. Une charte rédigée avant d'avoir regardé les usages réels produit un document que personne n'applique, et souvent une clandestinisation des pratiques. Commencez par observer, finissez par écrire.
+</Note>
+
+## La méthode en six étapes
+
+<Steps>
+  <Step title="Cartographier les usages réels">
+    Avant toute règle, sachez ce qui se passe. Qui utilise quoi, pour quelles tâches, avec quelles données ? Une enquête anonyme donne des résultats bien plus honnêtes qu'une demande de déclaration nominative. Attendez-vous à découvrir des usages non déclarés : c'est normal, et c'est l'information la plus utile de l'exercice.
+  </Step>
+  <Step title="Qualifier les risques par usage">
+    Tous les usages ne se valent pas. Classez-les selon deux axes : la **sensibilité des données** manipulées et l'**effet de la sortie** — production interne informelle, document diffusé, ou décision affectant une personne. La combinaison données sensibles + décision sur personnes concentre l'essentiel du risque.
+  </Step>
+  <Step title="Décider ce qui est autorisé, encadré, interdit">
+    Trois catégories suffisent. L'erreur est de tout interdire par précaution : les usages migrent alors vers les comptes personnels, hors de tout contrôle. Autorisez largement le peu risqué, encadrez précisément le sensible, interdisez le vraiment problématique — et expliquez pourquoi à chaque fois.
+  </Step>
+  <Step title="Outiller ce qui est autorisé">
+    Une règle sans outil conforme est une règle contournée. Si vous interdisez les comptes personnels, fournissez une alternative professionnelle au moins aussi bonne. C'est le point sur lequel les démarches échouent le plus souvent.
+  </Step>
+  <Step title="Former et sensibiliser">
+    C'est une obligation légale (article 4 de l'AI Act) autant qu'une condition d'efficacité. Visez trois acquis : savoir ce qu'on peut mettre dans un prompt, savoir vérifier une sortie, savoir à qui poser une question.
+  </Step>
+  <Step title="Mesurer et réviser">
+    Fixez quelques indicateurs, un rythme de revue, et une porte d'entrée pour les cas non prévus. Une démarche non révisée devient obsolète en moins d'un an sur ce sujet.
+  </Step>
+</Steps>
+
+## Qui décide quoi : une gouvernance légère
+
+Inutile de bâtir un comité de dix personnes. Trois rôles suffisent pour la plupart des organisations, et peuvent être portés par des personnes déjà en poste.
+
+| Rôle | Responsabilité | Rattachement fréquent |
+|---|---|---|
+| **Référent IA** | Point d'entrée des questions, tenue de la cartographie des usages, veille sur les outils | Direction technique ou transformation |
+| **Référent conformité** | Articulation RGPD / AI Act, contrats fournisseurs, analyses d'impact | DPO, juridique |
+| **Sponsor** | Arbitrages, budget, portage auprès des équipes | Direction générale ou direction métier |
+
+<Tip>
+Ajoutez une pratique qui vaut tous les comités : un **canal ouvert** — salon de discussion, boîte partagée — où chacun peut demander « est-ce que j'ai le droit de faire ça ? » sans passer par sa hiérarchie. La réponse rapide à ces questions vous en apprendra plus sur les usages réels que n'importe quel audit.
+</Tip>
+
+## Grille de sélection d'un fournisseur
+
+Les critères ci-dessous se glissent directement dans un questionnaire d'achat ou une consultation.
+
+<AccordionGroup>
+  <Accordion title="Protection des données">
+    Où sont hébergées et traitées les données ? Les entrées sont-elles utilisées pour entraîner les modèles, et peut-on s'y opposer contractuellement ? Quelle durée de conservation des historiques ? Un contrat de sous-traitance conforme au RGPD est-il proposé ? Existe-t-il des offres distinctes grand public et professionnelle, et laquelle souscrivez-vous réellement ?
+  </Accordion>
+
+  <Accordion title="Transparence environnementale">
+    Le fournisseur publie-t-il la consommation énergétique et hydrique de ses services ? Selon quelle méthodologie, et sur quel périmètre — puces actives seules ou infrastructure complète ? Communique-t-il le PUE et le WUE de ses centres de données ? Peut-on choisir une région d'hébergement à électricité décarbonée ?
+  </Accordion>
+
+  <Accordion title="Conditions de production des données">
+    Comment sont recrutés et rémunérés les annotateurs et modérateurs qui contribuent à l'alignement des modèles ? Existe-t-il une politique publique sur ce sujet ? Peu de fournisseurs répondent aujourd'hui : la question elle-même a une valeur, et l'absence de réponse est une information.
+  </Accordion>
+
+  <Accordion title="Conformité et documentation">
+    Le fournisseur documente-t-il la conformité de ses modèles à l'AI Act ? Publie-t-il un résumé des données d'entraînement ? Dispose-t-il d'une certification ISO/IEC 42001 ou d'un équivalent ? Fournit-il les éléments dont vous avez besoin si votre propre système relève du haut risque ?
+  </Accordion>
+
+  <Accordion title="Réversibilité">
+    Pouvez-vous exporter vos données, vos prompts, vos configurations ? À quel coût changeriez-vous de fournisseur ? Quel préavis en cas d'arrêt d'un modèle que vous utilisez en production ? La dépendance se prépare avant de se subir.
+  </Accordion>
+</AccordionGroup>
+
+## Modèle de charte d'utilisation
+
+Voici une trame courte, à adapter. L'expérience montre qu'une charte d'une page lue vaut mieux qu'un document de vingt pages archivé.
+
+```markdown
+# Charte d'utilisation de l'IA générative — [Organisation]
+
+Version 1.0 — [date] — Révision prévue : [date + 6 mois]
+Contact pour toute question : [référent IA]
+
+## 1. Principe général
+L'IA générative est un outil de travail encouragé. Vous restez responsable
+de tout ce que vous produisez avec son aide, exactement comme si vous
+l'aviez écrit vous-même.
+
+## 2. Outils autorisés
+- Autorisés : [liste des outils fournis par l'organisation]
+- Interdits : comptes personnels et outils gratuits non validés, pour
+  tout usage professionnel
+- Pour demander l'ajout d'un outil : [procédure]
+
+## 3. Ce que vous ne mettez jamais dans un prompt
+- Données personnelles de clients, patients, usagers ou salariés
+- Informations couvertes par un secret ou une clause de confidentialité
+- Identifiants, mots de passe, clés d'API
+- Documents contractuels non anonymisés
+En cas de doute : demandez avant d'envoyer.
+
+## 4. Vérification obligatoire
+Avant toute utilisation externe d'un contenu produit avec l'IA :
+- Vérifier les chiffres, dates, noms propres et citations
+- Vérifier l'existence réelle des sources mentionnées
+- Relire l'ensemble et le reformuler avec vos mots
+- Être en mesure d'expliquer et de défendre le contenu
+
+## 5. Transparence
+- Signaler tout contenu substantiellement généré diffusé à l'externe
+- Informer les interlocuteurs lorsqu'ils échangent avec un système IA
+- Ne jamais présenter une production non relue comme un travail validé
+
+## 6. Décisions concernant des personnes
+Recrutement, évaluation, sanction, attribution de droits ou de
+prestations : l'IA peut préparer, elle ne décide pas. La décision est
+prise par une personne identifiée, qui dispose des éléments pour
+contredire la proposition, et qui la motive.
+
+## 7. Sobriété
+- Choisir le plus petit modèle qui fait le travail
+- Éviter les générations en série d'images et de vidéos
+- Soigner le prompt initial plutôt que de multiplier les régénérations
+
+## 8. En cas de problème
+Contenu inapproprié, fuite de données, erreur diffusée, doute sur un
+usage : contactez [référent] sans délai. Signaler tôt n'est jamais
+sanctionné.
+```
+
+<Warning>
+Deux clauses font toute la différence entre une charte qui fonctionne et une charte décorative : la **procédure de demande d'ajout d'un outil** (section 2) et la **garantie de non-sanction du signalement** (section 8). Sans elles, les usages se cachent au lieu de se réguler.
+</Warning>
+
+## Choisir des indicateurs qui servent à quelque chose
+
+Quelques indicateurs suivis dans la durée valent mieux qu'un tableau de bord exhaustif abandonné au bout d'un trimestre.
+
+<CardGroup cols={2}>
+  <Card title="Environnement" icon="leaf">
+    Consommation estimée (kWh, kgCO₂e) via EcoLogits ou CodeCarbon. Suivez la **tendance et le volume total**, pas seulement le coût unitaire — c'est ainsi qu'on détecte l'effet rebond.
+  </Card>
+  <Card title="Conformité" icon="scale-balanced">
+    Part des usages cartographiés et qualifiés. Nombre d'usages relevant du haut risque identifiés. Taux de collaborateurs ayant suivi la sensibilisation (obligation article 4).
+  </Card>
+  <Card title="Qualité et vigilance" icon="magnifying-glass">
+    Incidents signalés — un chiffre qui **monte au début est bon signe** : il indique que le canal fonctionne. Un zéro durable signale plutôt un défaut de remontée.
+  </Card>
+  <Card title="Valeur" icon="chart-line">
+    Temps réellement gagné sur des tâches identifiées, et usages abandonnés. Documenter ce qui n'a pas marché protège des projets menés par effet de mode.
+  </Card>
+</CardGroup>
+
+<Tip>
+Un indicateur trop rarement suivi et pourtant décisif : le **nombre d'usages arrêtés** parce qu'ils n'apportaient rien. Une organisation capable d'arrêter est une organisation qui évalue vraiment — et c'est aussi le levier de sobriété le plus direct.
+</Tip>
+
+## Les erreurs les plus fréquentes
+
+<AccordionGroup>
+  <Accordion title="Interdire sans fournir d'alternative">
+    L'usage ne disparaît pas, il devient invisible. Les données partent alors vers des comptes personnels, sans contrat, sans traçabilité et sans possibilité d'audit. Une interdiction n'a de sens que couplée à une offre.
+  </Accordion>
+
+  <Accordion title="Rédiger la charte en premier">
+    Écrire les règles avant d'avoir observé les usages produit un document déconnecté, souvent trop restrictif sur des points anodins et silencieux sur les vrais risques.
+  </Accordion>
+
+  <Accordion title="Confondre conformité et responsabilité">
+    Être conforme à l'AI Act ne signifie pas que vos usages sont pertinents, sobres ou équitables. Le droit fixe un plancher, pas une ambition.
+  </Accordion>
+
+  <Accordion title="Traiter l'environnement comme un poste isolé">
+    L'empreinte de l'IA s'intègre au bilan carbone existant — Scope 2 pour l'électricité, Scope 3 pour le cloud et le matériel. En faire une démarche séparée garantit qu'elle sera abandonnée à la première réorganisation.
+  </Accordion>
+
+  <Accordion title="Communiquer avant d'avoir mesuré">
+    Annoncer une « IA responsable » sans indicateurs expose à un reproche d'écoblanchiment parfaitement fondé. L'AFNOR SPEC 2314 encadre d'ailleurs explicitement les allégations de frugalité : mesurez d'abord, communiquez ensuite.
+  </Accordion>
+</AccordionGroup>
+
+## Par où commencer si vous n'avez rien
+
+Un premier trimestre réaliste, même sans budget ni équipe dédiée :
+
+| Semaine | Action |
+|---|---|
+| 1 à 2 | Enquête anonyme sur les usages réels dans l'équipe |
+| 3 | Désignation d'un référent et ouverture d'un canal de questions |
+| 4 à 6 | Qualification des usages : autorisé / encadré / interdit |
+| 7 à 8 | Choix et mise à disposition d'un outil professionnel conforme |
+| 9 à 10 | Rédaction de la charte, en s'appuyant sur ce qui a été observé |
+| 11 | Session de sensibilisation, documentée (article 4) |
+| 12 | Mise en place de deux ou trois indicateurs et fixation de la date de revue |
+
+## Ce qu'il faut retenir
+
+- **Observez avant de réglementer** : la cartographie des usages réels conditionne tout le reste.
+- Une gouvernance de **trois rôles** et un **canal de questions ouvert** suffisent à démarrer.
+- Une règle sans **outil conforme** équivalent est une règle contournée.
+- La **grille fournisseur** doit couvrir données, environnement, conditions de production, conformité et réversibilité.
+- Suivez **peu d'indicateurs**, mais dans la durée — dont le volume total et le nombre d'usages arrêtés.
+- **Mesurez avant de communiquer** : c'est la seule protection contre l'écoblanchiment.
+
+La page suivante rassemble les rapports, outils et références utilisés dans ce chapitre, pour approfondir chaque sujet à la source.

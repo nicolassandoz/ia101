@@ -1,0 +1,123 @@
+---
+title: "Ressources sur l'IA responsable : rapports, outils et références"
+sidebarTitle: "Ressources"
+description: "Les sources primaires utilisées dans ce chapitre : mesures d'impact, études cognitives, textes réglementaires, référentiels et outils de mesure."
+---
+
+Ce chapitre s'appuie sur des sources primaires plutôt que sur des reprises médiatiques, parce que c'est précisément sur ce sujet que l'écart entre les deux est le plus grand. Voici de quoi remonter à la source, vérifier ce que nous avançons, et approfondir chaque volet.
+
+<Note>
+**Vérifiez toujours la date.** Le domaine évolue vite, et le droit encore plus. Une analyse de l'AI Act publiée avant juillet 2026 décrit un calendrier qui n'est plus le bon. Une estimation de consommation antérieure à 2025 repose sur des extrapolations que les mesures publiées depuis ont largement corrigées.
+</Note>
+
+## Mesures d'impact environnemental
+
+<CardGroup cols={2}>
+  <Card title="IEA — Energy and AI" icon="chart-column" href="https://www.iea.org/reports/energy-and-ai">
+    Rapport spécial de l'Agence internationale de l'énergie (avril 2025). Le cadrage macro de référence : consommation des centres de données, projections 2030, effets sur les réseaux électriques. Accessible gratuitement.
+  </Card>
+  <Card title="Google — Measuring the environmental impact of AI inference" icon="magnifying-glass-chart" href="https://cloud.google.com/blog/products/infrastructure/measuring-the-environmental-impact-of-ai-inference">
+    Première publication détaillée d'un acteur majeur sur l'empreinte réelle d'un assistant en production (août 2025). Article de blog synthétique, adossé à un [article technique complet](https://arxiv.org/abs/2508.15734).
+  </Card>
+  <Card title="Mistral AI — Analyse de cycle de vie" icon="leaf" href="https://mistral.ai/news/our-contribution-to-a-global-environmental-standard-for-ai">
+    ACV complète d'un modèle de frontière, réalisée avec l'ADEME et Carbone 4 (juillet 2025). La rare publication qui couvre l'ensemble du cycle de vie, entraînement et fabrication du matériel compris.
+  </Card>
+  <Card title="Numérique écoresponsable — État" icon="landmark" href="https://ecoresponsable.numerique.gouv.fr/">
+    Le portail interministériel français sur le numérique responsable. Guides, référentiels et retours d'expérience du secteur public, réutilisables dans le privé.
+  </Card>
+</CardGroup>
+
+## Outils de mesure
+
+<CardGroup cols={2}>
+  <Card title="EcoLogits" icon="calculator" href="https://ecologits.ai">
+    Bibliothèque Python et calculateur web pour estimer l'empreinte des appels aux API d'IA générative, selon les principes de l'analyse de cycle de vie. Documentation claire et méthodologie publique.
+  </Card>
+  <Card title="CodeCarbon" icon="code" href="https://codecarbon.io">
+    Mesure les émissions de vos calculs locaux : entraînements, fine-tuning, traitements par lots. S'intègre en quelques lignes dans un script Python. Association française à but non lucratif.
+  </Card>
+</CardGroup>
+
+## Impact cognitif et usages
+
+<AccordionGroup>
+  <Accordion title="Lee et al. — The Impact of Generative AI on Critical Thinking (CHI 2025)">
+    Enquête Microsoft Research et Carnegie Mellon auprès de 319 travailleurs du savoir, sur 936 usages réels. Établit la relation entre confiance dans l'IA et baisse de l'effort critique, et documente le déplacement du travail vers la vérification et la supervision.
+
+    [Article dans les actes de CHI 2025](https://dl.acm.org/doi/full/10.1145/3706598.3713778) — [version PDF en accès libre](https://www.microsoft.com/en-us/research/wp-content/uploads/2025/01/lee_2025_ai_critical_thinking_survey.pdf)
+  </Accordion>
+
+  <Accordion title="Kosmyna et al. — Your Brain on ChatGPT (MIT Media Lab, 2025)">
+    L'étude EEG à l'origine de la notion de « dette cognitive ». À lire avec ses limites en tête : 54 participants, prépublication non relue par les pairs, une seule tâche de rédaction. Les auteurs sont explicites sur ces réserves — la couverture médiatique beaucoup moins.
+
+    [Page du projet au MIT Media Lab](https://www.media.mit.edu/projects/your-brain-on-chatgpt/overview/)
+  </Accordion>
+
+  <Accordion title="Sur le biais d'automatisation">
+    Le concept est antérieur à l'IA générative et bien documenté en facteurs humains, notamment dans l'aviation et la santé. Les travaux de Linda Skitka, Kathleen Mosier et Raja Parasuraman constituent le socle de cette littérature et restent la meilleure porte d'entrée pour comprendre pourquoi nous faisons trop confiance aux systèmes automatisés fiables.
+  </Accordion>
+</AccordionGroup>
+
+## Réglementation
+
+<CardGroup cols={2}>
+  <Card title="EU AI Act — texte et explorateur" icon="scale-balanced" href="https://artificialintelligenceact.eu/">
+    Site de référence indépendant : texte consolidé, explorateur d'articles, calendrier de mise en application. La ressource la plus pratique pour naviguer dans le règlement.
+  </Card>
+  <Card title="Commission européenne — Lignes directrices article 50" icon="flag" href="https://digital-strategy.ec.europa.eu/en/policies/guidelines-transparency-ai-generated-content">
+    Lignes directrices officielles sur les obligations de transparence et le marquage des contenus générés. À consulter avant toute mise en conformité : elles tranchent les cas limites.
+  </Card>
+  <Card title="CNIL — IA et RGPD" icon="user-shield" href="https://www.cnil.fr/fr/ia-et-rgpd-la-cnil-publie-ses-nouvelles-recommandations-pour-accompagner-une-innovation-responsable">
+    Recommandations françaises sur l'application du RGPD aux systèmes d'IA : base légale, intérêt légitime, annotation des données, sécurité. Rédigées de façon accessible, avec des fiches pratiques.
+  </Card>
+  <Card title="Portail RSE — CSRD et seuils" icon="building" href="https://portail-rse.beta.gouv.fr/">
+    Service public d'information sur les obligations de reporting extra-financier. Utile pour savoir si votre organisation est concernée après la révision des seuils de février 2026.
+  </Card>
+</CardGroup>
+
+<Tip>
+Pour l'AI Act, la FAQ officielle de la Commission sur [les obligations de transparence de l'article 50](https://digital-strategy.ec.europa.eu/en/faqs/transparency-obligations-under-article-50-ai-act) répond en quelques minutes à la majorité des questions concrètes que se posent les organisations qui déploient un chatbot ou publient du contenu généré.
+</Tip>
+
+## Référentiels et normes
+
+| Référentiel | Objet | Accès |
+|---|---|---|
+| [AFNOR SPEC 2314](https://www.afnor.org/actualites/referentiel-pour-mesurer-et-reduire-impact-environnemental-de-ia/) | Référentiel général pour l'IA frugale : mesure par ACV, 31 fiches de bonnes pratiques, encadrement des allégations | Gratuit, en français |
+| [ISO/IEC 42001](https://www.iso.org/standard/42001) | Système de management de l'IA, certifiable. Gouvernance, risques, amélioration continue | Payant |
+| ISO/IEC 23894 | Lignes directrices sur le management du risque appliqué à l'IA | Payant |
+| [ISO — AI management systems](https://www.iso.org/artificial-intelligence/ai-management-systems) | Page d'entrée gratuite expliquant la logique et le périmètre des normes IA | Gratuit |
+
+## Aller plus loin sur les enjeux sociaux
+
+<AccordionGroup>
+  <Accordion title="Le travail d'annotation et de modération">
+    Le sujet est principalement documenté par le journalisme d'enquête et la recherche en sociologie du travail. Cherchez les travaux sur les *data workers* et les *ghost workers*, ainsi que les publications des organisations de travailleurs elles-mêmes — la *Data Labelers Association* et l'*African Content Moderators Union* au Kenya notamment, qui portent des revendications précises et documentées.
+  </Accordion>
+
+  <Accordion title="Biais et équité algorithmique">
+    Les travaux de Joy Buolamwini et Timnit Gebru sur les écarts de performance des systèmes de reconnaissance faciale selon le genre et la couleur de peau restent la référence fondatrice, et la démonstration la plus claire de ce qu'un biais de jeu de données produit concrètement.
+  </Accordion>
+
+  <Accordion title="Propriété intellectuelle">
+    Domaine très mouvant, avec des contentieux en cours dans plusieurs juridictions et des décisions parfois contradictoires. Privilégiez les analyses datées de moins de six mois et méfiez-vous des synthèses qui présentent une jurisprudence stabilisée : elle ne l'est pas.
+  </Accordion>
+</AccordionGroup>
+
+## Ressources internes du cours
+
+<CardGroup cols={3}>
+  <Card title="Limites et hallucinations" icon="triangle-exclamation" href="/fondamentaux/limites-et-hallucinations">
+    Le socle technique pour comprendre pourquoi la vérification n'est pas optionnelle.
+  </Card>
+  <Card title="Optimiser le contexte" icon="compress" href="/context-engineering/optimisation-du-contexte">
+    Les mêmes techniques que la sobriété, sous l'angle du coût et de la latence.
+  </Card>
+  <Card title="Glossaire" icon="book-open" href="/ressources/glossaire">
+    Les définitions des termes du cours, y compris ceux de ce chapitre.
+  </Card>
+</CardGroup>
+
+<Note>
+Une remarque de méthode pour finir. Sur ce sujet, les deux discours les plus répandus — « l'IA va détruire la planète » et « l'IA n'a aucun impact, c'est du bruit » — sont également faux, et pour la même raison : ils dispensent de mesurer. La position tenable est plus exigeante et moins confortable, mais c'est la seule qui permette de décider : **regarder les chiffres, connaître leur périmètre, et agir là où l'effet de levier est réel**.
+</Note>

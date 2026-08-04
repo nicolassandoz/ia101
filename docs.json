@@ -97,6 +97,35 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "IA Responsable",
+        "groups": [
+          {
+            "group": "Impact environnemental",
+            "pages": [
+              "ia-responsable/empreinte-environnementale",
+              "ia-responsable/ordres-de-grandeur",
+              "ia-responsable/sobriete-et-ecoconception"
+            ]
+          },
+          {
+            "group": "Impacts humains et sociétaux",
+            "pages": [
+              "ia-responsable/impact-cognitif",
+              "ia-responsable/biais-et-equite",
+              "ia-responsable/travail-et-societe"
+            ]
+          },
+          {
+            "group": "Passer à l'action",
+            "pages": [
+              "ia-responsable/cadre-reglementaire",
+              "ia-responsable/demarche-ia-responsable",
+              "ia-responsable/ressources-ia-responsable"
+            ]
+          }
+        ]
       }
     ]
   },
