@@ -4,17 +4,16 @@ Backlog des améliorations identifiées lors de l'analyse du 2026-07-24. Coché 
 
 ## 1. Fraîcheur du contenu (priorité haute)
 
-Le contenu a été généré en une fois et référence déjà des modèles dépassés (GPT-4/4o, Claude 3/3.5, Gemini 1.5). Sur un sujet qui bouge aussi vite, c'est le risque n°1 pour un site qui vise à faire autorité.
+Diagnostic mis à jour après l'audit `veilleur-ia101` du 2026-08-11 (voir `ressources/suivi-des-sources.md`). Les passes de veille des 2026-08-01/04/10 ont déjà corrigé la quasi-totalité des références de modèles ; le diagnostic initial ("le site référence GPT-4o/Claude 3.5/Gemini 1.5") n'est plus exact et ne doit pas relancer un audit inutile.
 
-- [ ] Auditer toutes les références de modèles et les mettre à jour (voir agent `pedagogue-ia101` ci-dessous) :
-  - `fondamentaux/modeles-de-langage.mdx`, `fondamentaux/tokens-et-embeddings.mdx`, `fondamentaux/types-dia.mdx`
-  - `context-engineering/fenetre-de-contexte.mdx` (tableau des tailles de contexte)
-  - `prompt-engineering/chain-of-thought.mdx`
-  - `ressources/outils-et-plateformes.mdx`, `ressources/glossaire.mdx`
-- [ ] Ajouter une leçon sur le **Model Context Protocol (MCP)** et les agents outillés dans `context-engineering/` (absent du cours alors que c'est central en 2026)
-- [ ] Ajouter une leçon sur les **modèles de raisonnement** (extended thinking / chain-of-thought natif) dans `fondamentaux/` ou `prompt-engineering/`
+- [x] ~~Remplacer les références "Llama 4" par "Muse Spark" (Meta a abandonné Llama comme modèle vitrine en avril 2026)~~ → corrigé dans `fondamentaux/types-dia.mdx`, `context-engineering/fenetre-de-contexte.mdx`, `fondamentaux/modeles-de-langage.mdx`, `ressources/glossaire.mdx` par `pedagogue-ia101` (2026-08-11)
+- [x] ~~Corriger `AGENTS.md:31` qui cite encore GPT-4o/Claude 3.5 Sonnet/Gemini 1.5 Pro comme "modèles récents"~~ → corrigé par `pedagogue-ia101` (2026-08-11)
+- [x] ~~Ajouter une leçon sur le MCP et les agents outillés~~ → déjà couvert en profondeur dans `context-engineering/agents-et-outils.mdx` (MCP, A2A) + `ressources/glossaire.mdx`. Constaté obsolète lors de l'audit du 2026-08-11
+- [x] ~~Ajouter une leçon sur les modèles de raisonnement~~ → déjà couvert dans `prompt-engineering/chain-of-thought.mdx`. Constaté obsolète lors de l'audit du 2026-08-11
+- [x] ~~Actualiser le chiffre IEA dans `ia-responsable/empreinte-environnementale.mdx` avec le rapport de suivi d'avril 2026 (485 TWh en 2025, +17 %)~~ → corrigé, référence ajoutée aussi dans `ia-responsable/ressources-ia-responsable.mdx` par `pedagogue-ia101` (2026-08-11)
 - [ ] Ajouter un indicateur de dernière révision par page (champ frontmatter `lastUpdated` ou mention en bas de page)
 - [ ] Créer une page "Nouveautés" / changelog pédagogique listant les mises à jour majeures du cours
+- [ ] Surveillance : GPT-5.7 ("Doug") dévoilé le 09/08/2026, lancement annoncé avant novembre 2026 — ne rien changer tant que non confirmé sur source primaire OpenAI
 
 ## 2. Engagement & découvrabilité
 

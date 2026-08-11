@@ -28,4 +28,4 @@
 - Le site s'adresse à des apprenants cherchant à comprendre l'IA de manière pratique. 
 - Évite le jargon trop mathématique sauf s'il est strictement nécessaire (et dans ce cas, explique-le).
 - Conserve un équilibre entre théorie (fonctionnement) et pratique (exercices, prompts à tester).
-- Les modèles cités doivent toujours être les plus récents possibles (ex: GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro).
+- Les modèles cités doivent toujours être les plus récents possibles (ex: GPT-5.6, Claude Sonnet 5, Gemini 3.1 Pro). Vérifie l'état de l'art au moment de la rédaction plutôt que de te fier à cette liste, qui se périme vite.
