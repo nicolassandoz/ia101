@@ -175,6 +175,10 @@ Entrée : "Très bon achat !"
 Sortie : Positif
 ```
 
+<Warning>
+  Le modèle reproduit fidèlement tout ce que contiennent vos exemples, y compris leurs erreurs et leurs biais. Si un seul de vos exemples contient une classification fausse, une formulation biaisée ou une information incorrecte, le modèle a de bonnes chances de la reproduire avec la même assurance dans ses réponses suivantes. Relisez soigneusement chaque exemple avant de l'utiliser.
+</Warning>
+
 ## Aller plus loin
 
 Le few-shot learning se combine naturellement avec d'autres techniques :
@@ -184,6 +188,20 @@ Le few-shot learning se combine naturellement avec d'autres techniques :
 - **Prompts itératifs** : démarrez avec des exemples généraux et affinez-les progressivement au fil de la conversation.
 
 Le few-shot learning est votre premier réflexe dès que les instructions seules ne suffisent pas à obtenir le format ou la qualité attendus.
+
+## Exercice pratique
+
+Testez par vous-même l'effet des exemples sur une tâche de classification.
+
+```text
+Tâche : Classe la priorité de ce ticket support (Urgent / Normal / Faible).
+
+Ticket : "Bonjour, mon compte a été débité deux fois pour le même
+abonnement ce matin, pouvez-vous vérifier ?"
+Priorité :
+```
+
+Envoyez d'abord ce prompt seul (zero-shot), puis recommencez en ajoutant 3 exemples de tickets déjà classés avant votre question (few-shot). Comparez les deux réponses : la version few-shot est-elle plus courte et plus cohérente avec le format que vous auriez choisi vous-même ?
 
 ## Testez vos connaissances
 

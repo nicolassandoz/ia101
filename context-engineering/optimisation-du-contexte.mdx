@@ -73,6 +73,10 @@ context = "\n\n".join([chunk.text for chunk in relevant_chunks])
 # Résultat : ~1 500 tokens au lieu de 40 000
 ```
 
+<Warning>
+  La compression et le résumé ne sont pas neutres : un résumé automatique peut supprimer une clause, une exception ou un avertissement qui semblait secondaire au modèle mais qui était en réalité déterminant (une condition contractuelle, une contre-indication médicale, une limite de validité). Ne compressez jamais aveuglément un contenu réglementaire, contractuel ou médical sans faire relire le résumé par une personne qui connaît le document source.
+</Warning>
+
 ## Prompt caching : réutiliser les préfixes coûteux
 
 Le prompt caching est l'une des optimisations les plus efficaces disponibles aujourd'hui. Les principaux fournisseurs (Anthropic, OpenAI, Google) proposent des mécanismes permettant de mettre en cache la portion répétitive de vos prompts.
@@ -164,6 +168,33 @@ Ne déployez une optimisation que si la qualité reste stable ou s'améliore sur
 </Steps>
 
 L'optimisation du contexte est un processus continu, pas un réglage unique. À mesure que vos données et vos cas d'usage évoluent, vos stratégies d'optimisation doivent évoluer avec eux. Un contexte bien optimisé est l'un des leviers les plus puissants pour rendre vos applications IA scalables et économiquement viables.
+
+## Essayez maintenant : mesurez la perte d'un résumé
+
+Copiez ce prompt dans votre outil IA préféré :
+
+```text
+Voici un compte-rendu de réunion :
+"""
+Réunion du 14 mars avec l'équipe produit et le service juridique. Présents :
+Julie (produit), Marc (legal), Sophie (data). Décision prise de reporter le
+lancement de la fonctionnalité "partage de profil public" du 1er avril au
+15 mai, le temps de finaliser l'analyse d'impact RGPD demandée par Marc.
+Sophie signale que 12 % des utilisateurs actifs ont déjà activé un profil
+partiellement public sur la version bêta, ce qui limite le risque produit
+d'un report. Julie rappelle que le budget marketing du lancement est déjà
+engagé pour le 1er avril et qu'il faudra renégocier le calendrier avec
+l'agence externe. Marc précise que l'analyse d'impact doit obligatoirement
+être validée avant toute mise en production, sans exception possible même
+en cas de pression commerciale. Prochaine réunion fixée au 28 mars pour
+statuer sur le nouveau calendrier marketing.
+"""
+
+Résume ce compte-rendu en 40 mots maximum, en conservant uniquement les
+décisions prises et les contraintes non négociables.
+```
+
+Vérifiez si le résumé obtenu conserve bien la précision de Marc ("sans exception possible même en cas de pression commerciale"). C'est typiquement le genre de détail qu'une compression agressive fait disparaître alors qu'il s'agit souvent du point le plus important du compte-rendu, une bonne illustration concrète de l'avertissement plus haut sur la compression de contenu sensible.
 
 ## Testez vos connaissances
 

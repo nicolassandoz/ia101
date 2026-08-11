@@ -175,6 +175,28 @@ Les agents autonomes peuvent avoir des **effets irréversibles dans le monde ré
 
 La puissance des agents est proportionnelle à leurs risques. Une architecture d'agent bien conçue commence toujours par définir explicitement ce que l'agent **ne peut pas faire**, avant de définir ce qu'il peut faire.
 
+## Essayez maintenant : simulez une boucle d'agent
+
+Copiez ce prompt dans votre outil IA préféré pour observer comment un modèle planifie une séquence d'appels d'outils, sans les exécuter réellement :
+
+```text
+Tu es un agent avec accès aux outils suivants :
+
+1. recherche_web(requete: string) : effectue une recherche sur le web
+2. calculatrice(expression: string) : évalue une expression mathématique
+3. envoyer_email(destinataire: string, sujet: string, corps: string) : envoie un email
+
+Voici ta tâche : "Trouve le taux de change actuel EUR/USD, calcule combien
+valent 3 450 euros en dollars, et envoie le résultat par email à
+compta@monentreprise.fr avec pour sujet 'Conversion EUR/USD'."
+
+Réfléchis étape par étape à la séquence d'outils que tu dois appeler, dans
+quel ordre, et avec quels paramètres. Pour chaque appel, indique le nom de
+l'outil et les arguments au format JSON, sans exécuter réellement l'action.
+```
+
+Observez comment le modèle décompose la tâche en étapes (rechercher, puis calculer, puis envoyer) et respecte les dépendances entre elles : il ne peut pas calculer la conversion avant d'avoir le taux, ni envoyer l'email avant d'avoir le résultat. C'est exactement la boucle percevoir → raisonner → agir → observer vue plus haut, ici simulée en un seul prompt plutôt qu'exécutée par un vrai système d'orchestration.
+
 ## Testez vos connaissances
 
 <Accordion title="Quiz : Le MCP remplace-t-il le function calling ?">

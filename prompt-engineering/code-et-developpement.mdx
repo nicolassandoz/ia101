@@ -381,6 +381,17 @@ Sections à inclure :
   Ne déployez jamais du code généré par l'IA sans l'avoir soigneusement relu, testé et validé. Les modèles de langage peuvent produire du code syntaxiquement correct mais logiquement défaillant, utiliser des API dépréciées, introduire des vulnérabilités de sécurité (injections, exposition de secrets, mauvaise gestion des permissions) ou générer des résultats différents selon les données d'entrée. Traitez toujours le code généré comme un point de départ à valider, pas comme une solution finale prête pour la production.
 </Warning>
 
+## Exercice pratique
+
+```text
+Écris une fonction Python qui prend une liste de prix (float) et
+retourne le prix total après application d'une remise de 10% si
+le total dépasse 100€, sinon retourne le total sans remise.
+Gère le cas d'une liste vide (retourne 0).
+```
+
+Testez le code généré avec trois cas : une liste vide, une liste dont le total est inférieur à 100€, une liste dont le total dépasse 100€. Le résultat correspond-il à vos attentes dans les trois cas ?
+
 ## Testez vos connaissances
 
 <Accordion title="Quiz : si du code généré par l'IA compile sans erreur et semble fonctionner sur vos premiers tests, peut-on le déployer directement en production ?">

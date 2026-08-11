@@ -29,6 +29,10 @@ Le RAG répond à plusieurs limitations fondamentales des LLMs :
 - **Citer les sources** : vous pouvez tracer d'où vient chaque information
 - **Éviter le fine-tuning** : pas besoin de ré-entraîner le modèle pour chaque mise à jour de données
 
+<Warning>
+  Le RAG réduit les hallucinations, il ne les élimine pas. Le modèle peut mal interpréter un document récupéré, mélanger deux sources contradictoires, ou continuer à s'appuyer sur ses propres connaissances internes malgré le contexte fourni. Une réponse "sourcée" n'est pas automatiquement une réponse vérifiée : avant de la considérer comme fiable, vérifiez qu'elle correspond réellement aux documents cités, surtout sur des sujets à enjeu (juridique, médical, financier).
+</Warning>
+
 ## Le pipeline RAG en 3 grandes étapes
 
 <Steps>
@@ -136,6 +140,34 @@ Ces deux approches répondent à des besoins différents et sont souvent complé
 | **Traçabilité des sources** | ✅ Native | ❌ Difficile |
 
 En règle générale : utilisez le RAG pour injecter des **connaissances**, et le fine-tuning pour modifier le **comportement** du modèle.
+
+## Essayez maintenant : ressentez l'effet du RAG en deux prompts
+
+Posez d'abord cette question à votre IA préférée, sans aucun contexte additionnel :
+
+```text
+Quelles sont les conditions de remboursement de la formule "Éco" de l'assurance voyage Nomade+ ?
+```
+
+Le modèle va probablement décliner poliment, ou inventer une réponse plausible sur un produit qu'il n'a jamais vu.
+
+Reposez ensuite la même question, mais en fournissant le "document" comme le ferait un système RAG :
+
+```text
+Voici un extrait des conditions générales de l'assurance voyage Nomade+ :
+"""
+Formule Éco : remboursement à 100 % des frais d'annulation si le motif est
+médical et justifié par un certificat, dans la limite de 1 500 € par
+personne. Aucun remboursement en cas d'annulation pour convenance
+personnelle. Délai de déclaration : 5 jours ouvrés après l'événement.
+"""
+
+Quelles sont les conditions de remboursement de la formule "Éco" de
+l'assurance voyage Nomade+ ? Réponds uniquement à partir du texte fourni,
+et précise si une information demandée n'y figure pas.
+```
+
+Comparez les deux réponses. La seconde est ancrée dans un document réel, vérifiable et à jour : c'est exactement ce qu'un pipeline RAG automatise à grande échelle, en remplaçant votre copier-coller manuel par une recherche vectorielle sur des milliers de documents.
 
 ## Testez vos connaissances
 

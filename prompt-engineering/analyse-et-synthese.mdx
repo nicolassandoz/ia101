@@ -76,6 +76,10 @@ Face à des volumes croissants d'information, savoir formuler des prompts d'anal
   </Step>
 </Steps>
 
+<Warning>
+  Un résumé ou une extraction générée par IA peut omettre une clause importante, déformer une nuance ou mal interpréter un chiffre, surtout sur des documents juridiques, médicaux ou financiers. Ne prenez jamais de décision à enjeu élevé sur la seule base d'une synthèse produite par un LLM : relisez le document source sur les points critiques avant de vous engager.
+</Warning>
+
 ## Extraction d'informations structurées
 
 L'extraction transforme un texte non structuré en données exploitables. Précisez toujours le format de sortie attendu.
@@ -197,6 +201,22 @@ Q3 : [question]
 <Note>
   Les modèles de langage ont une limite sur la quantité de texte qu'ils peuvent traiter en une seule fois (appelée "fenêtre de contexte"). Pour les documents très longs (plus de 10-15 pages selon le modèle), vous devrez les découper en sections et les traiter séparément, puis demander une synthèse finale à partir des résumés partiels. Vérifiez toujours la limite de votre outil avant de soumettre un document volumineux.
 </Note>
+
+## Exercice pratique
+
+```text
+Analyse le texte suivant et indique : le sentiment général
+(positif/négatif/neutre), les 2 points forts et les 2 points faibles
+mentionnés, sous forme de liste à puces.
+
+Texte :
+"Le service client a été rapide à répondre, ce qui est appréciable.
+Par contre, le produit est arrivé avec 4 jours de retard sans
+notification, et l'emballage était endommagé bien que le contenu
+soit intact."
+```
+
+Vérifiez que la réponse identifie bien les deux points positifs (rapidité du service, contenu intact) **et** les deux points négatifs (retard, emballage endommagé) : c'est un bon test de la capacité du modèle à extraire une information complète sans en oublier une partie.
 
 ## Testez vos connaissances
 

@@ -184,6 +184,16 @@ Le Chain-of-Thought est votre allié dès que la tâche requiert plusieurs étap
   Ce raisonnement natif ne rend pas les techniques de cette leçon inutiles : sur les modèles qui ne raisonnent pas nativement, ou quand vous voulez orienter le raisonnement dans une direction précise, le CoT prompté reste pertinent. Gardez aussi en tête que ce raisonnement interne consomme des tokens comme le reste de la réponse : il pèse donc sur le budget de la fenêtre de contexte du modèle.
 </Note>
 
+## Exercice pratique
+
+```text
+Un magasin vend des tee-shirts à 15€ et propose une réduction de 20%
+sur tous les articles à partir du 3ème acheté. Combien coûteront 5 tee-shirts ?
+Raisonnons étape par étape.
+```
+
+Essayez ce prompt avec et sans la phrase « Raisonnons étape par étape. ». Comparez les deux réponses : le résultat chiffré est-il identique ? Le raisonnement de la version CoT vous permet-il de repérer plus facilement une éventuelle erreur de calcul ?
+
 ## Testez vos connaissances
 
 <Accordion title="Quiz : puisque Claude Sonnet 5 raisonne déjà nativement avant de répondre, demander « raisonnons étape par étape » dans le prompt devient-il inutile avec ce modèle ?">

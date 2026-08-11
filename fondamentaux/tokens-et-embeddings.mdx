@@ -86,6 +86,10 @@ Une règle empirique utile : en anglais, **1 token ≈ 4 caractères**, soit env
 
 Cette différence peut représenter jusqu'à 20-30 % de tokens supplémentaires pour un même contenu traduit de l'anglais vers le français. Cela a un impact direct sur vos coûts et sur l'utilisation de votre fenêtre de contexte.
 
+<Warning>
+Ces ratios sont des approximations pratiques pour se faire une idée rapide, pas une valeur exacte. Ne les utilisez jamais pour un calcul de coût ou de dimensionnement critique en production : le découpage réel dépend du tokenizer propre à chaque modèle. Utilisez l'outil de tokenisation officiel de votre fournisseur (comme tiktoken pour OpenAI) avant de vous engager sur un budget ou une limite de contexte précise.
+</Warning>
+
 ## Qu'est-ce qu'un embedding ?
 
 Une fois le texte tokenisé, chaque token est converti en un **vecteur numérique** : c'est ce qu'on appelle un **embedding**. Concrètement, un embedding est une liste de nombres (souvent plusieurs centaines ou milliers de valeurs) qui représente la "position" d'un mot dans un espace mathématique à haute dimension.

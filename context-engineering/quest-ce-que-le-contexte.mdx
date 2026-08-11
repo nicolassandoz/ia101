@@ -52,6 +52,10 @@ flowchart TD
     M --> R["Réponse"]
 ```
 
+<Warning>
+  Les données injectées dans le contexte (documents, extraits de base de données, résultats d'outils) sont transmises telles quelles au fournisseur du modèle. Ne placez jamais d'informations confidentielles, de données personnelles sensibles ou de secrets (clés d'API, mots de passe) dans un contexte sans avoir vérifié au préalable la politique de traitement des données de votre fournisseur : ce qui entre dans la fenêtre de contexte peut, selon les conditions d'usage, être conservé au-delà de votre seule requête.
+</Warning>
+
 ## Le bureau de travail mental du modèle
 
 Imaginez que la fenêtre de contexte est le **bureau de travail** du modèle. Tout ce qui n'est pas posé sur ce bureau est, pour lui, inexistant. Chaque token que vous placez sur ce bureau occupe de l'espace, et cet espace est limité.
