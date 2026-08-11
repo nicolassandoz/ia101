@@ -8,7 +8,7 @@ description: "D'où viennent les biais des modèles, comment ils se manifestent,
   **Niveau** : Intermédiaire · **Prérequis** : [Impact cognitif](/ia-responsable/impact-cognitif) · **Temps de lecture** : ~6 min
 </Info>
 
-Un modèle de langage n'a pas d'opinion. Il reproduit des régularités statistiques présentes dans ses données d'entraînement, puis dans les préférences humaines qui ont servi à l'aligner. Quand ces données reflètent des déséquilibres du monde — et elles en reflètent toujours — le modèle les restitue, parfois amplifiés, toujours avec l'autorité tranquille d'un système technique. Comprendre ce mécanisme est indispensable dès lors que vos usages touchent des personnes.
+Un modèle de langage n'a pas d'opinion. Il reproduit des régularités statistiques présentes dans ses données d'entraînement, puis dans les préférences humaines qui ont servi à l'aligner. Quand ces données reflètent des déséquilibres du monde (et elles en reflètent toujours), le modèle les restitue, parfois amplifiés, toujours avec l'autorité tranquille d'un système technique. Comprendre ce mécanisme est indispensable dès lors que vos usages touchent des personnes.
 
 ## D'où viennent les biais
 
@@ -20,7 +20,7 @@ Un modèle de langage n'a pas d'opinion. Il reproduit des régularités statisti
     Pour retirer les contenus toxiques, on applique des filtres automatiques. Ces filtres évincent aussi, involontairement, des usages linguistiques minoritaires, des variantes dialectales, des discussions légitimes sur des sujets sensibles. Le nettoyage introduit ses propres biais.
   </Step>
   <Step title="L'alignement sur les préférences humaines">
-    L'étape d'alignement s'appuie sur des jugements humains — quelle réponse est préférable ? Les valeurs, la culture et le cadre de travail des annotateurs s'y inscrivent, tout comme les consignes rédigées par le fournisseur.
+    L'étape d'alignement s'appuie sur des jugements humains : quelle réponse est préférable ? Les valeurs, la culture et le cadre de travail des annotateurs s'y inscrivent, tout comme les consignes rédigées par le fournisseur.
   </Step>
   <Step title="L'usage lui-même">
     La façon dont vous formulez un prompt oriente le modèle. Un prompt qui présuppose une réponse l'obtient généralement. Une partie des biais observés en pratique naissent de l'interaction, pas seulement du modèle.
@@ -28,7 +28,7 @@ Un modèle de langage n'a pas d'opinion. Il reproduit des régularités statisti
 </Steps>
 
 <Note>
-Point souvent mal compris : un biais n'est pas nécessairement un bug à corriger. Un modèle qui associe « médecin » plus fréquemment au masculin **décrit statistiquement** un état passé du monde. Le problème surgit quand cette description devient **prescription** — quand elle oriente un tri de candidatures, une recommandation ou une évaluation.
+Point souvent mal compris : un biais n'est pas nécessairement un bug à corriger. Un modèle qui associe « médecin » plus fréquemment au masculin **décrit statistiquement** un état passé du monde. Le problème surgit quand cette description devient **prescription**, quand elle oriente un tri de candidatures, une recommandation ou une évaluation.
 </Note>
 
 ## Comment les biais se manifestent concrètement
@@ -39,7 +39,7 @@ Point souvent mal compris : un biais n'est pas nécessairement un bug à corrige
   </Accordion>
 
   <Accordion title="Qualité inégale selon les langues">
-    Les performances chutent nettement sur les langues peu représentées dans les corpus. Un modèle excellent en anglais peut être médiocre en langue régionale, en wolof ou en créole — et surtout, il **ne signale pas** cette baisse de fiabilité. Le français s'en sort bien, mais reste en retrait de l'anglais sur les tâches complexes.
+    Les performances chutent nettement sur les langues peu représentées dans les corpus. Un modèle excellent en anglais peut être médiocre en langue régionale, en wolof ou en créole, et surtout, il **ne signale pas** cette baisse de fiabilité. Le français s'en sort bien, mais reste en retrait de l'anglais sur les tâches complexes.
   </Accordion>
 
   <Accordion title="Biais culturel implicite">
@@ -47,7 +47,7 @@ Point souvent mal compris : un biais n'est pas nécessairement un bug à corrige
   </Accordion>
 
   <Accordion title="Traitement différencié dans les décisions">
-    C'est le risque le plus sérieux. Un système d'aide au tri de candidatures, à l'octroi de crédit ou à l'évaluation scolaire peut produire des écarts systématiques entre groupes, sans qu'aucune variable interdite n'apparaisse explicitement — d'autres variables en tiennent lieu de substitut (code postal, parcours, formulation).
+    C'est le risque le plus sérieux. Un système d'aide au tri de candidatures, à l'octroi de crédit ou à l'évaluation scolaire peut produire des écarts systématiques entre groupes, sans qu'aucune variable interdite n'apparaisse explicitement : d'autres variables en tiennent lieu de substitut (code postal, parcours, formulation).
   </Accordion>
 
   <Accordion title="Biais d'accessibilité et de style">
@@ -90,7 +90,7 @@ Quelques pratiques complémentaires :
     Un prompt qui énumère les critères d'évaluation attendus produit des jugements plus stables et plus auditables qu'une consigne générale du type « donne ton avis ».
   </Card>
   <Card title="Garder l'humain décideur" icon="user-check">
-    Sur toute décision affectant une personne, l'IA prépare, l'humain tranche — et doit disposer des éléments pour contredire la recommandation.
+    Sur toute décision affectant une personne, l'IA prépare, l'humain tranche, et doit disposer des éléments pour contredire la recommandation.
   </Card>
   <Card title="Documenter et journaliser" icon="clipboard-list">
     Conservez les prompts, les modèles utilisés et les sorties. Sans traçabilité, un biais est indétectable et une contestation impossible à instruire.
@@ -98,14 +98,14 @@ Quelques pratiques complémentaires :
 </CardGroup>
 
 <Warning>
-Pour les usages qui touchent au **recrutement, au crédit, à l'éducation, à la santé, à l'accès à des services essentiels ou à la biométrie**, vous entrez dans le champ des systèmes à haut risque de l'AI Act. Les obligations associées sont détaillées dans la page [Cadre réglementaire](/ia-responsable/cadre-reglementaire) — et elles ne se limitent pas à de bonnes intentions.
+Pour les usages qui touchent au **recrutement, au crédit, à l'éducation, à la santé, à l'accès à des services essentiels ou à la biométrie**, vous entrez dans le champ des systèmes à haut risque de l'AI Act. Les obligations associées sont détaillées dans la page [Cadre réglementaire](/ia-responsable/cadre-reglementaire), et elles ne se limitent pas à de bonnes intentions.
 </Warning>
 
 ## Le travail invisible derrière les modèles
 
 Les biais ne sont pas le seul enjeu social des données d'entraînement. Il y a aussi la question, longtemps passée sous silence, de **qui produit et nettoie ces données**.
 
-Derrière chaque modèle aligné se trouvent des dizaines de milliers de personnes qui annotent des images, transcrivent des enregistrements, classent des réponses par qualité, et surtout **modèrent les contenus les plus violents** pour qu'ils soient exclus des corpus ou filtrés en sortie. Ce travail est largement délocalisé — Kenya, Philippines, Inde, Madagascar, Colombie, entre autres.
+Derrière chaque modèle aligné se trouvent des dizaines de milliers de personnes qui annotent des images, transcrivent des enregistrements, classent des réponses par qualité, et surtout **modèrent les contenus les plus violents** pour qu'ils soient exclus des corpus ou filtrés en sortie. Ce travail est largement délocalisé : Kenya, Philippines, Inde, Madagascar, Colombie, entre autres.
 
 <AccordionGroup>
   <Accordion title="Les conditions documentées">
@@ -113,7 +113,7 @@ Derrière chaque modèle aligné se trouvent des dizaines de milliers de personn
   </Accordion>
 
   <Accordion title="Une organisation collective qui émerge">
-    Ces travailleurs s'organisent. Au Kenya notamment, des structures comme la *Data Labelers Association* et l'*African Content Moderators Union* portent des revendications précises : contrats transparents, soutien psychologique réel, standards de travail opposables. Leur position est claire — ils ne demandent pas la suppression de ces emplois, mais leur encadrement.
+    Ces travailleurs s'organisent. Au Kenya notamment, des structures comme la *Data Labelers Association* et l'*African Content Moderators Union* portent des revendications précises : contrats transparents, soutien psychologique réel, standards de travail opposables. Leur position est claire : ils ne demandent pas la suppression de ces emplois, mais leur encadrement.
   </Accordion>
 
   <Accordion title="Ce que cela implique pour vous">
@@ -127,13 +127,13 @@ Cette dimension est très peu documentée par les fournisseurs. C'est précisém
 
 ## Ce qu'il faut retenir
 
-- Les biais viennent des **données**, du **filtrage**, de l'**alignement** et de l'**usage** — quatre niveaux, quatre points d'action.
+- Les biais viennent des **données**, du **filtrage**, de l'**alignement** et de l'**usage** : quatre niveaux, quatre points d'action.
 - Un biais devient un problème quand une **description statistique** se transforme en **décision** sur des personnes.
 - Le **test de substitution** est simple, gratuit, et détecte l'essentiel des écarts grossiers. Répétez-le à chaque changement de modèle.
 - Sur les décisions affectant des personnes : **neutraliser en amont, expliciter les critères, garder l'humain décideur, tracer**.
 - Le **travail d'annotation et de modération** est un enjeu social de premier plan, à traiter comme un sujet de chaîne d'approvisionnement.
 
-La page suivante élargit encore la focale : emploi, information, création, concentration économique — ce que l'IA déplace à l'échelle de la société.
+La page suivante élargit encore la focale : emploi, information, création, concentration économique, ce que l'IA déplace à l'échelle de la société.
 
 ## Testez vos connaissances
 

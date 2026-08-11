@@ -8,7 +8,7 @@ description: "Choisir le bon modèle, éviter les régénérations inutiles, exp
   **Niveau** : Intermédiaire · **Prérequis** : [Ordres de grandeur](/ia-responsable/ordres-de-grandeur) · **Temps de lecture** : ~8 min
 </Info>
 
-Bonne nouvelle : la quasi-totalité des leviers de sobriété environnementale sont exactement les mêmes que ceux de la performance et du coût. Un prompt bien construit, un modèle correctement dimensionné, un cache bien utilisé réduisent simultanément votre facture, votre latence et votre empreinte. Cette page est donc autant un chapitre RSE qu'un chapitre d'ingénierie — et c'est précisément ce qui rend la démarche tenable dans la durée.
+Bonne nouvelle : la quasi-totalité des leviers de sobriété environnementale sont exactement les mêmes que ceux de la performance et du coût. Un prompt bien construit, un modèle correctement dimensionné, un cache bien utilisé réduisent simultanément votre facture, votre latence et votre empreinte. Cette page est donc autant un chapitre RSE qu'un chapitre d'ingénierie, et c'est précisément ce qui rend la démarche tenable dans la durée.
 
 <Note>
 Vous retrouverez ici des techniques déjà vues dans [Optimiser le contexte](/context-engineering/optimisation-du-contexte). C'est volontaire : ce chapitre les relit sous l'angle de l'impact plutôt que sous celui du coût. Les mêmes gestes, une autre motivation.
@@ -24,7 +24,7 @@ Le premier levier de sobriété n'est pas technique. C'est une question de conce
   </Accordion>
 
   <Accordion title="Un modèle classique ferait-il l'affaire ?">
-    Classification de tickets, détection de spam, prédiction de valeurs numériques : un modèle de machine learning classique, entraîné une fois sur vos données, consomme des ordres de grandeur de moins qu'un appel à un grand modèle génératif — et il est souvent plus précis sur son domaine étroit.
+    Classification de tickets, détection de spam, prédiction de valeurs numériques : un modèle de machine learning classique, entraîné une fois sur vos données, consomme des ordres de grandeur de moins qu'un appel à un grand modèle génératif, et il est souvent plus précis sur son domaine étroit.
   </Accordion>
 
   <Accordion title="Le résultat sera-t-il réellement utilisé ?">
@@ -76,7 +76,7 @@ def traiter(requete):
     Les préfixes stables (instructions système, documentation de référence, exemples) peuvent être mis en cache par les principaux fournisseurs. Le gain atteint 90 % sur les tokens concernés, en coût comme en calcul. Placez le stable en tête, le variable en fin de prompt.
   </Step>
   <Step title="Éviter les régénérations en cascade">
-    Chaque « refais-le mais autrement » relance un calcul complet. Un prompt précis dès le premier essai — contexte, format attendu, contraintes — coûte moins cher que trois itérations approximatives. Un prompt qui échoue trois fois consomme quatre fois plus qu'un prompt bien posé.
+    Chaque « refais-le mais autrement » relance un calcul complet. Un prompt précis dès le premier essai (contexte, format attendu, contraintes) coûte moins cher que trois itérations approximatives. Un prompt qui échoue trois fois consomme quatre fois plus qu'un prompt bien posé.
   </Step>
   <Step title="Limiter la longueur de sortie">
     La génération est séquentielle : chaque token de réponse a un coût. Demander explicitement « en 5 puces maximum » ou fixer `max_tokens` évite les réponses fleuves que personne ne lit intégralement.
@@ -85,7 +85,7 @@ def traiter(requete):
     Adapter un modèle à vos données par fine-tuning implique un entraînement, donc un coût fixe important à réamortir. Le RAG obtient souvent un résultat équivalent ou meilleur, sans réentraînement, et reste à jour sans repasser par la case calcul.
   </Step>
   <Step title="Traiter par lots quand c'est possible">
-    Les API proposent des modes *batch* asynchrones, moins chers et exécutés lorsque les infrastructures sont moins sollicitées. Pour tout traitement non interactif — analyses nocturnes, enrichissement de base — c'est le mode par défaut à adopter.
+    Les API proposent des modes *batch* asynchrones, moins chers et exécutés lorsque les infrastructures sont moins sollicitées. Pour tout traitement non interactif (analyses nocturnes, enrichissement de base), c'est le mode par défaut à adopter.
   </Step>
   <Step title="Mettre en cache les réponses elles-mêmes">
     Beaucoup d'applications reposent votre question à chaque affichage. Un cache applicatif sur les requêtes fréquentes et stables supprime purement et simplement l'appel.
@@ -101,7 +101,7 @@ def traiter(requete):
     Une région à électricité décarbonée (France, Suède, Norvège, Québec) réduit drastiquement l'empreinte carbone. C'est souvent un paramètre de configuration, parfois un choix d'offre.
   </Card>
   <Card title="Transparence du fournisseur" icon="eye">
-    Publie-t-il ses consommations, sa méthodologie, son PUE et son WUE ? Un fournisseur qui ne publie rien ne peut pas être audité — et ce silence est en soi une information.
+    Publie-t-il ses consommations, sa méthodologie, son PUE et son WUE ? Un fournisseur qui ne publie rien ne peut pas être audité, et ce silence est en soi une information.
   </Card>
   <Card title="Stress hydrique local" icon="droplet">
     Un centre de données dans une région en tension hydrique pose un problème que le carbone ne capture pas. Cette information est rarement mise en avant : il faut la demander.

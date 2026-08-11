@@ -19,7 +19,7 @@ La plupart des chiffres viraux sur la consommation de l'IA proviennent d'extrapo
 Depuis 2025, deux acteurs ont publié des mesures détaillées de leur propre empreinte. Ce sont aujourd'hui les données les plus fiables dont nous disposons.
 
 <Tabs>
-  <Tab title="Google — Gemini (août 2025)">
+  <Tab title="Google : Gemini (août 2025)">
     Google a publié la première mesure détaillée d'un assistant grand public à grande échelle. Pour la **requête texte médiane** sur Gemini :
 
     | Indicateur | Périmètre complet | Périmètre restreint |
@@ -28,11 +28,11 @@ Depuis 2025, deux acteurs ont publié des mesures détaillées de leur propre em
     | Émissions | **0,03 gCO₂e** | 0,02 gCO₂e |
     | Eau | **0,26 mL** | 0,12 mL |
 
-    Le **périmètre complet** inclut les puces actives, les puces au repos, le processeur hôte, la mémoire, le refroidissement et les pertes de l'infrastructure. Le **périmètre restreint** ne compte que la consommation des puces en calcul actif — c'est cette méthode, plus flatteuse, qui est souvent employée par défaut dans le secteur.
+    Le **périmètre complet** inclut les puces actives, les puces au repos, le processeur hôte, la mémoire, le refroidissement et les pertes de l'infrastructure. Le **périmètre restreint** ne compte que la consommation des puces en calcul actif : c'est cette méthode, plus flatteuse, qui est souvent employée par défaut dans le secteur.
 
     Google indique par ailleurs une division par **33 de l'énergie** et par **44 de l'empreinte carbone** par requête sur douze mois, à qualité de réponse supérieure.
   </Tab>
-  <Tab title="Mistral — Large 2 (juillet 2025)">
+  <Tab title="Mistral : Large 2 (juillet 2025)">
     Mistral AI a publié une **analyse de cycle de vie** complète, menée avec l'ADEME et le cabinet Carbone 4, portant sur son modèle Large 2.
 
     **Impact total sur 18 mois** (entraînement + usage) :
@@ -156,7 +156,7 @@ print(response.impacts.gwp.value)     # kgCO2e
 ## Ce qu'il faut retenir
 
 - Les seules données solides viennent de **Google (0,24 Wh / 0,03 gCO₂e / 0,26 mL** par requête médiane) et de **Mistral (1,14 gCO₂e / 45 mL** pour 400 tokens).
-- L'écart entre les deux s'explique par le **modèle**, la **longueur de réponse**, le **mix électrique**, le **périmètre** et le **taux d'utilisation** — pas par la malhonnêteté de l'un ou de l'autre.
+- L'écart entre les deux s'explique par le **modèle**, la **longueur de réponse**, le **mix électrique**, le **périmètre** et le **taux d'utilisation**, pas par la malhonnêteté de l'un ou de l'autre.
 - Un usage textuel individuel est **marginal** ; l'image et surtout la vidéo changent complètement l'équation.
 - **Mesurez plutôt que d'estimer** : EcoLogits et CodeCarbon rendent le sujet concret en quelques lignes de code.
 
