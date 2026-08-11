@@ -11,8 +11,8 @@ Diagnostic mis à jour après l'audit `veilleur-ia101` du 2026-08-11 (voir `ress
 - [x] ~~Ajouter une leçon sur le MCP et les agents outillés~~ → déjà couvert en profondeur dans `context-engineering/agents-et-outils.mdx` (MCP, A2A) + `ressources/glossaire.mdx`. Constaté obsolète lors de l'audit du 2026-08-11
 - [x] ~~Ajouter une leçon sur les modèles de raisonnement~~ → déjà couvert dans `prompt-engineering/chain-of-thought.mdx`. Constaté obsolète lors de l'audit du 2026-08-11
 - [x] ~~Actualiser le chiffre IEA dans `ia-responsable/empreinte-environnementale.mdx` avec le rapport de suivi d'avril 2026 (485 TWh en 2025, +17 %)~~ → corrigé, référence ajoutée aussi dans `ia-responsable/ressources-ia-responsable.mdx` par `pedagogue-ia101` (2026-08-11)
-- [ ] Ajouter un indicateur de dernière révision par page (champ frontmatter `lastUpdated` ou mention en bas de page)
-- [ ] Créer une page "Nouveautés" / changelog pédagogique listant les mises à jour majeures du cours
+- [x] ~~Ajouter un indicateur de dernière révision par page~~ → décidé de ne pas l'ajouter (2026-08-11) : redondant avec la page Nouveautés et le registre de fraîcheur, aurait ajouté de la maintenance sur 33 pages sans valeur claire pour le lecteur
+- [x] Créer une page "Nouveautés" / changelog pédagogique → `ressources/nouveautes.mdx` créée (2026-08-11), historique rétro-rempli depuis le lancement du cours (24/07/2026), ajoutée en fin du groupe « Références »
 - [ ] Surveillance : GPT-5.7 ("Doug") dévoilé le 09/08/2026, lancement annoncé avant novembre 2026 — ne rien changer tant que non confirmé sur source primaire OpenAI
 
 ## 2. Engagement & découvrabilité
@@ -22,7 +22,7 @@ Le site donne du contenu gratuit mais n'a aucun mécanisme pour transformer les 
 - [x] Renseigner `footer.socials` dans `docs.json` → site + LinkedIn ajoutés (2026-08-01)
 - [x] Ajouter une page "À propos" → page `ressources/le-projet.mdx` créée (genèse, mention IA, stack), placée en haut de la sidebar (2026-08-01). NB : `images/nicolas-sandoz.png` reste disponible mais non utilisée sur cette page
 - [x] Ajouter un moyen de capter les lecteurs → lien LinkedIn ajouté au footer et à la page "Le Projet" (2026-08-01). Newsletter non mise en place
-- [ ] Ajouter des CTA de partage/feedback en fin de leçon (Mintlify supporte le feedback de page)
+- [x] Ajouter un CTA de feedback en fin de leçon → `docs.json` a déjà `feedback.thumbsRating: true` (widget natif Mintlify actif sur toutes les pages), constaté lors de la relecture du 2026-08-11. Un CTA de partage dédié reste à considérer si besoin, mais le feedback de base est couvert
 
 ## 2 bis. Nouvelle partie « IA Responsable » (2026-08-04)
 
@@ -34,15 +34,15 @@ Quatrième onglet ajouté après Context Engineering : 9 pages dans `ia-responsa
 
 ## 3. Pédagogie
 
-- [ ] Ajouter un quiz ou 2-3 questions de vérification en fin de chapitre pour ancrer l'apprentissage
-- [ ] Indiquer un niveau de difficulté / prérequis par section (certaines pages de `context-engineering/` supposent déjà les fondamentaux acquis)
+- [x] Ajouter un quiz de fin de chapitre pour ancrer l'apprentissage → un `<Accordion>` "Testez vos connaissances" ajouté sur les 33 leçons des 4 chapitres (2026-08-11)
+- [x] Indiquer un niveau de difficulté / prérequis par section → bloc `<Info>` (Niveau · Prérequis · Temps de lecture) ajouté en tête des 33 leçons des 4 chapitres (2026-08-11)
 - [x] Exercices pratiques "à essayer maintenant" avec des prompts copiables → `prompt-engineering/patterns-reutilisables.mdx` (2026-07-24), + technique d'auto-évaluation ajoutée dans `prompts-iteratifs.mdx`
 
 ## 4. Technique / SEO
 
-- [ ] Vérifier les liens externes cités (outils qui changent vite : Groq, PromptFlow, Helicone...)
-- [ ] Configurer une image `og:image` par défaut dans `docs.json` pour le partage social
-- [ ] Revoir `AGENTS.md`, encore le template Mintlify par défaut, non personnalisé (terminologie et bornes de contenu à remplir)
+- [x] Vérifier les liens externes cités → 79 URLs du site testées (HTTP HEAD/GET) le 2026-08-11 : toutes valides. Les 403/999 observés (openai.com, claude.ai, x.ai, iso.org, dl.acm.org, linkedin.com) sont des blocages anti-bot connus de ces domaines, pas des liens cassés
+- [x] Configurer une image `og:image` par défaut dans `docs.json` pour le partage social → déjà en place (`seo.image`), constaté lors de la relecture du 2026-08-11
+- [x] Revoir `AGENTS.md` → déjà personnalisé (rôles des agents, ton, vouvoiement, bornes de contenu), ce n'est plus le template par défaut. Constaté lors de la relecture du 2026-08-11
 
 ## 5. Process
 
