@@ -4,6 +4,10 @@ sidebarTitle: "Mémoire"
 description: "Apprenez comment pallier l'absence de mémoire native des LLM grâce aux stratégies de résumé, mémoire externe et extraction d'entités clés."
 ---
 
+<Info>
+  **Niveau** : Intermédiaire · **Prérequis** : [Fenêtre de contexte](/context-engineering/fenetre-de-contexte) · **Temps de lecture** : ~6 min
+</Info>
+
 Contrairement à un être humain qui retient naturellement le fil d'une conversation, un modèle de langage repart de zéro à chaque nouvelle session. Il ne se souvient pas de votre nom, de vos préférences ni des décisions prises lors d'échanges précédents, à moins que vous ne le lui rappeliez explicitement. Cette caractéristique fondamentale des LLM impose de concevoir des stratégies de mémoire délibérées dès que vos applications dépassent le cadre d'un simple échange ponctuel.
 
 <Info>
@@ -186,3 +190,9 @@ Tous les éléments d'une conversation ne méritent pas d'être mémorisés. Voi
 ## En résumé
 
 La mémoire dans les systèmes LLM est une construction délibérée, pas une fonctionnalité native. En combinant mémoire de session, résumé récursif et stockage externe sélectif, vous pouvez offrir à vos utilisateurs l'impression d'un assistant qui "connaît" leur contexte, tout en maintenant une architecture maîtrisable et des coûts prévisibles.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : Quand vous discutez avec ChatGPT sur plusieurs messages d'affilée, le modèle se souvient-il réellement de vos échanges précédents grâce à une mémoire interne ?">
+  **Non.** Les LLM sont sans état : chaque appel à l'API est indépendant des précédents. Ce que vous percevez comme une conversation continue est en réalité une reconstruction côté application, qui renvoie l'intégralité de l'historique à chaque nouveau message. Il n'existe aucune mémoire magique dans le modèle lui-même, seulement du contexte géré à l'extérieur.
+</Accordion>

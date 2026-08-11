@@ -4,6 +4,10 @@ sidebarTitle: "Code"
 description: "Générez, expliquez, déboguez et refactorisez du code efficacement grâce à des prompts structurés adaptés à chaque étape du développement logiciel."
 ---
 
+<Info>
+  **Niveau** : Avancé · **Prérequis** : [Analyse et synthèse](/prompt-engineering/analyse-et-synthese) · **Temps de lecture** : ~8 min
+</Info>
+
 L'assistance au code est l'un des cas d'usage les plus transformateurs de l'IA générative pour les développeurs et les équipes techniques. Que vous souhaitiez générer un prototype rapidement, comprendre une base de code héritée, corriger un bug difficile à localiser ou améliorer la qualité de votre code existant, des prompts bien construits peuvent réduire considérablement votre charge de travail. Cette section vous propose des templates opérationnels pour chaque étape du cycle de développement.
 
 <Tip>
@@ -376,3 +380,9 @@ Sections à inclure :
 <Warning>
   Ne déployez jamais du code généré par l'IA sans l'avoir soigneusement relu, testé et validé. Les modèles de langage peuvent produire du code syntaxiquement correct mais logiquement défaillant, utiliser des API dépréciées, introduire des vulnérabilités de sécurité (injections, exposition de secrets, mauvaise gestion des permissions) ou générer des résultats différents selon les données d'entrée. Traitez toujours le code généré comme un point de départ à valider, pas comme une solution finale prête pour la production.
 </Warning>
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : si du code généré par l'IA compile sans erreur et semble fonctionner sur vos premiers tests, peut-on le déployer directement en production ?">
+  **Non.** Un code syntaxiquement correct peut rester logiquement défaillant sur des cas non testés, s'appuyer sur des API dépréciées ou introduire des failles de sécurité (injections, secrets exposés, permissions mal gérées). Le code généré doit toujours être traité comme un point de départ à relire, tester et valider, jamais comme une solution finale prête pour la production.
+</Accordion>

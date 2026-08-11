@@ -4,6 +4,10 @@ sidebarTitle: "Prompts Itératifs"
 description: "Maîtrisez l'art du raffinement conversationnel : clarifier, contraindre et reformuler vos demandes pour obtenir exactement ce que vous visez."
 ---
 
+<Info>
+  **Niveau** : Intermédiaire · **Prérequis** : [Role-playing et personas](/prompt-engineering/role-playing-et-personas) · **Temps de lecture** : ~7 min
+</Info>
+
 Obtenir le résultat parfait dès le premier prompt est rare, et ce n'est pas grave. Les LLM modernes sont conçus pour la conversation multi-tours, et cette capacité est une fonctionnalité puissante, pas un palliatif. Traiter l'échange avec un modèle comme un dialogue collaboratif plutôt que comme une requête unique transforme radicalement la qualité des résultats que vous pouvez atteindre. Cette approche s'appelle le **prompting itératif**.
 
 ## La conversation comme outil d'affinage
@@ -234,3 +238,9 @@ Continuer d'itérer n'est pas toujours la meilleure stratégie. Voici comment d�
 Le prompting itératif n'est pas une technique isolée, c'est une **posture de travail** à adopter face aux LLM. Combiné avec le few-shot learning pour guider le format dès le départ, ou avec le Chain-of-Thought pour affiner un raisonnement complexe, il constitue le socle d'une utilisation experte des modèles de langage au quotidien.
 
 Dans le prochain chapitre, vous allez transformer vos meilleures séquences d'itération en **patterns réutilisables** : des templates prêts à copier-coller pour ne plus jamais repartir de zéro.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : après plusieurs tours de correction, la conversation part dans une direction totalement éloignée de votre besoin initial. Faut-il continuer à itérer ou recommencer une nouvelle conversation ?">
+  **Il vaut mieux recommencer.** Quand le contexte accumulé nuit à la cohérence des réponses, chaque nouvelle itération part d'une base déjà polluée. Une conversation neuve, avec un prompt initial plus précis tenant compte de ce que vous avez appris, est souvent plus rapide qu'une tentative de rattrapage. Continuer l'itération reste préférable seulement quand la réponse de départ était globalement bonne et qu'il ne manque que des ajustements mineurs.
+</Accordion>

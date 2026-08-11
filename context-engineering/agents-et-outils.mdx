@@ -4,6 +4,10 @@ sidebarTitle: "Agents"
 description: "Comprenez comment les agents IA perçoivent, raisonnent et agissent via des outils pour accomplir des tâches complexes de manière autonome."
 ---
 
+<Info>
+  **Niveau** : Avancé · **Prérequis** : [RAG et retrieval](/context-engineering/rag-et-retrieval) · **Temps de lecture** : ~7 min
+</Info>
+
 Jusqu'à présent, nous avons traité les modèles de langage comme des systèmes qui *répondent* : vous posez une question, ils génèrent du texte. Les agents IA franchissent une étape supplémentaire : ils **agissent**. Un agent peut effectuer des recherches sur le web, exécuter du code, interroger une base de données, envoyer des emails ou interagir avec des APIs externes, tout cela de manière autonome et en plusieurs étapes successives. Cette capacité à agir dans le monde réel ouvre des possibilités considérables, mais introduit également des risques nouveaux qui demandent une attention particulière.
 
 ## Qu'est-ce qu'un agent IA ?
@@ -170,3 +174,9 @@ Les agents autonomes peuvent avoir des **effets irréversibles dans le monde ré
 </Warning>
 
 La puissance des agents est proportionnelle à leurs risques. Une architecture d'agent bien conçue commence toujours par définir explicitement ce que l'agent **ne peut pas faire**, avant de définir ce qu'il peut faire.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : Le MCP remplace-t-il le function calling ?">
+  **Non.** Le function calling reste le mécanisme bas niveau qui permet à un modèle de formuler un appel d'outil structuré. Le MCP est une couche de standardisation posée par-dessus : il définit comment un serveur d'outils expose ses fonctions de façon uniforme, pour qu'un même agent puisse se connecter à de nombreuses sources sans intégration sur mesure. Un client MCP utilise le function calling en coulisses, il ne s'y substitue pas.
+</Accordion>

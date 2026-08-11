@@ -4,6 +4,10 @@ sidebarTitle: "Analyse"
 description: "Exploitez l'IA pour résumer des documents, extraire des données, analyser des sentiments et comparer des options grâce à des prompts d'analyse structurés."
 ---
 
+<Info>
+  **Niveau** : Intermédiaire · **Prérequis** : [Rédaction et création](/prompt-engineering/redaction-et-creation) · **Temps de lecture** : ~5 min
+</Info>
+
 Face à des volumes croissants d'information, savoir formuler des prompts d'analyse efficaces est devenu une compétence clé. L'IA peut vous aider à résumer un rapport de cinquante pages en quelques minutes, à extraire automatiquement des données structurées d'un texte brut, à comparer plusieurs solutions ou encore à répondre à des questions précises sur un corpus documentaire. Cette section vous propose des templates prêts à l'emploi et une méthodologie claire pour tirer le meilleur parti de ces capacités analytiques.
 
 ## Vue d'ensemble des cas d'usage
@@ -193,3 +197,9 @@ Q3 : [question]
 <Note>
   Les modèles de langage ont une limite sur la quantité de texte qu'ils peuvent traiter en une seule fois (appelée "fenêtre de contexte"). Pour les documents très longs (plus de 10-15 pages selon le modèle), vous devrez les découper en sections et les traiter séparément, puis demander une synthèse finale à partir des résumés partiels. Vérifiez toujours la limite de votre outil avant de soumettre un document volumineux.
 </Note>
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : peut-on toujours soumettre un rapport de 50 pages en une seule fois à un LLM pour le résumer ?">
+  **Pas systématiquement.** Chaque modèle a une fenêtre de contexte limitée, c'est-à-dire une quantité maximale de texte qu'il peut traiter en une fois. Au-delà d'un certain volume (variable selon le modèle et l'outil utilisé), il faut découper le document en sections, résumer chaque section séparément, puis demander une synthèse finale à partir de ces résumés partiels.
+</Accordion>

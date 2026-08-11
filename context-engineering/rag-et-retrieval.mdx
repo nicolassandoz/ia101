@@ -4,6 +4,10 @@ sidebarTitle: "RAG"
 description: "Découvrez le Retrieval-Augmented Generation : comment connecter un modèle de langage à vos données pour des réponses actualisées et personnalisées."
 ---
 
+<Info>
+  **Niveau** : Avancé · **Prérequis** : [Structurer le contexte](/context-engineering/structurer-le-contexte) · **Temps de lecture** : ~5 min
+</Info>
+
 Les modèles de langage sont entraînés sur des données figées à une date précise : leur *date de coupure*. Ils ne connaissent pas vos documents internes, vos bases de données propriétaires, ni les actualités récentes. Le **RAG (Retrieval-Augmented Generation)** résout ce problème en connectant le modèle à une source de données externe au moment de la génération : plutôt que de demander au modèle de mémoriser toute la connaissance utile, on lui fournit dynamiquement les informations pertinentes dans le contexte. C'est l'une des architectures les plus puissantes et les plus répandues dans les applications IA en production.
 
 ## Qu'est-ce que le RAG ?
@@ -132,3 +136,9 @@ Ces deux approches répondent à des besoins différents et sont souvent complé
 | **Traçabilité des sources** | ✅ Native | ❌ Difficile |
 
 En règle générale : utilisez le RAG pour injecter des **connaissances**, et le fine-tuning pour modifier le **comportement** du modèle.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : Votre entreprise met à jour son catalogue produit chaque jour et vous voulez que l'assistant IA reflète toujours les données les plus récentes. Faut-il privilégier le RAG ou le fine-tuning ?">
+  **Le RAG.** Il permet de mettre à jour les données source (le catalogue) indépendamment du modèle, sans aucun ré-entraînement : la base vectorielle est simplement réindexée. Le fine-tuning, à l'inverse, fige des connaissances dans les poids du modèle et nécessiterait un nouveau cycle d'entraînement à chaque changement de catalogue, ce qui est ni pratique ni économique pour des données qui évoluent quotidiennement.
+</Accordion>

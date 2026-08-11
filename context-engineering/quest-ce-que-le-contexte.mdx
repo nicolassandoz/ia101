@@ -4,6 +4,10 @@ sidebarTitle: "Le Contexte"
 description: "Découvrez ce qu'est le contexte dans les LLM, comment il diffère du prompt engineering et pourquoi il est votre ressource la plus précieuse."
 ---
 
+<Info>
+  **Niveau** : Intermédiaire · **Prérequis** : [Modèles de langage](/fondamentaux/modeles-de-langage) · **Temps de lecture** : ~4 min
+</Info>
+
 Le **context engineering** est l'art de composer, organiser et optimiser toutes les informations transmises à un modèle de langage afin d'obtenir les réponses les plus pertinentes, cohérentes et utiles possible. Là où le prompt engineering se concentre sur la formulation d'une instruction précise, le context engineering adopte une vision plus large : il s'intéresse à *l'ensemble* de ce que le modèle perçoit à chaque appel, et donc à tout ce qui influence sa réponse.
 
 ## Prompt engineering vs context engineering
@@ -76,3 +80,9 @@ Voici pourquoi le contexte mérite toute votre attention :
 ## En résumé
 
 Le context engineering est la discipline qui vous permet de tirer le meilleur parti des LLM en production. En maîtrisant ce qui entre dans la fenêtre de contexte (et en quelle proportion), vous passez de simples expériences en chat à de véritables systèmes d'IA fiables, cohérents et maintenables. Les sections suivantes vous guideront à travers les mécanismes concrets : la fenêtre de contexte, la gestion de la mémoire, et les stratégies d'injection de connaissances.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : Un modèle dispose d'une fenêtre de contexte d'un million de tokens. Est-ce une bonne idée d'y injecter systématiquement tous les documents disponibles, même les non pertinents, puisque la place ne manque pas ?">
+  **Non.** Même si l'espace technique est suffisant, chaque token superflu dilue les informations réellement importantes et complique le travail du modèle pour identifier ce qui compte. C'est le principe du "bureau de travail" : un contexte encombré nuit à la clarté, même s'il tient sur le bureau. Mieux vaut un contexte court et pertinent qu'un contexte volumineux et bruité.
+</Accordion>

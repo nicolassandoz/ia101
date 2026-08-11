@@ -4,6 +4,10 @@ sidebarTitle: "Chain-of-Thought"
 description: "Apprenez à guider les LLM vers des raisonnements structurés, étape par étape, pour résoudre des problèmes complexes avec bien plus de fiabilité."
 ---
 
+<Info>
+  **Niveau** : Intermédiaire · **Prérequis** : [Few-shot learning](/prompt-engineering/few-shot-learning) · **Temps de lecture** : ~6 min
+</Info>
+
 Les grands modèles de langage peuvent sembler magiques lorsqu'ils répondent instantanément à des questions complexes, mais cette instantanéité est parfois leur faiblesse. En les forçant à « penser à voix haute », en déroulant leur raisonnement étape par étape, on obtient des réponses bien plus fiables sur les tâches logiques, mathématiques et analytiques. C'est l'essence du **Chain-of-Thought** (CoT), ou raisonnement en chaîne.
 
 ## Qu'est-ce que le raisonnement en chaîne ?
@@ -179,3 +183,9 @@ Le Chain-of-Thought est votre allié dès que la tâche requiert plusieurs étap
 
   Ce raisonnement natif ne rend pas les techniques de cette leçon inutiles : sur les modèles qui ne raisonnent pas nativement, ou quand vous voulez orienter le raisonnement dans une direction précise, le CoT prompté reste pertinent. Gardez aussi en tête que ce raisonnement interne consomme des tokens comme le reste de la réponse : il pèse donc sur le budget de la fenêtre de contexte du modèle.
 </Note>
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : puisque Claude Sonnet 5 raisonne déjà nativement avant de répondre, demander « raisonnons étape par étape » dans le prompt devient-il inutile avec ce modèle ?">
+  **Pas totalement.** Le raisonnement natif s'active automatiquement, mais il ne suit pas forcément la direction ou la méthode que vous souhaitez. Demander explicitement un raisonnement étape par étape reste utile pour orienter le modèle vers une décomposition précise (par exemple, imposer les critères d'évaluation d'un problème), plutôt que de laisser son raisonnement interne suivre son propre chemin.
+</Accordion>

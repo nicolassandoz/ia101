@@ -4,6 +4,10 @@ sidebarTitle: "Personas"
 description: "Découvrez comment attribuer un rôle précis à un LLM transforme le ton, la profondeur et la pertinence de ses réponses pour chaque situation."
 ---
 
+<Info>
+  **Niveau** : Intermédiaire · **Prérequis** : [Chain-of-thought](/prompt-engineering/chain-of-thought) · **Temps de lecture** : ~5 min
+</Info>
+
 Demander à un LLM d'adopter un persona (un rôle, une identité, une expertise fictive) est l'une des techniques les plus intuitives et les plus efficaces du prompt engineering. En définissant qui est le modèle avant de lui poser une question, vous calibrez implicitement son niveau de langage, son champ de connaissances mis en avant, son ton et sa façon de structurer les réponses. Cette technique transforme un assistant généraliste en un interlocuteur spécialisé adapté à votre contexte.
 
 ## Pourquoi attribuer un rôle améliore les réponses
@@ -167,3 +171,9 @@ qu'est-ce qui change selon que la pente est raide ou douce ?"
 ```
 
 Cette approche hybride (persona + règles de comportement + few-shot) est la plus robuste pour des applications en production où la cohérence des réponses est critique.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : en demandant à un LLM d'incarner « Aria, experte en cybersécurité avec 15 ans d'expérience », le modèle acquiert-il réellement cette expertise ?">
+  **Non.** Le persona agit comme un filtre de génération : il calibre le ton, le vocabulaire et la structure des réponses, mais il ne donne au modèle aucune connaissance nouvelle. Un persona expert peut tout à fait produire des affirmations incorrectes avec un ton assuré. Les informations critiques doivent toujours être vérifiées indépendamment du rôle attribué.
+</Accordion>

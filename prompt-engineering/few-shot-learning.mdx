@@ -4,6 +4,10 @@ sidebarTitle: "Few-Shot"
 description: "Découvrez comment fournir des exemples concrets à un LLM transforme la qualité de ses réponses, et comment choisir les bons exemples."
 ---
 
+<Info>
+  **Niveau** : Intermédiaire · **Prérequis** : [Bonnes pratiques du prompt engineering](/prompt-engineering/bonnes-pratiques) · **Temps de lecture** : ~5 min
+</Info>
+
 Le few-shot learning est l'une des techniques les plus puissantes et les plus accessibles du prompt engineering. En montrant au modèle quelques exemples du résultat attendu, vous lui communiquez non seulement le contenu souhaité, mais aussi le format, le ton et le niveau de détail. Cette approche exploite la capacité des LLM à reconnaître des patterns et à les généraliser, sans aucun réentraînement.
 
 ## Zero-shot, one-shot, few-shot : quelles différences ?
@@ -180,3 +184,9 @@ Le few-shot learning se combine naturellement avec d'autres techniques :
 - **Prompts itératifs** : démarrez avec des exemples généraux et affinez-les progressivement au fil de la conversation.
 
 Le few-shot learning est votre premier réflexe dès que les instructions seules ne suffisent pas à obtenir le format ou la qualité attendus.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : pour améliorer un prompt few-shot qui ne donne pas de bons résultats, faut-il d'abord ajouter plus d'exemples ?">
+  **Pas nécessairement.** Au-delà de 8 exemples, le gain marginal devient faible et le coût en tokens augmente. Il vaut mieux d'abord vérifier la **qualité** des exemples déjà présents : sont-ils représentatifs, suffisamment diversifiés, sans ambiguïté et cohérents dans leur format ? Trois exemples bien choisis surpassent systématiquement huit exemples redondants ou mal formulés.
+</Accordion>

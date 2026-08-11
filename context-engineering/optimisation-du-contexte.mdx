@@ -4,6 +4,10 @@ sidebarTitle: "Optimisation"
 description: "Réduisez vos coûts et améliorez la latence sans sacrifier la qualité : techniques de compression, prompt caching et sélection dynamique du contexte."
 ---
 
+<Info>
+  **Niveau** : Avancé · **Prérequis** : [Agents et outils](/context-engineering/agents-et-outils) · **Temps de lecture** : ~6 min
+</Info>
+
 Envoyer un contexte volumineux à un modèle de langage a un coût direct et mesurable : chaque token consommé se traduit en euros sur votre facture, en millisecondes sur votre latence, et parfois en dégradation de qualité lorsque le modèle se noie dans des informations non pertinentes. L'optimisation du contexte n'est pas un détail d'implémentation : c'est une discipline à part entière qui devient critique dès que vous passez du prototype à la production. Un contexte bien optimisé peut réduire vos coûts de 50 à 80 % sans aucune perte de qualité perceptible.
 
 ## Pourquoi optimiser : coût, latence, performance
@@ -160,3 +164,9 @@ Ne déployez une optimisation que si la qualité reste stable ou s'améliore sur
 </Steps>
 
 L'optimisation du contexte est un processus continu, pas un réglage unique. À mesure que vos données et vos cas d'usage évoluent, vos stratégies d'optimisation doivent évoluer avec eux. Un contexte bien optimisé est l'un des leviers les plus puissants pour rendre vos applications IA scalables et économiquement viables.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : Pour maximiser les gains du prompt caching, faut-il placer la question de l'utilisateur en tête du prompt ou à la fin ?">
+  **À la fin.** Le cache est invalidé dès qu'un seul token change en amont. En plaçant les éléments stables et coûteux (instructions système, documents de référence, exemples few-shot) en début de prompt et les éléments variables (la question de l'utilisateur) à la fin, vous maximisez le taux de cache hit d'un appel à l'autre, même si le contenu dynamique change à chaque requête.
+</Accordion>

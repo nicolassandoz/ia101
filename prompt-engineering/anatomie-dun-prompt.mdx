@@ -4,6 +4,10 @@ sidebarTitle: "Anatomie"
 description: "Décomposez tout prompt en quatre composantes (instruction, contexte, entrée et format) pour construire des requêtes claires et efficaces."
 ---
 
+<Info>
+  **Niveau** : Débutant · **Prérequis** : [Introduction au prompt](/prompt-engineering/introduction-au-prompt) · **Temps de lecture** : ~4 min
+</Info>
+
 Un prompt efficace n'est pas une simple phrase rédigée à la hâte : c'est une structure pensée, composée d'éléments précis qui guident le modèle vers la réponse que vous attendez. Comprendre l'anatomie d'un prompt, c'est comme apprendre la grammaire d'une nouvelle langue : une fois les règles intégrées, vous pouvez construire n'importe quelle phrase avec assurance et précision.
 
 ## Les quatre composantes d'un prompt structuré
@@ -150,3 +154,9 @@ Toutes les composantes ne sont pas nécessaires dans chaque situation. Voici un 
 | **Format de sortie** | 🎯 Recommandé | Échanges conversationnels informels |
 
 En pratique, un prompt avec **instruction + contexte + format** couvre la grande majorité des cas d'usage professionnels, même sans entrée de données à traiter.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : un prompt sans aucune entrée (input) peut-il quand même être efficace ?">
+  **Oui.** L'entrée n'est obligatoire que « si applicable », c'est-à-dire lorsque vous avez un texte, un document ou des données concrètes à faire traiter par le modèle. Pour une tâche de pure génération, comme rédiger un e-mail de relance à partir de rien, il n'y a pas de données existantes à fournir : instruction, contexte et format de sortie suffisent largement.
+</Accordion>

@@ -4,6 +4,10 @@ sidebarTitle: "Ordres de grandeur"
 description: "Les chiffres publiés par Google et Mistral, les comparaisons utiles, et surtout pourquoi les estimations varient d'un facteur 100 d'une source à l'autre."
 ---
 
+<Info>
+  **Niveau** : Intermédiaire · **Prérequis** : [Empreinte environnementale de l'IA](/ia-responsable/empreinte-environnementale) · **Temps de lecture** : ~6 min
+</Info>
+
 « Une requête ChatGPT consomme dix fois plus qu'une recherche Google. » « Une requête IA, c'est une bouteille d'eau. » Ces phrases circulent partout, sont reprises sans vérification, et reposent le plus souvent sur des estimations anciennes ou sur des méthodologies incomparables. Cette page vous donne les chiffres réellement publiés par les acteurs, et surtout la clé de lecture pour ne plus vous faire piéger.
 
 <Warning>
@@ -157,3 +161,9 @@ print(response.impacts.gwp.value)     # kgCO2e
 - **Mesurez plutôt que d'estimer** : EcoLogits et CodeCarbon rendent le sujet concret en quelques lignes de code.
 
 Maintenant que vous savez lire les chiffres, passons à l'action : comment réduire concrètement l'impact de vos usages sans sacrifier leur utilité ?
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : Google annonce 0,03 gCO₂e par requête médiane, Mistral 1,14 gCO₂e pour une réponse de 400 tokens, soit un facteur 40. L'un des deux fournisseurs communique-t-il un chiffre trompeur ?">
+  **Non, pas nécessairement.** Les deux chiffres sont honnêtes mais ne mesurent pas la même chose : Google calcule une médiane sur tout son trafic (majoritairement des requêtes courtes vers des petits modèles), tandis que Mistral mesure un modèle large sollicité sur une réponse longue et standardisée. S'y ajoutent des écarts de mix électrique (jusqu'à un facteur 10 selon le pays), de périmètre (inférence seule contre analyse de cycle de vie complète) et de taux d'utilisation des machines. Sans connaître le modèle, la longueur de réponse, la localisation et le périmètre d'un chiffre, il est impossible de le comparer à un autre.
+</Accordion>

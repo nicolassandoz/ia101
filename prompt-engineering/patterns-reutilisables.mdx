@@ -4,6 +4,10 @@ sidebarTitle: "Patterns Réutilisables"
 description: "Copiez-collez ces templates de prompts éprouvés : génération, amélioration, comparaison et extraction, à adapter en quelques secondes à votre besoin."
 ---
 
+<Info>
+  **Niveau** : Intermédiaire · **Prérequis** : [Prompts itératifs](/prompt-engineering/prompts-iteratifs) · **Temps de lecture** : ~3 min
+</Info>
+
 Vous connaissez maintenant l'anatomie d'un prompt, les bonnes pratiques et l'art de l'itération. Cette page va plus loin : elle vous donne des **templates prêts à l'emploi**, directement copiables, pour les tâches que vous rencontrerez le plus souvent. Plutôt que de reconstruire un prompt efficace à chaque fois, adaptez ces squelettes à votre contexte : les emplacements entre crochets `[...]` sont à remplacer.
 
 <Tip>
@@ -104,3 +108,9 @@ aucun texte avant ou après le JSON.
 Ces cinq templates couvrent les besoins les plus fréquents, mais la vraie valeur vient de **vos propres patterns**, construits à partir de vos tâches récurrentes. Dès qu'une séquence de prompts fonctionne bien deux fois de suite, transformez-la en template : identifiez les parties fixes (la structure) et les parties variables (entre crochets), puis sauvegardez-la dans un fichier dédié.
 
 Vous construisez ainsi, leçon après leçon, une bibliothèque personnelle qui vous fait gagner un temps considérable : c'est l'aboutissement naturel de l'itération vue au chapitre précédent.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : le pattern « Générer puis auto-évaluer » suffit-il à garantir qu'une réponse ne contient aucune erreur factuelle ?">
+  **Non.** Ce pattern réduit surtout les erreurs de forme (non-respect du format, oubli d'une consigne) parce que le modèle relit sa propre réponse selon des critères précis. Il ne remplace pas une vérification humaine sur les faits critiques : un modèle peut parfaitement valider sa propre affirmation erronée s'il la considère cohérente avec le reste de sa réponse.
+</Accordion>
