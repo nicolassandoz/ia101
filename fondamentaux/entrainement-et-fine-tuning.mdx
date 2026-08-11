@@ -4,6 +4,10 @@ sidebarTitle: "Entraînement"
 description: "Découvrez comment les LLM sont pré-entraînés, affinés par retour humain (RLHF) et adaptés à des tâches spécifiques via le fine-tuning."
 ---
 
+<Info>
+  **Niveau** : Avancé · **Prérequis** : [Tokens et embeddings](/fondamentaux/tokens-et-embeddings) · **Temps de lecture** : ~5 min
+</Info>
+
 Un grand modèle de langage ne naît pas "intelligent", il le devient au terme d'un processus d'entraînement long, coûteux et minutieusement orchestré. Comprendre les grandes étapes de ce pipeline vous permettra de mieux saisir ce que vous pouvez attendre d'un modèle, comment l'orienter efficacement, et quand le fine-tuning est une option pertinente pour votre cas d'usage.
 
 ## Le pipeline d'entraînement d'un LLM
@@ -109,3 +113,9 @@ En tant qu'utilisateur ou développeur s'appuyant sur un LLM via une API, voici 
 ## Ce que vous retenez de cette leçon
 
 L'entraînement d'un LLM passe par le pré-entraînement sur de vastes corpus, le fine-tuning supervisé, puis le RLHF pour aligner le modèle sur les préférences humaines. En tant qu'utilisateur, vous avez le choix entre l'in-context learning (rapide et flexible) et le fine-tuning, plus performant pour les tâches spécialisées. Dans la dernière leçon de ce module, nous aborderons les **limites et les hallucinations** : ce que les LLM font mal, et comment vous en prémunir.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : Le RLHF garantit-il que les réponses d'un LLM sont plus véridiques ?">
+  **Non.** Le RLHF entraîne le modèle à maximiser un score de préférence donné par des annotateurs humains, c'est-à-dire à produire des réponses qui **plaisent**, pas nécessairement des réponses vraies. Un modèle peut ainsi apprendre qu'une réponse confiante et bien formulée est mieux notée qu'un aveu d'incertitude, même quand l'incertitude serait la réponse la plus honnête. C'est une des raisons pour lesquelles les LLM peuvent sembler très sûrs d'eux tout en se trompant, un phénomène détaillé dans la leçon suivante sur les hallucinations.
+</Accordion>

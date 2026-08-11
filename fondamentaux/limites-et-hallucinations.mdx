@@ -4,6 +4,10 @@ sidebarTitle: "Limites & Biais"
 description: "Apprenez pourquoi les LLM inventent des faits, quels biais ils véhiculent et quelles bonnes pratiques adopter pour fiabiliser vos interactions."
 ---
 
+<Info>
+  **Niveau** : Intermédiaire · **Prérequis** : [Entraînement et fine-tuning](/fondamentaux/entrainement-et-fine-tuning) · **Temps de lecture** : ~7 min
+</Info>
+
 Les grands modèles de langage sont des outils remarquablement puissants, mais ils ne sont pas infaillibles. Bien au contraire : ils peuvent affirmer des faussetés avec une confiance absolue, refléter les biais de leurs données d'entraînement, ou ignorer des événements récents. Comprendre ces limites n'est pas une raison de rejeter les LLM ; c'est la condition pour les utiliser de manière responsable et efficace.
 
 ## Les hallucinations : quand l'IA invente
@@ -101,3 +105,9 @@ Certains modèles compensent ce manque grâce à des outils de recherche web int
 ## Ce que vous retenez de cette leçon
 
 Les LLM hallucinent parce qu'ils prédisent plutôt qu'ils ne savent. Ils véhiculent les biais de leurs données d'entraînement, ignorent les événements récents et ont une mémoire bornée par leur fenêtre de contexte. Ces limites ne les rendent pas inutiles : elles définissent le cadre dans lequel les utiliser intelligemment. Avec les bonnes pratiques (vérification des sources, prompts précis, RAG pour les connaissances récentes), vous pouvez tirer le meilleur de ces outils tout en maîtrisant leurs risques. Vous êtes maintenant prêt à passer au module suivant : le **prompt engineering**.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : Un LLM qui répond avec beaucoup d'assurance a-t-il plus de chances d'avoir raison ?">
+  **Non.** Le ton affirmatif d'une réponse n'est pas un indicateur de sa véracité. Un LLM ne possède pas de mécanisme interne qui mesure sa propre certitude face à un fait : il génère la suite de tokens statistiquement la plus probable, que cette suite soit vraie ou non, et le RLHF a tendance à renforcer les formulations confiantes parce qu'elles plaisent davantage aux évaluateurs humains. C'est pourquoi une hallucination peut être formulée exactement comme une réponse correcte, sans aucun signal de doute perceptible.
+</Accordion>

@@ -4,6 +4,10 @@ sidebarTitle: "Modèles LLM"
 description: "Découvrez ce que sont les grands modèles de langage, comment ils prédisent le texte et pourquoi l'architecture Transformer a tout changé."
 ---
 
+<Info>
+  **Niveau** : Intermédiaire · **Prérequis** : [Les types d'IA](/fondamentaux/types-dia) · **Temps de lecture** : ~5 min
+</Info>
+
 Les grands modèles de langage, ou **LLM** (*Large Language Models*), sont au cœur de la révolution de l'intelligence artificielle générative. Avant de savoir les utiliser efficacement, il est essentiel de comprendre ce qu'ils sont réellement, comment ils fonctionnent, et quelles sont leurs différentes formes. Cette page vous offre une introduction claire, sans formules mathématiques complexes.
 
 ## Qu'est-ce qu'un modèle de langage ?
@@ -86,3 +90,9 @@ Il existe deux grandes catégories de LLM que vous rencontrerez :
 ## Ce que vous retenez de cette leçon
 
 Vous savez désormais qu'un LLM est un modèle probabiliste basé sur l'architecture Transformer, entraîné à prédire le texte suivant sur d'immenses corpus. Les modèles que vous utilisez au quotidien sont des versions *instruction-tuned*, affinées pour répondre à vos demandes. Dans la prochaine leçon, nous allons descendre d'un niveau et découvrir la notion de **token** : la vraie unité de base du langage pour un LLM.
+
+## Testez vos connaissances
+
+<Accordion title="Quiz : Si vous posez une question directe à un modèle de base (non instruction-tuned), que va-t-il probablement se passer ?">
+  **Il va continuer votre texte plutôt que d'y répondre.** Un modèle de base n'a appris qu'une seule chose : prédire la suite la plus probable d'un texte. Face à une question, la continuation la plus probable statistiquement peut être une autre question, une liste de questions similaires, ou une suite de phrase, mais pas nécessairement une réponse. C'est justement le rôle du fine-tuning par instruction (SFT puis RLHF) que d'apprendre au modèle à adopter le format question-réponse que vous connaissez avec ChatGPT ou Claude.
+</Accordion>
