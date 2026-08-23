@@ -1,55 +1,62 @@
-# Mintlify Starter Kit
+# IA 101
 
-Use the starter kit to get your docs deployed and ready to customize.
+Un cours en ligne gratuit pour comprendre et utiliser l'intelligence artificielle avec méthode. Le site est construit avec [Mintlify](https://mintlify.com) et publié depuis ce dépôt GitHub.
 
-Click the green **Use this template** button at the top of this repo to copy the Mintlify starter kit. The starter kit contains examples with
+## Ce que vous trouverez dans le cours
 
-- Guide pages
-- Navigation
-- Customizations
-- API reference pages
-- Use of popular components
+- **Fondamentaux** : histoire de l'IA, modèles de langage, tokens, entraînement et limites.
+- **Prompt Engineering** : structure d'un prompt, techniques réutilisables et cas d'usage concrets.
+- **Context Engineering** : fenêtre de contexte, RAG, mémoire, agents et outils.
+- **IA Responsable** : impacts environnementaux, humains, réglementaires et pratiques de mise en œuvre.
+- **Ressources** : glossaire, outils, pistes pour aller plus loin et historique des mises à jour.
 
-**[Follow the full quickstart guide](https://starter.mintlify.com/quickstart)**
+Les leçons sont écrites en MDX et privilégient des explications courtes, des exemples testables et des quiz de fin de page.
 
-## AI-assisted writing
+## Structure du projet
 
-Set up your AI coding tool to work with Mintlify:
+```text
+.
+├── fondamentaux/          # Bases de l'IA
+├── prompt-engineering/    # Méthodes de prompting
+├── context-engineering/   # Gestion et exploitation du contexte
+├── ia-responsable/        # Impacts et pratiques responsables
+├── ressources/            # Glossaire, sources et nouveautés
+├── images/                # Visuels du site
+├── docs.json              # Configuration et navigation Mintlify
+└── TODO.md                # Backlog éditorial et technique
+```
+
+## Prévisualiser le site en local
+
+Prérequis : Node.js récent.
 
 ```bash
-npx skills add https://mintlify.com/docs
-```
-
-This command installs Mintlify's documentation skill for your configured AI tools like Claude Code, Cursor, Windsurf, and others. The skill includes component reference, writing standards, and workflow guidance.
-
-See the [AI tools guides](/ai-tools) for tool-specific setup.
-
-## Development
-
-Install the [Mintlify CLI](https://www.npmjs.com/package/mint) to preview your documentation changes locally. To install, use the following command:
-
-```
-npm i -g mint
-```
-
-Run the following command at the root of your documentation, where your `docs.json` is located:
-
-```
+npm install -g mint
 mint dev
 ```
 
-View your local preview at `http://localhost:3000`.
+Ouvrez ensuite [http://localhost:3000](http://localhost:3000).
 
-## Publishing changes
+## Contribuer au contenu
 
-Install our GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app) to propagate changes from your repo to your deployment. Changes are deployed to production automatically after pushing to the default branch.
+1. Créez ou modifiez une page `.mdx` dans le chapitre concerné.
+2. Respectez les consignes de rédaction dans [`AGENTS.md`](AGENTS.md) : ton pédagogique, vouvoiement, phrases courtes et sources explicites pour les faits périssables.
+3. Vérifiez la page avec `mint dev`.
+4. Mettez à jour [`ressources/suivi-des-sources.md`](ressources/suivi-des-sources.md) lorsqu'une information vérifiable évolue.
+5. Ajoutez un changement significatif dans [`ressources/nouveautes.mdx`](ressources/nouveautes.mdx).
 
-## Need help?
+Ne modifiez pas la navigation de `docs.json` sans validation éditoriale explicite.
 
-### Troubleshooting
+## Maintenir le cours à jour
 
-- If your dev environment isn't running: Run `mint update` to ensure you have the most recent version of the CLI.
-- If a page loads as a 404: Make sure you are running in a folder with a valid `docs.json`.
+Le projet suit une veille hebdomadaire des modèles, outils, chiffres et références réglementaires. Les faits contrôlés et leur date de revue sont centralisés dans [`ressources/suivi-des-sources.md`](ressources/suivi-des-sources.md).
 
-### Resources
-- [Mintlify documentation](https://mintlify.com/docs)
+Les évolutions visibles pour les lecteurs sont recensées dans la page [Nouveautés](ressources/nouveautes.mdx).
+
+## Publication
+
+Les changements fusionnés dans la branche `main` sont déployés automatiquement par Mintlify, via l'intégration GitHub configurée pour le projet.
+
+## Licence
+
+Consultez [`LICENSE`](LICENSE) pour les conditions d'utilisation du contenu.
