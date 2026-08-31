@@ -13,7 +13,7 @@ Diagnostic mis à jour après l'audit `veilleur-ia101` du 2026-08-11 (voir `ress
 - [x] ~~Actualiser le chiffre IEA dans `ia-responsable/empreinte-environnementale.mdx` avec le rapport de suivi d'avril 2026 (485 TWh en 2025, +17 %)~~ → corrigé, référence ajoutée aussi dans `ia-responsable/ressources-ia-responsable.mdx` par `pedagogue-ia101` (2026-08-11)
 - [x] ~~Ajouter un indicateur de dernière révision par page~~ → décidé de ne pas l'ajouter (2026-08-11) : redondant avec la page Nouveautés et le registre de fraîcheur, aurait ajouté de la maintenance sur 33 pages sans valeur claire pour le lecteur
 - [x] Créer une page "Nouveautés" / changelog pédagogique → `ressources/nouveautes.mdx` créée (2026-08-11), historique rétro-rempli depuis le lancement du cours (24/07/2026), ajoutée en fin du groupe « Références »
-- [ ] Surveillance : GPT-5.7 ("Doug") dévoilé le 09/08/2026, lancement annoncé avant novembre 2026 — ne rien changer tant que non confirmé sur source primaire OpenAI
+- [ ] Surveillance : OpenAI a révélé le nom "Astra" pour son prochain modèle majeur le 01/08/2026 (billet de blog sur des résultats mathématiques), puis annoncé le 07/08/2026 ralentir son développement par précaution sur d'éventuelles capacités cyber critiques. Astra n'est pas sorti : GPT-5.6 reste le modèle correct à citer sur le site. Nom non confirmé sur source primaire OpenAI (accès bloqué lors de cette passe) : à revérifier
 
 ## 2. Engagement & découvrabilité
 
