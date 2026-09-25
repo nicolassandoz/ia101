@@ -53,6 +53,12 @@ Le projet suit une veille hebdomadaire des modèles, outils, chiffres et référ
 
 Les évolutions visibles pour les lecteurs sont recensées dans la page [Nouveautés](ressources/nouveautes.mdx).
 
+La carte interactive du cours est générée depuis `docs.json` et les liens de prérequis présents dans les pages. Après avoir modifié la navigation ou un prérequis, régénérez ses données :
+
+```bash
+node scripts/generate-course-graph.mjs
+```
+
 ## Publication
 
 Les changements fusionnés dans la branche `main` sont déployés automatiquement par Mintlify, via l'intégration GitHub configurée pour le projet.

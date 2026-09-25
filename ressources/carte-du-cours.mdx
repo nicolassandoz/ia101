@@ -1,0 +1,33 @@
+---
+title: "Carte du cours IA 101 : visualiser les liens entre les leçons"
+sidebarTitle: "Carte du cours"
+description: "Explorez le parcours IA 101 sous forme de graphe interactif et identifiez les prérequis de chaque leçon."
+mode: wide
+icon: "diagram-project"
+graph: false
+---
+
+import { CourseGraph } from "/snippets/course-graph.jsx"
+import {
+  courseGraphChapters,
+  courseGraphNodes,
+  courseGraphEdges,
+} from "/snippets/course-graph-data.jsx"
+
+Cette carte présente l'organisation complète du cours. Chaque colonne correspond à un chapitre. Une flèche indique qu'une leçon est recommandée avant une autre.
+
+<CourseGraph
+  chapters={courseGraphChapters}
+  nodes={courseGraphNodes}
+  edges={courseGraphEdges}
+/>
+
+## Comment utiliser cette carte
+
+- **Filtrez par chapitre** pour faire ressortir une partie du cours.
+- **Survolez une leçon** pour isoler ses prérequis et les leçons qui en dépendent.
+- **Cliquez sur un nœud** pour ouvrir directement la leçon.
+
+<Tip>
+  Vous pouvez suivre les colonnes dans l'ordre pour un parcours guidé, ou utiliser les connexions pour construire votre propre chemin d'apprentissage.
+</Tip>
