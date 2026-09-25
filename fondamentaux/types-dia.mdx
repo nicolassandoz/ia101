@@ -108,11 +108,11 @@ L'IA générative que vous utilisez au quotidien (ChatGPT, Gemini, Claude, Mistr
 
     Un LLM est entraîné sur une tâche en apparence simple : **prédire le prochain mot** (ou token) dans une séquence. Cette tâche, répétée des milliards de fois sur des centaines de milliards de mots, force le modèle à développer une représentation interne extraordinairement riche du langage, du monde et des raisonnements humains.
 
-    Le processus d'entraînement d'un LLM se déroule en plusieurs phases :
+    Le processus d'entraînement d'un assistant moderne peut comporter plusieurs phases :
 
     1. **Pré-entraînement** : le modèle ingère des téraoctets de texte (livres, articles, code, sites web) et apprend à prédire le prochain token. C'est de loin la phase la plus coûteuse.
     2. **Fine-tuning supervisé (SFT)** : le modèle est affiné sur des exemples de conversations de haute qualité, annotées par des humains, pour apprendre à être un assistant utile.
-    3. **RLHF** : le modèle est optimisé par renforcement à partir de préférences humaines, pour améliorer sa fiabilité, sa sécurité et sa pertinence.
+    3. **Alignement sur des préférences** : le modèle peut être optimisé avec du RLHF, du RLAIF, du DPO ou d'autres méthodes afin d'améliorer son utilité et sa sécurité. Tous les fournisseurs n'utilisent pas exactement la même recette.
 
     ### Pourquoi les LLM sont-ils si capables ?
 
@@ -120,16 +120,16 @@ L'IA générative que vous utilisez au quotidien (ChatGPT, Gemini, Claude, Mistr
 
     ### Les LLM et les capacités émergentes
 
-    Un phénomène fascinant et encore mal compris : à partir d'une certaine taille, les LLM développent des **capacités émergentes** : des aptitudes qui n'étaient pas explicitement entraînées et qui apparaissent soudainement quand le modèle franchit un seuil de taille. Traduction de langues jamais vues pendant l'entraînement, raisonnement arithmétique, résolution d'analogies… Ces phénomènes d'émergence sont au cœur des débats actuels sur la nature de ces modèles.
+    En changeant d'échelle, les LLM progressent sur des tâches qui n'ont pas été enseignées explicitement : traduction, analogies, code ou résolution de problèmes. Certaines courbes de benchmark donnent l'impression d'une apparition soudaine. Une partie de cet effet dépend toutefois du choix de la métrique et du seuil de réussite. Parlez donc de **capacités émergentes** avec prudence : le phénomène est observé, mais son caractère réellement abrupt reste débattu.
 
     ### Les LLM les plus connus aujourd'hui
 
     | Modèle | Organisation | Particularité |
     |---|---|---|
     | **GPT-6 Astra** | OpenAI | Multimodal (texte, image, audio) |
-    | **Claude Opus 5 / Sonnet 5** | Anthropic | Contexte très long (1 million de tokens), sécurité avancée |
+    | **Claude Fable 5.1 / Opus 5.5 / Sonnet 5** | Anthropic | Contexte très long (1 million de tokens), plusieurs compromis coût-performance |
     | **Gemini 3.1 Pro** | Google DeepMind | Fenêtre de contexte d'1 million de tokens |
-    | **Muse Spark** | Meta | Modèle phare propriétaire (poids fermés), contexte d'1 million de tokens |
+    | **Muse Spark 1.3** | Meta | Modèle phare propriétaire (poids fermés), orienté agents et code |
     | **Mistral Large 3** | Mistral AI | Français, open source, efficace |
 
     Meta a longtemps mis en avant sa famille **Llama**, à poids ouverts et toujours téléchargeable. Depuis avril 2026, l'entreprise met plutôt en avant **Muse Spark**, un modèle fermé développé par sa nouvelle division Meta Superintelligence Labs. En août 2026, Meta a toutefois publié **Muse Glimmer**, un modèle à poids ouverts sous licence Apache 2.0, aux côtés de Muse Spark.

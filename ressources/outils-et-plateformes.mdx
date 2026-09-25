@@ -10,16 +10,30 @@ L'écosystème des outils d'intelligence artificielle évolue à une vitesse rem
   La plupart des outils présentés ci-dessous proposent un **niveau gratuit** (*free tier*) suffisant pour expérimenter et apprendre. Vérifiez les conditions d'utilisation de chaque plateforme, car les offres gratuites évoluent régulièrement. Pour un usage intensif ou en production, des abonnements payants sont généralement nécessaires.
 </Note>
 
+## Choisir rapidement
+
+| Votre besoin | Point de départ recommandé | Pourquoi |
+|---|---|---|
+| Tester des prompts sans coder | ChatGPT, Claude ou Gemini | Interface immédiate, fichiers et outils intégrés |
+| Intégrer un modèle dans une application | API du fournisseur déjà utilisé par votre organisation | Moins de comptes, de contrats et de données dispersées |
+| Construire un RAG | LlamaIndex ou Haystack + une base vectorielle | Pipelines d'ingestion et de recherche explicites |
+| Orchestrer un agent ou un workflow | LangGraph ou Microsoft Agent Framework | État, transitions et observabilité mieux maîtrisés |
+| Comparer la qualité en production | Braintrust ou LangSmith | Jeux d'évaluation, traces et comparaison de versions |
+
+<Tip>
+  Ne choisissez pas un outil uniquement sur une démonstration. Testez-le sur **10 à 30 cas réels**, avec vos critères de qualité, de coût, de confidentialité et de réversibilité.
+</Tip>
+
 ## Interfaces conversationnelles
 
 Ces interfaces vous permettent d'interagir directement avec les grands modèles de langage sans écrire une seule ligne de code. Elles sont idéales pour explorer les capacités des LLM, tester des prompts et comprendre les comportements des modèles.
 
 <CardGroup cols={2}>
   <Card title="ChatGPT" icon="comment-dots" href="https://chat.openai.com">
-    L'interface conversationnelle d'OpenAI, donnant accès aux modèles GPT-6 Astra et GPT-5.6, avec un niveau gratuit et des abonnements Plus/Team pour les fonctionnalités avancées.
+    L'interface conversationnelle d'OpenAI, donnant accès à la famille GPT-6, dont Astra, Sol et Luna selon l'offre et le déploiement en cours.
   </Card>
   <Card title="Claude" icon="robot" href="https://claude.ai">
-    L'assistant d'Anthropic basé sur les modèles Claude Fable 5.1, Opus 5, Sonnet 5 et Haiku 4.5, reconnu pour ses longues fenêtres de contexte et sa sécurité renforcée.
+    L'assistant d'Anthropic basé sur les modèles Claude Fable 5.1, Opus 5.5, Sonnet 5 et Haiku 4.5, reconnu pour ses longues fenêtres de contexte.
   </Card>
   <Card title="Gemini" icon="gem" href="https://gemini.google.com">
     L'interface conversationnelle de Google donnant accès aux modèles Gemini, avec des capacités multi-modales natives et une intégration à l'écosystème Google.
@@ -35,10 +49,10 @@ Pour intégrer les capacités des LLM directement dans vos applications, scripts
 
 <CardGroup cols={2}>
   <Card title="OpenAI API" icon="code" href="https://platform.openai.com">
-    L'API d'OpenAI donne accès à GPT-6 Astra, GPT-5.6, Whisper et DALL·E, avec une documentation complète et une large communauté de développeurs.
+    L'API d'OpenAI donne accès à GPT-6 Astra, Sol et Luna, ainsi qu'aux modèles spécialisés pour l'audio et l'image.
   </Card>
   <Card title="Anthropic API" icon="code" href="https://console.anthropic.com">
-    L'API d'Anthropic expose les modèles Claude Fable 5.1, Opus 5, Sonnet 5 et Haiku 4.5, avec des capacités de contexte étendu (jusqu'à 1 million de tokens pour Fable 5.1, Opus 5 et Sonnet 5) et un focus sur la sécurité et l'alignement.
+    L'API d'Anthropic expose Claude Fable 5.1, Opus 5.5, Sonnet 5 et Haiku 4.5. Les trois premiers acceptent jusqu'à 1 million de tokens de contexte.
   </Card>
   <Card title="Google AI Studio" icon="google" href="https://aistudio.google.com">
     Plateforme de prototypage gratuite de Google permettant d'accéder aux modèles Gemini, de tester des prompts et d'obtenir des clés API pour intégration.
@@ -74,10 +88,14 @@ Ces bibliothèques et frameworks facilitent la construction d'applications compl
   <Card title="Haystack" icon="magnifying-glass" href="https://haystack.deepset.ai">
     Framework open-source de deepset pour construire des pipelines NLP et RAG modulaires, avec un fort accent sur la recherche d'information et les applications en production.
   </Card>
-  <Card title="Microsoft Agent Framework" icon="microsoft" href="https://learn.microsoft.com/en-us/agent-framework/overview/agent-framework-overview">
-    Le SDK de Microsoft pour construire des agents et des workflows multi-agents en .NET ou en Python, en version stable depuis avril 2026. Il unifie et remplace Semantic Kernel et AutoGen, désormais en mode maintenance.
+  <Card title="Microsoft Agent Framework" icon="microsoft" href="https://learn.microsoft.com/en-us/agent-framework/overview/">
+    Le successeur direct d'AutoGen et de Semantic Kernel réunit leurs abstractions d'agents, la gestion d'état et des workflows en graphe. Il existe en Python, .NET et Go.
   </Card>
 </CardGroup>
+
+<Note>
+  **Sélection vérifiée le 25 septembre 2026.** Les modèles, tarifs et niveaux gratuits changent vite. Consultez la documentation officielle avant un choix de production.
+</Note>
 
 ## Outils RAG et bases vectorielles
 

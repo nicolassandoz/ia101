@@ -1,10 +1,14 @@
 # TODO : IA 101
 
-Backlog des améliorations identifiées lors de l'analyse du 2026-07-24. Coché = fait.
+Backlog des améliorations identifiées depuis l'analyse du 2026-07-24. Dernier audit transversal : **25 septembre 2026**. Coché = fait.
 
 ## 1. Fraîcheur du contenu (priorité haute)
 
-Diagnostic mis à jour après l'audit `veilleur-ia101` du 2026-08-11 (voir `ressources/suivi-des-sources.md`). Les passes de veille des 2026-08-01/04/10 ont déjà corrigé la quasi-totalité des références de modèles ; le diagnostic initial ("le site référence GPT-4o/Claude 3.5/Gemini 1.5") n'est plus exact et ne doit pas relancer un audit inutile.
+Diagnostic mis à jour après l'audit du 2026-09-25 (voir `AUDIT-2026-09-25.md` et `ressources/suivi-des-sources.md`).
+
+- [x] Actualiser la gamme de modèles après les sorties de septembre 2026 : GPT-6 Sol/Luna, Claude Opus 5.5, Gemini 3.8 Flash, Muse Spark 1.3 et Grok 4.7
+- [x] Corriger les affirmations non étayées sur A2A et Microsoft Agent Framework
+- [x] Ajouter une date de vérification et des sources primaires visibles sur les pages les plus périssables
 
 - [x] ~~Remplacer les références "Llama 4" par "Muse Spark" (Meta a abandonné Llama comme modèle vitrine en avril 2026)~~ → corrigé dans `fondamentaux/types-dia.mdx`, `context-engineering/fenetre-de-contexte.mdx`, `fondamentaux/modeles-de-langage.mdx`, `ressources/glossaire.mdx` par `pedagogue-ia101` (2026-08-11)
 - [x] ~~Corriger `AGENTS.md:31` qui cite encore GPT-4o/Claude 3.5 Sonnet/Gemini 1.5 Pro comme "modèles récents"~~ → corrigé par `pedagogue-ia101` (2026-08-11)
@@ -37,12 +41,17 @@ Quatrième onglet ajouté après Context Engineering : 9 pages dans `ia-responsa
 - [x] Ajouter un quiz de fin de chapitre pour ancrer l'apprentissage → un `<Accordion>` "Testez vos connaissances" ajouté sur les 33 leçons des 4 chapitres (2026-08-11)
 - [x] Indiquer un niveau de difficulté / prérequis par section → bloc `<Info>` (Niveau · Prérequis · Temps de lecture) ajouté en tête des 33 leçons des 4 chapitres (2026-08-11)
 - [x] Exercices pratiques "à essayer maintenant" avec des prompts copiables → `prompt-engineering/patterns-reutilisables.mdx` (2026-07-24), + technique d'auto-évaluation ajoutée dans `prompts-iteratifs.mdx`
+- [x] Corriger les simplifications trompeuses sur les paramètres, les capacités émergentes, les embeddings et le Chain-of-Thought (2026-09-25)
+- [ ] Étendre les exercices pratiques avec critères d'auto-évaluation aux 23 leçons qui n'en proposent pas encore, par lots de 6 pages
+- [ ] Définir 3 parcours courts sur l'accueil : découverte, usage professionnel et conception d'applications
 
 ## 4. Technique / SEO
 
 - [x] Vérifier les liens externes cités → 79 URLs du site testées (HTTP HEAD/GET) le 2026-08-11 : toutes valides. Les 403/999 observés (openai.com, claude.ai, x.ai, iso.org, dl.acm.org, linkedin.com) sont des blocages anti-bot connus de ces domaines, pas des liens cassés
 - [x] Configurer une image `og:image` par défaut dans `docs.json` pour le partage social → déjà en place (`seo.image`), constaté lors de la relecture du 2026-08-11
 - [x] Revoir `AGENTS.md` → déjà personnalisé (rôles des agents, ton, vouvoiement, bornes de contenu), ce n'est plus le template par défaut. Constaté lors de la relecture du 2026-08-11
+- [ ] Centraliser les références de modèles dans une source structurée unique afin d'éviter les divergences entre les 7 pages qui les citent
+- [ ] Ajouter un contrôle automatisé des liens internes, des métadonnées et des faits arrivés à échéance dans `ressources/suivi-des-sources.md`
 
 ## 5. Process
 

@@ -46,7 +46,7 @@ La quasi-totalité des LLM modernes repose sur une architecture appelée **Trans
 
 **Le mécanisme d'attention** permet au modèle de "regarder" l'ensemble du texte en entrée simultanément, plutôt que de le lire mot par mot. Il peut ainsi établir des relations entre des mots éloignés dans une phrase : dans *"La banque sur laquelle il s'est assis se trouvait près de la rivière"*, le modèle comprend que "banque" désigne un banc, et non un établissement financier, grâce au contexte fourni par "rivière".
 
-**Les couches et les paramètres** sont les "neurones" du modèle. Un LLM comme GPT-5.6 ou Claude Sonnet 5 possède des centaines de milliards de paramètres : des valeurs numériques ajustées lors de l'entraînement pour encoder les connaissances du modèle.
+**Les couches et les paramètres** forment les mécanismes internes du modèle. Les paramètres sont des valeurs numériques ajustées pendant l'entraînement. Ils ne sont pas des « neurones » au sens biologique. Leur nombre exact n'est d'ailleurs pas publié pour de nombreux modèles propriétaires : évitez d'en déduire une taille à partir de leurs seules performances.
 
 **Le contexte** (ou fenêtre de contexte) est la quantité de texte que le modèle peut "voir" à la fois lors de la génération d'une réponse. Plus la fenêtre est grande, plus le modèle peut tenir compte d'informations passées dans la conversation.
 
@@ -56,10 +56,10 @@ Aujourd'hui, plusieurs grands modèles se distinguent par leurs performances et 
 
 <CardGroup cols={2}>
   <Card title="GPT-6 Astra" icon="robot" href="https://openai.com">
-    Développé par **OpenAI**, GPT-6 Astra est depuis septembre 2026 le modèle le plus capable de la gamme, avec une fenêtre de contexte d'environ un million de tokens. Il intègre texte, images et audio dans un seul modèle multimodal. GPT-5.6, la génération précédente, reste disponible en parallèle.
+    Développé par **OpenAI**, GPT-6 Astra est le modèle le plus capable de la gamme. GPT-6 Sol et GPT-6 Luna proposent depuis septembre 2026 des compromis plus économiques pour les usages courants et à grande échelle.
   </Card>
   <Card title="Claude" icon="sparkles" href="https://anthropic.com">
-    Développé par **Anthropic**, Claude est réputé pour ses longues fenêtres de contexte, sa capacité de raisonnement et son alignement sur des valeurs de sécurité. Claude Fable 5.1 est aujourd'hui le modèle phare de la gamme, avec Claude Opus 5 comme alternative plus économique.
+    Développé par **Anthropic**, Claude est réputé pour ses longues fenêtres de contexte et ses usages de raisonnement. Claude Fable 5.1 vise les tâches les plus exigeantes ; Claude Opus 5.5 est le choix recommandé pour la plupart des charges de travail complexes.
   </Card>
   <Card title="Gemini" icon="gem" href="https://deepmind.google">
     Développé par **Google DeepMind**, Gemini est nativement multimodal et profondément intégré à l'écosystème Google (Search, Workspace, etc.).
@@ -68,9 +68,13 @@ Aujourd'hui, plusieurs grands modèles se distinguent par leurs performances et 
     **Mistral** (français) et **DeepSeek** (chinois) proposent des modèles **open-source** ou à poids ouverts, particulièrement appréciés pour leur déploiement local et leur transparence. DeepSeek V4, publié sous licence MIT, illustre la montée en puissance de ces alternatives ouvertes face aux modèles propriétaires. **Moonshot AI**, une autre entreprise chinoise, a rejoint ce mouvement en juillet 2026 avec **Kimi K3**, un modèle à poids ouverts de 2,8 billions de paramètres publié sous licence Modified MIT. Meta a longtemps suivi cette voie avec sa famille **Llama**, toujours téléchargeable, mais met désormais en avant **Muse Spark**, un modèle propriétaire à poids fermés devenu la vitrine du groupe depuis avril 2026. En août 2026, Meta a toutefois réintroduit un modèle à poids ouverts, **Muse Glimmer**, sous licence Apache 2.0, aux côtés de Muse Spark.
   </Card>
   <Card title="Grok" icon="bolt" href="https://x.ai">
-    Développé par **xAI**, Grok est intégré à la plateforme X et mise sur un accès à l'information en temps réel. Grok 4.6, sorti en août 2026, est son modèle phare, orienté raisonnement et code.
+    Développé par **xAI**, Grok est intégré à la plateforme X et mise sur un accès à l'information en temps réel. Grok 4.7, sorti en septembre 2026, est son modèle phare pour le code, les outils et le travail de connaissance.
   </Card>
 </CardGroup>
+
+<Note>
+  **Repères vérifiés le 25 septembre 2026.** Consultez les pages officielles d'[OpenAI](https://openai.com/index/introducing-gpt-6-sol-and-luna/), d'[Anthropic](https://platform.claude.com/docs/en/models/overview), de [Google DeepMind](https://deepmind.google/models/gemini/flash/), de [Meta](https://research.meta.ai/blog/introducing-muse-spark-1-3) et de [xAI](https://docs.x.ai/developers/models) pour les disponibilités et caractéristiques à jour.
+</Note>
 
 ## Modèle de base vs modèle ajusté par instruction
 
@@ -85,7 +89,7 @@ Il existe deux grandes catégories de LLM que vous rencontrerez :
 | Comportement | Complète le texte | Répond aux questions |
 | Utilisation directe | Non recommandée | Recommandée |
 | Cas d'usage principal | Fine-tuning avancé | Chatbots, assistants, API |
-| Exemple | GPT-5.6 base | GPT-5.6, Claude Sonnet 5, Gemini 3.1 Pro |
+| Exemple | Modèle brut de pré-entraînement | GPT-6, Claude, Gemini |
 
 ## Ce que vous retenez de cette leçon
 

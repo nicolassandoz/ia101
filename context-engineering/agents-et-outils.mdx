@@ -127,7 +127,7 @@ Un serveur MCP peut exposer trois types de ressources à un agent :
 - des **ressources**, des données consultables (le contenu d'un fichier, les lignes d'une base de données, une page de documentation)
 - des **prompts prédéfinis**, des modèles de requêtes réutilisables fournis par le serveur pour guider certaines tâches
 
-Le MCP standardise la connexion entre un agent et ses outils, mais il existe une couche complémentaire : la communication entre agents. Lancé par Google en avril 2025, le protocole **Agent2Agent** (A2A) permet à des agents développés par des fournisseurs différents de se découvrir, de se déléguer des tâches et de coordonner leur travail, par exemple pour qu'un agent commercial d'une entreprise fasse appel à un agent logistique d'une autre sans intégration sur mesure. A2A est gouverné par la même Agentic AI Foundation que le MCP : les deux protocoles ne sont pas concurrents, l'un relie un agent à ses outils, l'autre relie les agents entre eux. En 2026, le protocole a atteint sa version 1.2 et compte plus de 150 organisations adoptantes en production, parmi lesquelles Microsoft, AWS, Salesforce, SAP, ServiceNow et IBM.
+Le MCP standardise la connexion entre un agent et ses outils, mais il existe une couche complémentaire : la communication entre agents. Lancé par Google en avril 2025, le protocole **Agent2Agent** (A2A) permet à des agents développés par des fournisseurs différents de se découvrir, de se déléguer des tâches et de coordonner leur travail. A2A est gouverné par la même Agentic AI Foundation que le MCP : les deux protocoles ne sont pas concurrents, l'un relie un agent à ses outils, l'autre relie les agents entre eux. La [spécification officielle A2A](https://a2a-protocol.org/latest/specification/) indique la version stable 1.0.0 en septembre 2026.
 
 ## Types d'outils disponibles
 
@@ -157,7 +157,7 @@ Le MCP standardise la connexion entre un agent et ses outils, mais il existe une
 ## Frameworks d'agents
 
 - **LangGraph** (LangChain) : modélise les agents comme des graphes d'état, excellent pour les workflows complexes avec conditions et boucles
-- **Microsoft Agent Framework** : SDK de Microsoft pour construire des agents et des workflows multi-agents, disponible en version stable depuis avril 2026. Il unifie et remplace AutoGen et Semantic Kernel, deux anciens frameworks de Microsoft désormais en mode maintenance
+- **Microsoft Agent Framework** : successeur direct d'AutoGen et de Semantic Kernel. Il combine leurs abstractions avec la gestion d'état, la télémétrie et des workflows en graphe. Consultez sa [documentation officielle](https://learn.microsoft.com/en-us/agent-framework/overview/) pour le statut de chaque SDK
 - **CrewAI** : orchestration d'équipes d'agents spécialisés avec rôles définis, particulièrement lisible et intuitif
 
 ## Risques et précautions avec les agents autonomes

@@ -29,7 +29,10 @@ Les mots courants ont tendance à former un seul token, tandis que les mots rare
 # Exemple de tokenisation avec la bibliothèque tiktoken (OpenAI)
 import tiktoken
 
-enc = tiktoken.encoding_for_model("gpt-4o")
+# Encodage générique utilisé par plusieurs générations de modèles OpenAI.
+# Pour un calcul de coût en production, utilisez l'encodage exact indiqué
+# dans la documentation du modèle ciblé.
+enc = tiktoken.get_encoding("o200k_base")
 
 texte = "La tokenisation est fascinante."
 tokens = enc.encode(texte)
@@ -42,13 +45,7 @@ print(f"Nombre   : {len(tokens)}")
 for token_id in tokens:
     print(f"  {token_id} → '{enc.decode([token_id])}'")
 
-# Output attendu :
-# Texte    : La tokenisation est fascinante.
-# Tokens   : [986, 36233, 374, 47075, 13]  ← IDs numériques
-# Nombre   : 5
-#   986    → 'La'
-#   36233  → ' token'       ← espace inclus dans le token
-#   ...
+# Les identifiants obtenus dépendent de l'encodage choisi.
 ```
 
 Du texte brut jusqu'aux vecteurs manipulés par le modèle, le parcours se résume ainsi :
@@ -92,9 +89,9 @@ Ces ratios sont des approximations pratiques pour se faire une idée rapide, pas
 
 ## Qu'est-ce qu'un embedding ?
 
-Une fois le texte tokenisé, chaque token est converti en un **vecteur numérique** : c'est ce qu'on appelle un **embedding**. Concrètement, un embedding est une liste de nombres (souvent plusieurs centaines ou milliers de valeurs) qui représente la "position" d'un mot dans un espace mathématique à haute dimension.
+Une fois le texte tokenisé, le modèle convertit les tokens en **vecteurs numériques** appelés *embeddings*. Concrètement, un embedding est une liste de nombres qui situe une unité de texte dans un espace mathématique à haute dimension. Les modèles d'embedding destinés à la recherche produisent aussi un vecteur pour une phrase ou un document entier.
 
-Ce qui rend les embeddings puissants, c'est qu'ils **capturent la sémantique** : des mots au sens similaire ont des vecteurs proches les uns des autres dans cet espace. Des mots au sens opposé ou sans rapport sont éloignés.
+Ce qui rend les embeddings puissants, c'est qu'ils **capturent des régularités sémantiques** : des textes utilisés dans des contextes similaires ont souvent des vecteurs proches. Attention, deux antonymes comme « chaud » et « froid » peuvent aussi être proches parce qu'ils partagent le même domaine.
 
 L'exemple le plus célèbre de cette propriété :
 
@@ -102,13 +99,13 @@ L'exemple le plus célèbre de cette propriété :
 vecteur("roi") - vecteur("homme") + vecteur("femme") ≈ vecteur("reine")
 ```
 
-Cela signifie que le modèle a appris, à travers les données d'entraînement, que la relation entre "roi" et "homme" est analogue à celle entre "reine" et "femme", et cette relation est encodée géométriquement dans l'espace vectoriel.
+Cet exemple historique illustre qu'une relation peut parfois apparaître géométriquement dans certains embeddings de mots. Ce n'est ni une loi générale, ni une opération qui fonctionne à l'identique avec tous les modèles modernes ou avec des embeddings de phrases.
 
 D'autres exemples de relations capturées par les embeddings :
 
 - *"Paris" - "France" + "Italie" ≈ "Rome"* (relation capitale / pays)
 - *"chaud" est proche de "tiède", "brûlant", "chaleur"*
-- *"positif" est à l'opposé de "négatif"*
+- *« positif » et « négatif » peuvent être proches par domaine, malgré leur sens opposé*
 
 ## À quoi servent les embeddings en pratique ?
 
@@ -131,4 +128,3 @@ Les tokens sont les unités atomiques du texte pour un LLM : ni des mots, ni des
 <Accordion title="Quiz : Vrai ou Faux ? En français, 1 mot équivaut toujours à 1 token.">
   **Faux.** Un token n'est pas un mot. En français, on compte en moyenne environ 1,3 token par mot. Les mots très communs peuvent correspondre à 1 token, mais les mots longs, rares ou complexes (comme "anticonstitutionnellement") seront découpés en plusieurs tokens par le modèle.
 </Accordion>
-
