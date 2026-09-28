@@ -18,6 +18,7 @@ Diagnostic mis à jour après l'audit du 2026-09-25 (voir `AUDIT-2026-09-25.md` 
 - [x] ~~Ajouter un indicateur de dernière révision par page~~ → décidé de ne pas l'ajouter (2026-08-11) : redondant avec la page Nouveautés et le registre de fraîcheur, aurait ajouté de la maintenance sur 33 pages sans valeur claire pour le lecteur
 - [x] Créer une page "Nouveautés" / changelog pédagogique → `ressources/nouveautes.mdx` créée (2026-08-11), historique rétro-rempli depuis le lancement du cours (24/07/2026), ajoutée en fin du groupe « Références »
 - [x] ~~Surveillance : OpenAI a révélé le nom "Astra" pour son prochain modèle majeur~~ → Astra confirmé et sorti sous le nom GPT-6 Astra le 03/09/2026, devient le modèle phare d'OpenAI (GPT-5.6 reste disponible en parallèle). Références mises à jour par `pedagogue-ia101` (2026-09-07) dans `fondamentaux/modeles-de-langage.mdx`, `fondamentaux/types-dia.mdx`, `fondamentaux/tokens-et-embeddings.mdx`, `prompt-engineering/chain-of-thought.mdx`, `context-engineering/fenetre-de-contexte.mdx`, `ressources/outils-et-plateformes.mdx`, `ressources/glossaire.mdx`
+- [ ] Surveillance : Google DeepMind a confirmé le 23-24/09/2026 être entré en phase de post-entraînement sur un futur modèle Gemini de nouvelle génération orienté code/agents/tâches longues, sans date de sortie annoncée (source : 9to5Google, 24/09/2026). Pas d'action de contenu immédiate, aucun nom ni date confirmés. À surveiller lors de la prochaine veille, même logique que le suivi fait sur GPT-6 Astra avant sa sortie
 
 ## 2. Engagement & découvrabilité
 
