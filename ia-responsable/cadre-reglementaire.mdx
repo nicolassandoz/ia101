@@ -11,14 +11,14 @@ description: "Le calendrier réel de l'AI Act après le Digital Omnibus, l'artic
 Le cadre juridique de l'IA en Europe a beaucoup bougé, y compris très récemment. Cette page fait le point sur ce qui s'applique **aujourd'hui**, ce qui arrive, et ce que vous devez faire dans chaque cas. Elle vise l'utilité pratique plutôt que l'exhaustivité juridique, et ne remplace évidemment pas l'avis d'un juriste sur votre situation particulière.
 
 <Warning>
-**Ce chapitre est daté.** Les informations ci-dessous reflètent l'état du droit vérifié au **25 septembre 2026**, après l'entrée en vigueur du Digital Omnibus sur l'IA. Consultez le [cadre réglementaire officiel de la Commission européenne](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) et le [règlement (UE) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj/fra) avant toute décision de conformité.
+**Ce chapitre est daté.** Les informations ci-dessous reflètent l'état du droit vérifié au **28 septembre 2026**, après l'entrée en vigueur du Digital Omnibus sur l'IA. Consultez le [cadre réglementaire officiel de la Commission européenne](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai) et le [règlement (UE) 2026/1744](https://eur-lex.europa.eu/eli/reg/2026/1744/oj/fra) avant toute décision de conformité.
 </Warning>
 
 ## L'AI Act : où en est-on vraiment ?
 
 Le règlement européen sur l'intelligence artificielle (règlement (UE) 2024/1689) est entré en vigueur le 1<sup>er</sup> août 2024, avec une application progressive. Il a été **modifié pour la première fois** par le *Digital Omnibus on AI* : le règlement (UE) 2026/1744 du 8 juillet 2026, publié au Journal officiel le 24 juillet 2026 et entré en vigueur le 27 juillet 2026.
 
-Cet omnibus a essentiellement **reporté les obligations relatives aux systèmes à haut risque**, sans toucher au reste. Voici le calendrier consolidé :
+Cet omnibus a surtout **reporté les obligations relatives aux systèmes à haut risque**, mais il a aussi ajouté deux pratiques interdites à l'article 5 et réécrit l'obligation de littératie en IA de l'article 4. Voici le calendrier consolidé :
 
 | Date | Ce qui s'applique | Statut |
 |---|---|---|
@@ -26,6 +26,7 @@ Cet omnibus a essentiellement **reporté les obligations relatives aux systèmes
 | 2 août 2025 | Obligations des modèles à usage général (GPAI), gouvernance | En vigueur |
 | **2 août 2026** | **Transparence (art. 50)**, applicabilité générale du règlement, régime de sanctions | **En vigueur** |
 | 2 décembre 2026 | Fin du délai de grâce pour le marquage lisible par machine des systèmes déjà sur le marché | À venir |
+| **2 décembre 2026** | Entrée en application de **deux nouvelles pratiques interdites** (art. 5) : IA générant des contenus pédopornographiques et applications de « nudification » | À venir |
 | 2 décembre 2027 | Systèmes à **haut risque autonomes** (annexe III), *reporté de 16 mois* | À venir |
 | 2 août 2028 | Systèmes à **haut risque intégrés à des produits réglementés** (annexe I), *reporté* | À venir |
 
@@ -65,17 +66,17 @@ La Commission européenne a publié des **lignes directrices sur l'article 50** 
 
 ### L'obligation de littératie en IA (article 4)
 
-Souvent oubliée, elle s'applique pourtant **depuis février 2025** et concerne toutes les organisations qui fournissent ou déploient des systèmes d'IA. Elle impose de prendre des mesures pour garantir un niveau suffisant de compétence en IA chez les personnes qui utilisent ces systèmes en leur nom, compte tenu de leurs connaissances, du contexte et des personnes affectées.
+Souvent oubliée, elle s'applique pourtant **depuis février 2025** et concerne toutes les organisations qui fournissent ou déploient des systèmes d'IA. Le règlement (UE) 2026/1744 en a réécrit le libellé : elle impose désormais de **prendre des mesures pour soutenir le développement** de la littératie en IA du personnel et des autres personnes qui opèrent ces systèmes pour le compte du fournisseur ou du déployeur, en tenant compte de leurs connaissances techniques, de leur expérience, de leur formation et du contexte d'utilisation. Le texte précise explicitement que cette obligation n'exige pas de garantir un niveau de littératie précis pour une personne donnée.
 
 <Note>
-En clair : **former vos équipes n'est pas une bonne pratique, c'est une obligation légale**. Elle est peu spectaculaire, mais elle est en vigueur, et le régime de sanctions est applicable depuis le 2 août 2026. Si vous suivez ce cours dans un cadre professionnel, vous participez déjà à cette conformité.
+En clair : **former vos équipes n'est pas une bonne pratique, c'est une obligation légale**, même si c'est désormais, depuis juillet 2026, une obligation de moyens plutôt qu'une obligation de résultat. Elle est peu spectaculaire, mais elle est en vigueur, et le régime de sanctions est applicable depuis le 2 août 2026. Si vous suivez ce cours dans un cadre professionnel, vous participez déjà à cette conformité.
 </Note>
 
 ### Les niveaux de risque
 
 <CardGroup cols={2}>
   <Card title="Risque inacceptable" icon="ban">
-    Interdit depuis février 2025 : notation sociale, exploitation de vulnérabilités, reconnaissance des émotions au travail et à l'école, police prédictive individuelle, moissonnage non ciblé d'images faciales.
+    Interdit depuis février 2025 : notation sociale, exploitation de vulnérabilités, reconnaissance des émotions au travail et à l'école, police prédictive individuelle, moissonnage non ciblé d'images faciales. Le règlement (UE) 2026/1744 y ajoute deux pratiques interdites, applicables à partir du **2 décembre 2026** : les systèmes générant des contenus pédopornographiques (CSAM) et les applications dites « nudifiers », qui génèrent ou manipulent des contenus intimes ou sexuellement explicites représentant une personne identifiable sans son consentement.
   </Card>
   <Card title="Haut risque" icon="triangle-exclamation">
     Recrutement, éducation, crédit, services essentiels, biométrie, infrastructures critiques, justice. Gestion des risques, qualité des données, documentation, journalisation, supervision humaine. **Applicable en décembre 2027**.
@@ -173,15 +174,16 @@ Avant de déployer un système d'IA, cinq questions permettent de situer rapidem
     Si oui : base légale, minimisation, contrat de sous-traitance, éventuellement analyse d'impact. Vérifiez l'usage de vos données par le fournisseur.
   </Step>
   <Step title="Les utilisateurs sont-ils formés ?">
-    L'article 4 l'exige, sans seuil ni exception. Une sensibilisation documentée est le minimum défendable.
+    L'article 4 l'exige, sans seuil ni exception, même s'il s'agit depuis juillet 2026 d'une obligation de moyens plutôt que de résultat. Une sensibilisation documentée est le minimum défendable.
   </Step>
 </Steps>
 
 ## Ce qu'il faut retenir
 
 - L'AI Act a été **amendé** en juillet 2026 : seul le **haut risque** est reporté (décembre 2027 et août 2028).
+- Le même amendement ajoute **deux nouvelles pratiques interdites** (art. 5) contre les contenus pédopornographiques générés par IA et les applications « nudifiers », applicables au **2 décembre 2026**.
 - La **transparence (art. 50)** et le **régime de sanctions** sont applicables **depuis le 2 août 2026**, avec un délai de grâce au 2 décembre 2026 pour le marquage machine des systèmes préexistants.
-- L'obligation de **littératie en IA** est en vigueur depuis février 2025 et concerne toutes les organisations.
+- L'obligation de **littératie en IA** est en vigueur depuis février 2025 et concerne toutes les organisations : c'est désormais, depuis juillet 2026, une obligation de moyens plutôt que de résultat.
 - Le **RGPD** continue de s'appliquer intégralement et reste, en pratique, la contrainte la plus fréquente.
 - La **CSRD** a vu son champ réduit d'environ 80 %, mais l'effet de chaîne de valeur touche aussi les non-assujettis.
 - **ISO/IEC 42001** et **AFNOR SPEC 2314** offrent des cadres méthodologiques à mobiliser sans attendre.
