@@ -10,6 +10,7 @@ Diagnostic mis à jour après l'audit du 2026-09-25 (voir `AUDIT-2026-09-25.md` 
 - [x] Corriger les affirmations non étayées sur A2A et Microsoft Agent Framework
 - [x] Ajouter une date de vérification et des sources primaires visibles sur les pages les plus périssables
 
+- [ ] Ouvrir Gemini 4 Argon dans le tableau de `context-engineering/fenetre-de-contexte.mdx` à sa disponibilité générale API
 - [x] ~~Remplacer les références "Llama 4" par "Muse Spark" (Meta a abandonné Llama comme modèle vitrine en avril 2026)~~ → corrigé dans `fondamentaux/types-dia.mdx`, `context-engineering/fenetre-de-contexte.mdx`, `fondamentaux/modeles-de-langage.mdx`, `ressources/glossaire.mdx` par `pedagogue-ia101` (2026-08-11)
 - [x] ~~Corriger `AGENTS.md:31` qui cite encore GPT-4o/Claude 3.5 Sonnet/Gemini 1.5 Pro comme "modèles récents"~~ → corrigé par `pedagogue-ia101` (2026-08-11)
 - [x] ~~Ajouter une leçon sur le MCP et les agents outillés~~ → déjà couvert en profondeur dans `context-engineering/agents-et-outils.mdx` (MCP, A2A) + `ressources/glossaire.mdx`. Constaté obsolète lors de l'audit du 2026-08-11
