@@ -28,9 +28,9 @@ Les tailles varient considérablement d'un modèle à l'autre et évoluent rapid
 |---|---|---|
 | GPT-6 Astra (OpenAI) | ~1 000 000 tokens | ~750 000 mots / ~1 500 pages |
 | GPT-5.6 (OpenAI, génération précédente) | ~1 000 000 tokens | ~750 000 mots / ~1 500 pages |
-| Claude Fable 5.1 (Anthropic) | 1 000 000 tokens | ~750 000 mots / ~1 500 pages |
-| Claude Opus 5.5 / Claude Sonnet 5 (Anthropic) | 1 000 000 tokens | ~750 000 mots / ~1 500 pages |
-| Claude Haiku 4.5 (Anthropic) | 200 000 tokens | ~150 000 mots / ~300 pages |
+| Claude Fable 5.1 (Anthropic) | 1 000 000 tokens | ~555 000 mots / ~1 100 pages |
+| Claude Opus 5.5 / Claude Sonnet 5.5 (Anthropic) | 1 000 000 tokens | ~555 000 mots / ~1 100 pages |
+| Claude Haiku 5.5 (Anthropic) | 1 000 000 tokens | ~555 000 mots / ~1 100 pages |
 | Gemini 3.1 Pro (Google) | 1 000 000 tokens | ~750 000 mots / ~1 500 pages |
 | Gemini 3.8 Flash (Google) | 1 000 000 tokens | ~750 000 mots / ~1 500 pages |
 | DeepSeek V4 (DeepSeek, poids ouverts) | 1 000 000 tokens | ~750 000 mots / ~1 500 pages |
@@ -39,6 +39,8 @@ Les tailles varient considérablement d'un modèle à l'autre et évoluent rapid
 | Mistral Large 3 (Mistral AI, poids ouverts) | 256 000 tokens | ~192 000 mots / ~384 pages |
 
 > **Règle pratique :** En français, comptez environ **1,3 token par mot** en moyenne (le français étant légèrement plus verbeux que l'anglais en tokens). Une page standard de 250 mots représente environ **325 tokens**.
+
+Le nombre de mots par token dépend du **tokenizer** (le découpeur de texte) de chaque fournisseur. À taille de fenêtre égale, 1 million de tokens correspond donc à environ 555 000 mots avec les modèles Claude récents, contre environ 750 000 mots pour les autres lignes du tableau.
 
 <Note>
   Ces limites indiquent une capacité maximale, pas une qualité uniforme sur toute la longueur. Vérifiez toujours la documentation du modèle utilisé : [Claude](https://platform.claude.com/docs/en/models/overview), [Gemini 3.8 Flash](https://deepmind.google/models/model-cards/gemini-3-8-flash/) et [Grok](https://docs.x.ai/developers/models).
